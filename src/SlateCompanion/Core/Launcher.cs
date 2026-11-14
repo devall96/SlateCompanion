@@ -18,6 +18,10 @@ public sealed record SwInstall(string Exe, string DataRoot)
         {
             if (AppImage)
             {
+                // An AppImage keeps its file name when Savage Wind (or Slate Companion) updates it, so the name can be an
+                // older version than what's inside. What Savage Wind says at each start ("[savagewind] Savage Wind
+                // <version> (...)" at the top of savagewind.log) is the truth, when that log is newer than the file.
+                if (VersionFromLog() is { } logged) return logged;
                 var m = System.Text.RegularExpressions.Regex.Match(Path.GetFileName(Exe), @"(\d+\.\d+\.\d+[^-_]*(?:-alpha\.\d+|-beta\.\d+)?)");
                 return m.Success ? m.Groups[1].Value : null;
             }
@@ -30,6 +34,39 @@ public sealed record SwInstall(string Exe, string DataRoot)
             catch (UnauthorizedAccessException) { }
             return null;
         }
+    }
+
+    /// <summary>The version the last start of this program logged (savagewind.log in the data folder), if it's from this file.</summary>
+    string? VersionFromLog()
+    {
+        try
+        {
+            foreach (var name in new[] { "savagewind.log", "savagewind.prev.log" })
+            {
+                var log = Path.Combine(DataRoot, name);
+                if (!File.Exists(log) || File.GetLastWriteTimeUtc(log) < File.GetLastWriteTimeUtc(Exe)) continue;
+                using var f = new FileStream(log, FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete);
+                using var r = new StreamReader(f);
+                for (int i = 0; i < 60 && r.ReadLine() is { } line; i++)
+                {
+                    int at = line.IndexOf("[savagewind] Savage Wind ", StringComparison.Ordinal);
+                    if (at < 0) continue;
+                    var v = line[(at + 25)..].Split(' ')[0].Trim();
+                    if (v.Length > 0 && char.IsDigit(v[0])) return v;
+                }
+            }
+        }
+        catch (Exception e) when (e is IOException or UnauthorizedAccessException) { }
+        return null;
+    }
+
+    /// <summary>Why <see cref="SetupPending"/> says what it says (for the log).</summary>
+    public string SetupState()
+    {
+        string? last = null;
+        try { last = File.ReadLines(Path.Combine(DataRoot, "cache", "last-version.txt")).FirstOrDefault()?.Trim(); } catch (Exception) { }
+        return $"version {Version ?? "?"} (from {(AppImage ? (VersionFromLog() != null ? "its log" : "its file name") : "sw-manifest.txt")}), " +
+               $"cache/last-version.txt {last ?? "missing"}, game files {(GameFilesReady ? "ready" : "missing")}";
     }
 
     /// <summary>The game files are copied in and the game code built (Savage Wind's own check: extracted/romfs and extracted/exefs/main).</summary>

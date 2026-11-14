@@ -59,6 +59,7 @@ public sealed class LaunchView : ViewBase
     string? swCheckError, csCheckError;
     bool checkedOnline, lastRunning, showInstall;
     List<SwSetup.GameFiles>? gameFiles;
+    static readonly Dictionary<string, string> loggedState = [];
     DispatcherTimer? runningPoll;
 
     protected override Control Build()
@@ -107,6 +108,11 @@ public sealed class LaunchView : ViewBase
         sw = installs.FirstOrDefault(i => i.Exe.Equals(st.GameProgram, StringComparison.OrdinalIgnoreCase))
              ?? installs.Where(i => i.GameFilesReady).OrderByDescending(i => i.Version ?? "", Comparer<string>.Create(Launcher.CompareVersions)).FirstOrDefault()
              ?? installs.FirstOrDefault();
+        foreach (var i in installs)
+        {
+            var state = i.SetupState();
+            if (loggedState.GetValueOrDefault(i.Exe) != state) { loggedState[i.Exe] = state; Log.Info($"Copy {Log.Scrub(i.Exe)}: {state}{(i.SetupPending ? " -> needs setting up" : "")}"); }
+        }
         cs = ClearSkies.Find(st);
         if (cs != null && st.ClearSkiesProgram != cs.Program) App.Progress.SaveSettings(x => x.ClearSkiesProgram = cs.Program);
         lastRunning = Launcher.GameRunning();

@@ -117,6 +117,8 @@ public static class SwSetup
             var (head, hint) = failed?.Split(" | ", 2) is { Length: 2 } parts ? (parts[0], parts[1]) : (failed ?? "The setup didn't finish", "");
             throw new SwInstaller.InstallException(head, (hint.Length > 0 ? hint + "\n\n" : "") + $"Savage Wind's log has the details: {UI.Ui.ShortPath(logPath)}");
         }
+        var after = new SwInstall(sw.Exe, sw.DataRoot);
+        if (after.SetupPending) Log.Warn($"Savage Wind setup finished but the copy still counts as not set up: {after.SetupState()}");
         pr.Report(new JobProgress(1, "Ready to play", 1, $"Set up in {(int)(DateTime.Now - started).TotalMinutes} min"));
     }
 

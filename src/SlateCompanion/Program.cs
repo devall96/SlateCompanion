@@ -41,6 +41,16 @@ public static class Program
         // --sw-update <savagewind program>: the Play screen's jobs from the command line, progress printed (testing,
         // and for people who'd rather script it)
         if (args.Length >= 2 && args[0] is "--sw-install" or "--sw-setup" or "--sw-update") return SwCli(args);
+        // --sw-list: every copy of Savage Wind found, with its version and whether it needs setting up (and why)
+        if (args.Length >= 1 && args[0] == "--sw-list")
+        {
+            foreach (var i in Launcher.FindInstalls(new Store().LoadSettings()))
+            {
+                Console.WriteLine(Log.Scrub(i.Exe));
+                Console.WriteLine($"  {i.SetupState()}{(i.SetupPending ? " -> needs setting up" : " -> ready")}");
+            }
+            return 0;
+        }
         // --convert-save <save folder> <output folder> <Bootup.pack> switch|wiiu: a whole save converted (testing)
         if (args.Length >= 5 && args[0] == "--convert-save")
         {
