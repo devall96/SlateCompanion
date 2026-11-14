@@ -27,6 +27,7 @@ public sealed class Progress : IDisposable
     public SaveSource? Source { get; private set; }
     public List<SaveSource> Sources { get; private set; } = [];
     public string? Slot { get; private set; }
+    public string? SlotPath { get; private set; }  // the slot folder read (game_data.sav, caption.sav, caption.jpg)
     public DateTime? Modified { get; private set; }
     public string? Platform { get; private set; }
     public string? Error { get; private set; }
@@ -128,6 +129,7 @@ public sealed class Progress : IDisposable
             SaveDone = done;
             Stats = stats;
             Slot = chosen.Slot;
+            SlotPath = chosen.Path;
             Modified = chosen.Modified;
             Platform = game.BigEndian ? "Wii U" : "Switch";
             Error = null;

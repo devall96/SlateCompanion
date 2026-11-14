@@ -70,11 +70,11 @@ public sealed class ArmorView : ViewBase
     protected override Control Build()
     {
         md = new MasterDetail<ArmorPiece>(
-            a => Rows.Item(Ui.Img(Assets.Icon(Assets.ArmorActor(a), 36), 36), a.Name, string.Join(" · ", new[] { a.Set, a.Slot, a.BaseDefense != null ? $"defense {a.BaseDefense}" : null }.Where(x => x != null)), PlanBox(a)),
+            a => Rows.Item(Ui.Img(Assets.ArmorIcon(a, 36), 36), a.Name, string.Join(" · ", new[] { a.Set, a.Slot, a.BaseDefense != null ? $"defense {a.BaseDefense}" : null }.Where(x => x != null)), PlanBox(a)),
             a =>
             {
                 var actor = Assets.ArmorActor(a);
-                var s = Ui.StackOf(8, Ui.Img(Assets.Icon(actor, 96), 96), Ui.Text(a.Name, "h3"), Ui.Text(string.Join(" · ", new[] { a.Set, a.Slot, a.Effect, a.SetBonus != null ? $"set bonus: {a.SetBonus.Name} (needs ★★ on every piece)" : null }.Where(x => x != null)), "muted small"),
+                var s = Ui.StackOf(8, Ui.Img(Assets.ArmorIcon(a, 96), 96), Ui.Text(a.Name, "h3"), Ui.Text(string.Join(" · ", new[] { a.Set, a.Slot, a.Effect, a.SetBonus != null ? $"set bonus: {a.SetBonus.Name} (needs ★★ on every piece)" : null }.Where(x => x != null)), "muted small"),
                     Ui.GameDesc(actor == null ? null : Assets.Desc(actor)));
                 if (a.WhereFound != null) s.Children.Add(Ui.Text("Where: " + a.WhereFound + (a.Price != null ? " · " + a.Price : ""), "small"));
                 if (a.Upgrades is { Length: > 0 })

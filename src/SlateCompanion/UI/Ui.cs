@@ -29,6 +29,9 @@ public static class Ui
         ["stats"] = "M5 27h22M8 23v-7M14 23V9M20 23v-10M26 23V5",
         ["guides"] = "M4 6c5-1 9 0 12 3 3-3 7-4 12-3v20c-5-1-9 0-12 3-3-3-7-4-12-3z M16 9v20",
         ["settings"] = "M12 16a4 4 0 1 0 8 0a4 4 0 1 0-8 0 M16 3v5M16 24v5M3 16h5M24 16h5M6.8 6.8l3.5 3.5M21.7 21.7l3.5 3.5M6.8 25.2l3.5-3.5M21.7 10.3l3.5-3.5",
+        ["inventory"] = "M10 11V8a6 6 0 0 1 12 0v3 M6 11h20l-2 17H8z M12 17h8",
+        ["saves"] = "M6 5h16l4 4v18H6z M10 5v7h11V5 M10 27v-9h12v9",
+        ["launch"] = "M4 16a12 12 0 1 0 24 0a12 12 0 1 0-24 0 M13 10.5v11l9-5.5z",
         ["search"] = "M4 10.5a6.5 6.5 0 1 0 13 0a6.5 6.5 0 1 0-13 0 M15.5 15.5 21 21",
     };
 
@@ -170,7 +173,8 @@ public static class Ui
     public static Control Header(string title, Control? right = null)
     {
         var g = new Grid { ColumnDefinitions = new ColumnDefinitions("*,Auto"), Margin = new Thickness(0, 0, 0, 16) };
-        g.Children.Add(Stack(2, Text("SHEIKAH SLATE", "eyebrow"), Text(title, "h1")));
+        var t = Text(title, "h1"); t.VerticalAlignment = VerticalAlignment.Bottom;
+        g.Children.Add(t);
         if (right != null) { Grid.SetColumn(right, 1); right.VerticalAlignment = VerticalAlignment.Bottom; g.Children.Add(right); }
         return g;
     }
@@ -226,4 +230,11 @@ public static class Ui
 
     public static string Norm(string? s) =>
         new string((s ?? "").ToLowerInvariant().Select(c => char.IsLetterOrDigit(c) ? c : ' ').ToArray()).Trim();
+
+    /// <summary>The home folder shown as ~ (shorter, and keeps the user name off screen).</summary>
+    public static string ShortPath(string p)
+    {
+        var home = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+        return home.Length > 0 && p.StartsWith(home, StringComparison.OrdinalIgnoreCase) ? "~" + p[home.Length..] : p;
+    }
 }

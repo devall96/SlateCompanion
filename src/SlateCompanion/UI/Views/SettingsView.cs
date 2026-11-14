@@ -1,8 +1,10 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Layout;
+using Avalonia.Media;
 using Avalonia.Platform.Storage;
 using Avalonia.Threading;
+using SlateCompanion.UI;
 
 namespace SlateCompanion.UI.Views;
 
@@ -28,6 +30,8 @@ public sealed class SettingsView : ViewBase
 
         var liveOn = new CheckBox { Content = "Show Link's live position", IsChecked = p.Settings.LiveEnabled };
         liveOn.IsCheckedChanged += (_, _) => p.SaveSettings(s => s.LiveEnabled = liveOn.IsChecked == true);
+        var bg = new CheckBox { Content = "Keep it moving while Slate Companion is in the background (a second screen)", IsChecked = p.Settings.LiveInBackground };
+        bg.IsCheckedChanged += (_, _) => p.SaveSettings(s => s.LiveInBackground = bg.IsChecked == true);
         var port = new NumericUpDown { Value = p.Settings.LivePort, Minimum = 1, Maximum = 65535, Increment = 1, FormatString = "0", Width = 140 };
         port.ValueChanged += (_, _) => p.SaveSettings(s => s.LivePort = (int)(port.Value ?? 7777));
         var live = Ui.Panel(Ui.Stack(10, Ui.Text("LIVE POSITION (SAVAGE WIND)", "h2"),
@@ -39,12 +43,13 @@ public sealed class SettingsView : ViewBase
                 liveResult.Text = r["connected"]?.GetValue<bool>() == true && r["x"] != null
                     ? $"Connected. Link is at x {r["x"]!.GetValue<double>():0}, y {r["y"]!.GetValue<double>():0}, z {r["z"]!.GetValue<double>():0}."
                     : "Not connected: " + (r["error"]?.GetValue<string>() ?? "no answer");
-            }, "small")), liveResult));
+            }, "small")), bg, liveResult));
 
 
         var page = Ui.Stack(16, Ui.Header("Saves & settings"),
             new Grid { ColumnDefinitions = new ColumnDefinitions("*,*"), Children = { add, Wrap(live, 1) } },
             Ui.Panel(mapBox, "panel"),
+            Ui.Panel(LauncherPanel(), "panel"),
             Ui.Panel(UpdatesPanel(), "panel"),
             Ui.Text("SAVES FOUND", "h2"), savesList,
             Ui.Text("ABOUT", "h2"),
@@ -54,6 +59,18 @@ public sealed class SettingsView : ViewBase
         return scroll;
 
         static Control Wrap(Control c, int col) { Grid.SetColumn(c, col); return c; }
+    }
+
+    /// <summary>The optional Savage Wind launcher (the Play screen).</summary>
+    static Control LauncherPanel()
+    {
+        var on = new ToggleSwitch { IsChecked = App.Progress.Settings.UseLauncher, OnContent = "Shown", OffContent = "Hidden" };
+        on.IsCheckedChanged += (_, _) => { App.Progress.SaveSettings(s => s.UseLauncher = on.IsChecked == true); App.Main.ShowLauncher(on.IsChecked == true); };
+        var minimize = new CheckBox { Content = "Minimize Slate Companion when the game starts (it then sleeps; the map's live position pauses)", IsChecked = App.Progress.Settings.MinimizeOnPlay };
+        minimize.IsCheckedChanged += (_, _) => App.Progress.SaveSettings(s => s.MinimizeOnPlay = minimize.IsChecked == true);
+        var t = Ui.Text("The Play screen: starts Savage Wind straight into the game, installs and updates it, sets it up with your game files, and has all of its settings and Clear Skies. Hidden, Slate Companion never starts, changes or updates Savage Wind.", "muted small");
+        t.TextWrapping = TextWrapping.Wrap;
+        return Ui.Stack(8, Ui.Text("SAVAGE WIND LAUNCHER", "h2"), t, on, minimize);
     }
 
     /// <summary>Updates, from GitHub, only when asked (installed copies only).</summary>
@@ -80,10 +97,13 @@ public sealed class SettingsView : ViewBase
         {
             update.IsEnabled = check.IsEnabled = false;
             try { await Updater.DownloadAndRestartAsync(p => Dispatcher.UIThread.Post(() => status.Text = $"Downloading… {p}%")); }
-            catch (Exception e) { status.Text = "Update failed: " + e.Message; update.IsEnabled = check.IsEnabled = true; }
+            catch (Exception e) { status.Text = "Update failed: " + e.Message; update.IsEnabled = check.IsEnabled = true; ErrorWindow.Show("Update failed", "The new version couldn't be installed. Your current version still works.", e); }
         };
-        return Ui.Stack(8, Ui.Text("UPDATES", "h2"), Ui.Text($"Slate Companion {Updater.Version}. Nothing is checked or downloaded unless you press the button.", "muted small"),
-            Ui.Row(10, check, update), status);
+        var auto = new CheckBox { Content = "Check for a new version when Slate Companion opens", IsChecked = App.Progress.Settings.CheckUpdatesOnStart, IsEnabled = Updater.Installed };
+        auto.IsCheckedChanged += (_, _) => App.Progress.SaveSettings(s => { s.CheckUpdatesOnStart = auto.IsChecked == true; s.SkippedVersion = null; });
+        return Ui.Stack(8, Ui.Text("UPDATES", "h2"), Ui.Text($"Slate Companion {Updater.Version}. One small request to GitHub; nothing is downloaded until you press Update.", "muted small"),
+            auto, Ui.Row(10, check, update), status,
+            Ui.Row(10, Ui.Button("Open logs folder", () => ErrorWindow.OpenPath(Log.Folder), "small ghost"), Ui.Button("Report a problem", () => ErrorWindow.OpenPath(ErrorWindow.IssuesUrl), "small ghost")));
     }
 
     protected override void OnShown(object? arg)

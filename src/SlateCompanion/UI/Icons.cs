@@ -60,4 +60,36 @@ public static class Icons
     }
 
     public static Bitmap? Outline(string name) => Tinted(name, Color.FromArgb(200, 0, 0, 0));
+
+    /// <summary>
+    /// For the few map layers the game has no icon for (memory spots, Great Fairy fountains): one of the app's own
+    /// line glyphs (a 32×32 SVG path) drawn into a 64-pixel bitmap, so it sits on the map like the game's icons.
+    /// </summary>
+    public static Bitmap? Drawn(string svgPath, Color color, float width = 3.6f)
+    {
+        var key = ("drawn:" + svgPath + width, color.ToUInt32());
+        if (tinted.TryGetValue(key, out var b)) return b;
+        try
+        {
+            using var path = SKPath.ParseSvgPathData(svgPath);
+            using var surface = SKSurface.Create(new SKImageInfo(64, 64, SKColorType.Rgba8888, SKAlphaType.Premul));
+            var c = surface.Canvas;
+            c.Clear(SKColors.Transparent);
+            c.Scale(2);
+            using var paint = new SKPaint
+            {
+                IsAntialias = true, Style = SKPaintStyle.Stroke, StrokeWidth = width, StrokeCap = SKStrokeCap.Round,
+                StrokeJoin = SKStrokeJoin.Round, Color = new SKColor(color.R, color.G, color.B, color.A),
+            };
+            c.DrawPath(path, paint);
+            using var img = surface.Snapshot();
+            using var data = img.Encode(SKEncodedImageFormat.Png, 100);
+            b = new Bitmap(new MemoryStream(data.ToArray()));
+        }
+        catch (Exception) { b = null; }
+        return tinted[key] = b;
+    }
+
+    /// <summary>The dark edge drawn behind a <see cref="Drawn"/> icon.</summary>
+    public static Bitmap? DrawnOutline(string svgPath) => Drawn(svgPath, Color.FromArgb(200, 0, 0, 0), 6.5f);
 }

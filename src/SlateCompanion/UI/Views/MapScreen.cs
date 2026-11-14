@@ -2,6 +2,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Layout;
 using Avalonia.Media;
+using Avalonia.Media.Imaging;
 using Avalonia.Threading;
 
 namespace SlateCompanion.UI.Views;
@@ -30,6 +31,20 @@ public sealed class MapScreen : ViewBase
         ["lab"] = "Nt_MapReserchCenterL_00", ["hestu"] = "Nt_StampIconLeafL_00", ["pin"] = "Nt_MapPinNewFL_00", ["player"] = "Nt_MapPlayerIconNew_00",
     };
     static readonly HashSet<string> Boxed = ["castle", "stable", "village", "lab"];
+    // Each Divine Beast's own icon (Nt_IconSinJuNewMapL_00..03: Rudania, Ruta, Medoh, Naboris).
+    static readonly Dictionary<string, string> BeastIcon = new()
+    {
+        ["RemainsFire"] = "Nt_IconSinJuNewMapL_00", ["RemainsWater"] = "Nt_IconSinJuNewMapL_01",
+        ["RemainsWind"] = "Nt_IconSinJuNewMapL_02", ["RemainsElectric"] = "Nt_IconSinJuNewMapL_03",
+    };
+    // The game has no map icon for these, so they get one of the app's line glyphs: a Sheikah Slate camera for the
+    // memory photos, a sparkle for the Great Fairy fountains.
+    static readonly Dictionary<string, string> DrawnIcon = new()
+    {
+        ["memory"] = Ui.Glyphs["compendium"],
+        ["great_fairy"] = "M16 4Q17.6 14.4 28 16Q17.6 17.6 16 28Q14.4 17.6 4 16Q14.4 14.4 16 4z M25 4v5M22.5 6.5h5M7 23v4M5 25h4",
+    };
+    static readonly Color Beast = Color.Parse("#FF6BB0"), Memory = Color.Parse("#F7D77A"), Fairy = Color.Parse("#F59CFF");
     static readonly Color Todo = Color.Parse("#FF9A3C"), DoneC = Color.Parse("#4FD2FF"), Gold = Color.Parse("#FFD45E"), Grey = Color.Parse("#7C8A7A");
     const double KorokIconZoom = 6;
 
@@ -173,6 +188,13 @@ public sealed class MapScreen : ViewBase
             return;
         }
         if (it.Tag is not Marker m) return;
+        if (useGame && LayerIcon(m, done) is { } own)
+        {
+            it.Shape = MarkShape.Icon;
+            it.Icon = own.icon; it.Outline = own.outline;
+            it.Size = m.Type == "divine_beast" ? 34 : 24;
+            if (it.Icon != null) return;
+        }
         if (useGame && GameIcon.TryGetValue(m.Type, out var name))
         {
             it.Shape = MarkShape.Icon;
@@ -191,6 +213,29 @@ public sealed class MapScreen : ViewBase
         it.Size = m.Type is "divine_beast" ? 20 : m.Type is "shrine" or "shrine_dlc" or "tower" or "great_fairy" ? 16 : 11;
     }
 
+    /// <summary>A Divine Beast's own icon, or the drawn one for a memory spot or Great Fairy (null for the rest).</summary>
+    static (Bitmap? icon, Bitmap? outline)? LayerIcon(Marker m, bool done)
+    {
+        if (m.Type == "divine_beast" && BeastIcon.TryGetValue(m.Id, out var beast))
+            return (Icons.Tinted(beast, done ? DoneC : Beast), Icons.Outline(beast));
+        if (DrawnIcon.TryGetValue(m.Type, out var path))
+            return (Icons.Drawn(path, done ? DoneC : m.Type == "memory" ? Memory : Fairy), Icons.DrawnOutline(path));
+        return null;
+    }
+
+    /// <summary>The icon a layer's row shows: the same one the map draws for that layer (not yet done).</summary>
+    Bitmap? RowIcon(string layer) => layer switch
+    {
+        "shrine" or "shrine_dlc" or "tower" => Icons.Tinted(GameIcon[layer], Todo),
+        "korok" => Icons.Tinted(GameIcon["korok"], Gold),
+        "divine_beast" => Icons.Tinted(BeastIcon["RemainsWater"], Beast),
+        "memory" => Icons.Drawn(DrawnIcon["memory"], Memory),
+        "great_fairy" => Icons.Drawn(DrawnIcon["great_fairy"], Fairy),
+        "places" => Icons.Plain(GameIcon["village"]),
+        "pins" => Icons.Tinted(GameIcon["pin"], Color.Parse("#FF5D5D")),
+        _ => null,
+    };
+
     void DrawLayerList()
     {
         layerList.Children.Clear();
@@ -206,11 +251,14 @@ public sealed class MapScreen : ViewBase
                 App.Progress.SaveSettings(s => { s.MapLayersOff.Remove(id); if (cb.IsChecked != true) s.MapLayersOff.Add(id); });
                 Restyle();
             };
-            var swatch = new Border { Width = 11, Height = 11, CornerRadius = new CornerRadius(6), Background = new SolidColorBrush(Color.Parse(color)), BoxShadow = BoxShadows.Parse($"0 0 6 0 {color}") };
-            var g = new Grid { ColumnDefinitions = new ColumnDefinitions("Auto,Auto,*,Auto") };
+            // the map's own icon for the layer; a coloured dot only if the icons aren't there
+            Control swatch = useGame && RowIcon(id) is { } icon
+                ? new Image { Source = icon, Width = id is "memory" or "great_fairy" or "places" ? 20 : 30, Height = id is "memory" or "great_fairy" or "places" ? 20 : 30, Stretch = Stretch.Uniform, Margin = new Thickness(-4) }
+                : new Border { Width = 11, Height = 11, CornerRadius = new CornerRadius(6), Background = new SolidColorBrush(Color.Parse(color)), BoxShadow = BoxShadows.Parse($"0 0 6 0 {color}") };
+            var g = new Grid { ColumnDefinitions = new ColumnDefinitions("Auto,28,*,Auto") };
             g.Children.Add(cb);
-            Grid.SetColumn(swatch, 1); swatch.Margin = new Thickness(0, 0, 8, 0); swatch.VerticalAlignment = VerticalAlignment.Center; g.Children.Add(swatch);
-            var t = Ui.Text(label, "small"); t.VerticalAlignment = VerticalAlignment.Center; Grid.SetColumn(t, 2); g.Children.Add(t);
+            Grid.SetColumn(swatch, 1); if (swatch is Border) swatch.Margin = new Thickness(0, 0, 8, 0); swatch.VerticalAlignment = VerticalAlignment.Center; swatch.HorizontalAlignment = HorizontalAlignment.Center; g.Children.Add(swatch);
+            var t = Ui.Text(label, "small"); t.Margin = new Thickness(6, 0, 0, 0); t.VerticalAlignment = VerticalAlignment.Center; Grid.SetColumn(t, 2); g.Children.Add(t);
             var n = Ui.Text(count, "faint mono"); n.VerticalAlignment = VerticalAlignment.Center; Grid.SetColumn(n, 3); g.Children.Add(n);
             layerList.Children.Add(g);
         }

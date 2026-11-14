@@ -1,0 +1,227 @@
+using System.Diagnostics;
+using System.Text.Json.Nodes;
+
+namespace SlateCompanion;
+
+/// <summary>One copy of Savage Wind: its program, its data folder (savagewind.ini, extracted/, save/) and version.</summary>
+public sealed record SwInstall(string Exe, string DataRoot)
+{
+    public string Folder => Path.GetDirectoryName(Exe)!;
+    public string Ini => Path.Combine(DataRoot, "savagewind.ini");
+    public string LaunchFlags => Path.Combine(DataRoot, "launch-flags.txt");
+    public bool AppImage => Exe.EndsWith(".AppImage", StringComparison.OrdinalIgnoreCase);
+
+    /// <summary>The release's version (sw-manifest.txt, or the AppImage's name); null for a source build.</summary>
+    public string? Version
+    {
+        get
+        {
+            if (AppImage)
+            {
+                var m = System.Text.RegularExpressions.Regex.Match(Path.GetFileName(Exe), @"(\d+\.\d+\.\d+[^-_]*(?:-alpha\.\d+|-beta\.\d+)?)");
+                return m.Success ? m.Groups[1].Value : null;
+            }
+            try
+            {
+                foreach (var line in File.ReadLines(Path.Combine(Folder, "sw-manifest.txt")).Take(5))
+                    if (line.StartsWith("version ", StringComparison.Ordinal)) return line[8..].Trim();
+            }
+            catch (IOException) { }
+            catch (UnauthorizedAccessException) { }
+            return null;
+        }
+    }
+
+    /// <summary>The game files are copied in and the game code built (Savage Wind's own check: extracted/romfs and extracted/exefs/main).</summary>
+    public bool GameFilesReady =>
+        Directory.Exists(Path.Combine(DataRoot, "extracted", "romfs")) && File.Exists(Path.Combine(DataRoot, "extracted", "exefs", "main"));
+
+    /// <summary>
+    /// A new version that hasn't finished its first-start setup yet (Savage Wind's post_update_pending: a release whose
+    /// cache/last-version.txt isn't this version). That setup empties the shader caches and rebuilds the game code, so
+    /// it can't be skipped.
+    /// </summary>
+    public bool SetupPending
+    {
+        get
+        {
+            var v = Version;
+            if (v == null || !GameFilesReady) return false;
+            try { return File.ReadLines(Path.Combine(DataRoot, "cache", "last-version.txt")).FirstOrDefault()?.Trim() != v; }
+            catch (Exception e) when (e is IOException or UnauthorizedAccessException) { return true; }
+        }
+    }
+
+    public string Label => (Version is { } v ? $"Savage Wind {v}" : "Savage Wind (built from source)") + " · " + UI.Ui.ShortPath(Folder);
+}
+
+/// <summary>
+/// Starts Savage Wind (straight into the game, past its Configuration screen), with or without Clear Skies, and finds
+/// the copies on this computer. Opening savagewind.exe or Savage Wind Configuration yourself is never changed.
+/// </summary>
+public static class Launcher
+{
+    static string Home => Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+
+    public static List<SwInstall> FindInstalls(AppSettings s)
+    {
+        var list = new List<SwInstall>();
+        var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        void Add(string exe, string? dataRoot = null)
+        {
+            if (!File.Exists(exe) || !seen.Add(Path.GetFullPath(exe))) return;
+            list.Add(new SwInstall(exe, dataRoot ?? DataRootFor(exe)));
+        }
+        if (OperatingSystem.IsWindows())
+        {
+            foreach (var f in s.SavageWindFolders) Add(Path.Combine(f, "savagewind.exe"));
+        }
+        else
+        {
+            foreach (var f in s.SavageWindFolders.Where(Directory.Exists))
+                foreach (var e in SafeFiles(f)) Add(e);
+            foreach (var d in new[] { Path.Combine(Home, "Applications"), Path.Combine(Home, "Downloads"), Path.Combine(Home, "Games"), Path.Combine(Home, "Desktop"), Path.Combine(Home, ".local", "bin") })
+                if (Directory.Exists(d)) foreach (var e in SafeFiles(d)) Add(e);
+        }
+        foreach (var e in s.SavageWindPrograms) Add(e);
+        list.RemoveAll(i => s.HiddenInstalls.Contains(i.Exe, StringComparer.OrdinalIgnoreCase));
+        return list;
+
+        static IEnumerable<string> SafeFiles(string dir)
+        {
+            try
+            {
+                return Directory.EnumerateFiles(dir).Where(f =>
+                {
+                    var n = Path.GetFileName(f);
+                    return n == "savagewind" || n.StartsWith("Savage_Wind", StringComparison.OrdinalIgnoreCase) && n.EndsWith(".AppImage", StringComparison.OrdinalIgnoreCase);
+                }).ToList();
+            }
+            catch (Exception) { return []; }
+        }
+    }
+
+    /// <summary>Savage Wind's data folder for a program: SAVAGEWIND_DATA_ROOT, else next to the exe (Windows) or ~/.local/share/savagewind.</summary>
+    public static string DataRootFor(string exe)
+    {
+        var env = Environment.GetEnvironmentVariable("SAVAGEWIND_DATA_ROOT");
+        if (!string.IsNullOrWhiteSpace(env) && Path.IsPathRooted(env)) return env;
+        if (OperatingSystem.IsWindows()) return Path.GetDirectoryName(exe)!;
+        // a source build keeps its data next to itself when it's there (portable), as Savage Wind does
+        var beside = Path.GetDirectoryName(exe)!;
+        if (File.Exists(Path.Combine(beside, "savagewind.ini")) && !exe.EndsWith(".AppImage", StringComparison.OrdinalIgnoreCase)) return beside;
+        var xdg = Environment.GetEnvironmentVariable("XDG_DATA_HOME");
+        return Path.Combine(!string.IsNullOrEmpty(xdg) && Path.IsPathRooted(xdg) ? xdg : Path.Combine(Home, ".local", "share"), "savagewind");
+    }
+
+    /// <summary>Is a Savage Wind running now (any copy)?</summary>
+    public static bool GameRunning()
+    {
+        try
+        {
+            foreach (var name in new[] { "savagewind", "Savage Wind Configuration", "SW Update" })
+            {
+                var ps = Process.GetProcessesByName(name);
+                bool any = ps.Length > 0;
+                foreach (var p in ps) p.Dispose();
+                if (any) return true;
+            }
+        }
+        catch (Exception) { }
+        return false;
+    }
+
+    /// <summary>
+    /// Play: straight into the game (--play skips Savage Wind Configuration and the update offer). With Clear Skies on,
+    /// Clear Skies starts it (its layer and mods), passing --play on. Returns null, or why it couldn't start.
+    /// </summary>
+    public static string? Play(SwInstall sw, ClearSkies? cs, string? preset)
+    {
+        try
+        {
+            ProcessStartInfo psi;
+            if (cs != null)
+            {
+                psi = new ProcessStartInfo(cs.Program) { WorkingDirectory = cs.Folder, UseShellExecute = false };
+                psi.ArgumentList.Add("--game"); psi.ArgumentList.Add(sw.Exe);
+                if (!string.IsNullOrEmpty(preset)) { psi.ArgumentList.Add("--preset"); psi.ArgumentList.Add(preset); }
+                if (OperatingSystem.IsWindows()) psi.ArgumentList.Add("--no-update-check");  // (its updates are offered here, on the launch screen)
+                psi.ArgumentList.Add("--play");
+                psi.ArgumentList.Add("--");
+                psi.ArgumentList.Add("--play");
+            }
+            else
+            {
+                psi = new ProcessStartInfo(sw.Exe) { WorkingDirectory = sw.Folder, UseShellExecute = false };
+                psi.ArgumentList.Add("--play");
+            }
+            using var p = Process.Start(psi);
+            return p == null ? "It didn't start." : null;
+        }
+        catch (Exception e) { return e.Message; }
+    }
+
+    /// <summary>Savage Wind as if started by hand (its Configuration screen with --config).</summary>
+    public static string? OpenNormally(SwInstall sw, bool config)
+    {
+        try
+        {
+            var psi = new ProcessStartInfo(sw.Exe) { WorkingDirectory = sw.Folder, UseShellExecute = false };
+            if (config) psi.ArgumentList.Add("--config");
+            using var p = Process.Start(psi);
+            return null;
+        }
+        catch (Exception e) { return e.Message; }
+    }
+
+    // ---------------------------------------------------------------- GitHub (one small request, only when asked for)
+
+    static readonly HttpClient http = new(new SocketsHttpHandler { PooledConnectionLifetime = TimeSpan.FromMinutes(2) }) { Timeout = TimeSpan.FromSeconds(20) };
+    static Launcher() => http.DefaultRequestHeaders.UserAgent.ParseAdd("SlateCompanion");
+
+    public sealed record Release(string Tag, string Version, string Name, string Notes, string Page, DateTime Published, List<(string name, string url, long size)> Assets);
+
+    /// <summary>The newest release of a GitHub repository (pre-releases included: Savage Wind's are all alphas).</summary>
+    public static async Task<Release?> LatestRelease(string repo)
+    {
+        var json = await http.GetStringAsync($"https://api.github.com/repos/{repo}/releases?per_page=5");
+        var arr = JsonNode.Parse(json)?.AsArray();
+        var r = arr?.FirstOrDefault(x => x?["draft"]?.GetValue<bool>() != true);
+        if (r == null) return null;
+        var tag = r["tag_name"]!.GetValue<string>();
+        var assets = r["assets"]!.AsArray().Select(a => (a!["name"]!.GetValue<string>(), a["browser_download_url"]!.GetValue<string>(), a["size"]!.GetValue<long>())).ToList();
+        return new Release(tag, tag.TrimStart('v'), r["name"]?.GetValue<string>() ?? tag, r["body"]?.GetValue<string>() ?? "", r["html_url"]!.GetValue<string>(),
+            r["published_at"]?.GetValue<DateTime>() ?? DateTime.MinValue, assets);
+    }
+
+    /// <summary>Compares "0.5.3-alpha.5"-style versions by their numbers; &gt; 0 when a is newer.</summary>
+    public static int CompareVersions(string a, string b)
+    {
+        static int[] Parts(string v) => System.Text.RegularExpressions.Regex.Matches(v, @"\d+").Select(m => int.TryParse(m.Value, out var n) ? n : 0).ToArray();
+        var x = Parts(a); var y = Parts(b);
+        for (int i = 0; i < Math.Max(x.Length, y.Length); i++)
+        {
+            int p = i < x.Length ? x[i] : 0, q = i < y.Length ? y[i] : 0;
+            if (p != q) return p.CompareTo(q);
+        }
+        return 0;
+    }
+
+    /// <summary>Release notes as plain text for a small panel: markdown marks and links taken out, at most n lines.</summary>
+    public static string PlainNotes(string md, int lines = 14)
+    {
+        var outLines = new List<string>();
+        foreach (var raw in md.Replace("\r", "").Split('\n'))
+        {
+            var l = raw.Trim();
+            if (l.Length == 0 || l.StartsWith("<") || l.StartsWith("![") || l.StartsWith("|") || l.StartsWith("---")) continue;
+            l = System.Text.RegularExpressions.Regex.Replace(l, @"\[([^\]]*)\]\([^)]*\)", "$1");
+            l = l.Replace("**", "").Replace("`", "").TrimStart('#', ' ', '>');
+            if (l.StartsWith("[!")) continue;
+            if (l.StartsWith("- ") || l.StartsWith("* ")) l = "• " + l[2..];
+            outLines.Add(l);
+            if (outLines.Count >= lines) { outLines.Add("…"); break; }
+        }
+        return string.Join("\n", outLines);
+    }
+}

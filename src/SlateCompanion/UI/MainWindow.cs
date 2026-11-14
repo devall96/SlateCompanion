@@ -32,9 +32,9 @@ public sealed class MainWindow : Window
 {
     static readonly (string id, string label)[] Nav =
     [
-        ("home", "Adventure log"), ("map", "Map"), ("quests", "Quests & walkthrough"), ("shrines", "Shrines"),
-        ("koroks", "Korok seeds"), ("cooking", "Cooking"), ("compendium", "Hyrule Compendium"), ("armor", "Armor & upgrades"),
-        ("stats", "Stats"), ("guides", "Guides & tips"),
+        ("home", "Adventure log"), ("launch", "Play Savage Wind"), ("map", "Map"), ("quests", "Quests & walkthrough"), ("shrines", "Shrines"),
+        ("koroks", "Korok seeds"), ("inventory", "Inventory"), ("cooking", "Cooking"), ("compendium", "Hyrule Compendium"), ("armor", "Armor & upgrades"),
+        ("stats", "Stats"), ("saves", "Save files"), ("guides", "Guides & tips"),
     ];
 
     readonly Dictionary<string, Button> runes = [];
@@ -46,6 +46,7 @@ public sealed class MainWindow : Window
     readonly TextBlock toastText = new();
     readonly SearchOverlay search;
     readonly SetupOverlay setup;
+    readonly Border updateBar = new() { IsVisible = false, Background = new SolidColorBrush(Color.Parse("#2639C6FF")), BorderBrush = Ui.Brush("LineHi"), BorderThickness = new Thickness(0, 0, 0, 1), Padding = new Thickness(18, 8) };
     ViewBase? current;
     string currentId = "home";
     DispatcherTimer? toastTimer;
@@ -87,9 +88,11 @@ public sealed class MainWindow : Window
         Grid.SetColumn(pill, 2); top.Children.Add(pill);
         var topBorder = new Border { Child = top, BorderBrush = Ui.Brush("Line"), BorderThickness = new Thickness(0, 0, 0, 1), Background = new SolidColorBrush(Color.Parse("#CC0B1A21")) };
 
-        var screen = new Grid { RowDefinitions = new RowDefinitions("Auto,*") };
+        var screen = new Grid { RowDefinitions = new RowDefinitions("Auto,Auto,*") };
         screen.Children.Add(topBorder);
-        Grid.SetRow(host, 1);
+        Grid.SetRow(updateBar, 1);
+        screen.Children.Add(updateBar);
+        Grid.SetRow(host, 2);
         screen.Children.Add(host);
 
         var layout = new Grid { ColumnDefinitions = new ColumnDefinitions("76,*") };
@@ -128,22 +131,28 @@ public sealed class MainWindow : Window
         AddHandler(DragDrop.DragOverEvent, (_, e) => e.DragEffects = DragDropEffects.Link);
         AddHandler(DragDrop.DropEvent, (_, e) => OnDrop(e));
 
-        // Minimized: the screen stops all its work; restored: it picks up again.
+        // Minimized or in the background (another window has the focus, e.g. the game): the screen stops all its
+        // work (timers, polling, redrawing) and catches up when it's back. The map's live position can be kept moving
+        // in the background for a second screen (Settings: off by default).
         PropertyChanged += (_, e) =>
         {
             if (e.Property != WindowStateProperty) return;
-            if (WindowState == WindowState.Minimized) current?.OnHidden();
-            else if (e.OldValue is WindowState.Minimized) current?.Show(current.LastArg);
+            if (WindowState == WindowState.Minimized) Pause();
+            else if (e.OldValue is WindowState.Minimized && IsActive) Resume();
         };
+        Deactivated += (_, _) => { if (!(currentId == "map" && App.Progress.Settings.LiveInBackground)) Pause(); };
+        Activated += (_, _) => Resume();
 
-        App.Progress.Changed += RenderPill;
+        App.Progress.Changed += () => { if (!paused) RenderPill(); };
         var tick = new DispatcherTimer { Interval = TimeSpan.FromSeconds(30) };
-        tick.Tick += (_, _) => { if (WindowState != WindowState.Minimized) RenderPill(); };
+        tick.Tick += (_, _) => { if (!paused) RenderPill(); };
         tick.Start();
         RenderPill();
+        ShowLauncher(App.Progress.Settings.UseLauncher);
 
         var start = ArgView() ?? App.Progress.Settings.LastView;
-        Opened += (_, _) => Go(Nav.Any(n => n.id == start) || start == "settings" ? start : "home");
+        Opened += (_, _) => Go((Nav.Any(n => n.id == start) || start == "settings") && !(start == "launch" && !App.Progress.Settings.UseLauncher) ? start : "home");
+        Opened += async (_, _) => await CheckForUpdate();
         if (Environment.GetEnvironmentVariable("SLATE_TRACE") == "1")
         {
             // Counts layout passes and redraws every 5 s, to catch anything that keeps the window busy.
@@ -188,7 +197,81 @@ public sealed class MainWindow : Window
             rtb.Render(this);
             rtb.Save(Path.Combine(folder, id + ".png"));
         }
+        if (Environment.GetEnvironmentVariable("SLATE_TEST_ERROR") == "1")
+        {
+            // the UI's error handler: a mistake in a screen's code becomes a crash report and the error window
+            Dispatcher.UIThread.Post(() => throw new InvalidOperationException("Test error from --screenshots (SLATE_TEST_ERROR=1)"));
+            await Task.Delay(1500);
+            if (ErrorWindow.Last is { } w)
+            {
+                using var er = new Avalonia.Media.Imaging.RenderTargetBitmap(new PixelSize((int)w.Bounds.Width, (int)w.Bounds.Height));
+                er.Render(w);
+                er.Save(Path.Combine(folder, "error.png"));
+                w.Close();
+            }
+        }
         Close();
+    }
+
+    /// <summary>
+    /// Once at start (installed copies, unless turned off in Settings): one request to GitHub. A newer version shows a
+    /// bar with Update and restart; nothing is downloaded until it's pressed.
+    /// </summary>
+    async Task CheckForUpdate()
+    {
+        var s = App.Progress.Settings;
+        if (!s.CheckUpdatesOnStart || Program.Demo || Program.Args.Contains("--screenshots") || !Updater.Installed) return;
+        try
+        {
+            var v = await Updater.CheckAsync();
+            Log.Info(v == null ? "Update check: this is the newest version" : $"Update check: {v} is available");
+            if (v == null || v == s.SkippedVersion) return;
+            var status = Ui.Text($"Slate Companion {v} is available (you have {Updater.Version}).", "small");
+            Button? now = null;
+            now = Ui.Button("Update and restart", async () =>
+            {
+                now!.IsEnabled = false;
+                try { await Updater.DownloadAndRestartAsync(p => Dispatcher.UIThread.Post(() => status.Text = $"Downloading Slate Companion {v}… {p}%")); }
+                catch (Exception e) { now.IsEnabled = true; ErrorWindow.Show("Update failed", $"Slate Companion {v} couldn't be installed. Your current version still works.", e); }
+            }, "primary small");
+            var later = Ui.Button("Later", () => updateBar.IsVisible = false, "ghost small");
+            var skip = Ui.Button("Skip this version", () => { App.Progress.SaveSettings(x => x.SkippedVersion = v); updateBar.IsVisible = false; }, "ghost small");
+            var notes = Ui.Button("What's new", () => ErrorWindow.OpenPath($"{Updater.Repo}/releases/tag/v{v}"), "ghost small");
+            var g = new Grid { ColumnDefinitions = new ColumnDefinitions("*,Auto") };
+            g.Children.Add(Ui.Row(10, Ui.Glyph("settings", 16), status));
+            var right = Ui.Row(8, notes, skip, later, now); Grid.SetColumn(right, 1); g.Children.Add(right);
+            updateBar.Child = g;
+            updateBar.IsVisible = true;
+        }
+        catch (Exception e) { Log.Warn("Update check failed: " + e.Message); }
+    }
+
+    bool paused;
+
+    /// <summary>The screen stops its work (it's minimized or in the background).</summary>
+    void Pause()
+    {
+        if (paused || Program.Args.Contains("--screenshots")) return;
+        paused = true;
+        current?.OnHidden();
+    }
+
+    /// <summary>Back in front: the screen picks up again and shows what changed meanwhile.</summary>
+    void Resume()
+    {
+        if (!paused || WindowState == WindowState.Minimized) return;
+        paused = false;
+        current?.Show(current.LastArg);
+        RenderPill();
+    }
+
+    public bool Paused => paused;
+
+    /// <summary>The Play screen (Savage Wind launcher) is optional: its rune shows only when it's on.</summary>
+    public void ShowLauncher(bool on)
+    {
+        if (runes.TryGetValue("launch", out var r)) r.IsVisible = on;
+        if (!on && currentId == "launch") Go("home");
     }
 
     static string? ArgView()
@@ -216,6 +299,9 @@ public sealed class MainWindow : Window
             v = id switch
             {
                 "map" => new MapScreen(),
+                "launch" => new LaunchView(),
+                "inventory" => new InventoryView(),
+                "saves" => new SavesView(),
                 "quests" => new QuestsView(),
                 "shrines" => new ShrinesView(),
                 "koroks" => new KoroksView(),

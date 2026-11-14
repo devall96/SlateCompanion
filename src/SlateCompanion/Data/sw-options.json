@@ -1,0 +1,432 @@
+{
+  "source": "SavageWindRecomp test @ 6d189f5",
+  "notes": [
+    "Savage Wind Configuration: the start screen's SETTINGS window shows tabs Prelaunch, Controls, Video, Audio, Language, amiibo, Saves (runtime/ui/menu.mm tabs_body with prelaunch set, in_game false). Prelaunch and amiibo have no rows that map to plain ini values (see skipped). The start screen's GAME FILES page (runtime/ui/launcher.mm, SETUP page) holds a few more settings: it is listed last as its own tab.",
+    "Platforms: 'windows' and 'linux' are the Vulkan builds; 'mac' is the Metal build (unmaintained). Rows without 'platforms' show everywhere.",
+    "Booleans are written as 0 / 1. Every key below is written by settings_save on every save, except hdr_paper_white (no row) and handheld_setup.",
+    "'enabledIf': the row is shown but greyed out (opt_disable_next) unless the condition holds. 'showIf': the row is only drawn when the condition holds.",
+    "'desc' strings that contain %d / %s / %.0f are formatted at run time; 'descExtra' paragraphs are appended only in the situation named."
+  ],
+  "tabs": [
+    {
+      "id": "controls",
+      "title": "Controls",
+      "sections": [
+        {
+          "title": "Movement",
+          "rows": [
+            { "label": "D-pad as left stick", "desc": "The d-pad (and the arrow keys) also move like the left stick while the stick is at rest.",
+              "kind": "toggle", "key": "dpad_move", "default": "0",
+              "note": "Drawn as an Off / On combo with the description as a hint line under it (menu.mm toggle + hint), not an option row." }
+          ]
+        },
+        {
+          "title": "Mouse",
+          "rows": [
+            { "label": "PC mouse pointer", "desc": "Point and click in menus and map. Esc pauses/goes back; F2 frees the cursor.",
+              "kind": "toggle", "key": "pc_cursor", "default": "1" },
+            { "label": "Mouse camera", "desc": "The mouse turns the camera. Pointer off: Esc frees it; pointer on: F2 frees it.",
+              "kind": "toggle", "key": "mouse_camera", "default": "1",
+              "note": "Off / On combo with a hint line, not an option row." },
+            { "label": "Mouse sensitivity", "desc": "How fast the mouse turns the camera.",
+              "kind": "slider", "key": "mouse_sensitivity", "default": "3.00",
+              "min": 10, "max": 1000, "step": 5, "format": "%g%%", "scale": 0.01,
+              "note": "Shown in percent; written as a fraction with two decimals (300% -> 3.00). Load accepts 0.1..10, else 3.00." },
+            { "label": "Mouse vertical sensitivity", "desc": "Up and down, as a percentage of the mouse sensitivity.",
+              "kind": "slider", "key": "mouse_vertical_sensitivity", "default": "1.00",
+              "min": 50, "max": 200, "step": 5, "format": "%g%%", "scale": 0.01,
+              "note": "Written with two decimals (100% -> 1.00). Load accepts 0.5..2, else 1.00." },
+            { "label": "Invert mouse Y", "desc": "",
+              "kind": "toggle", "key": "mouse_invert_y", "default": "0",
+              "note": "Off / On combo without a description." },
+            { "label": "Mouse bow aiming", "desc": "Hold the right mouse button to draw and aim your bow, click the left button to fire, and let go of the right button to put it away. While this is on, the right mouse button no longer raises the shield: bind the shield to another key under Key bindings.",
+              "kind": "toggle", "key": "mouse_bow", "default": "0" }
+          ]
+        },
+        {
+          "title": "Controls",
+          "rows": [
+            { "label": "Controller rumble", "desc": "Vibrate the controller during play.",
+              "kind": "toggle", "key": "rumble", "default": "1" },
+            { "label": "Rumble strength", "desc": "100% is the game's own.",
+              "kind": "slider", "key": "rumble_strength", "default": "100",
+              "min": 10, "max": 100, "step": 10, "format": "%g%%", "scale": 1,
+              "showIf": "rumble=1" },
+            { "label": "Free camera with both sticks", "desc": "Clicking both sticks together turns the free camera on and off. Home on the keyboard always does. While it's on: F8 or d-pad up changes the filter, [ and ] or d-pad left and right the hour, F7 or d-pad down saves a picture in the screenshots folder.",
+              "kind": "toggle", "key": "freecam_sticks", "default": "1" },
+            { "label": "Controller camera speed", "desc": "The right stick turns the camera faster than the game allows, at the two speeds below.",
+              "kind": "toggle", "key": "stick_camera_speed", "default": "0" },
+            { "label": "Left and right speed", "desc": "100% is the game's own speed.",
+              "kind": "slider", "key": "stick_camera_x", "default": "200",
+              "min": 100, "max": 600, "step": 25, "format": "%g%%", "scale": 1,
+              "showIf": "stick_camera_speed=1" },
+            { "label": "Up and down speed", "desc": "100% is the game's own speed.",
+              "kind": "slider", "key": "stick_camera_y", "default": "200",
+              "min": 100, "max": 600, "step": 25, "format": "%g%%", "scale": 1,
+              "showIf": "stick_camera_speed=1" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "title": "Video",
+      "sections": [
+        {
+          "title": "Display",
+          "rows": [
+            { "label": "Graphics preset", "desc": "Sets the draw distance, shadows, upscaler, anti-aliasing, texture filtering and the Advanced options at once. Potato: for weak PCs (nearer, smaller shadows, FSR 1, no bloom or depth of field). Original: as on the console. High and Savage: further and sharper, for faster PCs.",
+              "kind": "choice", "default": "Original", "wrap": false,
+              "multi": [
+                { "label": "Potato", "set": { "draw_distance": "potato", "shadow_resolution": "potato", "bloom": "0", "depth_of_field": "0", "dynamic_resolution": "1", "anisotropy": "game", "antialias": "off", "game_fxaa": "1", "upscaler": "fsr1", "upscaler_quality": "quality", "async_shaders": "1", "render_scale": "50" } },
+                { "label": "Original", "set": { "draw_distance": "original", "shadow_resolution": "console", "bloom": "1", "depth_of_field": "1", "dynamic_resolution": "1", "anisotropy": "2x", "antialias": "off", "game_fxaa": "1", "upscaler": "off", "async_shaders": "1", "render_scale": "100" } },
+                { "label": "High", "set": { "draw_distance": "medium", "shadow_resolution": "high", "bloom": "1", "depth_of_field": "1", "dynamic_resolution": "0", "anisotropy": "8x", "antialias": "smaa", "game_fxaa": "0", "upscaler": "off", "async_shaders": "0", "render_scale": "125" } },
+                { "label": "Savage", "set": { "draw_distance": "high", "shadow_resolution": "extreme", "bloom": "1", "depth_of_field": "1", "dynamic_resolution": "0", "anisotropy": "16x", "antialias": "taa", "game_fxaa": "0", "upscaler": "off", "async_shaders": "0", "render_scale": "150" } },
+                { "label": "PC Handheld", "set": { "draw_distance": "original", "shadow_resolution": "console", "bloom": "1", "depth_of_field": "1", "dynamic_resolution": "1", "anisotropy": "2x", "antialias": "off", "game_fxaa": "1", "upscaler": "fsr1", "upscaler_quality": "ultra_quality", "async_shaders": "1", "render_scale": "100", "sharpening": "70", "texture_lod_bias": "sharp" },
+                  "showIf": "PC handheld only (settings_handheld: a Steam Deck or other PC handheld)" }
+              ],
+              "custom": "Custom",
+              "note": "The value shown is computed: the first preset whose draw_distance, shadow_resolution, bloom, depth_of_field, dynamic_resolution, anisotropy, antialias, game_fxaa, upscaler, async_shaders and render_scale all match (upscaler_quality only counts when upscaler is not off), else 'Custom' (shown, never picked). Applying a preset leaves upscaler_quality alone when the preset's upscaler is off. Does not wrap at the ends. Values above are Windows / Linux; on mac (UPSCALE_DEFAULT metalfx, TAA -> SMAA) Potato and Original/High/Savage write upscaler metalfx and Savage writes antialias smaa." },
+            { "label": "Fullscreen", "desc": "Fills the screen. Also: F11, Alt+Enter or Cmd+Ctrl+F.",
+              "kind": "toggle", "key": "fullscreen", "default": "0" },
+            { "label": "Fullscreen mode", "desc": "Automatic: borderless at your display's own size, the display switched to the size chosen at any other.\n\nBorderless: never switches the display; another size is scaled to the screen. Quick to switch away from.\n\nExclusive: the display switched to the size chosen, at its highest refresh rate, its own size too.",
+              "kind": "choice", "key": "fullscreen_mode", "default": "auto", "indent": 1,
+              "choices": [ { "label": "Automatic", "value": "auto" }, { "label": "Borderless", "value": "borderless" }, { "label": "Exclusive", "value": "exclusive" } ] },
+            { "label": "Monitor", "desc": "The monitor the game is shown on, in a window or fullscreen. Automatic: where the window is (the primary monitor at start). A monitor that isn't connected is Automatic until it is.",
+              "kind": "choice", "key": "display", "default": "auto",
+              "dynamic": true,
+              "choices": [ { "label": "Automatic", "value": "auto" } ],
+              "note": "Then one choice per connected display n (1-based, SDL order, max 16): label '<n>: <name>  (<w> x <h>)' with ', primary' added inside the brackets for the primary display; ini value '<n> <name>' (e.g. 'display = 2 DELL U2720Q'). A saved display that is not connected is listed as '<name> (not connected)' and acts as Automatic." },
+            { "label": "Window size", "desc": "The size of the game's window, or of the screen in fullscreen. Only the sizes your display can show: its own first, then grouped by shape. Any shape other than 16:9 is filled with Fill wide screens on; off, it keeps 16:9 with bars.\n\nYour display: %d x %d.",
+              "kind": "choice", "key": "window_size", "default": "default",
+              "dynamic": true, "list": true,
+              "note": "ini value '<w>x<h>' in pixels (load accepts 320x200 .. 16384x16384), or 'default' when never chosen (windowed: 1280x720, fullscreen: the desktop size; a PC handheld: its screen). Offered: of 640x360, 960x540, 1280x720, 1600x900, 1920x1080, 2560x1440, 3840x2160, 5120x2880, 7680x4320 (16:9); 1280x540, 1708x720, 1920x810, 2134x900, 2560x1080, 3440x1440, 3840x1600 (21:9); 1280x800, 1680x1050, 1920x1200, 2560x1600 (16:10); 640x480, 800x600, 1024x768, 1280x1024, 1600x1200 (4:3, 5:4) those that fit the display's desktop size (fullscreen: also bigger ones the display has a mode for), plus the desktop size itself, listed first; then grouped 16:9, 21:9, 16:10, 4:3+5:4, other, smallest first. Label '<w> x <h>  (<shape>)', the desktop size '(<shape>, native)'. Opened as a list (opt_list)." },
+            { "label": "Fill wide screens", "desc": "On a window or screen that isn't 16:9 the game shows more of the world instead of black bars: to the sides when it's wider (21:9, 32:9), above and below when it's taller (16:10, 4:3). The HUD stays 16:9 in the middle; the pause menu, the map and the start screen are shown 16:9.",
+              "kind": "toggle", "key": "wide_view", "default": "1" },
+            { "label": "HUD at edges", "desc": "On windows taller than 16:9 with Fill wide screens, anchors the top and bottom HUD to the window edges.",
+              "kind": "toggle", "key": "hud_edges", "default": "0" },
+            { "label": "Field of view", "desc": "How much of the world the camera shows in play: 100% is the game's own. Cutscenes and conversations keep theirs.",
+              "kind": "choice", "key": "field_of_view", "default": "100", "wrap": false,
+              "choices": [ { "label": "70%", "value": "70" }, { "label": "80%", "value": "80" }, { "label": "90%", "value": "90" }, { "label": "100%", "value": "100" }, { "label": "110%", "value": "110" }, { "label": "120%", "value": "120" }, { "label": "130%", "value": "130" }, { "label": "140%", "value": "140" }, { "label": "150%", "value": "150" } ] },
+            { "label": "HUD size", "desc": "How big the hearts, stamina, minimap and the rest of the HUD are. Each part stays in its corner.",
+              "kind": "choice", "key": "hud_size", "default": "100", "wrap": false,
+              "choices": [ { "label": "50%", "value": "50" }, { "label": "55%", "value": "55" }, { "label": "60%", "value": "60" }, { "label": "65%", "value": "65" }, { "label": "70%", "value": "70" }, { "label": "75%", "value": "75" }, { "label": "80%", "value": "80" }, { "label": "85%", "value": "85" }, { "label": "90%", "value": "90" }, { "label": "95%", "value": "95" }, { "label": "100%", "value": "100" }, { "label": "105%", "value": "105" }, { "label": "110%", "value": "110" }, { "label": "115%", "value": "115" }, { "label": "120%", "value": "120" }, { "label": "125%", "value": "125" }, { "label": "130%", "value": "130" }, { "label": "135%", "value": "135" }, { "label": "140%", "value": "140" }, { "label": "145%", "value": "145" }, { "label": "150%", "value": "150" } ] },
+            { "label": "Draw distance", "desc": "How far out grass, trees, rocks, buildings and enemies appear. Higher costs more CPU and GPU time. Potato: nearer than on the console, for weak PCs.",
+              "kind": "choice", "key": "draw_distance", "default": "original",
+              "choices": [ { "label": "Potato", "value": "potato" }, { "label": "Original", "value": "original" }, { "label": "High", "value": "medium" }, { "label": "Savage", "value": "high" } ] },
+            { "label": "Frame rate", "desc": "How many pictures a second the game draws. The game itself runs at the same speed at every rate (the console runs it at 30). Higher rates need a faster computer. Menus, cutscenes and conversations use it too, and videos play at their own speed. Off: as many as the computer can draw.",
+              "descExtra": "\n\nYour display refreshes %d times a second: a rate above that shows no more pictures, and one that divides it evenly is the smoothest.",
+              "kind": "choice", "key": "frame_rate", "default": "60", "wrap": false,
+              "choices": [ { "label": "Off", "value": "off" }, { "label": "30 FPS", "value": "30" }, { "label": "60 FPS", "value": "60" }, { "label": "90 FPS", "value": "90" }, { "label": "120 FPS", "value": "120" }, { "label": "144 FPS", "value": "144" }, { "label": "165 FPS", "value": "165" }, { "label": "240 FPS", "value": "240" }, { "label": "360 FPS", "value": "360" }, { "label": "Match display", "value": "display" } ],
+              "note": "descExtra is added when the display's refresh rate is known. 'display' follows the display's own refresh rate (rounded, max 360). On a PC handheld the choices are 30, 40, 45, 60 FPS plus those of 90, 120, 144 up to the screen's refresh rate, with no Off and no Match display. A number that is not offered loads as the nearest offered rate." },
+            { "label": "VSync", "desc": "On: no tearing; the game waits for the display. With G-SYNC or FreeSync the display waits for the game instead: each frame shows as soon as it's ready, and the frame rate stays a little under the display's refresh rate. Fast: no tearing and no waiting: each refresh shows the newest frame. Adaptive: as On, but a frame that comes late shows at once and may tear. Off: each frame shows at once: the least delay, but it tears.",
+              "descExtra": "\n\nWith On and Adaptive, the frame rate on this display goes up to about %d FPS.",
+              "kind": "choice", "key": "vsync", "default": "fast", "wrap": false,
+              "choices": [ { "label": "On", "value": "on" }, { "label": "Fast", "value": "fast" }, { "label": "Adaptive", "value": "adaptive" }, { "label": "Off", "value": "off" } ],
+              "note": "descExtra when the refresh rate is known (>= 30 Hz); %d = round(hz - hz*hz/3600)." },
+            { "label": "HDR", "desc": "Automatic: while Windows HDR is on for this display, the picture is sent in HDR, so it looks as bright and colourful as in SDR (in SDR, Windows shows it dim and dull then). On: always in HDR, where the display takes it. Off: always SDR. White follows Windows' SDR content brightness (Settings > System > Display > HDR).",
+              "kind": "choice", "key": "hdr", "default": "auto", "wrap": false,
+              "choices": [ { "label": "Automatic", "value": "auto" }, { "label": "On", "value": "on" }, { "label": "Off", "value": "off" } ] },
+            { "label": "Performance overlay", "desc": "FPS: the frame rate and frame time. Full: also CPU, memory and GPU load and temperatures, a frame time graph and Link's coordinates. F10 switches between them while you play.",
+              "kind": "choice", "key": "perf_overlay", "default": "off",
+              "choices": [ { "label": "Off", "value": "off" }, { "label": "FPS", "value": "fps" }, { "label": "Full", "value": "full" } ] }
+          ]
+        },
+        {
+          "title": "Rendering",
+          "rows": [
+            { "label": "Upscaler", "desc": "Off: the 3D image renders at the window's resolution. AMD FSR 1: it renders smaller (the mode below), then FSR 1's edge-aware upscaling and sharpening bring it to the window. The HUD and menus always render at the window's resolution.\n\nAMD FSR 3: it renders smaller and builds the full-resolution image from the frames before, following the game's motion: sharper and steadier than FSR 1, and anti-aliased (Anti-aliasing has no effect with it). Sharpening sets its own sharpening. NVIDIA DLSS (NVIDIA RTX graphics cards) is coming in a later version.",
+              "descAlt": "Without FSR 3 on this PC the second paragraph is instead: \"AMD FSR 3 and NVIDIA DLSS (NVIDIA RTX graphics cards) are coming in a later version.\"",
+              "descExtra": "\n\nAMD FSR 4: like FSR 3, but AMD's machine learning rebuilds the image. For AMD Radeon graphics cards on Windows. Sharpening sets its own sharpening.",
+              "kind": "choice", "key": "upscaler", "default": "off",
+              "platforms": ["windows", "linux"],
+              "choices": [
+                { "label": "Off", "value": "off" },
+                { "label": "AMD FSR 1", "value": "fsr1" },
+                { "label": "AMD FSR 3", "value": "fsr3", "unavailableLabel": "FSR 3 (coming soon)" },
+                { "label": "AMD FSR 4", "value": "fsr4", "unavailableLabel": "FSR 4 (AMD Radeon only)", "platforms": ["windows"] },
+                { "label": "DLSS", "value": "dlss", "unavailableLabel": "DLSS (NVIDIA RTX only)" }
+              ],
+              "note": "opt_choice_avail: an unavailable choice is shown greyed with its unavailableLabel and never stored. FSR 3 needs FSR 3 built in; FSR 4 needs an AMD Radeon with AMD's DLLs on Windows (shown 'FSR 4 (coming soon)' when offered but held back); DLSS needs NGX (vk_dlss_available). descExtra is added only when FSR 4 is available. Load maps metalfx -> fsr1." },
+            { "label": "Upscaler", "desc": "How the game's image (1920 x 1080) is scaled up to a bigger window. Off: plain (bilinear) scaling. MetalFX: Apple's upscaler, sharper.\n\nRendering below the window's size (the modes below) is coming in a later version.",
+              "kind": "choice", "key": "upscaler", "default": "metalfx",
+              "platforms": ["mac"],
+              "choices": [ { "label": "Off", "value": "off" }, { "label": "MetalFX", "value": "metalfx" } ],
+              "note": "Load maps fsr1 / fsr3 / fsr4 -> metalfx on mac." },
+            { "label": "Upscaler mode", "desc": "How much smaller the game renders before the upscaler brings it to the window, on each side: Ultra Quality 1.3x, Quality 1.5x, Balanced 1.7x, Performance 2x, Ultra Performance 3x. Smaller is faster and softer.\n\nRendering at %.0f x %.0f.",
+              "kind": "choice", "key": "upscaler_quality", "default": "quality", "indent": 1,
+              "enabledIf": "upscaler!=off",
+              "choices": [ { "label": "Ultra Quality", "value": "ultra_quality" }, { "label": "Quality", "value": "quality" }, { "label": "Balanced", "value": "balanced" }, { "label": "Performance", "value": "performance" }, { "label": "Ultra Performance", "value": "ultra_performance" } ],
+              "note": "Ultra Performance is greyed (not offered) with FSR 3 / FSR 4 / DLSS below a 2160-line window. On mac (no render-target scaling) every mode is shown '<mode> (coming soon)' and the last paragraph reads 'Coming in a later version.'" },
+            { "label": "Anti-aliasing", "desc": "FXAA: the game's own, as on the console: cheap, a little soft. Smooths jagged edges of the game image before it is scaled to the window. SMAA: finds the edges and blends only along them, so textures stay sharp. Most useful with an upscaler. TAA: blends each frame with the ones before it, following the game's motion, so edges stay smooth and stop shimmering; slightly softer, use it with Sharpening.",
+              "kind": "choice", "default": "FXAA",
+              "platforms": ["windows", "linux"],
+              "multi": [
+                { "label": "Off", "set": { "antialias": "off", "game_fxaa": "0" } },
+                { "label": "FXAA", "set": { "antialias": "off", "game_fxaa": "1" } },
+                { "label": "SMAA", "set": { "antialias": "smaa", "game_fxaa": "0" } },
+                { "label": "TAA", "set": { "antialias": "taa", "game_fxaa": "0" } }
+              ],
+              "note": "Shown value (settings_aa_row): antialias=taa -> TAA, antialias=smaa -> SMAA, else game_fxaa=1 -> FXAA, else Off. Load also accepts antialias=fxaa (read as smaa) and forces game_fxaa=0 whenever antialias is not off." },
+            { "label": "Anti-aliasing", "desc": "Smooths jagged edges of the game image before it is scaled to the window. SMAA: finds the edges and blends only along them, so textures stay sharp. Most useful with an upscaler.",
+              "kind": "choice", "key": "antialias", "default": "off",
+              "platforms": ["mac"],
+              "choices": [ { "label": "Off", "value": "off" }, { "label": "SMAA", "value": "smaa" } ],
+              "note": "Load reads taa as smaa on mac." },
+            { "label": "Wet grass fix", "desc": "In rain with the sun out, the game's wet lighting blows grass and roofs out to white. On: most of that glare goes, and the grass keeps its colour and a soft sheen. Applies from the next start.",
+              "kind": "toggle", "key": "wet_fix", "default": "0",
+              "platforms": ["windows", "linux"] },
+            { "label": "Render scale", "desc": "Below 100% the game renders at a lower resolution than the window and is scaled up to it: faster, but blurrier (50% is a quarter of the pixels, for weak graphics cards). Above 100% it renders at a higher resolution and is scaled down to it, the cleanest way to smooth edges and shimmer. 200% is 4x the pixels: for fast graphics cards.",
+              "kind": "choice", "key": "render_scale", "default": "100", "wrap": false,
+              "choices": [ { "label": "50%", "value": "50" }, { "label": "75%", "value": "75" }, { "label": "100%", "value": "100" }, { "label": "125%", "value": "125" }, { "label": "150%", "value": "150" }, { "label": "200%", "value": "200" } ] },
+            { "label": "Anisotropic filtering", "desc": "Keeps the textures of ground, paths and walls sharp where you look along them into the distance. Off: the game's own filtering, as on the console. 16x is the sharpest and costs very little on a PC graphics card.",
+              "kind": "choice", "key": "anisotropy", "default": "2x", "wrap": false,
+              "platforms": ["windows", "linux"],
+              "choices": [ { "label": "Off", "value": "game" }, { "label": "2x", "value": "2x" }, { "label": "4x", "value": "4x" }, { "label": "8x", "value": "8x" }, { "label": "16x", "value": "16x" } ] },
+            { "label": "Texture sharpness", "desc": "Pulls forward mipmap levels on 3D textures for increased clarity on surfaces and distant objects. Sharp uses a -0.5 bias; Sharper uses -1.0.",
+              "kind": "choice", "key": "texture_lod_bias", "default": "default", "wrap": false,
+              "platforms": ["windows", "linux"],
+              "choices": [ { "label": "Default", "value": "default" }, { "label": "Sharp", "value": "sharp" }, { "label": "Sharper", "value": "sharper" } ] },
+            { "label": "Sharpening (AMD CAS)", "desc": "AMD FidelityFX CAS sharpens the 3D image after the upscaler (or at the window's resolution with the upscaler off), before the HUD is drawn over it: edges get crisper without halos. Most useful with AMD FSR 1.",
+              "kind": "choice", "key": "sharpening", "default": "0", "wrap": false,
+              "platforms": ["windows", "linux"],
+              "choices": [ { "label": "Off", "value": "0" }, { "label": "10%", "value": "10" }, { "label": "20%", "value": "20" }, { "label": "30%", "value": "30" }, { "label": "40%", "value": "40" }, { "label": "50%", "value": "50" }, { "label": "60%", "value": "60" }, { "label": "70%", "value": "70" }, { "label": "80%", "value": "80" }, { "label": "90%", "value": "90" }, { "label": "100%", "value": "100" } ],
+              "note": "Stored internally as 0..10 and written *10 (percent); load rounds to the nearest 10." },
+            { "label": "Frame generation (AMD FSR 3)", "desc": "AMD FSR 3 makes a frame between each two the game draws: about twice the frames on screen. The frame rate above counts them all, so the game itself draws half of it (60 with 120) and the controls answer as at that rate, a little later. In play only: the menus and the map show the game's own frames. Fast moves can leave faint smears around Link and what moves on its own.",
+              "kind": "toggle", "key": "frame_generation", "default": "0",
+              "platforms": ["windows", "linux"] },
+            { "label": "Asynchronous shaders", "desc": "On (default): the game never waits for a new shader to compile: what needs one still compiling is left out until it is ready, usually one frame (an effect pops in a frame late). Pictures the game draws only once (the save file's screenshot, the pause menu's background, terrain tiles) still wait for theirs. Off: every draw waits for its shader, a short stutter the first time an effect appears.",
+              "kind": "toggle", "key": "async_shaders", "default": "1" },
+            { "label": "Shadow resolution", "desc": "The size of the maps the sun's shadows are drawn from. Console: the game's own, 896 x 896. High (2048), Ultra (4096) and Savage (8192) give sharper shadow edges (Link, trees, buildings) for more GPU time and video memory (Ultra: about 100 MB, Savage: about 400 MB). Savage is very heavy where there is a lot of foliage: in a forest it can cut the frame rate to a third, even on a fast GPU. Ultra or lower suits most GPUs. Potato (448): softer edges, for weak GPUs.",
+              "kind": "choice", "key": "shadow_resolution", "default": "console",
+              "choices": [ { "label": "Potato (448)", "value": "potato" }, { "label": "Console (896)", "value": "console" }, { "label": "High (2048)", "value": "high" }, { "label": "Ultra (4096)", "value": "ultra" }, { "label": "Savage (8192)", "value": "extreme" } ] },
+            { "label": "Sharper text", "desc": "Makes the game's letters sharper on 1440p and 4K screens. It takes effect the next time you start the game. This is an upscale made on your computer from the game's own letters, not Nintendo's original art: the shapes are kept, but they aren't exactly as drawn. 4x takes a moment longer to start and uses more video memory.",
+              "kind": "choice", "key": "sharper_text", "default": "off", "wrap": false,
+              "choices": [ { "label": "Off", "value": "off" }, { "label": "2x", "value": "2x" }, { "label": "4x", "value": "4x" } ] },
+            { "label": "Sharper menus", "desc": "Makes the shapes and frames of the game's menus (panels, borders, icons drawn in one colour) sharper on 1440p and 4K screens. It takes effect the next time you start the game. This is an upscale made on your computer from the game's own art, not Nintendo's original art.",
+              "kind": "choice", "key": "sharper_menus", "default": "off", "wrap": false,
+              "choices": [ { "label": "Off", "value": "off" }, { "label": "2x", "value": "2x" }, { "label": "4x", "value": "4x" } ] }
+          ]
+        },
+        {
+          "title": "Advanced",
+          "rows": [
+            { "label": "Bloom", "desc": "The glow around bright light: the sun, fire, glowing eyes. Off: a little faster, a flatter image.",
+              "kind": "toggle", "key": "bloom", "default": "1" },
+            { "label": "Depth of field", "desc": "The game blurs the far distance a little. Off: sharp out to the horizon, a little faster.",
+              "kind": "toggle", "key": "depth_of_field", "default": "1" },
+            { "label": "Dynamic resolution", "desc": "As on the console: the game lowers its 3D resolution (down to 1280x720 before upscaling) while frames take long, and raises it again after. Off: always the full resolution. On with the Potato preset.",
+              "kind": "toggle", "key": "dynamic_resolution", "default": "1" },
+            { "label": "Fast math", "desc": "Your CPU has no FMA instructions, so the game's math runs in software. On: about 10% faster; some results round a tiny bit differently from the console, which doesn't show in play. Off: exact, as on the console.",
+              "kind": "toggle", "key": "fast_fma", "default": "1",
+              "showIf": "compatible game code only (gamelib_compat: a CPU without AVX2 / FMA)" },
+            { "label": "Haze", "desc": "How hazy the air is. Lower: clearer distances. It takes effect the next time you start the game.",
+              "kind": "choice", "key": "haze", "default": "100", "wrap": false,
+              "choices": [ { "label": "75%", "value": "75" }, { "label": "90%", "value": "90" }, { "label": "100%", "value": "100" } ] }
+          ]
+        },
+        {
+          "title": "Colour",
+          "platforms": ["windows", "linux"],
+          "rows": [
+            { "label": "Colour preset", "desc": "Ready-made looks for the 3D image, made from the sliders below: Natural is the game's own colours, Warm and Cool shift the light, Vivid and Cinematic add contrast, Muted calms the colours. The HUD and menus keep their colours.",
+              "kind": "choice", "default": "Natural",
+              "platforms": ["windows", "linux"],
+              "multi": [
+                { "label": "Natural", "set": { "colour_exposure": "0.0", "colour_contrast": "0", "colour_saturation": "0", "colour_temperature": "0", "colour_tint": "0" } },
+                { "label": "Warm", "set": { "colour_exposure": "0.0", "colour_contrast": "5", "colour_saturation": "5", "colour_temperature": "35", "colour_tint": "5" } },
+                { "label": "Cool", "set": { "colour_exposure": "0.0", "colour_contrast": "5", "colour_saturation": "-5", "colour_temperature": "-35", "colour_tint": "0" } },
+                { "label": "Vivid", "set": { "colour_exposure": "0.0", "colour_contrast": "15", "colour_saturation": "30", "colour_temperature": "0", "colour_tint": "0" } },
+                { "label": "Cinematic", "set": { "colour_exposure": "-0.2", "colour_contrast": "25", "colour_saturation": "-15", "colour_temperature": "15", "colour_tint": "-5" } },
+                { "label": "Muted", "set": { "colour_exposure": "0.1", "colour_contrast": "-10", "colour_saturation": "-40", "colour_temperature": "5", "colour_tint": "0" } }
+              ],
+              "custom": "Custom",
+              "note": "Shown value: the preset whose five values all match, else 'Custom' (shown greyed, never picked). The LUT is not changed by a preset. colour_exposure is in EV with one decimal (stored as tenths)." },
+            { "label": "Exposure", "desc": "Makes the 3D image brighter or darker, in stops: +1 EV is twice as bright.",
+              "kind": "slider", "key": "colour_exposure", "default": "0.0",
+              "min": -2, "max": 2, "step": 0.1, "format": "%+.1f EV", "scale": 1,
+              "platforms": ["windows", "linux"],
+              "note": "Written with one decimal ('%.1f')." },
+            { "label": "Contrast", "desc": "More (or less) difference between dark and bright areas. Shadows and highlights keep their detail.",
+              "kind": "int", "key": "colour_contrast", "default": "0",
+              "min": -50, "max": 50, "step": 5, "format": "%+d", "scale": 1,
+              "platforms": ["windows", "linux"] },
+            { "label": "Saturation", "desc": "How strong the colours are. -100: black and white.",
+              "kind": "int", "key": "colour_saturation", "default": "0",
+              "min": -100, "max": 100, "step": 5, "format": "%+d", "scale": 1,
+              "platforms": ["windows", "linux"] },
+            { "label": "Temperature", "desc": "The colour of the light: below 0 cooler (bluer), above 0 warmer (more orange).",
+              "kind": "int", "key": "colour_temperature", "default": "0",
+              "min": -100, "max": 100, "step": 5, "format": "%+d", "scale": 1,
+              "platforms": ["windows", "linux"] },
+            { "label": "Tint", "desc": "Below 0 toward green, above 0 toward magenta: evens out a colour cast.",
+              "kind": "int", "key": "colour_tint", "default": "0",
+              "min": -100, "max": 100, "step": 5, "format": "%+d", "scale": 1,
+              "platforms": ["windows", "linux"] },
+            { "label": "LUT", "desc": "A look-up table (LUT) that recolours the 3D image. Savage Wind's own are listed first. Your own LUTs go in this folder: .cube files (up to 64 x 64 x 64) and ReShade-style .png strips (1024 x 32, 4096 x 64). They are listed by file name.\n\n%s",
+              "kind": "choice", "key": "colour_lut", "default": "none",
+              "dynamic": true, "list": true,
+              "platforms": ["windows", "linux"],
+              "choices": [ { "label": "None", "value": "none" }, { "label": "Savage Wind", "value": "sw:Savage_Wind.cube" }, { "label": "Dormant", "value": "sw:Dormant.cube" }, { "label": "Ember", "value": "sw:Ember.cube" } ],
+              "note": "%s = the player's LUT folder (<data folder>/luts). The shipped LUTs (colour-luts/, sorted by name with Savage_Wind.cube moved first) are followed by the player's own .cube / .png files in <data folder>/luts, sorted by name: label = file name without extension, '_' shown as spaces; ini value = the file name itself (no prefix). The first setup sets sw:Savage_Wind.cube at 50% when no colour_lut is in the ini (see Game Files > Savage Wind colour look)." },
+            { "label": "LUT intensity", "desc": "How much of the LUT's look is used: 100% is all of it, 0% none.",
+              "kind": "int", "key": "colour_lut_strength", "default": "100",
+              "min": 0, "max": 100, "step": 5, "format": "%d%%", "scale": 1,
+              "indent": 1, "enabledIf": "colour_lut!=none",
+              "platforms": ["windows", "linux"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "audio",
+      "title": "Audio",
+      "sections": [
+        {
+          "title": "Sound",
+          "rows": [
+            { "label": "Volume", "desc": "The game's volume. 100% is the game's own level; above it, louder.",
+              "kind": "slider", "key": "volume", "default": "1.00",
+              "min": 0, "max": 200, "step": 5, "format": "%g%%", "scale": 0.01,
+              "note": "Written with two decimals (100% -> 1.00); load clamps to 0..2." },
+            { "label": "Shrine sensor volume", "desc": "Volume of the Sheikah Slate sensor beeps. 0% silences the sensor.",
+              "kind": "slider", "key": "shrine_sensor_volume", "default": "100",
+              "min": 0, "max": 100, "step": 10, "format": "%g%%", "scale": 1 },
+            { "label": "Audio output", "desc": "Stereo: two-channel mix. Surround 5.1: all six channels (front, centre, subwoofer and rear) for a 5.1 speaker setup. 3D Headphones: binaural spatial mix of the six channels for headphones. Surround 5.1 is untested on real 5.1 speakers.",
+              "kind": "choice", "key": "audio_output", "default": "stereo",
+              "choices": [ { "label": "Stereo", "value": "stereo" }, { "label": "Surround 5.1", "value": "surround_51" }, { "label": "3D Headphones", "value": "headphones_3d" } ] },
+            { "label": "Room reverb", "desc": "The game's echo in caves, dungeons and big rooms.",
+              "kind": "toggle", "key": "reverb", "default": "1" },
+            { "label": "Movie audio", "desc": "Sound in the game's movies (the opening and the ending). Applies the next time a movie starts.",
+              "kind": "toggle", "key": "movie_audio", "default": "1" },
+            { "label": "Mute in background", "desc": "Mute audio while the game window is in the background or minimized.",
+              "kind": "toggle", "key": "mute_unfocused", "default": "0" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "language",
+      "title": "Language",
+      "sections": [
+        {
+          "title": "Language",
+          "rows": [
+            { "label": "Text", "desc": "The language of the game's texts and of these menus. Auto: your system's language (English if the game doesn't have it).",
+              "kind": "choice", "key": "text_language", "default": "auto", "wrap": false,
+              "choices": [
+                { "label": "Auto (system)", "value": "auto" },
+                { "label": "English (US)", "value": "USen" },
+                { "label": "English (UK)", "value": "EUen" },
+                { "label": "Spanish (Latin America)", "value": "USes" },
+                { "label": "Spanish (Spain)", "value": "EUes" },
+                { "label": "French (Canada)", "value": "USfr" },
+                { "label": "French (France)", "value": "EUfr" },
+                { "label": "German", "value": "EUde" },
+                { "label": "Italian", "value": "EUit" },
+                { "label": "Dutch", "value": "EUnl" },
+                { "label": "Russian", "value": "EUru" },
+                { "label": "Portuguese (Brazil)", "value": "USpt" },
+                { "label": "Japanese", "value": "JPja" },
+                { "label": "Korean", "value": "KRko" },
+                { "label": "Chinese (Simplified)", "value": "CNzh" },
+                { "label": "Chinese (Traditional)", "value": "TWzh" },
+                { "label": "Thai", "value": "THth", "showIf": "game files 1.9.0 or later (Pack/Bootup_THth.pack present)" }
+              ],
+              "note": "Language names are shown as written (not translated). In game the description gets a restart paragraph; not in Configuration." },
+            { "label": "Voices", "desc": "The language the characters speak. Same as text: the voices the game picks for the text language (Japanese for Korean and Chinese, English for the other languages it has no voices for). Any other: those voices with any text language.",
+              "kind": "choice", "key": "voice_language", "default": "text", "wrap": false,
+              "choices": [
+                { "label": "Same as text", "value": "text" },
+                { "label": "English", "value": "USen" },
+                { "label": "Spanish (Latin America)", "value": "USes" },
+                { "label": "Spanish (Spain)", "value": "EUes" },
+                { "label": "French", "value": "EUfr" },
+                { "label": "German", "value": "EUde" },
+                { "label": "Italian", "value": "EUit" },
+                { "label": "Russian", "value": "EUru" },
+                { "label": "Japanese", "value": "JPja" }
+              ] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "saves",
+      "title": "Saves",
+      "sections": [
+        {
+          "title": "Backup",
+          "rows": [
+            { "label": "Back up at each start", "desc": "A copy of the save folder each time the game starts, if anything in it changed. The last 5 are kept in save-backups; the ones you make yourself are never removed.",
+              "kind": "toggle", "key": "save_backups", "default": "0",
+              "note": "Greyed while an import / export / backup is running. The rest of the Saves tab (Profiles, Import, Export, Back up saves, Open save folder, Slots) is save management: skipped." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gamefiles",
+      "title": "Game Files",
+      "page": "The start screen's GAME FILES page (not a Settings tab). Rows below sit after 'Game files folder' and 'Folder path' in the section 'Set up again' once the game files are set up; before that (first start: 'Welcome to Savage Wind') they are in the section 'Set up'. All are greyed while a setup is running.",
+      "sections": [
+        {
+          "title": "Set up again",
+          "rows": [
+            { "label": "Background", "desc": "The picture behind this screen and while the game loads. A splash.jpg or splash.png of yours in the data folder always comes first.",
+              "kind": "choice", "key": "start_picture", "default": "1",
+              "platforms": ["windows", "linux"],
+              "choices": [ { "label": "Savage Wind", "value": "0" }, { "label": "A screenshot", "value": "1" }, { "label": "Latest save", "value": "2" } ] },
+            { "label": "Loading picture", "desc": "Shows that picture while the game loads. Turned off, the window stays black until the game's title screen: loading takes just as long.",
+              "kind": "toggle", "key": "boot_picture", "default": "1",
+              "platforms": ["windows", "linux"] },
+            { "label": "Precompile all shaders", "desc": "After the setup, translates and compiles every shader of the game, so that none stutters the first time it is drawn, also in places never visited. A few more minutes and about 1.5 GB of disk. It can be done later too, from the game files page of Savage Wind Configuration.",
+              "kind": "toggle", "key": "precompile_shaders", "default": "1",
+              "platforms": ["windows", "linux"] },
+            { "label": "Savage Wind colour look", "desc": "Recommended. The game's picture with Savage Wind's own colour look. Change it or turn it off any time in the game's Options > Colour (LUT).",
+              "kind": "toggle", "default": "On",
+              "platforms": ["windows", "linux"],
+              "multi": [
+                { "label": "Off", "set": { "colour_lut": "none", "colour_lut_strength": "100" },
+                  "alsoIf": "if the colour sliders match the Vivid preset (colour_exposure 0.0, colour_contrast 15, colour_saturation 30, colour_temperature 0, colour_tint 0), also set Natural: colour_contrast 0, colour_saturation 0 (exposure, temperature, tint 0)" },
+                { "label": "On", "set": { "colour_lut": "sw:Savage_Wind.cube", "colour_lut_strength": "50" },
+                  "alsoIf": "if the colour sliders match Natural (all five 0), also set Vivid: colour_exposure 0.0, colour_contrast 15, colour_saturation 30, colour_temperature 0, colour_tint 0" }
+              ],
+              "note": "Shown On exactly when colour_lut = sw:Savage_Wind.cube. Before the first setup, if the ini has no colour_lut key at all, the page itself sets the On values (and Vivid over Natural)." },
+            { "label": "Slate Companion", "desc": "Lets Slate Companion, a companion app for Breath of the Wild with a live map, guides and checklists, show where Link is while you play. It can only read the game, never change it, and only apps on this computer can connect. Turning it off takes effect the next time Savage Wind starts.",
+              "kind": "toggle", "key": "slate_companion", "default": "0" },
+            { "label": "Check for updates", "desc": "When Savage Wind Configuration opens, asks GitHub if there is a new version and offers it. Nothing is installed until you press Update.",
+              "kind": "toggle", "key": "check_updates", "default": "1",
+              "platforms": ["windows", "linux"],
+              "showIf": "a shipped release (post_update_shipped: Windows with sw-manifest.txt, Linux AppImage)" },
+            { "label": "Open this screen first", "desc": "Starting Savage Wind opens this screen, where updates are offered. Turned off, savagewind.exe goes straight into the game.",
+              "kind": "toggle", "key": "start_in_config", "default": "1",
+              "platforms": ["windows", "linux"],
+              "showIf": "a shipped release (post_update_shipped: Windows with sw-manifest.txt, Linux AppImage)" }
+          ]
+        }
+      ]
+    }
+  ],
+  "skipped": [
+    { "label": "Prelaunch (tab)", "why": "First tab of Configuration's Settings: no setting rows. Buttons Show in Explorer / Open folder / Show in Finder, Delete game files (with Delete / Cancel popup), Make a problem report, Import fonts, Use substitute font, and the Launch options section (launch_flags_ui: launch options, skipped by request)." },
+    { "label": "amiibo (tab): On the reader, Search, Series, None, one row per figure", "why": "amiibo_reader is a pick from the player's own .bin dumps (ini value '<series>/<name>' or 'none'); the list depends on files on disk. Search and Series are list filters, not settings." },
+    { "label": "Controls: key binding tables (actions, Menus, Movement camera and motion)", "why": "Key binding remaps (bind_pad_* / bind_key_* keys), skipped by request." },
+    { "label": "Reset actions to defaults", "why": "Action button (bindings)." },
+    { "label": "Reset controller to defaults", "why": "Action button (bindings)." },
+    { "label": "Reset keyboard to defaults", "why": "Action button (bindings)." },
+    { "label": "Controls > Menu (shortcut lines)", "why": "Static help text, no setting." },
+    { "label": "Saves: Profiles (profile list, Use this profile, Name for a new profile, Create empty profile, Copy this profile, Rename this profile, Delete this profile..., Open this profile's folder)", "why": "Save management actions." },
+    { "label": "Saves: Import from Wii U / Cemu..., Export to Wii U / Cemu..., Back up saves, Open save folder, Slots", "why": "Save management actions." },
+    { "label": "Game Files: Delete game files / Yes, delete them / Cancel", "why": "Action buttons." },
+    { "label": "Game Files: Check downloadable content, Remove downloadable content", "why": "Action buttons." },
+    { "label": "Game Files: Precompile shaders", "why": "Action button (runs the precompile now); Windows / Linux." },
+    { "label": "Game Files: Game files folder, Folder path", "why": "Choose the setup source folder; not stored in savagewind.ini." },
+    { "label": "Game Files: Add to Steam", "why": "Action button (shipped releases)." },
+    { "label": "Game Files: Set up game files", "why": "Action button." },
+    { "label": "Game Files: Go back to the previous version", "why": "Action button (only after a failed update)." },
+    { "label": "Language: Restart now", "why": "Action button, in game only (not shown in Configuration)." },
+    { "label": "Cheats tab (Infinite rupees, Weather, item list) and Quit tab", "why": "In game only (menu.mm tabs_body skips them on the start screen)." },
+    { "label": "Settings without a row in Configuration: gpu, sparse_heap, hdr_paper_white, quick_drop, quick_sort, left_stick_deadzone, right_stick_deadzone, pc_gyro, gyro_scene, motion_sensitivity, motion_invert, button_icons, button_layout, no_weapon_wear, weapon_wear, infinite_arrows, infinite_stamina, god_mode, one_hit_kill, damage_taken, damage_dealt, start_at_continue", "why": "Read / written by settings.c but not drawn on any Configuration page (some are on the in-game Options / Cheats screens). Not listed as rows." }
+  ]
+}

@@ -21,7 +21,7 @@ public static class Assets
 
     public static void Reset()
     {
-        text = null; compendiumIndex = null; armorIndex = null;
+        text = null; compendiumIndex = null; armorIndex = null; armorStars = null;
         foreach (var b in bitmaps.Values) b?.Dispose();
         bitmaps.Clear(); recent.Clear();
     }
@@ -88,15 +88,57 @@ public static class Assets
         if (!On) return null;
         if (armorIndex == null)
         {
+            // The base piece (lowest number) of each name, preferring one with an inventory picture. The jewelry has
+            // none (the game draws those icons from their 3D models), so it still gets its actor for the game's text.
             armorIndex = [];
-            foreach (var (k, v) in Texts())
+            var withIcon = new Dictionary<string, string>();
+            foreach (var (k, v) in Texts().OrderBy(kv => kv.Key, StringComparer.Ordinal))
                 if (k.StartsWith("Armor_", StringComparison.Ordinal) && k.EndsWith("_Name", StringComparison.Ordinal))
                 {
                     var actor = k[..^5];
-                    if (File.Exists(Path.Combine(Folder, "items", actor + ".png"))) armorIndex.TryAdd(UI.Ui.Norm(v), actor);
+                    armorIndex.TryAdd(UI.Ui.Norm(v), actor);
+                    if (File.Exists(Path.Combine(Folder, "items", actor + ".png"))) withIcon.TryAdd(UI.Ui.Norm(v), actor);
                 }
+            foreach (var (k, v) in withIcon) armorIndex[k] = v;
         }
         return armorIndex.GetValueOrDefault(UI.Ui.Norm(a.Name));
+    }
+
+    static Dictionary<string, int>? armorStars;
+
+    /// <summary>
+    /// An armor piece's upgrade level: each level is its own actor with the same name in the game (Armor_001_Head,
+    /// then the higher numbers), so it's the piece's place among the actors of that name, lowest number first.
+    /// </summary>
+    public static int ArmorStars(string actor)
+    {
+        if (!On) return 0;
+        if (armorStars == null)
+        {
+            armorStars = [];
+            foreach (var g in Texts().Where(kv => kv.Key.StartsWith("Armor_", StringComparison.Ordinal) && kv.Key.EndsWith("_Name", StringComparison.Ordinal))
+                         .GroupBy(kv => kv.Value))
+            {
+                int i = 0;
+                foreach (var a in g.Select(kv => kv.Key[..^5]).OrderBy(a => a, StringComparer.Ordinal)) armorStars[a] = i++;
+            }
+        }
+        return armorStars.GetValueOrDefault(actor);
+    }
+
+    static readonly Dictionary<string, string> GemColor = new()
+    {
+        ["diamond"] = "#E4F6FF", ["ruby"] = "#FF4D5E", ["sapphire"] = "#4C86FF", ["topaz"] = "#FFD23D", ["opal"] = "#F3DDFF", ["amber"] = "#FF9A3C",
+    };
+    const string GemPath = "M10 6h12l6 7-12 14L4 13z M4 13h24 M12 6l-2 7 6 14 6-14-2-7";
+
+    /// <summary>A piece's inventory picture; for the jewelry, which has none in the game files, a gem in its colour.</summary>
+    public static Bitmap? ArmorIcon(ArmorPiece a, int size = 40)
+    {
+        if (!On) return null;
+        if (Icon(ArmorActor(a), size) is { } b) return b;
+        var gem = GemColor.FirstOrDefault(g => a.Name.Contains(g.Key, StringComparison.OrdinalIgnoreCase));
+        return gem.Key == null ? null : UI.Icons.Drawn(GemPath, Avalonia.Media.Color.Parse(gem.Value), 2.2f);
     }
 
     /// <summary>The icon actor of a cooked result: elixirs have one per effect (Item_Cook_C_17_AttackUp …).</summary>

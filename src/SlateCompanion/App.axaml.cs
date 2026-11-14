@@ -16,6 +16,13 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
+        // A mistake in one screen's code: logged, a crash report written, an error window shown, and the app keeps going.
+        Avalonia.Threading.Dispatcher.UIThread.UnhandledException += (_, e) =>
+        {
+            e.Handled = true;
+            var file = Log.Crash(e.Exception, "UI");
+            UI.ErrorWindow.Show("Something went wrong", "Slate Companion ran into a problem but kept running. If it keeps happening, please report it with the crash report.", e.Exception, file);
+        };
         Store = new Store();
         Data = GameData.Load(Path.Combine(AppContext.BaseDirectory, "Data"));
         Progress = new Progress(Store, Data);
@@ -34,7 +41,8 @@ public partial class App : Application
     /// <summary>Once, look for Savage Wind installs in the usual places (a few seconds, in the background).</summary>
     static void FirstRunSearch()
     {
-        if (Progress.Settings.SearchedForSavageWind) return;
+        // (not for --screenshots: pictures for the README must not list folders of the PC they're taken on)
+        if (Progress.Settings.SearchedForSavageWind || Program.Args.Contains("--screenshots")) return;
         _ = Task.Run(() =>
         {
             var found = SaveLocator.SearchSavageWind(TimeSpan.FromSeconds(6));

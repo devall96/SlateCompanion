@@ -21,6 +21,19 @@ public sealed class AppSettings
     public bool HideDone { get; set; }
     public List<string> MapLayersOff { get; set; } = ["memory"];
     public Dictionary<string, int> ArmorPlan { get; set; } = [];
+    public bool CheckUpdatesOnStart { get; set; } = true;  // one request to GitHub when the app opens (installed copies)
+    public string? SkippedVersion { get; set; }              // "Skip this version" on the update bar
+    public List<string> SavageWindPrograms { get; set; } = []; // savagewind / AppImages chosen by hand (Linux mostly)
+    public string? GameProgram { get; set; }                 // the copy Play starts
+    public string? ClearSkiesProgram { get; set; }           // ClearSkies.exe or its AppImage
+    public bool UseClearSkies { get; set; }
+    public string? ClearSkiesPreset { get; set; }            // null: the one saved in clearskies.ini
+    public bool UseLauncher { get; set; } = true;            // the Play screen (installs, updates, Savage Wind's settings); off: hidden
+    public Dictionary<string, string> InstallNames { get; set; } = [];  // a name per copy (its program's path)
+    public List<string> HiddenInstalls { get; set; } = [];   // copies removed from the list (never deleted)
+    public string? InstallFolder { get; set; }               // where the last new copy was installed
+    public bool MinimizeOnPlay { get; set; }
+    public bool LiveInBackground { get; set; }               // the map keeps following Link while another window has the focus                 // Play minimizes Slate Companion (it then sleeps)
 }
 
 /// <summary>
@@ -35,17 +48,20 @@ public sealed partial class Store
 
     public Store()
     {
-        var env = Environment.GetEnvironmentVariable("SLATECOMPANION_DATA");
-        if (!string.IsNullOrWhiteSpace(env)) Folder = env;
-        else if (OperatingSystem.IsWindows())
-            Folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SlateCompanion");
-        else
-        {
-            var xdg = Environment.GetEnvironmentVariable("XDG_CONFIG_HOME");
-            Folder = Path.Combine(!string.IsNullOrEmpty(xdg) && Path.IsPathRooted(xdg) ? xdg
-                : Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".config"), "slatecompanion");
-        }
+        Folder = DefaultFolder();
         Directory.CreateDirectory(Folder);
+    }
+
+    /// <summary>Where the app keeps its own files (also its logs, before anything else is up).</summary>
+    public static string DefaultFolder()
+    {
+        var env = Environment.GetEnvironmentVariable("SLATECOMPANION_DATA");
+        if (!string.IsNullOrWhiteSpace(env)) return env;
+        if (OperatingSystem.IsWindows())
+            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SlateCompanion");
+        var xdg = Environment.GetEnvironmentVariable("XDG_CONFIG_HOME");
+        return Path.Combine(!string.IsNullOrEmpty(xdg) && Path.IsPathRooted(xdg) ? xdg
+            : Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".config"), "slatecompanion");
     }
 
     [GeneratedRegex("^[a-z0-9][a-z0-9-]{0,40}$")]

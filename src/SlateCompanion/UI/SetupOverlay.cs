@@ -41,12 +41,6 @@ public sealed class SetupOverlay : Border
         if (IsVisible) Draw();
     }
 
-    /// <summary>The home folder shown as ~ (shorter, and keeps the user name off screen).</summary>
-    static string ShortPath(string p)
-    {
-        var home = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-        return home.Length > 0 && p.StartsWith(home, StringComparison.OrdinalIgnoreCase) ? "~" + p[home.Length..] : p;
-    }
 
     static List<string> Candidates()
     {
@@ -61,8 +55,7 @@ public sealed class SetupOverlay : Border
     {
         var b = App.MapBuilder;
         bool firstStart = !App.Progress.Settings.SetupSeen;
-        var s = Ui.Stack(14, Ui.Row(14, Ui.Eye(56), Ui.Stack(2, Ui.Text("SHEIKAH SLATE", "eyebrow"),
-            Ui.Text(firstStart ? "Welcome to Slate Companion" : "Your game files are needed", "h1"))));
+        var s = Ui.Stack(14, Ui.Row(14, Ui.Eye(56), Ui.Text(firstStart ? "Welcome to Slate Companion" : "Your game files are needed", "h1")));
         if (b.State == "building")
         {
             var meter = Ui.Meter(b.Progress, 1, false, 10);
@@ -88,6 +81,14 @@ public sealed class SetupOverlay : Border
                 tips.Children.Add(Ui.Row(8, Ui.Text("◆", "small"), new TextBlock { Text = t, TextWrapping = TextWrapping.Wrap, MaxWidth = 610, FontSize = 13 }));
             foreach (var row in tips.Children.Skip(1).OfType<StackPanel>()) ((TextBlock)row.Children[0]).Foreground = Ui.Brush("Orange");
             s.Children.Add(Ui.Panel(tips, "panel"));
+            // the launcher is optional: asked here once, and Settings can change it any time
+            var useLauncher = new ToggleSwitch { IsChecked = App.Progress.Settings.UseLauncher, OnContent = "", OffContent = "" };
+            useLauncher.IsCheckedChanged += (_, _) => { App.Progress.SaveSettings(x => x.UseLauncher = useLauncher.IsChecked == true); App.Main.ShowLauncher(useLauncher.IsChecked == true); };
+            var lg = new Grid { ColumnDefinitions = new ColumnDefinitions("*,Auto") };
+            var lt = Ui.Stack(2, Ui.Text("Use Slate Companion as your Savage Wind launcher", "h3"),
+                new TextBlock { Text = "A Play screen that starts the game straight away, installs and updates Savage Wind for you, and has all of its settings. Turn it off if you only want the guide; Settings can change this later.", TextWrapping = TextWrapping.Wrap, FontSize = 12, Foreground = Ui.Brush("Muted") });
+            lg.Children.Add(lt); Grid.SetColumn(useLauncher, 1); useLauncher.VerticalAlignment = VerticalAlignment.Center; useLauncher.Margin = new Thickness(12, 0, 0, 0); lg.Children.Add(useLauncher);
+            s.Children.Add(Ui.Panel(lg, "panel"));
         }
         if (error != null || b.State == "error") s.Children.Add(new Border { Classes = { "note" }, Child = Ui.Text(error ?? b.Message, "small") });
 
@@ -99,7 +100,7 @@ public sealed class SetupOverlay : Border
             foreach (var r in found)
             {
                 var g = new Grid { ColumnDefinitions = new ColumnDefinitions("*,Auto") };
-                g.Children.Add(Ui.Stack(2, Ui.Text("Breath of the Wild game files", "h3"), Ui.Text(ShortPath(r), "faint mono")));
+                g.Children.Add(Ui.Stack(2, Ui.Text("Breath of the Wild game files", "h3"), Ui.Text(Ui.ShortPath(r), "faint mono")));
                 var use = Ui.Button("Use these", () => Start(r), "primary");
                 use.VerticalAlignment = VerticalAlignment.Center;
                 Grid.SetColumn(use, 1); g.Children.Add(use);
