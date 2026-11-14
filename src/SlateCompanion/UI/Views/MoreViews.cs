@@ -139,19 +139,17 @@ public sealed class ArmorView : ViewBase
 
 // ---------------------------------------------------------------------------------------------- stats
 
-public sealed class StatsView : ViewBase
+/// <summary>
+/// The stats from the save, as sections of the Adventure log (there's no Stats screen of its own any more): what the
+/// Adventure log doesn't show already (play time, shrines and Korok seeds are at its top).
+/// </summary>
+public static class StatsSections
 {
-    readonly ContentControl body = new();
-    protected override Control Build() => new ScrollViewer { Content = new Border { Padding = new Thickness(24, 20), Child = body } };
-    protected override void OnShown(object? arg) { App.Progress.Changed += Draw; Draw(); }
-    public override void OnHidden() => App.Progress.Changed -= Draw;
-
-    void Draw()
+    public static void Add(StackPanel page)
     {
         var p = App.Progress;
-        var page = Ui.Stack(16, Ui.Header("Stats"));
-        if (!p.Linked) { page.Children.Add(Ui.Empty("Link a save to see your stats.")); body.Content = page; return; }
-        var s = p.Stats; var c = p.Count();
+        if (!p.Linked) return;
+        var s = p.Stats;
         string Fmt(StatDef d)
         {
             var v = s[d.Key];
@@ -163,11 +161,6 @@ public sealed class StatsView : ViewBase
                 _ => v == Math.Floor(v) ? $"{v:N0}" : $"{v:0.0}",
             };
         }
-        // The game's per-enemy counters stop at 10 (MaxValue 10 in its GameData), so 10 means "10 or more".
-        const int cap = 10;
-        var defeated = App.Data.Flags.Defeated.Where(d => d.Flag != null && s.TryGetValue("defeated:" + d.Flag, out var n) && n > 0)
-            .Select(d => (d.Enemy, n: (int)s["defeated:" + d.Flag])).OrderByDescending(d => d.n).ToList();
-        bool capped = defeated.Any(d => d.n >= cap);
         var tiles = new WrapPanel();
         Control Tile(string label, string value, string? sub = null)
         {
@@ -176,10 +169,11 @@ public sealed class StatsView : ViewBase
             var b = Ui.Panel(st, "panel", new Thickness(0, 0, 12, 12)); b.Width = 230;
             return b;
         }
-        foreach (var d in App.Data.Flags.Stats.Where(d => s.ContainsKey(d.Key) && d.Unit is not ("raw" or "unknown") && d.Key != "currentHearts"))
+        // (play time, shrines and Korok seeds are on the Adventure log already)
+        static bool Duplicate(StatDef d) => d.Unit == "seconds" || d.Key.Contains("korok", StringComparison.OrdinalIgnoreCase) || d.Key.Contains("shrine", StringComparison.OrdinalIgnoreCase);
+        foreach (var d in App.Data.Flags.Stats.Where(d => s.ContainsKey(d.Key) && d.Unit is not ("raw" or "unknown") && d.Key != "currentHearts" && !Duplicate(d)))
             tiles.Children.Add(Tile(d.Label, Fmt(d)));
-        tiles.Children.Add(Tile("Enemies defeated", defeated.Count == 0 ? "—" : (capped ? "≥ " : "") + defeated.Sum(d => d.n).ToString("N0"), defeated.Count == 0 ? "Not counted in this save" : $"{defeated.Count} kinds" + (capped ? " · counted up to 10 each" : "")));
-        tiles.Children.Add(Tile("Shrines · Koroks", $"{c.Shrines + c.ShrinesDlc} · {c.Koroks}"));
+        page.Children.Add(Ui.Text("STATS", "h2"));
         page.Children.Add(tiles);
 
         var hist = p.History();
@@ -188,20 +182,6 @@ public sealed class StatsView : ViewBase
         var sess = Sessions(hist); Grid.SetColumn(sess, 1); two.Children.Add(sess);
         page.Children.Add(two);
 
-        var bars = Ui.Stack(6, Ui.Text("ENEMIES DEFEATED", "h2"));
-        int max = Math.Max(1, defeated.Select(d => d.n).DefaultIfEmpty().Max());
-        foreach (var (enemy, n) in defeated)
-        {
-            var g = new Grid { ColumnDefinitions = new ColumnDefinitions("190,*,56") };
-            g.Children.Add(Ui.Text(enemy, "small"));
-            var m = Ui.Meter(n, max, true, 10); m.VerticalAlignment = VerticalAlignment.Center; Grid.SetColumn(m, 1); g.Children.Add(m);
-            var t = Ui.Text(n >= cap ? $"{cap}+" : $"{n}", "mono small"); t.HorizontalAlignment = HorizontalAlignment.Right; Grid.SetColumn(t, 2); g.Children.Add(t);
-            bars.Children.Add(g);
-        }
-        if (defeated.Count == 0) bars.Children.Add(Ui.Text("No defeated-enemy counters in this save yet.", "muted"));
-        else bars.Children.Add(Ui.Text("The game itself stops counting at 10 of each kind, so \"10+\" means ten or more.", "faint"));
-        page.Children.Add(Ui.Panel(bars));
-        body.Content = page;
     }
 
     static Control Sessions(List<HistoryPoint> hist)

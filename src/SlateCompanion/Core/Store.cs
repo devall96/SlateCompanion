@@ -33,6 +33,9 @@ public sealed class AppSettings
     public List<string> HiddenInstalls { get; set; } = [];   // copies removed from the list (never deleted)
     public string? InstallFolder { get; set; }               // where the last new copy was installed
     public bool MinimizeOnPlay { get; set; }
+    public bool AddToApplications { get; set; } = true;     // Linux: menu entries for Slate Companion and Savage Wind AppImages
+    public bool EquipEdits { get; set; }                     // Inventory: "Change equipment" (equip, take off, loadouts edit the save)
+    public bool GpuDrawing { get; set; } = true;            // draw with the graphics card (takes effect at the next start)
     public bool LiveInBackground { get; set; }               // the map keeps following Link while another window has the focus                 // Play minimizes Slate Companion (it then sleeps)
 }
 

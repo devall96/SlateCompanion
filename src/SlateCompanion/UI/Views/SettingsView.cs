@@ -26,7 +26,8 @@ public sealed class SettingsView : ViewBase
             Ui.Text("Slate Companion only reads saves. It never writes to them, so it can't damage your progress. A folder or save file you pick stays in sync while you play; a .zip is copied in. You can also drop any of them on this window.", "muted"),
             Ui.Row(10, Ui.Button("Choose a folder…", PickFolder, "primary"), Ui.Button("Choose a save file or .zip…", PickFile), Ui.Button("Search again", () => _ = Refresh(true), "ghost")),
             Ui.Row(10, pathBox, Ui.Button("Add", () => Add(pathBox.Text?.Trim().Trim('"')))),
-            Ui.Text("Savage Wind: pick its folder (the one with savagewind.exe, or ~/.local/share/savagewind on Linux). Every save profile in it shows up.", "faint")), "panel glow");
+            Ui.Text(OperatingSystem.IsWindows() ? "Savage Wind: pick its folder (the one with savagewind.exe). Every save profile in it shows up."
+                : "Savage Wind: pick its AppImage with Choose a save file: its saves (every profile) are found from it.", "faint")), "panel glow");
 
         var liveOn = new CheckBox { Content = "Show Link's live position", IsChecked = p.Settings.LiveEnabled };
         liveOn.IsCheckedChanged += (_, _) => p.SaveSettings(s => s.LiveEnabled = liveOn.IsChecked == true);
@@ -70,7 +71,21 @@ public sealed class SettingsView : ViewBase
         minimize.IsCheckedChanged += (_, _) => App.Progress.SaveSettings(s => s.MinimizeOnPlay = minimize.IsChecked == true);
         var t = Ui.Text("The Play screen: starts Savage Wind straight into the game, installs and updates it, sets it up with your game files, and has all of its settings and Clear Skies. Hidden, Slate Companion never starts, changes or updates Savage Wind.", "muted small");
         t.TextWrapping = TextWrapping.Wrap;
-        return Ui.Stack(8, Ui.Text("SAVAGE WIND LAUNCHER", "h2"), t, on, minimize);
+        var gpu = new CheckBox { Content = "Draw with the graphics card (faster map; off: software drawing). Takes effect the next time Slate Companion starts.", IsChecked = App.Progress.Settings.GpuDrawing };
+        gpu.IsCheckedChanged += (_, _) => App.Progress.SaveSettings(s => s.GpuDrawing = gpu.IsChecked == true);
+        var stack = Ui.Stack(8, Ui.Text("SAVAGE WIND LAUNCHER", "h2"), t, on, minimize, Ui.Text("DRAWING", "h2"), gpu);
+        if (DesktopEntries.Supported)
+        {
+            var menu = new CheckBox { Content = "Add to applications: Slate Companion and your Savage Wind AppImages in the app menu (off removes them)", IsChecked = App.Progress.Settings.AddToApplications };
+            menu.IsCheckedChanged += (_, _) =>
+            {
+                App.Progress.SaveSettings(s => s.AddToApplications = menu.IsChecked == true);
+                if (menu.IsChecked == true) App.SyncDesktopEntries(); else DesktopEntries.RemoveAll();
+            };
+            stack.Children.Add(Ui.Text("APP MENU", "h2"));
+            stack.Children.Add(menu);
+        }
+        return stack;
     }
 
     /// <summary>Updates, from GitHub, only when asked (installed copies only).</summary>
@@ -237,7 +252,7 @@ public sealed class SettingsView : ViewBase
         var picked = await TopLevel.GetTopLevel(this)!.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
         {
             Title = "Choose game_data.sav or a .zip of a save",
-            FileTypeFilter = [new FilePickerFileType("Breath of the Wild saves") { Patterns = ["*.sav", "*.zip"] }, FilePickerFileTypes.All],
+            FileTypeFilter = [new FilePickerFileType("Breath of the Wild saves") { Patterns = ["*.sav", "*.zip", "*.AppImage"] }, FilePickerFileTypes.All],
         });
         Add(picked.FirstOrDefault()?.TryGetLocalPath());
     }
@@ -245,6 +260,8 @@ public sealed class SettingsView : ViewBase
     async void Add(string? path)
     {
         if (string.IsNullOrWhiteSpace(path)) return;
+        // an AppImage (Linux): Savage Wind's data folder, with every save profile, is found from it
+        if (!OperatingSystem.IsWindows() && Launcher.IsProgram(path)) path = Launcher.AddProgram(path);
         try
         {
             var folder = await Task.Run(() => MainWindow.AddSave(path));

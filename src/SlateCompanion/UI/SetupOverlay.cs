@@ -89,6 +89,20 @@ public sealed class SetupOverlay : Border
                 new TextBlock { Text = "A Play screen that starts the game straight away, installs and updates Savage Wind for you, and has all of its settings. Turn it off if you only want the guide; Settings can change this later.", TextWrapping = TextWrapping.Wrap, FontSize = 12, Foreground = Ui.Brush("Muted") });
             lg.Children.Add(lt); Grid.SetColumn(useLauncher, 1); useLauncher.VerticalAlignment = VerticalAlignment.Center; useLauncher.Margin = new Thickness(12, 0, 0, 0); lg.Children.Add(useLauncher);
             s.Children.Add(Ui.Panel(lg, "panel"));
+            if (DesktopEntries.Supported)
+            {
+                var menu = new ToggleSwitch { IsChecked = App.Progress.Settings.AddToApplications, OnContent = "", OffContent = "" };
+                menu.IsCheckedChanged += (_, _) =>
+                {
+                    App.Progress.SaveSettings(x => x.AddToApplications = menu.IsChecked == true);
+                    if (menu.IsChecked == true) App.SyncDesktopEntries(); else DesktopEntries.RemoveAll();
+                };
+                var mg = new Grid { ColumnDefinitions = new ColumnDefinitions("*,Auto") };
+                mg.Children.Add(Ui.Stack(2, Ui.Text("Add to applications", "h3"),
+                    new TextBlock { Text = "Slate Companion, and the copies of Savage Wind it knows, in your app menu so you can start and pin them.", TextWrapping = TextWrapping.Wrap, FontSize = 12, Foreground = Ui.Brush("Muted") }));
+                Grid.SetColumn(menu, 1); menu.VerticalAlignment = VerticalAlignment.Center; menu.Margin = new Thickness(12, 0, 0, 0); mg.Children.Add(menu);
+                s.Children.Add(Ui.Panel(mg, "panel"));
+            }
         }
         if (error != null || b.State == "error") s.Children.Add(new Border { Classes = { "note" }, Child = Ui.Text(error ?? b.Message, "small") });
 
@@ -110,9 +124,11 @@ public sealed class SetupOverlay : Border
         }
         else s.Children.Add(Ui.Text(App.Progress.Settings.SearchedForSavageWind ? "No game files found yet." : "Looking for Savage Wind on this computer…", "faint"));
 
-        var pick = Ui.Button("Choose your Savage Wind folder…", Pick, found.Count == 0 ? "primary" : "");
+        var pick = Ui.Button(OperatingSystem.IsWindows() ? "Choose your Savage Wind folder…" : "Choose your Savage Wind AppImage…", Pick, found.Count == 0 ? "primary" : "");
         pick.HorizontalAlignment = HorizontalAlignment.Left;
-        s.Children.Add(Ui.Stack(4, pick, Ui.Text("The folder with savagewind.exe (or ~/.local/share/savagewind on Linux). An extracted romfs folder works too.", "faint")));
+        s.Children.Add(Ui.Stack(4, pick, Ui.Text(OperatingSystem.IsWindows()
+            ? "The folder with savagewind.exe. An extracted romfs folder works too."
+            : "Pick the Savage Wind AppImage you play with: its game files and saves are found from it. (An extracted romfs folder works too: choose Cancel, then pick the folder.)", "faint")));
         body.Content = s;
     }
 
@@ -120,8 +136,19 @@ public sealed class SetupOverlay : Border
     {
         var top = TopLevel.GetTopLevel(this);
         if (top == null) return;
-        var picked = await top.StorageProvider.OpenFolderPickerAsync(new FolderPickerOpenOptions { Title = "Choose your extracted game files (romfs) or a Savage Wind folder" });
-        var path = picked.FirstOrDefault()?.TryGetLocalPath();
+        string? path = null;
+        if (!OperatingSystem.IsWindows())
+        {
+            // Linux: the AppImage itself; its data folder (~/.local/share/savagewind) is worked out from it
+            var file = await top.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions { Title = "Choose your Savage Wind AppImage" });
+            if (file.FirstOrDefault()?.TryGetLocalPath() is { } f && Launcher.IsProgram(f)) path = Launcher.AddProgram(f);
+            else if (file.Count > 0) { error = "That isn't a Savage Wind AppImage."; Draw(); return; }
+        }
+        if (path == null)
+        {
+            var picked = await top.StorageProvider.OpenFolderPickerAsync(new FolderPickerOpenOptions { Title = "Choose your extracted game files (romfs) or a Savage Wind folder" });
+            path = picked.FirstOrDefault()?.TryGetLocalPath();
+        }
         if (path == null) return;
         var romfs = MapBuilder.FindRomfs(path, []);
         if (romfs == null) { error = "No Breath of the Wild game files there. Pick the romfs folder of your extracted game, or a Savage Wind folder."; Draw(); return; }

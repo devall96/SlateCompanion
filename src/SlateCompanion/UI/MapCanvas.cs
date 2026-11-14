@@ -63,6 +63,11 @@ public sealed class MapCanvas : Control
     static readonly IBrush Background = new SolidColorBrush(Color.Parse("#0B181C"));
     static readonly IBrush Edge = new SolidColorBrush(Color.Parse("#05090C"));
     static readonly Pen DarkPen = new(new SolidColorBrush(Color.Parse("#CC000000")), 1.5);
+    // made once, not on every frame
+    static readonly IBrush LiveFill = new SolidColorBrush(Color.Parse("#4039C6FF")), LiveDot = new SolidColorBrush(Color.Parse("#39C6FF")), RingFill = new SolidColorBrush(Color.Parse("#38FF9A3C"));
+    static readonly Pen LivePen = new(new SolidColorBrush(Color.Parse("#7039C6FF")), 2), LiveDotPen = new(Brushes.White, 2.5);
+    static readonly Dictionary<double, StreamGeometry> Diamonds = [];
+    static readonly Dictionary<IBrush, Pen> RingPens = [];
 
     public MapCanvas()
     {
@@ -173,14 +178,14 @@ public sealed class MapCanvas : Control
         if (Live is { } live)
         {
             var p = ToScreen(live.x, live.z);
-            ctx.DrawEllipse(new SolidColorBrush(Color.Parse("#4039C6FF")), new Pen(new SolidColorBrush(Color.Parse("#7039C6FF")), 2), p, 18, 18);
+            ctx.DrawEllipse(LiveFill, LivePen, p, 18, 18);
             if (LiveArrow != null && live.yaw is double yaw)
             {
                 // yaw 0 faces +z (south on the map); the arrow image points north
                 using (ctx.PushTransform(Matrix.CreateTranslation(-p.X, -p.Y) * Matrix.CreateRotation((180 - yaw) * Math.PI / 180) * Matrix.CreateTranslation(p.X, p.Y)))
                     ctx.DrawImage(LiveArrow, new Rect(p.X - 13, p.Y - 13, 26, 26));
             }
-            else ctx.DrawEllipse(new SolidColorBrush(Color.Parse("#39C6FF")), new Pen(Brushes.White, 2.5), p, 7, 7);
+            else ctx.DrawEllipse(LiveDot, LiveDotPen, p, 7, 7);
         }
     }
 
@@ -194,12 +199,19 @@ public sealed class MapCanvas : Control
                 ctx.DrawImage(it.Icon, new Rect(p.X - r, p.Y - r, s, s));
                 break;
             case MarkShape.Diamond:
-                var g = new StreamGeometry();
-                using (var c = g.Open()) { c.BeginFigure(new Point(p.X, p.Y - r), true); c.LineTo(new Point(p.X + r, p.Y)); c.LineTo(new Point(p.X, p.Y + r)); c.LineTo(new Point(p.X - r, p.Y)); c.EndFigure(true); }
-                ctx.DrawGeometry(it.Fill, DarkPen, g);
+                // one shape per size around (0,0), moved into place
+                if (!Diamonds.TryGetValue(r, out var g))
+                {
+                    g = new StreamGeometry();
+                    using (var c = g.Open()) { c.BeginFigure(new Point(0, -r), true); c.LineTo(new Point(r, 0)); c.LineTo(new Point(0, r)); c.LineTo(new Point(-r, 0)); c.EndFigure(true); }
+                    Diamonds[r] = g;
+                }
+                using (ctx.PushTransform(Matrix.CreateTranslation(p.X, p.Y))) ctx.DrawGeometry(it.Fill, DarkPen, g);
                 break;
             case MarkShape.Ring:
-                ctx.DrawEllipse(new SolidColorBrush(Color.Parse("#38FF9A3C")), new Pen(it.Fill ?? Brushes.Orange, 3), p, r, r);
+                var ringBrush = it.Fill ?? Brushes.Orange;
+                if (!RingPens.TryGetValue(ringBrush, out var ringPen)) RingPens[ringBrush] = ringPen = new Pen(ringBrush, 3);
+                ctx.DrawEllipse(RingFill, ringPen, p, r, r);
                 break;
             default:
                 ctx.DrawEllipse(it.Fill, DarkPen, p, r, r);
@@ -326,6 +338,78 @@ public sealed class MapCanvas : Control
         }
         return best;
     }
+
+    // ------------------------------------------------------------------ benchmark (SLATE_MAP_BENCH=<csv>)
+
+    /// <summary>
+    /// A scripted pan and zoom, one step per frame the window asks for (RequestAnimationFrame), so a slow map shows as
+    /// longer frames: zoomed out across Hyrule, the middle zoom, then zoomed in, each twice. Every frame's interval
+    /// goes to the CSV; the summary (average, 1% and 0.1% lows, p50/p99/p99.9/max, frames over 25/33/50/100 ms,
+    /// stutter) to the log. Returns the summary.
+    /// </summary>
+    public async Task<string> Bench(string csvPath)
+    {
+        var top = TopLevel.GetTopLevel(this)!;
+        var frames = new List<(string phase, double ms)>();
+        double lastTs = -1;
+        async Task Phase(string name, double zoom, int count, double stepPx)
+        {
+            ZoomTo(zoom);
+            await Task.Delay(1500);  // the tiles for this zoom load first: this measures drawing, not file reads
+            var done = new TaskCompletionSource();
+            int i = 0;
+            lastTs = -1;
+            void Step(TimeSpan ts)
+            {
+                double now = ts.TotalMilliseconds;
+                if (lastTs >= 0) frames.Add((name, now - lastTs));
+                lastTs = now;
+                if (i++ >= count) { done.SetResult(); return; }
+                // a slow circle, so new map comes into view in every direction
+                double a = i * 2 * Math.PI / 120;
+                CenterX += Math.Cos(a) * stepPx / Ppu; CenterZ += Math.Sin(a) * stepPx / Ppu;
+                ViewChanged();
+                top.RequestAnimationFrame(Step);
+            }
+            top.RequestAnimationFrame(Step);
+            await done.Task;
+        }
+        SetView(0, 0);
+        for (int run = 0; run < 2; run++)
+        {
+            await Phase("whole", 4.5, 240, 14);
+            await Phase("middle", 6, 240, 14);
+            await Phase("close", 7.5, 240, 14);
+        }
+        var sb = new System.Text.StringBuilder("phase,frame_ms\n");
+        foreach (var (p, ms) in frames) sb.Append(p).Append(',').Append(ms.ToString("0.###", System.Globalization.CultureInfo.InvariantCulture)).Append('\n');
+        File.WriteAllText(csvPath, sb.ToString());
+        var lines = new List<string>();
+        foreach (var g in frames.GroupBy(f => f.phase).Append(frames.GroupBy(_ => "all").First()))
+        {
+            var ms = g.Select(f => f.ms).OrderBy(x => x).ToArray();
+            double P(double q) => ms[Math.Min(ms.Length - 1, (int)Math.Floor(q * ms.Length))];
+            double Low(double frac) { int n = Math.Max(1, (int)(ms.Length * frac)); return 1000 / ms.Skip(ms.Length - n).Average(); }
+            var seq = g.Select(f => f.ms).ToArray();
+            int stutter = seq.Zip(seq.Skip(1), (a, b) => Math.Abs(a - b) > 4 ? 1 : 0).Sum();
+            lines.Add($"{g.Key,-6} frames {ms.Length}, avg {1000 / ms.Average():0.0} fps, 1% low {Low(0.01):0.0}, 0.1% low {Low(0.001):0.0}, " +
+                      $"p50 {P(0.5):0.0} ms, p99 {P(0.99):0.0}, p99.9 {P(0.999):0.0}, max {ms[^1]:0.0}, " +
+                      $">25ms {ms.Count(x => x > 25)}, >33 {ms.Count(x => x > 33)}, >50 {ms.Count(x => x > 50)}, >100 {ms.Count(x => x > 100)}, stutter {stutter}");
+        }
+        var summary = string.Join("\n", lines);
+        Log.Info("Map benchmark:\n" + summary);
+        return summary;
+    }
+
+    void ZoomTo(double z)
+    {
+        if (source == null) return;
+        Zoom = Math.Clamp(z, source.MinZoom, source.MaxZoom);
+        ViewChanged();
+    }
+
+    /// <summary>The view moved or zoomed (nothing on the map changed).</summary>
+    void ViewChanged() => Redraw();
 
     public void ReleaseTiles()
     {

@@ -59,7 +59,7 @@ public sealed class MapScreen : ViewBase
     readonly Dictionary<string, List<MapItem>> byLayer = [];
     List<Pin> pins = [];
     DispatcherTimer? liveTimer;
-    bool useGame, initialView, polling;
+    bool useGame, initialView, polling, benchStarted;
     MapItem? selected;
     Border detailsPanel = null!;
 
@@ -323,6 +323,18 @@ public sealed class MapScreen : ViewBase
 
     protected override void OnShown(object? arg)
     {
+        if (Environment.GetEnvironmentVariable("SLATE_MAP_BENCH") is { Length: > 0 } bench && !benchStarted)
+        {
+            benchStarted = true;
+            Dispatcher.UIThread.Post(async () =>
+            {
+                App.Main.WindowState = WindowState.Maximized;
+                await Task.Delay(3000);
+                var s = await canvas.Bench(bench);
+                Console.WriteLine(s);
+                App.Main.Close();
+            }, DispatcherPriority.Background);
+        }
         App.Progress.Changed += OnProgress;
         Restyle();
         if (arg is string focus)

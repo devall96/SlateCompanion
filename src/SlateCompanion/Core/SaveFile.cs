@@ -122,6 +122,21 @@ public sealed class SaveFile
 
     public bool Has(string name) => Find(Hash(name)).n > 0;
 
+    // ---- editing (only the Save files and equipment features, on a copy the caller writes back; never the tracker)
+
+    /// <summary>Sets one word of an existing flag (an array element) in this copy of the file; false if it isn't there.</summary>
+    public bool SetWord(string name, int index, uint value)
+    {
+        var (first, n) = Find(Hash(name));
+        if (index < 0 || index >= n) return false;
+        var w = data.AsSpan(Header + (first + index) * 8 + 4, 4);
+        if (BigEndian) BinaryPrimitives.WriteUInt32BigEndian(w, value); else BinaryPrimitives.WriteUInt32LittleEndian(w, value);
+        return true;
+    }
+
+    /// <summary>The file's bytes (with any edits), to write back.</summary>
+    public byte[] ToBytes() => (byte[])data.Clone();
+
     public FlagValue? Get(string name)
     {
         var (first, n) = Find(Hash(name));

@@ -37,10 +37,36 @@ public static class Program
         TaskScheduler.UnobservedTaskException += (_, e) => { Log.Error("Background task failed", e.Exception); e.SetObserved(); };
 
         if (args.Length >= 2 && args[0] == "--build-map") return BuildMapCli(args[1]);
+        // --render-model <romfs> <file[:model,...]> <out.png> [size] [auto|front|zup|back|side]: one BFRES model drawn
+        // offline into a transparent PNG (paper doll prototype)
+        // --render-doll <romfs> <out.png> [head=.. upper=.. lower=.. weapon=.. shield=.. bow=.. size=..]: the paper doll;
+        // --render-actor <romfs> <actor> <out.png> [size] [view]: one actor's models as a picture (e.g. the cooking pot);
+        // --model-info / --actor-info <romfs> <name>: what a model or actor pack holds (debugging)
+        if (args.Length >= 3 && args[0] is "--render-model" or "--render-doll" or "--render-actor" or "--model-info" or "--actor-info") return ModelRender.Cli(args);
         // --sw-install <parent folder> [<game files>] / --sw-setup <savagewind program> [<game files>] /
         // --sw-update <savagewind program>: the Play screen's jobs from the command line, progress printed (testing,
         // and for people who'd rather script it)
         if (args.Length >= 2 && args[0] is "--sw-install" or "--sw-setup" or "--sw-update") return SwCli(args);
+        // --app-menu on|off (Linux): the app-menu entries, as the switch in Settings does
+        if (args.Length >= 2 && args[0] == "--app-menu")
+        {
+            var st = new Store().LoadSettings();
+            if (args[1] == "off") { DesktopEntries.RemoveAll(); Console.WriteLine("removed"); }
+            else Console.WriteLine($"{DesktopEntries.Sync(Launcher.FindInstalls(st), st.InstallNames)} entries");
+            return 0;
+        }
+        // --equip <save folder> <slot folder> <Slot>=<PorchItem index|none> ...: the Inventory's Equip as a command (testing)
+        if (args.Length >= 4 && args[0] == "--equip")
+        {
+            try
+            {
+                var choice = args.Skip(3).Select(a => a.Split('=', 2)).ToDictionary(kv => kv[0], kv => kv[1] == "none" ? (int?)null : int.Parse(kv[1]));
+                Console.WriteLine(SaveManager.EditGameData(args[1], args[2], s => Equipment.Apply(s, choice)));
+                foreach (var it in Equipment.Pouch(SaveFile.Load(Path.Combine(args[2], "game_data.sav"))).Where(i => i.equipped)) Console.WriteLine($"  equipped: [{it.index}] {it.actor}");
+                return 0;
+            }
+            catch (SaveManager.SaveException e) { Console.WriteLine($"FAILED: {e.Title}: {e.Message}"); return 1; }
+        }
         // --sw-list: every copy of Savage Wind found, with its version and whether it needs setting up (and why)
         if (args.Length >= 1 && args[0] == "--sw-list")
         {
@@ -84,12 +110,38 @@ public static class Program
         }
     }
 
-    public static AppBuilder BuildAvaloniaApp() => AppBuilder.Configure<App>()
-        .UsePlatformDetect()
-        // Software drawing: no GPU work at all, so nothing competes with the game for the graphics card.
-        .With(new Win32PlatformOptions { RenderingMode = [Win32RenderingMode.Software] })
-        .With(new X11PlatformOptions { RenderingMode = [X11RenderingMode.Software] })
-        .LogToTrace();
+    /// <summary>
+    /// Drawing with the graphics card (the default; much faster for the map), or in software (Settings, or
+    /// SLATE_RENDER=software). Either way nothing is drawn while the window is minimized or in the background, so it
+    /// doesn't compete with the game. If the graphics card can't be used, Avalonia falls back to software by itself.
+    /// </summary>
+    public static bool Gpu
+    {
+        get
+        {
+            var env = Environment.GetEnvironmentVariable("SLATE_RENDER");
+            if (env is "software") return false;
+            if (env is "gpu") return true;
+            try
+            {
+                var p = Path.Combine(Store.DefaultFolder(), "settings.json");
+                if (File.Exists(p) && System.Text.Json.Nodes.JsonNode.Parse(File.ReadAllText(p))?["gpuDrawing"] is { } v) return v.GetValue<bool>();
+            }
+            catch (Exception) { }
+            return true;
+        }
+    }
+
+    public static AppBuilder BuildAvaloniaApp()
+    {
+        bool gpu = Gpu;
+        Log.Info("Drawing: " + (gpu ? "graphics card (software if it can't be used)" : "software"));
+        return AppBuilder.Configure<App>()
+            .UsePlatformDetect()
+            .With(new Win32PlatformOptions { RenderingMode = gpu ? [Win32RenderingMode.AngleEgl, Win32RenderingMode.Wgl, Win32RenderingMode.Software] : [Win32RenderingMode.Software] })
+            .With(new X11PlatformOptions { RenderingMode = gpu ? [X11RenderingMode.Egl, X11RenderingMode.Glx, X11RenderingMode.Software] : [X11RenderingMode.Software] })
+            .LogToTrace();
+    }
 
     static int SwCli(string[] args)
     {

@@ -310,6 +310,30 @@ public static class SaveManager
         Log.Info($"Saves: slot {slot} of {Log.Scrub(t.SaveDir)} deleted (backed up first)");
     }
 
+    // ---------------------------------------------------------------- editing one slot's game_data.sav (equipment)
+
+    /// <summary>
+    /// Changes a slot's game_data.sav: Savage Wind's save lock taken, the whole save folder backed up first, the
+    /// edit made on a copy, the copy read back to check it, then swapped in. <paramref name="change"/> edits the
+    /// <see cref="SaveFile"/> and returns what it did (for the log and the message).
+    /// </summary>
+    public static string EditGameData(string saveDir, string slotDir, Func<SaveFile, string> change)
+    {
+        using var lk = new SaveLock(saveDir);
+        var file = Path.Combine(slotDir, "game_data.sav");
+        var save = SaveFile.Load(file);
+        var what = change(save);
+        var bytes = save.ToBytes();
+        SaveFile.Parse(bytes);  // (still a well-formed save)
+        BackupNoLock(saveDir);
+        var tmp = file + ".slate-new";
+        File.WriteAllBytes(tmp, bytes);
+        if (!SaveFile.Parse(File.ReadAllBytes(tmp)).ToBytes().AsSpan().SequenceEqual(bytes)) { File.Delete(tmp); throw new SaveException("The save wasn't changed", "The edited file didn't read back the same. Nothing was changed."); }
+        File.Move(tmp, file, true);
+        Log.Info($"Saves: {Log.Scrub(file)}: {what}");
+        return what;
+    }
+
     // ---------------------------------------------------------------- export
 
     /// <summary>The saves as a .zip: for Savage Wind / Switch, or converted for Wii U (Cemu: unpack into user/80000001).</summary>

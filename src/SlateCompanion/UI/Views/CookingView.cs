@@ -54,28 +54,10 @@ public sealed class CookingView : ViewBase
 
     Control Pot()
     {
-        var slots = Ui.Row(10);
-        for (int i = 0; i < 5; i++)
-        {
-            int idx = i;
-            var has = i < pot.Count;
-            var b = new Button
-            {
-                Width = 74, Height = 74, CornerRadius = new CornerRadius(14), Padding = new Thickness(4),
-                HorizontalContentAlignment = HorizontalAlignment.Center, VerticalContentAlignment = VerticalAlignment.Center,
-                BorderBrush = has ? Ui.Brush("Glow") : Ui.Brush("LineHi"),
-                Background = has ? new SolidColorBrush(Color.Parse("#1439C6FF")) : new SolidColorBrush(Color.Parse("#80071116")),
-                Content = has && Assets.Icon(pot[i], 56) is { } icon
-                    ? new Image { Source = icon, Width = 56, Height = 56 }
-                    : new TextBlock { Text = has ? data.IngredientById[pot[i]].Name : "empty", FontSize = 11, TextAlignment = TextAlignment.Center, TextWrapping = TextWrapping.Wrap, Foreground = has ? Ui.Brush("Text") : Ui.Brush("Faint") },
-            };
-            if (has) ToolTip.SetTip(b, data.IngredientById[pot[i]].Name + " (click to remove)");
-            if (has) b.Click += (_, _) => { pot.RemoveAt(idx); Draw(); };
-            slots.Children.Add(b);
-        }
+        var potView = PotView();
         var bm = new CheckBox { Content = "Blood Moon", IsChecked = bloodMoon };
         bm.IsCheckedChanged += (_, _) => { bloodMoon = bm.IsChecked == true; Draw(); };
-        var left = Ui.Stack(12, Ui.Text("POT", "h2"), slots, Ui.Row(10, Ui.Button("Empty the pot", () => { pot.Clear(); Draw(); }, "small"), bm), Result());
+        var left = Ui.Stack(12, Ui.Text("POT", "h2"), potView, Ui.Row(10, Ui.Button("Empty the pot", () => { pot.Clear(); Draw(); }, "small"), bm), Result());
 
         var search = Rows.SearchBox("Find an ingredient…", s => { q = s; Draw(); }, 220, q);
         var grid = new WrapPanel { Orientation = Orientation.Horizontal };
@@ -90,7 +72,8 @@ public sealed class CookingView : ViewBase
             };
             if (Assets.Desc(i.Id) is string tip) ToolTip.SetTip(b, tip);
             var id = i.Id;
-            b.Click += (_, _) => { if (pot.Count < 5) { pot.Add(id); Draw(); } };
+            // drag it into the pot, or click it
+            Drag.Source(b, "ing:" + id, () => Add(id));
             grid.Children.Add(b);
         }
         var right = new Grid { RowDefinitions = new RowDefinitions("Auto,*") };
@@ -101,6 +84,59 @@ public sealed class CookingView : ViewBase
         g.Children.Add(Ui.Panel(left, "panel glow", new Thickness(0, 0, 14, 0)));
         var r = Ui.Panel(right); Grid.SetColumn(r, 1); g.Children.Add(r);
         return g;
+    }
+
+    void Add(string id)
+    {
+        if (pot.Count >= 5) { App.Main.Toast("The pot holds five ingredients"); return; }
+        pot.Add(id);
+        Draw();
+    }
+
+    /// <summary>
+    /// The cooking pot: the game's own pot (Item_CookSet), rendered once from the player's game files, with what's in
+    /// it sitting in its opening. Ingredients are dragged in (or clicked in the list); click one here to take it out.
+    /// </summary>
+    Control PotView()
+    {
+        const double W = 380, H = 300;
+        var canvas = new Canvas { Width = W, Height = H };
+        if (Assets.PotPicture() is { } pic)
+        {
+            var img = new Image { Source = pic, Width = W, Height = H, Stretch = Stretch.Uniform };
+            canvas.Children.Add(img);
+        }
+        else
+        {
+            // until the game's pot is drawn (a moment, the first time): a plain outline in its place
+            var outline = new Avalonia.Controls.Shapes.Path
+            {
+                Data = Geometry.Parse("M70 120h240 M80 120c0 90 40 130 110 130s110-40 110-130 M150 250l-20 40 M230 250l20 40 M120 290h140"),
+                Stroke = Ui.Brush("LineHi"), StrokeThickness = 3, StrokeLineCap = PenLineCap.Round,
+            };
+            canvas.Children.Add(outline);
+            _ = Assets.EnsurePotAsync().ContinueWith(t => Avalonia.Threading.Dispatcher.UIThread.Post(() => { if (t.Result) Draw(); }));
+        }
+        // what's in the pot: in an arc over its opening, each one taken out by a click
+        for (int i = 0; i < pot.Count; i++)
+        {
+            int idx = i;
+            double a = Math.PI * (0.18 + 0.64 * (pot.Count == 1 ? 0.5 : (double)i / (pot.Count - 1)));
+            double cx = W / 2 - Math.Cos(a) * 120, cy = 92 - Math.Sin(a) * 48;
+            var ing = data.IngredientById[pot[i]];
+            Control face = Assets.Icon(pot[i], 64) is { } icon ? new Image { Source = icon, Width = 58, Height = 58 }
+                : new TextBlock { Text = ing.Name, FontSize = 11, TextWrapping = TextWrapping.Wrap, Width = 58, TextAlignment = TextAlignment.Center };
+            var b = new Button { Content = face, Padding = new Thickness(2), Background = new SolidColorBrush(Color.Parse("#B0071116")), BorderBrush = Ui.Brush("Glow"), CornerRadius = new CornerRadius(30), Width = 66, Height = 66 };
+            ToolTip.SetTip(b, ing.Name + " (click to take it out)");
+            b.Click += (_, _) => { pot.RemoveAt(idx); Draw(); };
+            Canvas.SetLeft(b, cx - 33); Canvas.SetTop(b, cy - 33);
+            canvas.Children.Add(b);
+        }
+        var hint = Ui.Text(pot.Count == 0 ? "Drag ingredients into the pot, or click them" : $"{pot.Count} of 5 · click one to take it out", "faint small");
+        hint.HorizontalAlignment = HorizontalAlignment.Center;
+        var target = new Border { Child = Ui.Stack(4, canvas, hint), Padding = new Thickness(8), CornerRadius = new CornerRadius(18), BorderThickness = new Thickness(1.5), BorderBrush = Brushes.Transparent, HorizontalAlignment = HorizontalAlignment.Center };
+        Drag.Target(target, d => d.StartsWith("ing:", StringComparison.Ordinal) && pot.Count < 5, d => Add(d[4..]));
+        return target;
     }
 
     Control Result()

@@ -36,6 +36,18 @@ public partial class App : Application
         base.OnFrameworkInitializationCompleted();
         _ = Progress.RefreshAsync();
         FirstRunSearch();
+        SyncDesktopEntries();
+    }
+
+    /// <summary>Linux: keeps the app-menu entries up to date (Slate Companion and each Savage Wind AppImage), in the background.</summary>
+    public static void SyncDesktopEntries()
+    {
+        if (!DesktopEntries.Supported || Program.Args.Contains("--screenshots")) return;
+        var s = Progress.Settings;
+        if (!s.AddToApplications) return;
+        var installs = Launcher.FindInstalls(s);
+        var names = new Dictionary<string, string>(s.InstallNames);
+        _ = Task.Run(() => { try { DesktopEntries.Sync(installs, names); } catch (Exception e) { Log.Warn("desktop entries: " + e.Message); } });
     }
 
     /// <summary>Once, look for Savage Wind installs in the usual places (a few seconds, in the background).</summary>

@@ -55,7 +55,6 @@ public sealed class Progress : IDisposable
         tracked = [.. t];
         var s = new List<(string, string, string)>();
         foreach (var st in data.Flags.Stats) if (st.Flag != null) s.Add((st.Key, st.Flag, st.Type ?? "s32"));
-        foreach (var d in data.Flags.Defeated) if (d.Flag != null) s.Add(("defeated:" + d.Flag, d.Flag, d.Type ?? "s32"));
         statFlags = [.. s];
         watcher.Changed += () => _ = RefreshAsync();
     }

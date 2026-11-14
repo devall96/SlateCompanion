@@ -76,6 +76,25 @@ jobs:
           export SLATECOMPANION_DATA="$PWD/profile"
           xvfb-run -a -s "-screen 0 1440x900x24" bash -c "\"$APP\" & pid=\$!; sleep 15; import -window root screenshot.png; kill \$pid || true"
           test -s screenshot.png
+      - name: Add to applications (app-menu entries)
+        run: |
+          sudo apt-get install -y --no-install-recommends desktop-file-utils
+          APP="$(find "$PWD/squashfs-root" -name SlateCompanion -type f -perm -u+x | head -n1)"
+          export HOME="$PWD/home" SLATECOMPANION_DATA="$PWD/menu-profile"
+          mkdir -p "$HOME/Downloads"
+          # a Savage Wind AppImage where a player would have it (its icon is read out of the AppImage)
+          curl -sSL -o "$HOME/Downloads/Savage_Wind-0.5.3-alpha.5-x86_64.AppImage" \
+            https://github.com/Revivedx/SavageWindRecomp/releases/download/v0.5.3-alpha.5/Savage_Wind-0.5.3-alpha.5-x86_64.AppImage
+          chmod +x "$HOME"/Downloads/*.AppImage
+          "$APP" --app-menu on
+          ls -la "$HOME/.local/share/applications" "$HOME/.local/share/icons/hicolor/256x256/apps"
+          for f in "$HOME"/.local/share/applications/slatecompanion*.desktop; do echo "== $f"; cat "$f"; desktop-file-validate "$f"; done
+          test "$(ls "$HOME"/.local/share/applications/slatecompanion*.desktop | wc -l)" = 2
+          test -s "$HOME/.local/share/icons/hicolor/256x256/apps/slatecompanion.png"
+          ls "$HOME"/.local/share/icons/hicolor/256x256/apps/slatecompanion-savagewind-*.png
+          "$APP" --app-menu off
+          test -z "$(ls "$HOME"/.local/share/applications/slatecompanion*.desktop 2>/dev/null)"
+          test -z "$(ls "$HOME"/.local/share/icons/hicolor/256x256/apps/slatecompanion*.png 2>/dev/null)"
       - uses: actions/upload-artifact@v4
         with:
           name: screenshot-linux

@@ -11,7 +11,7 @@
 > **Made with AI.** Every line of code in Slate Companion, every test, the art and this page were written or made by Claude, Anthropic's AI, through Claude Code. A human, [devall96](https://github.com/devall96), came up with the idea, directs it and tests every build, but no human reviews the code line by line. [Who did what](#who-did-what) has the details. If you don't want to run code written that way, don't run this. As with anything on the internet, you run it at your own risk.
 
 > [!WARNING]
-> **Early, and tested on one PC.** Slate Companion 0.2 has been run on one Windows PC against real Savage Wind saves and a real Savage Wind install. The Linux AppImage is built and packaged automatically but hasn't been tried on a Linux desktop yet, and updating an existing Savage Wind to a newer release hasn't been tried yet (there hasn't been a newer release to update to). Your progress is only ever **read** from your saves; the Save files screen changes saves only when you ask, and backs them all up first. It's still worth keeping a copy of any you care about.
+> **Early, and tested on two PCs.** Slate Companion 0.3 has been run on Windows against real Savage Wind saves and a real Savage Wind install, and earlier versions on Ubuntu. Updating an existing Savage Wind to a newer release hasn't been tried yet (there hasn't been a newer release to update to). Your progress is only ever **read** from your saves; the Save files screen and Change equipment change saves only when you ask, and back them all up first. It's still worth keeping a copy of any you care about.
 
 > [!NOTE]
 > **Not official.** Slate Companion is a fan-made app. It isn't made by, affiliated with or endorsed by Nintendo or the Savage Wind Recomp team. Please don't report Slate Companion problems to Savage Wind: [open an issue here](https://github.com/devall96/SlateCompanion/issues) instead.
@@ -26,10 +26,9 @@
 | ![Adventure log: completion, play time and the closest unfinished shrines and Korok seeds](docs/images/home.png) | ![The in-game map with the game's own icons and a captured-memory photo](docs/images/map.png) |
 | ![Cooking: the pot simulator with item icons and the game's description](docs/images/cooking.png) | ![The Hyrule Compendium with its photo and entry](docs/images/compendium.png) |
 | ![Quests with the game's own quest log](docs/images/quests.png) | ![Shrines with short solutions](docs/images/shrines.png) |
-| ![Korok seeds by map square and puzzle type](docs/images/koroks.png) | ![Stats from your save](docs/images/stats.png) |
+| ![Korok seeds by map square and puzzle type](docs/images/koroks.png) | ![Inventory: Link in 3D in his current gear, with loadouts](docs/images/inventory.png) |
 | ![Armor and Great Fairy upgrades with a shopping list](docs/images/armor.png) | ![Guides and tips](docs/images/guides.png) |
-| ![Play: install, update and start Savage Wind, with all of its settings](docs/images/launch.png) | ![Inventory with the paper doll of what Link has equipped](docs/images/inventory.png) |
-| ![Save files: slots, backups, import and export](docs/images/saves.png) | |
+| ![Play: install, update and start Savage Wind, with all of its settings](docs/images/launch.png) | ![Save files: slots, backups, import and export](docs/images/saves.png) |
 
 The map, icons, item pictures, compendium photos, memory photos and in-game text in these screenshots were built from a legally obtained copy of the game, as they are on your PC. They're © Nintendo and aren't part of Slate Companion.
 
@@ -49,11 +48,12 @@ The map, icons, item pictures, compendium photos, memory photos and in-game text
 - **Quests & walkthrough**: the story chapter by chapter with both DLC packs, all 15 main, 76 side and 42 shrine quests, with the **game's own quest log** next to step-by-step notes.
 - **Shrines**: all 136 with a short solution, chest count and the shrine quest behind the hidden ones.
 - **Korok seeds**: by map square and puzzle type, or the closest to your save first.
-- **Cooking**: a pot simulator that uses the game's own rules (checked against 617 real in-game results), every recipe and ingredient, with **item icons** and the **game's descriptions**.
+- **Cooking**: the game's own cooking pot (drawn from your game files): drag ingredients in or click them. It uses the game's own rules (checked against 617 real in-game results), every recipe and ingredient, with **item icons** and the **game's descriptions**.
 - **Hyrule Compendium**: all 389 entries with the **compendium photo** and the game's own entry text.
 - **Armor & upgrades**: every piece with its icon, the Great Fairy materials per level, and a **shopping list** for the levels you want.
-- **Inventory**: everything in Link's pouch with the game's own pictures, names and descriptions: weapons with durability and bonuses, bows, arrows, shields, armor with its ★ level, materials, food and key items, plus rupees, Mon, hearts, stamina and pouch sizes. A **paper doll** shows what he has equipped and your armor set's bonus. (The doll is a placeholder: a simple drawn outline for now; Link in his actual gear comes later.)
-- **Stats**: play time, rupees, hearts, stamina, days, enemies defeated, progress over time and play sessions.
+- **Inventory**: everything in Link's pouch with the game's own pictures, names and descriptions: weapons with durability and bonuses, bows, arrows, shields, armor with its ★ level, materials, food and key items, plus rupees, Mon, hearts, stamina and pouch sizes. **Link in 3D** in what he has equipped, drawn on your graphics card from your own game files (drag to turn him), and your armor set's bonus.
+- **Change equipment** (opt-in): equip and take off, or drag an item onto Link's slot. **Loadouts**: save sets of gear, preview them on Link and put one on with a click. This edits your save, so it only works while Savage Wind is closed, and backs everything up first.
+- **Stats** on the Adventure log: rupees, hearts, stamina, spirit orbs, Mon, days, Great Fairies, bosses, progress over time and play sessions.
 - **Guides**: Blood Moon, weather, horses, Hestu, the Master Sword, shops and boss tips.
 - **Search everything** with Ctrl+K.
 
@@ -64,7 +64,7 @@ The Play screen makes Slate Companion your Savage Wind launcher. You choose on t
 - **Install Savage Wind**: downloads the newest release from GitHub, checks it against Savage Wind's signature and every file against its list, puts it in a folder you choose, finds your game files (from another copy of Savage Wind, linked instead of copied where the disk allows, or a dump; or you choose the folder) and sets it up with progress bars: the game files, the game code built from them, the shaders precompiled. None of Savage Wind's own screens are needed.
 - **Updates**: Slate Companion installs Savage Wind's updates itself, the same way Savage Wind's own SW Update does (signature, file list, the same undo journal and lock, a start check, the old files kept until the new version is set up), then sets the new version up. You can go back to the previous version until then.
 - **Several copies**: every copy of Savage Wind on your PC, with a name of your own: which one Play starts, update, set up, go back, or remove from the list (nothing is deleted).
-- **All of Savage Wind's settings**: the same tabs, names, choices and descriptions as Savage Wind Configuration (controls, video, audio, language, saves, game files), plus launch options. Saved to that copy's `savagewind.ini`, only while the game is closed.
+- **All of Savage Wind's settings**: the same tabs, names, choices and descriptions as Savage Wind Configuration (controls, video, audio, language, saves, game files), plus launch options. Saved to that copy's `savagewind.ini`, only while the game is closed. What your graphics card can't use (DLSS, FSR 4…) is greyed out, with why.
 - **[Clear Skies](https://github.com/devall96/ClearSkies)**: play with Cemu's Clarity look and pick one of its 20 presets, open its mod manager and GameBanana browser, and see when it has an update.
 
 **Save files**
@@ -73,7 +73,7 @@ The Play screen makes Slate Companion your Savage Wind launcher. You choose on t
 - Every change backs the whole save folder up first, into Savage Wind's own backup folder (its Saves tab can restore them too), takes Savage Wind's save lock, and never runs while the game is open.
 
 **Light enough to leave open while you play**
-- A native app (no browser engine inside), drawn in software so the game keeps the graphics card, at below-normal priority.
+- A native app (no browser engine inside), drawn on the graphics card (or in software, in Settings) at below-normal priority.
 - It does nothing until something changes: a save written, Link moving, you clicking. **Minimize it, or click over to the game, and it goes fully to sleep**: no timers, no drawing, until you come back. (The map's live position can keep moving in the background for a second screen: Settings.)
 - The game files are read once, when it builds; while you play it only shows what was built.
 
@@ -81,7 +81,7 @@ The Play screen makes Slate Companion your Savage Wind launcher. You choose on t
 
 **Windows:** download **[SlateCompanion-win-Setup.exe](https://github.com/devall96/SlateCompanion/releases/latest/download/SlateCompanion-win-Setup.exe)** and run it. It installs for your user only (no admin), adds a Start menu entry, and checks for its own updates when it opens (one small request; you can turn that off in **Saves & settings → Updates**).
 
-**Linux:** download **[SlateCompanion.AppImage](https://github.com/devall96/SlateCompanion/releases/latest/download/SlateCompanion.AppImage)**, make it executable (`chmod +x SlateCompanion.AppImage`, or Properties → Allow executing) and run it.
+**Linux:** download **[SlateCompanion.AppImage](https://github.com/devall96/SlateCompanion/releases/latest/download/SlateCompanion.AppImage)**, make it executable (`chmod +x SlateCompanion.AppImage`, or Properties → Allow executing) and run it. On the first start, pick your Savage Wind AppImage (its saves and game files are found from it), and turn on **Add to applications** to have Slate Companion and Savage Wind in your app menu.
 
 **First start:** Slate Companion looks for Savage Wind on your PC and lists its game files; press **Use these**, or **Choose your Savage Wind folder…** (the folder with `savagewind.exe`, or `~/.local/share/savagewind` on Linux). It builds the map, icons, pictures and text once, in under a minute, and opens. Then it finds your saves by itself. The welcome screen also asks whether you want the Savage Wind launcher (the Play screen).
 

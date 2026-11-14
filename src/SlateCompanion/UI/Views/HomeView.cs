@@ -5,7 +5,7 @@ using Avalonia.Layout;
 
 namespace SlateCompanion.UI.Views;
 
-/// <summary>Adventure log: completion per category, play time, and the closest unfinished things to the save spot.</summary>
+/// <summary>Adventure log: completion per category, play time, the closest unfinished things to the save spot, and every stat from the save.</summary>
 public sealed class HomeView : ViewBase
 {
     readonly ContentControl body = new();
@@ -85,6 +85,7 @@ public sealed class HomeView : ViewBase
         var a = Ui.Panel(bars, "panel", new Thickness(0, 0, 12, 0)); two.Children.Add(a);
         var b2 = Ui.Panel(near, "panel glow"); Grid.SetColumn(b2, 1); two.Children.Add(b2);
         page.Children.Add(two);
+        StatsSections.Add(page);  // (the stats that used to have their own screen)
         body.Content = page;
     }
 }

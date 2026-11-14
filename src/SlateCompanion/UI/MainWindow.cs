@@ -34,7 +34,7 @@ public sealed class MainWindow : Window
     [
         ("home", "Adventure log"), ("launch", "Play Savage Wind"), ("map", "Map"), ("quests", "Quests & walkthrough"), ("shrines", "Shrines"),
         ("koroks", "Korok seeds"), ("inventory", "Inventory"), ("cooking", "Cooking"), ("compendium", "Hyrule Compendium"), ("armor", "Armor & upgrades"),
-        ("stats", "Stats"), ("saves", "Save files"), ("guides", "Guides & tips"),
+        ("saves", "Save files"), ("guides", "Guides & tips"),
     ];
 
     readonly Dictionary<string, Button> runes = [];
@@ -293,6 +293,7 @@ public sealed class MainWindow : Window
 
     public void Go(string id, object? arg = null)
     {
+        if (id == "stats") id = "home";  // (the stats are on the Adventure log now)
         current?.OnHidden();
         if (!views.TryGetValue(id, out var v))
         {
@@ -308,7 +309,6 @@ public sealed class MainWindow : Window
                 "cooking" => new CookingView(),
                 "compendium" => new CompendiumView(),
                 "armor" => new ArmorView(),
-                "stats" => new StatsView(),
                 "guides" => new GuidesView(),
                 "settings" => new SettingsView(),
                 _ => new HomeView(),
@@ -346,6 +346,7 @@ public sealed class MainWindow : Window
 
     async void OnDrop(DragEventArgs e)
     {
+        if (e.Handled || e.DataTransfer.TryGetValue(Drag.Item) != null) return;  // (the app's own drags: an item or ingredient let go elsewhere)
         var items = e.DataTransfer.TryGetFiles();
         var path = items?.Select(i => i.TryGetLocalPath()).FirstOrDefault(p => p != null);
         if (path == null) { Toast("Drop a save folder, a game_data.sav or a .zip."); return; }

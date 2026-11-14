@@ -113,6 +113,7 @@ public sealed class LaunchView : ViewBase
             var state = i.SetupState();
             if (loggedState.GetValueOrDefault(i.Exe) != state) { loggedState[i.Exe] = state; Log.Info($"Copy {Log.Scrub(i.Exe)}: {state}{(i.SetupPending ? " -> needs setting up" : "")}"); }
         }
+        App.SyncDesktopEntries();  // (Linux: the app menu follows the list of copies)
         cs = ClearSkies.Find(st);
         if (cs != null && st.ClearSkiesProgram != cs.Program) App.Progress.SaveSettings(x => x.ClearSkiesProgram = cs.Program);
         lastRunning = Launcher.GameRunning();

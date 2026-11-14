@@ -138,6 +138,29 @@ public static class Launcher
         }
     }
 
+    /// <summary>
+    /// Linux: the player picked Savage Wind's AppImage (or its savagewind program). Its data folder (saves, game files,
+    /// savagewind.ini) is worked out from it the way Savage Wind does, and both are remembered: the program for Play,
+    /// the data folder for saves and game files. Returns the data folder.
+    /// </summary>
+    public static string AddProgram(string program)
+    {
+        var data = DataRootFor(program);
+        App.Progress.SaveSettings(s =>
+        {
+            if (!s.SavageWindPrograms.Contains(program)) s.SavageWindPrograms.Add(program);
+            if (Directory.Exists(data) && !s.SavageWindFolders.Contains(data)) s.SavageWindFolders.Add(data);
+            s.HiddenInstalls.Remove(program);
+            s.GameProgram ??= program;
+        });
+        Log.Info($"Savage Wind program added: {Log.Scrub(program)} (data folder {Log.Scrub(data)})");
+        return data;
+    }
+
+    /// <summary>A picked file that is a Savage Wind program (an AppImage or savagewind).</summary>
+    public static bool IsProgram(string path) => File.Exists(path) &&
+        (Path.GetFileName(path) is "savagewind" or "savagewind.exe" || path.EndsWith(".AppImage", StringComparison.OrdinalIgnoreCase));
+
     /// <summary>Savage Wind's data folder for a program: SAVAGEWIND_DATA_ROOT, else next to the exe (Windows) or ~/.local/share/savagewind.</summary>
     public static string DataRootFor(string exe)
     {

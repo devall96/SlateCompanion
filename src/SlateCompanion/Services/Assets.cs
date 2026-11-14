@@ -46,6 +46,22 @@ public static class Assets
     /// <summary>A compendium photo (pictures/&lt;actor&gt;.jpg), decoded at <paramref name="width"/> pixels wide.</summary>
     public static Bitmap? Picture(string? actor, int width = 360) => actor == null || !On ? null : Load(Path.Combine(Folder, "pictures", actor + ".jpg"), width);
 
+    /// <summary>The game's cooking pot (Item_CookSet), drawn from the game files: built with the rest, or by <see cref="EnsurePotAsync"/>.</summary>
+    public static Bitmap? PotPicture() => !On ? null : Load(Path.Combine(Folder, "cook", "pot.png"), 760);
+
+    static Task<bool>? potJob;
+
+    /// <summary>Draws the pot picture if it's missing (an older build of the game assets): once, in the background.</summary>
+    public static Task<bool> EnsurePotAsync()
+    {
+        if (!On) return Task.FromResult(false);
+        var path = Path.Combine(Folder, "cook", "pot.png");
+        if (File.Exists(path)) return Task.FromResult(true);
+        var romfs = MapBuilder.FindRomfs(App.Progress.Settings.GameFilesFolder, App.Progress.Settings.SavageWindFolders);
+        if (romfs == null) return Task.FromResult(false);
+        return potJob ??= Task.Run(() => MapBuilder.RenderPot(romfs, path));
+    }
+
     public static Bitmap? Album(int index, int width = 360) => !On ? null : Load(Path.Combine(Folder, "album", $"pict_{index:000}.jpg"), width);
 
     static Bitmap? Load(string path, int width)
@@ -57,6 +73,7 @@ public static class Assets
             if (File.Exists(path)) { using var s = File.OpenRead(path); b = Bitmap.DecodeToWidth(s, width, BitmapInterpolationMode.HighQuality); }
         }
         catch (Exception) { b = null; }
+        if (b == null) return null;  // (not cached: a picture that's drawn later, like the cooking pot, shows once it's there)
         bitmaps[key] = b;
         recent.AddFirst(key);
         // keep small icons around; let big pictures go after a handful

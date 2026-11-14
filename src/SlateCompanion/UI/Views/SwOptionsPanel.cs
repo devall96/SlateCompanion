@@ -36,6 +36,7 @@ public static class SwOptionsPanel
         if (data == null) return Ui.Panel(Ui.Stack(8, head, Ui.Text("The settings list is missing from this copy of Slate Companion.", "muted small")));
 
         var ini = new SwIni(sw.Ini);
+        var caps = GpuCaps.For(sw);  // (what this PC's graphics card can't do is greyed out)
         head.Children.Add(Ui.Text(running
             ? "Savage Wind is running: these show its saved settings, and can be changed once it's closed. (It saves its own settings when it quits.)"
             : ini.Exists ? $"The same settings as Savage Wind Configuration. A change is saved at once to savagewind.ini ({Ui.ShortPath(sw.DataRoot)}) and applies the next time the game starts."
@@ -87,6 +88,12 @@ public static class SwOptionsPanel
         tabs.SelectedIndex = Math.Clamp(lastTab, 0, tabs.ItemCount - 1);
         tabs.SelectionChanged += (_, _) => lastTab = tabs.SelectedIndex;
         RefreshAll();
+        if (caps.Gpu != null)
+        {
+            var note = Ui.Text($"Graphics card: {caps.Gpu}. Choices it can't use are greyed out (from {caps.Source}).", "faint small");
+            note.TextWrapping = TextWrapping.Wrap;
+            head.Children.Add(note);
+        }
         var body = Ui.Stack(10, head, descBox, tabs);
         body.IsEnabled = true;
         tabs.IsEnabled = !running;
@@ -174,7 +181,11 @@ public static class SwOptionsPanel
                     var v = Val(row, key);
                     shownChoices = choices;
                     if (v != "" && !choices.Any(c => c.value == v)) shownChoices = [.. choices, (v.Contains(' ') && key == "display" ? v[(v.IndexOf(' ') + 1)..] : v, v)];
-                    cb.ItemsSource = shownChoices.Select(c => c.label).ToList();
+                    cb.ItemsSource = shownChoices.Select(c =>
+                    {
+                        var why = caps.WhyNot(key, c.value);
+                        return new ComboBoxItem { Content = why == null ? c.label : $"{c.label}: {why}", IsEnabled = why == null, Opacity = why == null ? 1 : 0.45 };
+                    }).ToList();
                     cb.SelectedIndex = shownChoices.FindIndex(c => c.value == v);
                 };
             }

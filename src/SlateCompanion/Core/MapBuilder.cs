@@ -61,6 +61,22 @@ public sealed class MapBuilder
         return null;
     }
 
+    /// <summary>The game's cooking pot (Item_CookSet), rendered once from the player's files for the cooking screen.</summary>
+    public static bool RenderPot(string romfs, string path)
+    {
+        try
+        {
+            using var bmp = ModelRender.RenderActor(romfs, "Item_CookSet", 768, "threequarter");
+            Directory.CreateDirectory(Path.GetDirectoryName(path)!);
+            using (var data = bmp.Encode(SkiaSharp.SKEncodedImageFormat.Png, 100))
+            using (var f = File.Create(path + ".tmp")) data.SaveTo(f);
+            File.Move(path + ".tmp", path, true);
+            Log.Info("Cooking pot drawn from the game files");
+            return true;
+        }
+        catch (Exception e) { Log.Warn("Cooking pot couldn't be drawn: " + e.Message); return false; }
+    }
+
     public const int AssetsVersion = 2;  // 1: map and map icons; 2: + item icons, pictures and the game's text
 
     /// <summary>Built with everything the current version uses (an older build has only the map).</summary>
@@ -103,6 +119,8 @@ public sealed class MapBuilder
             int items = ExtractItems(romfs, Path.Combine(tmp, "items"), ct);
             int pictures = CopyAll(Path.Combine(romfs, "UI", "PictureBook"), Path.Combine(tmp, "pictures"), "*.jpg");
             int album = CopyAll(Path.Combine(romfs, "UI", "Album"), Path.Combine(tmp, "album"), "*.jpg");
+            Message = "Drawing the cooking pot";
+            RenderPot(romfs, Path.Combine(tmp, "cook", "pot.png"));
             Message = "Reading the game's text";
             var text = GameText.FromPack(romfs, lang, "ActorType/", "QuestMsg/", "StaticMsg/LocationMarker", "Tips/");
             File.WriteAllText(Path.Combine(tmp, "text.json"), JsonSerializer.Serialize(text));
