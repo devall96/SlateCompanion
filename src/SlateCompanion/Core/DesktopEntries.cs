@@ -51,7 +51,7 @@ public static class DesktopEntries
             .AppendLine("GenericName=Breath of the Wild companion")
             .AppendLine("Comment=Map, walkthrough, cooking, compendium and your progress for Breath of the Wild; a launcher for Savage Wind")
             .AppendLine($"Exec={Quote(SelfProgram())}").AppendLine("Icon=slatecompanion").AppendLine("Terminal=false")
-            .AppendLine("Categories=Game;Utility;").AppendLine("StartupWMClass=SlateCompanion").ToString());
+            .AppendLine("Categories=Game;").AppendLine("StartupWMClass=SlateCompanion").ToString());
 
         // each Savage Wind AppImage
         foreach (var i in installs.Where(i => i.AppImage && File.Exists(i.Exe)))
@@ -101,36 +101,44 @@ public static class DesktopEntries
         catch (Exception e) when (e is IOException or UnauthorizedAccessException) { Log.Warn($"desktop entry {name}: {e.Message}"); }
     }
 
-    /// <summary>The AppImage's own icon: its runtime extracts files without starting the program (--appimage-extract).</summary>
+    /// <summary>
+    /// The AppImage's own icon: its runtime extracts files without starting the program (--appimage-extract
+    /// <pattern>). Savage Wind's is savagewind.png at the top (.DirIcon links to it); each try in a fresh folder.
+    /// </summary>
     static bool ExtractIcon(string appImage, string dest)
     {
-        var tmp = Path.Combine(Path.GetTempPath(), "slate-icon-" + Guid.NewGuid().ToString("N")[..8]);
-        try
+        string? lastError = null;
+        foreach (var pattern in new[] { "savagewind.png", "*.png", ".DirIcon" })
         {
-            Directory.CreateDirectory(tmp);
-            foreach (var pattern in new[] { ".DirIcon", "*.png" })
+            var tmp = Path.Combine(Path.GetTempPath(), "slate-icon-" + Guid.NewGuid().ToString("N")[..8]);
+            try
             {
+                Directory.CreateDirectory(tmp);
                 var psi = new ProcessStartInfo(appImage) { WorkingDirectory = tmp, UseShellExecute = false, RedirectStandardOutput = true, RedirectStandardError = true };
                 psi.ArgumentList.Add("--appimage-extract"); psi.ArgumentList.Add(pattern);
                 using var p = Process.Start(psi);
                 if (p == null) return false;
-                p.StandardOutput.ReadToEnd(); p.StandardError.ReadToEnd();
-                if (!p.WaitForExit(20000)) { try { p.Kill(true); } catch (Exception) { } return false; }
+                var err = p.StandardError.ReadToEndAsync();
+                p.StandardOutput.ReadToEnd();
+                if (!p.WaitForExit(20000)) { try { p.Kill(true); } catch (Exception) { } continue; }
+                lastError = err.Result.Trim();
                 var root = Path.Combine(tmp, "squashfs-root");
                 if (!Directory.Exists(root)) continue;
-                var best = Directory.GetFiles(root, "*.png").Append(Path.Combine(root, ".DirIcon")).Where(File.Exists)
-                    .Select(f => new FileInfo(f)).Where(f => f.Length > 0).OrderByDescending(f => f.Length).FirstOrDefault();
-                if (best == null) continue;
-                // .DirIcon can be a link to the png inside: copy what it points to when that came out too
-                var src = best.LinkTarget is { } t && File.Exists(Path.Combine(root, t)) ? Path.Combine(root, t) : best.FullName;
-                using (var probe = File.OpenRead(src)) { var sig = new byte[4]; if (probe.Read(sig) < 4 || sig[1] != 'P' || sig[2] != 'N' || sig[3] != 'G') continue; }
-                File.Copy(src, dest, true);
-                return true;
+                foreach (var f in Directory.EnumerateFiles(root, "*", SearchOption.AllDirectories).Select(f => new FileInfo(f)).OrderByDescending(f => f.Exists ? f.Length : 0))
+                {
+                    var src = f.LinkTarget is { } t ? Path.Combine(f.DirectoryName!, t) : f.FullName;
+                    if (!File.Exists(src)) continue;
+                    var sig = new byte[4];
+                    using (var probe = File.OpenRead(src)) if (probe.Read(sig) < 4 || sig[1] != 'P' || sig[2] != 'N' || sig[3] != 'G') continue;
+                    File.Copy(src, dest, true);
+                    return true;
+                }
             }
-            return false;
+            catch (Exception e) { lastError = e.Message; }
+            finally { try { Directory.Delete(tmp, true); } catch (Exception) { } }
         }
-        catch (Exception e) { Log.Warn("AppImage icon: " + e.Message); return false; }
-        finally { try { Directory.Delete(tmp, true); } catch (Exception) { } }
+        Log.Warn($"AppImage icon not found in {Log.Scrub(appImage)}{(string.IsNullOrEmpty(lastError) ? "" : ": " + lastError)}");
+        return false;
     }
 
     static void TryDelete(string f) { try { if (File.Exists(f)) File.Delete(f); } catch (Exception) { } }
