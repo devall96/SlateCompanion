@@ -233,10 +233,12 @@ public sealed class SavesView : ViewBase
         if (target == null) return;
         var t = target;
         busy = true; Draw();
+        var watching = App.Progress.PauseWatching();  // (a watched save_0 keeps "save" from being renamed on Windows)
         try
         {
             App.Main.Toast(await Task.Run(() => work(t)));
             after?.Invoke();
+            watching.Dispose();
             _ = App.Progress.RefreshAsync();
         }
         catch (SaveManager.SaveException e) { ErrorWindow.Show(e.Title, e.Message); }
@@ -244,7 +246,7 @@ public sealed class SavesView : ViewBase
         // anything else (a Bootup.pack laid out differently trips the converter) still shows, and never leaves the
         // screen stuck with every button off
         catch (Exception e) { ErrorWindow.Show("Something went wrong", e.Message + " Your saves were backed up before anything changed.", e); }
-        finally { busy = false; }
+        finally { busy = false; watching.Dispose(); }
         Refresh();
     }
 

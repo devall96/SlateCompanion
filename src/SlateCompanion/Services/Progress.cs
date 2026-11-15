@@ -87,6 +87,9 @@ public sealed class Progress : IDisposable
         }
     }
 
+    /// <summary>No watching of the save folder while saves are changed (see <see cref="SaveWatcher.Suspend"/>).</summary>
+    public IDisposable PauseWatching() => watcher.Suspend();
+
     /// <summary>Find saves and re-read the one in use. Safe to call from any thread.</summary>
     public async Task RefreshAsync()
     {
