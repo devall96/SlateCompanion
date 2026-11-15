@@ -66,6 +66,7 @@ public sealed class MapCanvas : Control
     // made once, not on every frame
     static readonly IBrush LiveFill = new SolidColorBrush(Color.Parse("#4039C6FF")), LiveDot = new SolidColorBrush(Color.Parse("#39C6FF")), RingFill = new SolidColorBrush(Color.Parse("#38FF9A3C"));
     static readonly Pen LivePen = new(new SolidColorBrush(Color.Parse("#7039C6FF")), 2), LiveDotPen = new(Brushes.White, 2.5);
+    static readonly Pen GridLine = new(new SolidColorBrush(Color.Parse("#2839C6FF")), 1), GridEdge = new(new SolidColorBrush(Color.Parse("#6039C6FF")), 1.5);
     static readonly Dictionary<double, StreamGeometry> Diamonds = [];
     static readonly Dictionary<IBrush, Pen> RingPens = [];
 
@@ -128,13 +129,7 @@ public sealed class MapCanvas : Control
         var size = Bounds.Size;
         ctx.FillRectangle(Edge, new Rect(size));
         if (source == null) return;
-        double ppu = Ppu;
-        int tz = (int)Math.Clamp(Math.Round(Zoom), 0, source.MaxNativeZoom);
-        double unitsPerTile = TileSize / (Math.Pow(2, tz) * source.PixelsPerUnitAtZero);
-        var (x0, z0) = ToWorld(new Point(0, 0));
-        var (x1, z1) = ToWorld(new Point(size.Width, size.Height));
-        int tx0 = (int)Math.Floor((Math.Max(x0, -6000) + 6000) / unitsPerTile), tx1 = (int)Math.Floor((Math.Min(x1, 5999.9) + 6000) / unitsPerTile);
-        int ty0 = (int)Math.Floor((Math.Max(z0, -5000) + 5000) / unitsPerTile), ty1 = (int)Math.Floor((Math.Min(z1, 4999.9) + 5000) / unitsPerTile);
+        var (tz, unitsPerTile, tx0, tx1, ty0, ty1) = VisibleTiles();
         var mapRect = new Rect(ToScreen(-6000, -5000), ToScreen(6000, 5000));
         ctx.FillRectangle(Background, mapRect);
         for (int ty = ty0; ty <= ty1; ty++)
@@ -159,10 +154,8 @@ public sealed class MapCanvas : Control
         if (ShowGrid)
         {
             // the map's 1000-unit squares, lettered like the game's map grid (no map image)
-            var line = new Pen(new SolidColorBrush(Color.Parse("#2839C6FF")), 1);
-            var edge = new Pen(new SolidColorBrush(Color.Parse("#6039C6FF")), 1.5);
-            for (int gx = -6000; gx <= 6000; gx += 1000) ctx.DrawLine(gx is -6000 or 6000 ? edge : line, ToScreen(gx, -5000), ToScreen(gx, 5000));
-            for (int gz = -5000; gz <= 5000; gz += 1000) ctx.DrawLine(gz is -5000 or 5000 ? edge : line, ToScreen(-6000, gz), ToScreen(6000, gz));
+            for (int gx = -6000; gx <= 6000; gx += 1000) ctx.DrawLine(gx is -6000 or 6000 ? GridEdge : GridLine, ToScreen(gx, -5000), ToScreen(gx, 5000));
+            for (int gz = -5000; gz <= 5000; gz += 1000) ctx.DrawLine(gz is -5000 or 5000 ? GridEdge : GridLine, ToScreen(-6000, gz), ToScreen(6000, gz));
         }
 
         // items: cheap culling by screen position
@@ -187,6 +180,26 @@ public sealed class MapCanvas : Control
             }
             else ctx.DrawEllipse(LiveDot, LiveDotPen, p, 7, 7);
         }
+    }
+
+    /// <summary>The zoom level of the tiles drawn now, and the range of them on screen.</summary>
+    (int tz, double unitsPerTile, int tx0, int tx1, int ty0, int ty1) VisibleTiles()
+    {
+        int tz = (int)Math.Clamp(Math.Round(Zoom), 0, source!.MaxNativeZoom);
+        double unitsPerTile = TileSize / (Math.Pow(2, tz) * source.PixelsPerUnitAtZero);
+        var (x0, z0) = ToWorld(new Point(0, 0));
+        var (x1, z1) = ToWorld(new Point(Bounds.Width, Bounds.Height));
+        int tx0 = (int)Math.Floor((Math.Max(x0, -6000) + 6000) / unitsPerTile), tx1 = (int)Math.Floor((Math.Min(x1, 5999.9) + 6000) / unitsPerTile);
+        int ty0 = (int)Math.Floor((Math.Max(z0, -5000) + 5000) / unitsPerTile), ty1 = (int)Math.Floor((Math.Min(z1, 4999.9) + 5000) / unitsPerTile);
+        return (tz, unitsPerTile, tx0, tx1, ty0, ty1);
+    }
+
+    /// <summary>Still worth decoding: the tile is at the zoom drawn now and on screen (or just next to it).</summary>
+    bool Wanted((int z, int x, int y) key)
+    {
+        if (source == null) return false;
+        var (tz, _, tx0, tx1, ty0, ty1) = VisibleTiles();
+        return key.z == tz && key.x >= tx0 - 1 && key.x <= tx1 + 1 && key.y >= ty0 - 1 && key.y <= ty1 + 1;
     }
 
     static void DrawItem(DrawingContext ctx, MapItem it, Point p)
@@ -234,7 +247,14 @@ public sealed class MapCanvas : Control
     async Task Load((int z, int x, int y) key, int gen)
     {
         var src = source!;
-        await loads.WaitAsync();
+        await loads.WaitAsync();  // (back on the UI thread)
+        // Panned or zoomed past it while it waited, or the map was let go: don't decode what won't be drawn.
+        if (gen != generation || !Wanted(key))
+        {
+            loads.Release();
+            if (gen == generation) pending.Remove(key);
+            return;
+        }
         Bitmap? bmp = null;
         try
         {
@@ -244,13 +264,13 @@ public sealed class MapCanvas : Control
                 return File.Exists(loc) ? new Bitmap(loc) : null;
             });
         }
-        catch (Exception) { }
+        catch (Exception e) { Log.Warn($"Map tile {key} couldn't be read: {e.Message}"); }
         finally { loads.Release(); }
         await Dispatcher.UIThread.InvokeAsync(() =>
         {
-            pending.Remove(key);
             if (gen != generation) { bmp?.Dispose(); return; }
-            if (bmp == null) { missing.Add(key); return; }
+            pending.Remove(key);
+            if (bmp == null) { missing.Add(key); return; }  // (not retried on every frame)
             cache[key] = bmp;
             lru.AddFirst(key);
             while (lru.Count > CacheTiles) { var old = lru.Last!.Value; lru.RemoveLast(); if (cache.Remove(old, out var o)) o.Dispose(); }
@@ -413,7 +433,8 @@ public sealed class MapCanvas : Control
 
     public void ReleaseTiles()
     {
+        generation++;  // loads still under way are dropped, not put back in the cache
         foreach (var b in cache.Values) b.Dispose();
-        cache.Clear(); lru.Clear();
+        cache.Clear(); lru.Clear(); pending.Clear();
     }
 }
