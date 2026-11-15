@@ -16,10 +16,12 @@ public static class Icons
     public static string Folder => Path.Combine(App.MapBuilder.Folder, "icons");
     public static bool Available => !Program.Demo && App.MapBuilder.State == "ready" && Directory.Exists(Folder);
 
+    /// <summary>
+    /// Forget the icons (the game files were built again). They aren't disposed: screens built earlier may still be
+    /// showing them, and drawing a disposed bitmap throws on every frame; the GC frees them once nothing shows them.
+    /// </summary>
     public static void Reset()
     {
-        foreach (var b in tinted.Values) b?.Dispose();
-        foreach (var b in plain.Values) b?.Dispose();
         tinted.Clear(); plain.Clear();
     }
 

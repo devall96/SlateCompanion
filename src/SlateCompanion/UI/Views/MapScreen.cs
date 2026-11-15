@@ -108,7 +108,6 @@ public sealed class MapScreen : ViewBase
     void Setup()
     {
         // The map always comes from the player's own game files (linked at first start).
-        Icons.Reset();
         useGame = !Program.Demo;
         canvas.ShowGrid = Program.Demo;  // --demo: no map image, a plain grid of the map squares instead
         canvas.Source = new TileSource("game", (z, x, y) => useGame ? Path.Combine(App.MapBuilder.Folder, $"{z}", $"{x}", $"{y}.webp") : "", 3.0 / 256, 8, 1, 10);

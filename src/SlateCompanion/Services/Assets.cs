@@ -19,10 +19,10 @@ public static class Assets
     public static bool On => !Program.Demo && App.MapBuilder.Complete;
     static string Folder => App.MapBuilder.Folder;
 
+    /// <summary>Forget what was loaded (the game files were built again). Bitmaps aren't disposed: see <see cref="UI.Icons.Reset"/>.</summary>
     public static void Reset()
     {
         text = null; compendiumIndex = null; armorIndex = null; armorStars = null;
-        foreach (var b in bitmaps.Values) b?.Dispose();
         bitmaps.Clear(); recent.Clear();
     }
 
@@ -76,8 +76,9 @@ public static class Assets
         if (b == null) return null;  // (not cached: a picture that's drawn later, like the cooking pot, shows once it's there)
         bitmaps[key] = b;
         recent.AddFirst(key);
-        // keep small icons around; let big pictures go after a handful
-        while (recent.Count > 600) { var old = recent.Last!.Value; recent.RemoveLast(); if (bitmaps.Remove(old, out var o)) o?.Dispose(); }
+        // keep small icons around; let big pictures go after a handful (not disposed: a list may still show it, and
+        // drawing a disposed bitmap throws; the GC frees it once nothing shows it)
+        while (recent.Count > 600) { var old = recent.Last!.Value; recent.RemoveLast(); bitmaps.Remove(old); }
         return b;
     }
 

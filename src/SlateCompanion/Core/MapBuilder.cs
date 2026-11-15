@@ -79,13 +79,27 @@ public sealed class MapBuilder
 
     public const int AssetsVersion = 2;  // 1: map and map icons; 2: + item icons, pictures and the game's text
 
-    /// <summary>Built with everything the current version uses (an older build has only the map).</summary>
+    Tuple<string, bool>? completeFor;  // (a reference, so a read from another thread is never half-written)
+
+    /// <summary>
+    /// Built with everything the current version uses (an older build has only the map). Asked on every icon, name
+    /// and picture lookup, so meta.json is read once per build state, not every time.
+    /// </summary>
     public bool Complete
     {
         get
         {
-            try { return State == "ready" && JsonDocument.Parse(File.ReadAllText(Path.Combine(outDir, "meta.json"))).RootElement.GetProperty("version").GetInt32() >= AssetsVersion; }
-            catch (Exception) { return false; }
+            var state = State;
+            if (completeFor is { } c && c.Item1 == state) return c.Item2;
+            bool complete;
+            try
+            {
+                using var meta = JsonDocument.Parse(File.ReadAllText(Path.Combine(outDir, "meta.json")));
+                complete = state == "ready" && meta.RootElement.GetProperty("version").GetInt32() >= AssetsVersion;
+            }
+            catch (Exception e) when (e is IOException or UnauthorizedAccessException or JsonException or KeyNotFoundException or InvalidOperationException) { complete = false; }
+            completeFor = Tuple.Create(state, complete);
+            return complete;
         }
     }
 
