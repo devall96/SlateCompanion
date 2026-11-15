@@ -358,8 +358,10 @@ public sealed class MapScreen : ViewBase
         App.Progress.Changed -= OnProgress;
         liveTimer?.Stop();
         liveTimer = null;
-        canvas.ReleaseTiles();  // give the tile memory back while the map isn't on screen
     }
+
+    // give the tile memory back while the map isn't on screen (kept while the window is only in the background)
+    protected override void OnLeft() => canvas.ReleaseTiles();
 
     void OnProgress()
     {

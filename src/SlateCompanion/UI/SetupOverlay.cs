@@ -165,7 +165,8 @@ public sealed class SetupOverlay : Border
         poll = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(500) };
         poll.Tick += (_, _) =>
         {
-            if (App.MapBuilder.State == "building") { Draw(); return; }
+            // (minimized or in the background: no redrawing the progress, just wait for the build to end)
+            if (App.MapBuilder.State == "building") { if (!App.Main.Paused) Draw(); return; }
             poll!.Stop();
             Icons.Reset(); Assets.Reset();
             if (App.MapBuilder.Complete) { App.Progress.SaveSettings(x => x.SetupSeen = true); IsVisible = false; done(); }

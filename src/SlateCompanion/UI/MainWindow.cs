@@ -15,17 +15,45 @@ namespace SlateCompanion;
 /// <summary>A screen of the app. Built once; told when it is shown and hidden so it only works while on screen.</summary>
 public abstract class ViewBase : UserControl
 {
-    bool built;
-    public object? LastArg { get; private set; }
+    bool built, active;
+    object? pendingArg;
     protected abstract Control Build();
-    public void Show(object? arg)
+
+    /// <summary>
+    /// The screen is opened (with what to show, e.g. a shrine to focus). While the window is paused it only remembers
+    /// the argument and starts its work on <see cref="Resume"/>, so OnShown and OnHidden always come in pairs.
+    /// </summary>
+    public void Show(object? arg, bool paused = false)
     {
         if (!built) { Content = Build(); built = true; }
-        LastArg = arg;
+        if (paused) { pendingArg = arg; return; }
+        if (active) OnHidden();
+        active = true;
+        pendingArg = null;
         OnShown(arg);
     }
+
+    /// <summary>The screen stops its work: left for another screen (<paramref name="leaving"/>) or the window is paused.</summary>
+    public void Hide(bool leaving)
+    {
+        if (active) { active = false; OnHidden(); }
+        if (leaving) { pendingArg = null; OnLeft(); }
+    }
+
+    /// <summary>Back from a pause: picks up where it was, without replaying the argument it was first opened with.</summary>
+    public void Resume()
+    {
+        if (!built || active) return;
+        var arg = pendingArg;
+        pendingArg = null;
+        active = true;
+        OnShown(arg);
+    }
+
     protected virtual void OnShown(object? arg) { }
     public virtual void OnHidden() { }
+    /// <summary>Another screen took over (or the window was minimized): let go of memory that's quick to get back.</summary>
+    protected virtual void OnLeft() { }
 }
 
 public sealed class MainWindow : Window
@@ -144,9 +172,8 @@ public sealed class MainWindow : Window
         Activated += (_, _) => Resume();
 
         App.Progress.Changed += () => { if (!paused) RenderPill(); };
-        var tick = new DispatcherTimer { Interval = TimeSpan.FromSeconds(30) };
-        tick.Tick += (_, _) => { if (!paused) RenderPill(); };
-        tick.Start();
+        pillTimer.Tick += (_, _) => { if (!paused) RenderPill(); };
+        pillTimer.Start();
         RenderPill();
         ShowLauncher(App.Progress.Settings.UseLauncher);
 
@@ -247,13 +274,18 @@ public sealed class MainWindow : Window
     }
 
     bool paused;
+    readonly DispatcherTimer pillTimer = new() { Interval = TimeSpan.FromSeconds(30) };  // "saved 5 min ago" ages
 
     /// <summary>The screen stops its work (it's minimized or in the background).</summary>
     void Pause()
     {
-        if (paused || Program.Args.Contains("--screenshots")) return;
+        if (Program.Args.Contains("--screenshots")) return;
+        // (also when already paused: losing the focus usually comes just before the minimize)
         paused = true;
-        current?.OnHidden();
+        pillTimer.Stop();
+        // minimized: the screen also lets go of memory it can get back quickly (the map's tiles); just in the
+        // background (the game has the focus), it keeps it, so coming back shows the map at once
+        current?.Hide(leaving: WindowState == WindowState.Minimized);
     }
 
     /// <summary>Back in front: the screen picks up again and shows what changed meanwhile.</summary>
@@ -261,7 +293,8 @@ public sealed class MainWindow : Window
     {
         if (!paused || WindowState == WindowState.Minimized) return;
         paused = false;
-        current?.Show(current.LastArg);
+        current?.Resume();
+        pillTimer.Start();
         RenderPill();
     }
 
@@ -294,7 +327,7 @@ public sealed class MainWindow : Window
     public void Go(string id, object? arg = null)
     {
         if (id == "stats") id = "home";  // (the stats are on the Adventure log now)
-        current?.OnHidden();
+        current?.Hide(leaving: true);
         if (!views.TryGetValue(id, out var v))
         {
             v = id switch
@@ -319,7 +352,7 @@ public sealed class MainWindow : Window
         current = v;
         currentId = id;
         host.Content = v;
-        v.Show(arg);
+        v.Show(arg, paused);
         if (App.Progress.Settings.LastView != id) App.Progress.SaveSettings(s => s.LastView = id);
     }
 
