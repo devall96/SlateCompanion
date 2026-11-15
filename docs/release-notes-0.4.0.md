@@ -19,7 +19,8 @@
 - Steps the save can't prove (looking at your photo album, the walk up Hyrule Castle) stay yours to tick by hand, as before: blue is done in your save, green is ticked by hand.
 
 ### 🌐 Zelda Dungeon tab
-- **A new tab with [Zelda Dungeon](https://www.zeldadungeon.net/)'s own guide**, shown inside Slate Companion as it is on their website. Nothing of theirs is copied into the app; links to other websites open in your browser, and *Open in your browser* takes the page you're on there.
+- **A new tab with [Zelda Dungeon](https://www.zeldadungeon.net/)'s own guide**, shown inside Slate Companion as it is on their website. Nothing of theirs is copied into the app.
+- **It never opens anything by itself**: no pop-up windows, no browser tabs, no other programs. Your browser opens only when you press *Open in your browser*. If you click your way off Zelda Dungeon, a bar offers *Back to Zelda Dungeon* or *Open in your browser*.
 - **Read on Zelda Dungeon** on every walkthrough chapter (the Divine Beast chapters link both the town and the dungeon), all 15 main, 76 side and 42 shrine quests, and all 136 shrines. Each of the 284 links was opened and checked on their site.
 - **It costs nothing when you're not using it.** The page only loads when you open the tab. Leave the tab or the window and it's closed 30 seconds later, web processes and all; minimize, or start Savage Wind, and it's closed at once. Coming back opens it again where you were, scrolled to the same spot. (Their page with its ads uses well over a gigabyte while it's open, which is why it isn't kept around.)
 - 🐧 On Linux the tab uses WebKitGTK (usually the package `webkit2gtk-4.1` or `libwebkit2gtk-4.1`). Without it, the tab says so and offers to open the page in your browser.
