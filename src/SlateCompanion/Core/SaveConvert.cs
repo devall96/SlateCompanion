@@ -299,24 +299,24 @@ public static class SaveConvert
             var slot = Path.GetFileName(slotDir);
             var gd = Path.Combine(slotDir, "game_data.sav");
             if (!File.Exists(gd)) continue;
-            var gdb = File.ReadAllBytes(gd);
+            var gdb = SaveManager.ReadShared(gd);
             srcLittle ??= IsLittle(gdb);
             report.Add($"slot {slot}");
             results[$"{slot}/game_data.sav"] = ConvertFlags(gdb, fmt, "game_data.sav", toLittle, report);
             var cap = Path.Combine(slotDir, "caption.sav");
-            if (File.Exists(cap) && fmt.Files.ContainsKey("caption.sav")) results[$"{slot}/caption.sav"] = ConvertFlags(File.ReadAllBytes(cap), fmt, "caption.sav", toLittle, report);
+            if (File.Exists(cap) && fmt.Files.ContainsKey("caption.sav")) results[$"{slot}/caption.sav"] = ConvertFlags(SaveManager.ReadShared(cap), fmt, "caption.sav", toLittle, report);
             var jpg = Path.Combine(slotDir, "caption.jpg");
-            if (File.Exists(jpg)) results[$"{slot}/caption.jpg"] = File.ReadAllBytes(jpg);
+            if (File.Exists(jpg)) results[$"{slot}/caption.jpg"] = SaveManager.ReadShared(jpg);
         }
         var opt = Path.Combine(root, "option.sav");
-        if (File.Exists(opt) && fmt.Files.ContainsKey("option.sav")) results["option.sav"] = ConvertFlags(File.ReadAllBytes(opt), fmt, "option.sav", toLittle, report);
+        if (File.Exists(opt) && fmt.Files.ContainsKey("option.sav")) results["option.sav"] = ConvertFlags(SaveManager.ReadShared(opt), fmt, "option.sav", toLittle, report);
         var trk = Path.Combine(root, "tracker");
         if (Directory.Exists(trk))
         {
             bool swap = srcLittle != null && srcLittle != toLittle;
             foreach (var f in Directory.GetFiles(trk).OrderBy(Path.GetFileName, StringComparer.Ordinal))
             {
-                var b = File.ReadAllBytes(f);
+                var b = SaveManager.ReadShared(f);
                 results["tracker/" + Path.GetFileName(f)] = swap && b.Length % 4 == 0 ? ConvertTracker(b) : b;
             }
         }
@@ -325,7 +325,7 @@ public static class SaveConvert
             var folder = Path.Combine(root, extra);
             if (!Directory.Exists(folder)) continue;
             foreach (var f in Directory.GetFiles(folder).Where(f => f.EndsWith(".jpg", StringComparison.OrdinalIgnoreCase)).OrderBy(Path.GetFileName, StringComparer.Ordinal))
-                results[$"{extra}/{Path.GetFileName(f)}"] = File.ReadAllBytes(f);
+                results[$"{extra}/{Path.GetFileName(f)}"] = SaveManager.ReadShared(f);
         }
         if (results.Count == 0) throw new InvalidDataException("nothing to convert");
         return results;

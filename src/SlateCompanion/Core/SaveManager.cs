@@ -164,13 +164,38 @@ public static class SaveManager
             }
             try { Directory.Move(stage, saveDir); }
             catch (Exception) { if (Directory.Exists(old)) Directory.Move(old, saveDir); throw; }
-            if (Directory.Exists(old)) Directory.Delete(old, true);
         }
         catch (Exception e) when (e is IOException or UnauthorizedAccessException or InvalidDataException)
         {
             try { if (Directory.Exists(stage)) Directory.Delete(stage, true); } catch (Exception) { }
             throw new SaveException("The saves weren't changed", e.Message);
         }
+        // The new saves are in place now: the old folder (in a backup already) goes as best it can. A file held open
+        // (an album picture in Explorer) mustn't turn this into "the saves weren't changed", which would be untrue.
+        TryDeleteDir(old);
+    }
+
+    static void TryDeleteDir(string dir)
+    {
+        try { if (Directory.Exists(dir)) Directory.Delete(dir, true); }
+        catch (Exception e) when (e is IOException or UnauthorizedAccessException) { Log.Warn($"Saves: couldn't remove {Log.Scrub(dir)} (it can be deleted by hand): {e.Message}"); }
+    }
+
+    /// <summary>A file written and flushed to the disk, so a rename after it never puts an empty file in place after a power cut.</summary>
+    static void WriteDurable(string path, byte[] data)
+    {
+        using var f = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None);
+        f.Write(data);
+        f.Flush(true);
+    }
+
+    /// <summary>A save file read without keeping the game from writing it meanwhile (File.ReadAllBytes would).</summary>
+    internal static byte[] ReadShared(string path)
+    {
+        using var f = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete);
+        var data = new byte[f.Length];
+        f.ReadExactly(data);
+        return data;
     }
 
     // ---------------------------------------------------------------- import
@@ -263,15 +288,31 @@ public static class SaveManager
         Cleanup(inc);
     }
 
+    /// <summary>
+    /// A slot replaced: the new one is written beside it, the old one moved aside, the new one moved in, and only then
+    /// is the old one deleted (backed up already). Deleting first could leave a half-deleted slot if a file is held.
+    /// </summary>
     static void WriteSlot(SaveTarget t, string slot, Dictionary<string, byte[]> files)
     {
         var dir = Path.Combine(t.Save0, slot);
         var stage = dir + ".slate-new";
-        if (Directory.Exists(stage)) Directory.Delete(stage, true);
-        Directory.CreateDirectory(stage);
-        foreach (var (name, data) in files) File.WriteAllBytes(Path.Combine(stage, name), data);
-        if (Directory.Exists(dir)) Directory.Delete(dir, true);  // (backed up already)
-        Directory.Move(stage, dir);
+        var old = dir + ".slate-old";
+        try
+        {
+            if (Directory.Exists(stage)) Directory.Delete(stage, true);
+            Directory.CreateDirectory(stage);
+            foreach (var (name, data) in files) WriteDurable(Path.Combine(stage, name), data);
+            if (Directory.Exists(old)) Directory.Delete(old, true);
+            if (Directory.Exists(dir)) Directory.Move(dir, old);
+            try { Directory.Move(stage, dir); }
+            catch (Exception) { if (Directory.Exists(old) && !Directory.Exists(dir)) Directory.Move(old, dir); throw; }
+        }
+        catch (Exception e) when (e is IOException or UnauthorizedAccessException)
+        {
+            TryDeleteDir(stage);
+            throw new SaveException($"Slot {slot} wasn't changed", e.Message);
+        }
+        TryDeleteDir(old);
     }
 
     static Dictionary<string, byte[]> CopyProfile(string root)
@@ -281,7 +322,7 @@ public static class SaveManager
         {
             var rel = Path.GetRelativePath(root, f).Replace('\\', '/');
             if (rel.EndsWith(".lock", StringComparison.OrdinalIgnoreCase)) continue;
-            files[rel] = File.ReadAllBytes(f);
+            files[rel] = ReadShared(f);
         }
         return files;
     }
@@ -306,7 +347,16 @@ public static class SaveManager
     {
         using var lk = new SaveLock(t.SaveDir);
         BackupNoLock(t.SaveDir);
-        Directory.Delete(Path.Combine(t.Save0, slot), true);
+        // moved aside first (one step, so the slot is either there or gone), then deleted as best it can
+        var dir = Path.Combine(t.Save0, slot);
+        var gone = dir + ".slate-deleted";
+        try
+        {
+            if (Directory.Exists(gone)) Directory.Delete(gone, true);
+            Directory.Move(dir, gone);
+        }
+        catch (Exception e) when (e is IOException or UnauthorizedAccessException) { throw new SaveException($"Slot {slot} wasn't deleted", e.Message); }
+        TryDeleteDir(gone);
         Log.Info($"Saves: slot {slot} of {Log.Scrub(t.SaveDir)} deleted (backed up first)");
     }
 
@@ -322,12 +372,14 @@ public static class SaveManager
         using var lk = new SaveLock(saveDir);
         var file = Path.Combine(slotDir, "game_data.sav");
         var save = SaveFile.Load(file);
+        var before = save.ToBytes();
         var what = change(save);
         var bytes = save.ToBytes();
+        if (bytes.AsSpan().SequenceEqual(before)) return what;  // nothing changed: no backup (a whole save folder) and no write
         SaveFile.Parse(bytes);  // (still a well-formed save)
         BackupNoLock(saveDir);
         var tmp = file + ".slate-new";
-        File.WriteAllBytes(tmp, bytes);
+        WriteDurable(tmp, bytes);
         if (!SaveFile.Parse(File.ReadAllBytes(tmp)).ToBytes().AsSpan().SequenceEqual(bytes)) { File.Delete(tmp); throw new SaveException("The save wasn't changed", "The edited file didn't read back the same. Nothing was changed."); }
         File.Move(tmp, file, true);
         Log.Info($"Saves: {Log.Scrub(file)}: {what}");
