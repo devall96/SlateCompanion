@@ -436,7 +436,21 @@ public static class SwInstaller
             var m = await Task.Run(() => Unpack(zip, staging, r.Version, pr, 0.75, 0.95, ct), ct);
             await Task.Run(() =>
             {
-                foreach (var rel in m.Files.Keys.Append("sw-manifest.txt")) MoveWithRetry(At(staging, rel), At(folder, rel));
+                // savagewind.exe goes in last, after sw-manifest.txt: a move that stops half-way (antivirus, a crash)
+                // never leaves a copy that looks installed but has no version (no Update, a retry refused as "already
+                // there"). On a failure, what was moved in is taken out again.
+                var order = m.Files.Keys.Where(k => !k.Equals("savagewind.exe", StringComparison.OrdinalIgnoreCase)).Append("sw-manifest.txt")
+                    .Concat(m.Files.Keys.Where(k => k.Equals("savagewind.exe", StringComparison.OrdinalIgnoreCase))).ToList();
+                var moved = new List<string>();
+                try
+                {
+                    foreach (var rel in order) { MoveWithRetry(At(staging, rel), At(folder, rel)); moved.Add(rel); }
+                }
+                catch (Exception)
+                {
+                    foreach (var rel in moved) try { File.Delete(At(folder, rel)); } catch (Exception e) when (e is IOException or UnauthorizedAccessException) { }
+                    throw;
+                }
             });
             RemoveSub(folder, "staging"); RemoveSub(folder, "download");
             try { Directory.Delete(Path.Combine(folder, "update")); } catch (Exception) { }

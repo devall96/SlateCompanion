@@ -99,6 +99,9 @@ public static class SwUpdate
             File.Move(sw.Exe, previous, true);
             try { File.Move(part, sw.Exe); }
             catch (Exception) { File.Move(previous, sw.Exe, true); throw; }
+            // the file keeps its old name: note the version it is now (written after the swap, so it's newer than the file)
+            try { File.WriteAllText(sw.VersionNote, r.Version + "\n"); }
+            catch (Exception e) when (e is IOException or UnauthorizedAccessException) { Log.Warn("Couldn't note the AppImage's new version: " + e.Message); }
             Log.Info($"Savage Wind updated to {r.Version} ({sw.Exe}); the old version is {previous}");
             return null;
         }

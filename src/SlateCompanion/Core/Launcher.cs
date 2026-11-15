@@ -22,6 +22,9 @@ public sealed record SwInstall(string Exe, string DataRoot)
                 // older version than what's inside. What Savage Wind says at each start ("[savagewind] Savage Wind
                 // <version> (...)" at the top of savagewind.log) is the truth, when that log is newer than the file.
                 if (VersionFromLog() is { } logged) return logged;
+                // Updated by Slate Companion and not started since: the version it installed (the name is the old one,
+                // which made the update look undone and skipped the new version's shader-cache reset).
+                if (VersionFromNote() is { } noted) return noted;
                 var m = System.Text.RegularExpressions.Regex.Match(Path.GetFileName(Exe), @"(\d+\.\d+\.\d+[^-_]*(?:-alpha\.\d+|-beta\.\d+)?)");
                 return m.Success ? m.Groups[1].Value : null;
             }
@@ -34,6 +37,19 @@ public sealed record SwInstall(string Exe, string DataRoot)
             catch (UnauthorizedAccessException) { }
             return null;
         }
+    }
+
+    /// <summary>Beside the AppImage: the version Slate Companion put there (<see cref="SwUpdate"/>), for as long as the file is that one.</summary>
+    public string VersionNote => Exe + ".slate-version";
+
+    string? VersionFromNote()
+    {
+        try
+        {
+            if (!File.Exists(VersionNote) || File.GetLastWriteTimeUtc(VersionNote) < File.GetLastWriteTimeUtc(Exe)) return null;
+            return File.ReadLines(VersionNote).FirstOrDefault()?.Trim() is { Length: > 0 } v ? v : null;
+        }
+        catch (Exception e) when (e is IOException or UnauthorizedAccessException) { return null; }
     }
 
     /// <summary>The version the last start of this program logged (savagewind.log in the data folder), if it's from this file.</summary>
@@ -65,7 +81,7 @@ public sealed record SwInstall(string Exe, string DataRoot)
     {
         string? last = null;
         try { last = File.ReadLines(Path.Combine(DataRoot, "cache", "last-version.txt")).FirstOrDefault()?.Trim(); } catch (Exception) { }
-        return $"version {Version ?? "?"} (from {(AppImage ? (VersionFromLog() != null ? "its log" : "its file name") : "sw-manifest.txt")}), " +
+        return $"version {Version ?? "?"} (from {(AppImage ? (VersionFromLog() != null ? "its log" : VersionFromNote() != null ? "Slate Companion's update note" : "its file name") : "sw-manifest.txt")}), " +
                $"cache/last-version.txt {last ?? "missing"}, game files {(GameFilesReady ? "ready" : "missing")}";
     }
 
