@@ -1,0 +1,160 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="SlateCompanion.App"
+             RequestedThemeVariant="Dark">
+  <Application.Resources>
+    <!-- Sheikah Slate palette -->
+    <Color x:Key="SystemAccentColor">#39C6FF</Color>
+    <Color x:Key="SystemAccentColorLight1">#7FE3FF</Color>
+    <Color x:Key="SystemAccentColorDark1">#2A9ACB</Color>
+    <SolidColorBrush x:Key="Bg" Color="#071116"/>
+    <SolidColorBrush x:Key="Bg2" Color="#0B1A21"/>
+    <SolidColorBrush x:Key="Panel" Color="#10242D"/>
+    <SolidColorBrush x:Key="PanelHi" Color="#163240"/>
+    <SolidColorBrush x:Key="Line" Color="#1F4352"/>
+    <SolidColorBrush x:Key="LineHi" Color="#2D6378"/>
+    <SolidColorBrush x:Key="Glow" Color="#39C6FF"/>
+    <SolidColorBrush x:Key="Glow2" Color="#7FE3FF"/>
+    <SolidColorBrush x:Key="GlowSoft" Color="#2E39C6FF"/>
+    <SolidColorBrush x:Key="Orange" Color="#FF9A3C"/>
+    <SolidColorBrush x:Key="OrangeSoft" Color="#29FF9A3C"/>
+    <SolidColorBrush x:Key="Done" Color="#6FF2C1"/>
+    <SolidColorBrush x:Key="Text" Color="#D6EEF6"/>
+    <SolidColorBrush x:Key="Muted" Color="#86A9B6"/>
+    <SolidColorBrush x:Key="Faint" Color="#55798A"/>
+    <FontFamily x:Key="UiFont">Segoe UI Variable Text, Segoe UI, Noto Sans, Cantarell, Ubuntu, sans-serif</FontFamily>
+    <FontFamily x:Key="MonoFont">Cascadia Mono, Consolas, JetBrains Mono, Noto Sans Mono, monospace</FontFamily>
+  </Application.Resources>
+
+  <Application.Styles>
+    <FluentTheme />
+
+    <Style Selector="Window">
+      <Setter Property="Background" Value="{StaticResource Bg}"/>
+      <Setter Property="FontFamily" Value="{StaticResource UiFont}"/>
+      <Setter Property="Foreground" Value="{StaticResource Text}"/>
+      <Setter Property="FontSize" Value="14"/>
+    </Style>
+    <Style Selector="TextBlock">
+      <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <!-- type -->
+    <Style Selector="TextBlock.h1"><Setter Property="FontSize" Value="22"/><Setter Property="FontWeight" Value="SemiBold"/></Style>
+    <Style Selector="TextBlock.h2"><Setter Property="FontSize" Value="13"/><Setter Property="FontWeight" Value="SemiBold"/><Setter Property="LetterSpacing" Value="2"/><Setter Property="Foreground" Value="{StaticResource Glow2}"/></Style>
+    <Style Selector="TextBlock.h3"><Setter Property="FontSize" Value="15"/><Setter Property="FontWeight" Value="SemiBold"/></Style>
+    <Style Selector="TextBlock.eyebrow"><Setter Property="FontSize" Value="11"/><Setter Property="LetterSpacing" Value="3"/><Setter Property="Foreground" Value="{StaticResource Orange}"/></Style>
+    <Style Selector="TextBlock.muted"><Setter Property="Foreground" Value="{StaticResource Muted}"/></Style>
+    <Style Selector="TextBlock.faint"><Setter Property="Foreground" Value="{StaticResource Faint}"/><Setter Property="FontSize" Value="12"/></Style>
+    <Style Selector="TextBlock.small"><Setter Property="FontSize" Value="12"/></Style>
+    <Style Selector="TextBlock.mono"><Setter Property="FontFamily" Value="{StaticResource MonoFont}"/></Style>
+    <Style Selector="TextBlock.label"><Setter Property="FontSize" Value="11"/><Setter Property="LetterSpacing" Value="2"/><Setter Property="Foreground" Value="{StaticResource Muted}"/></Style>
+    <Style Selector="TextBlock.value"><Setter Property="FontSize" Value="28"/><Setter Property="FontWeight" Value="SemiBold"/></Style>
+    <Style Selector="TextBlock.done"><Setter Property="Foreground" Value="{StaticResource Done}"/></Style>
+
+    <!-- panels -->
+    <Style Selector="Border.panel">
+      <Setter Property="Background" Value="#D910242D"/>
+      <Setter Property="BorderBrush" Value="{StaticResource Line}"/>
+      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="CornerRadius" Value="12"/>
+      <Setter Property="Padding" Value="16,14"/>
+    </Style>
+    <Style Selector="Border.panel.glow"><Setter Property="BorderBrush" Value="{StaticResource LineHi}"/><Setter Property="BoxShadow" Value="inset 0 0 22 0 #1239C6FF"/></Style>
+    <Style Selector="Border.note">
+      <Setter Property="Background" Value="{StaticResource OrangeSoft}"/>
+      <Setter Property="BorderBrush" Value="{StaticResource Orange}"/>
+      <Setter Property="BorderThickness" Value="2,0,0,0"/>
+      <Setter Property="CornerRadius" Value="0,8,8,0"/>
+      <Setter Property="Padding" Value="10,6"/>
+    </Style>
+    <Style Selector="Border.tag">
+      <Setter Property="BorderBrush" Value="{StaticResource LineHi}"/>
+      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="CornerRadius" Value="10"/>
+      <Setter Property="Padding" Value="8,1"/>
+      <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+    <Style Selector="Border.tag > TextBlock"><Setter Property="FontSize" Value="11"/><Setter Property="Foreground" Value="{StaticResource Muted}"/></Style>
+    <Style Selector="Border.tag.orange"><Setter Property="BorderBrush" Value="#80FF9A3C"/></Style>
+    <Style Selector="Border.tag.orange > TextBlock"><Setter Property="Foreground" Value="{StaticResource Orange}"/></Style>
+    <Style Selector="Border.tag.blue"><Setter Property="BorderBrush" Value="#8039C6FF"/></Style>
+    <Style Selector="Border.tag.blue > TextBlock"><Setter Property="Foreground" Value="{StaticResource Glow}"/></Style>
+    <Style Selector="Border.tag.done"><Setter Property="BorderBrush" Value="#806FF2C1"/></Style>
+    <Style Selector="Border.tag.done > TextBlock"><Setter Property="Foreground" Value="{StaticResource Done}"/></Style>
+
+    <!-- buttons -->
+    <Style Selector="Button">
+      <Setter Property="Background" Value="#B3163240"/>
+      <Setter Property="BorderBrush" Value="{StaticResource LineHi}"/>
+      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="CornerRadius" Value="9"/>
+      <Setter Property="Padding" Value="14,7"/>
+      <Setter Property="Foreground" Value="{StaticResource Text}"/>
+    </Style>
+    <Style Selector="Button:pointerover /template/ ContentPresenter">
+      <Setter Property="Background" Value="#33163240"/>
+      <Setter Property="BorderBrush" Value="{StaticResource Glow}"/>
+      <Setter Property="Foreground" Value="{StaticResource Text}"/>
+    </Style>
+    <Style Selector="Button.primary"><Setter Property="Background" Value="#4039C6FF"/><Setter Property="BorderBrush" Value="{StaticResource Glow}"/></Style>
+    <Style Selector="Button.ghost"><Setter Property="Background" Value="Transparent"/></Style>
+    <Style Selector="Button.small"><Setter Property="Padding" Value="10,4"/><Setter Property="FontSize" Value="12"/></Style>
+    <Style Selector="Button.chip">
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="CornerRadius" Value="14"/>
+      <Setter Property="Padding" Value="12,4"/>
+      <Setter Property="FontSize" Value="12"/>
+      <Setter Property="Foreground" Value="{StaticResource Muted}"/>
+    </Style>
+    <Style Selector="Button.chip.on"><Setter Property="Background" Value="{StaticResource Glow}"/><Setter Property="Foreground" Value="#062030"/><Setter Property="FontWeight" Value="SemiBold"/></Style>
+    <Style Selector="Button.chip.on:pointerover /template/ ContentPresenter"><Setter Property="Background" Value="{StaticResource Glow2}"/><Setter Property="Foreground" Value="#062030"/></Style>
+
+    <!-- the rune rail -->
+    <Style Selector="Button.rune">
+      <Setter Property="Width" Value="54"/>
+      <Setter Property="Height" Value="54"/>
+      <Setter Property="Padding" Value="0"/>
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="BorderBrush" Value="Transparent"/>
+      <Setter Property="CornerRadius" Value="14"/>
+      <Setter Property="HorizontalContentAlignment" Value="Center"/>
+      <Setter Property="VerticalContentAlignment" Value="Center"/>
+      <Setter Property="Foreground" Value="{StaticResource Muted}"/>
+    </Style>
+    <Style Selector="Button.rune:pointerover /template/ ContentPresenter"><Setter Property="Background" Value="{StaticResource GlowSoft}"/><Setter Property="BorderBrush" Value="Transparent"/></Style>
+    <Style Selector="Button.rune.active"><Setter Property="Foreground" Value="{StaticResource Glow}"/><Setter Property="BorderBrush" Value="{StaticResource LineHi}"/><Setter Property="Background" Value="#1A39C6FF"/></Style>
+    <Style Selector="Button.rune.active /template/ ContentPresenter"><Setter Property="BoxShadow" Value="inset 0 0 16 0 #3039C6FF"/></Style>
+    <Style Selector="Button.rune PathIcon"><Setter Property="Width" Value="24"/><Setter Property="Height" Value="24"/></Style>
+
+    <!-- inputs -->
+    <Style Selector="TextBox">
+      <Setter Property="Background" Value="#B3071116"/>
+      <Setter Property="BorderBrush" Value="{StaticResource LineHi}"/>
+      <Setter Property="CornerRadius" Value="9"/>
+      <Setter Property="Foreground" Value="{StaticResource Text}"/>
+    </Style>
+    <Style Selector="ComboBox"><Setter Property="CornerRadius" Value="9"/><Setter Property="BorderBrush" Value="{StaticResource LineHi}"/><Setter Property="Background" Value="#B3071116"/></Style>
+    <Style Selector="CheckBox"><Setter Property="Foreground" Value="{StaticResource Text}"/></Style>
+
+    <!-- lists -->
+    <Style Selector="ListBox">
+      <Setter Property="Background" Value="#D910242D"/>
+      <Setter Property="BorderBrush" Value="{StaticResource Line}"/>
+      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="CornerRadius" Value="12"/>
+      <Setter Property="Padding" Value="0"/>
+    </Style>
+    <Style Selector="ListBoxItem">
+      <Setter Property="Padding" Value="12,8"/>
+      <Setter Property="BorderBrush" Value="#991F4352"/>
+      <Setter Property="BorderThickness" Value="0,0,0,1"/>
+    </Style>
+    <Style Selector="ListBoxItem:pointerover /template/ ContentPresenter"><Setter Property="Background" Value="#0D39C6FF"/></Style>
+    <Style Selector="ListBoxItem:selected /template/ ContentPresenter"><Setter Property="Background" Value="#1F39C6FF"/></Style>
+    <Style Selector="ListBoxItem:selected:pointerover /template/ ContentPresenter"><Setter Property="Background" Value="#2A39C6FF"/></Style>
+
+    <Style Selector="ScrollViewer"><Setter Property="AllowAutoHide" Value="True"/></Style>
+    <Style Selector="ToolTip"><Setter Property="Background" Value="{StaticResource Panel}"/><Setter Property="BorderBrush" Value="{StaticResource LineHi}"/><Setter Property="Foreground" Value="{StaticResource Text}"/></Style>
+  </Application.Styles>
+</Application>

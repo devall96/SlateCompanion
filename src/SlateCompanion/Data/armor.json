@@ -1,0 +1,5686 @@
+{
+ "meta": {
+  "sources": [
+   "zelda.fandom.com armor pages (facts only)",
+   "TheJaredWilcurt/botw-armor-upgrade-tracker (MIT)",
+   "BinarMorker/ZeldaGear items.json (cross-check only)"
+  ],
+  "notes": [
+   "Upgrade materials use the values at least two of three sources agree on; materials null = sources disagreed.",
+   "Great Fairy upgrades cost no rupees, only materials (rupees: 0).",
+   "Per-level defense follows the standard ladder for each base defense; null where sources conflict.",
+   "setBonus needs every piece of the set worn; requiresLevel 2 means each piece must be upgraded at least twice."
+  ]
+ },
+ "greatFairies": {
+  "note": "The rupee price depends on how many fountains you have already opened, not on which fairy it is. Each fairy you free raises the highest upgrade level available at every fountain by one.",
+  "unlockCostByOrder": [
+   {
+    "order": 1,
+    "rupees": 100
+   },
+   {
+    "order": 2,
+    "rupees": 500
+   },
+   {
+    "order": 3,
+    "rupees": 1000
+   },
+   {
+    "order": 4,
+    "rupees": 10000
+   }
+  ],
+  "fairies": [
+   {
+    "name": "Cotera",
+    "location": "Hillside fountain just above Kakariko Village"
+   },
+   {
+    "name": "Kaysa",
+    "location": "Tabantha region, south of Tabantha Tower"
+   },
+   {
+    "name": "Mija",
+    "location": "Akkala, in the woods south of Tarrey Town"
+   },
+   {
+    "name": "Tera",
+    "location": "Gerudo Desert, inside the giant skeleton at Dragon's Exile"
+   }
+  ]
+ },
+ "armor": [
+  {
+   "id": "amber-earrings",
+   "name": "Amber Earrings",
+   "set": null,
+   "slot": "head",
+   "baseDefense": 4,
+   "upgradeable": true,
+   "whereFound": "Starlight Memories",
+   "price": "100 rupees + 10 Amber",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 7,
+     "materials": [
+      {
+       "name": "Amber",
+       "count": 5
+      },
+      {
+       "name": "Flint",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Amber",
+       "count": 10
+      },
+      {
+       "name": "Flint",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 18,
+     "materials": [
+      {
+       "name": "Amber",
+       "count": 20
+      },
+      {
+       "name": "Flint",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 28,
+     "materials": [
+      {
+       "name": "Amber",
+       "count": 30
+      },
+      {
+       "name": "Flint",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "ancient-cuirass",
+   "name": "Ancient Cuirass",
+   "set": "Ancient Set",
+   "slot": "body",
+   "baseDefense": 4,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Ancient Proficiency",
+    "requiresLevel": 2
+   },
+   "effect": "Guardian Resist Up",
+   "whereFound": "Akkala Ancient Tech Lab",
+   "price": "2,000 rupees + 20 Ancient Gears + 5 Ancient Screws + 3 Ancient Cores",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 7,
+     "materials": [
+      {
+       "name": "Ancient Screw",
+       "count": 5
+      },
+      {
+       "name": "Ancient Spring",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Ancient Gear",
+       "count": 10
+      },
+      {
+       "name": "Ancient Spring",
+       "count": 15
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 18,
+     "materials": [
+      {
+       "name": "Ancient Core",
+       "count": 5
+      },
+      {
+       "name": "Ancient Shaft",
+       "count": 15
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 28,
+     "materials": [
+      {
+       "name": "Giant Ancient Core",
+       "count": 2
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "ancient-greaves",
+   "name": "Ancient Greaves",
+   "set": "Ancient Set",
+   "slot": "legs",
+   "baseDefense": 4,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Ancient Proficiency",
+    "requiresLevel": 2
+   },
+   "effect": "Guardian Resist Up",
+   "whereFound": "Akkala Ancient Tech Lab",
+   "price": "2,000 rupees + 20 Ancient Gears + 5 Ancient Springs + 3 Ancient Cores",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 7,
+     "materials": [
+      {
+       "name": "Ancient Screw",
+       "count": 5
+      },
+      {
+       "name": "Ancient Spring",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Ancient Gear",
+       "count": 10
+      },
+      {
+       "name": "Ancient Spring",
+       "count": 15
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 18,
+     "materials": [
+      {
+       "name": "Ancient Core",
+       "count": 5
+      },
+      {
+       "name": "Ancient Shaft",
+       "count": 15
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 28,
+     "materials": [
+      {
+       "name": "Giant Ancient Core",
+       "count": 2
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "ancient-helm",
+   "name": "Ancient Helm",
+   "set": "Ancient Set",
+   "slot": "head",
+   "baseDefense": 4,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Ancient Proficiency",
+    "requiresLevel": 2
+   },
+   "effect": "Guardian Resist Up",
+   "whereFound": "Akkala Ancient Tech Lab",
+   "price": "2,000 rupees + 20 Ancient Gears + 5 Ancient Shafts + 3 Ancient Cores",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 7,
+     "materials": [
+      {
+       "name": "Ancient Screw",
+       "count": 5
+      },
+      {
+       "name": "Ancient Spring",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Ancient Gear",
+       "count": 10
+      },
+      {
+       "name": "Ancient Spring",
+       "count": 15
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 18,
+     "materials": [
+      {
+       "name": "Ancient Core",
+       "count": 5
+      },
+      {
+       "name": "Ancient Shaft",
+       "count": 15
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 28,
+     "materials": [
+      {
+       "name": "Giant Ancient Core",
+       "count": 2
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "barbarian-armor",
+   "name": "Barbarian Armor",
+   "set": "Barbarian Set",
+   "slot": "body",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Charge Atk. Stamina Up",
+    "requiresLevel": 2
+   },
+   "effect": "Attack Up",
+   "whereFound": "Chest in Dila Maag Shrine inside the South Lomei Labyrinth.",
+   "rebuyPrice": "4,000 rupees (Tarrey Town, after you first find it)",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Lynel Horn",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Lynel Hoof",
+       "count": 2
+      },
+      {
+       "name": "Lynel Horn",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Lynel Guts",
+       "count": 1
+      },
+      {
+       "name": "Lynel Hoof",
+       "count": 4
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Lynel Guts",
+       "count": 2
+      },
+      {
+       "name": "Shard of Farosh's Horn",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "barbarian-helm",
+   "name": "Barbarian Helm",
+   "set": "Barbarian Set",
+   "slot": "head",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Charge Atk. Stamina Up",
+    "requiresLevel": 2
+   },
+   "effect": "Attack Up",
+   "whereFound": "Chest in Tu Ka'loh Shrine at the centre of the Lomei Labyrinth Island maze.",
+   "rebuyPrice": "4,000 rupees (Tarrey Town, after you first find it)",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Lynel Horn",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Lynel Hoof",
+       "count": 2
+      },
+      {
+       "name": "Lynel Horn",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Lynel Guts",
+       "count": 1
+      },
+      {
+       "name": "Lynel Hoof",
+       "count": 4
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Lynel Guts",
+       "count": 2
+      },
+      {
+       "name": "Shard of Dinraal's Horn",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "barbarian-leg-wraps",
+   "name": "Barbarian Leg Wraps",
+   "set": "Barbarian Set",
+   "slot": "legs",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Charge Atk. Stamina Up",
+    "requiresLevel": 2
+   },
+   "effect": "Attack Up",
+   "whereFound": "Chest in Qaza Tokki Shrine inside the North Lomei Labyrinth.",
+   "rebuyPrice": "4,000 rupees (Tarrey Town, after you first find it)",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Lynel Horn",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Lynel Hoof",
+       "count": 2
+      },
+      {
+       "name": "Lynel Horn",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Lynel Guts",
+       "count": 1
+      },
+      {
+       "name": "Lynel Hoof",
+       "count": 4
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Lynel Guts",
+       "count": 2
+      },
+      {
+       "name": "Shard of Naydra's Horn",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "bokoblin-mask",
+   "name": "Bokoblin Mask",
+   "set": null,
+   "slot": "head",
+   "baseDefense": 3,
+   "upgradeable": false,
+   "effect": "Bokoblin Disguise",
+   "whereFound": "Fang and Bone",
+   "price": "99 Mons"
+  },
+  {
+   "id": "cap-of-time",
+   "name": "Cap of Time",
+   "set": "Hero of Time Set",
+   "slot": "head",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Master Sword Beam Up",
+    "requiresLevel": 2
+   },
+   "source": "Ocarina of Time Link amiibo (amiibo rune)",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Amber",
+       "count": 3
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Amber",
+       "count": 5
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Amber",
+       "count": 15
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Amber",
+       "count": 30
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "cap-of-twilight",
+   "name": "Cap of Twilight",
+   "set": "Hero of Twilight Set",
+   "slot": "head",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Master Sword Beam Up",
+    "requiresLevel": 2
+   },
+   "source": "Twilight Princess Link (or Smash Bros. Link) amiibo (amiibo rune)",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Star Fragment",
+       "count": 1
+      },
+      {
+       "name": "Topaz",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Star Fragment",
+       "count": 1
+      },
+      {
+       "name": "Topaz",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Star Fragment",
+       "count": 1
+      },
+      {
+       "name": "Topaz",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Star Fragment",
+       "count": 1
+      },
+      {
+       "name": "Topaz",
+       "count": 10
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "cap-of-the-hero",
+   "name": "Cap of the Hero",
+   "set": "Hero Set",
+   "slot": "head",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Master Sword Beam Up",
+    "requiresLevel": 2
+   },
+   "source": "30th-anniversary 8-bit Link amiibo (amiibo rune)",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": null,
+     "materials": [
+      {
+       "name": "Ruby",
+       "count": 1
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": null,
+     "materials": [
+      {
+       "name": "Ruby",
+       "count": 3
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": null,
+     "materials": [
+      {
+       "name": "Ruby",
+       "count": 5
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": null,
+     "materials": [
+      {
+       "name": "Ruby",
+       "count": 10
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "cap-of-the-sky",
+   "name": "Cap of the Sky",
+   "set": "Hero of the Sky Set",
+   "slot": "head",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Master Sword Beam Up",
+    "requiresLevel": 2
+   },
+   "source": "Skyward Sword Link amiibo (amiibo rune)",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Sapphire",
+       "count": 1
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Sapphire",
+       "count": 3
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Sapphire",
+       "count": 5
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Sapphire",
+       "count": 10
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "cap-of-the-wild",
+   "name": "Cap of the Wild",
+   "set": "Hero of the Wild Set",
+   "slot": "head",
+   "baseDefense": 4,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Master Sword Beam Up",
+    "requiresLevel": 2
+   },
+   "whereFound": "Forgotten Temple, after completing all 120 shrines.",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 7,
+     "materials": [
+      {
+       "name": "Acorn",
+       "count": 10
+      },
+      {
+       "name": "Farosh's Scale",
+       "count": 2
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Courser Bee Honey",
+       "count": 5
+      },
+      {
+       "name": "Farosh's Claw",
+       "count": 2
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 18,
+     "materials": [
+      {
+       "name": "Energetic Rhino Beetle",
+       "count": 5
+      },
+      {
+       "name": "Shard of Farosh's Fang",
+       "count": 2
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 28,
+     "materials": [
+      {
+       "name": "Shard of Farosh's Horn",
+       "count": 2
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "cap-of-the-wind",
+   "name": "Cap of the Wind",
+   "set": "Hero of the Winds Set",
+   "slot": "head",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Master Sword Beam Up",
+    "requiresLevel": 2
+   },
+   "source": "Toon Link amiibo (amiibo rune)",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Opal",
+       "count": 3
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Opal",
+       "count": 5
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Opal",
+       "count": 10
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Opal",
+       "count": 20
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "champions-tunic",
+   "name": "Champion's Tunic",
+   "set": null,
+   "slot": "body",
+   "baseDefense": 5,
+   "upgradeable": true,
+   "effect": "See Enemy HP",
+   "whereFound": "Gift from Impa in Kakariko Village as the story progresses.",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Silent Princess",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 14,
+     "materials": [
+      {
+       "name": "Shard of Farosh's Horn",
+       "count": 2
+      },
+      {
+       "name": "Silent Princess",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 22,
+     "materials": [
+      {
+       "name": "Shard of Naydra's Horn",
+       "count": 2
+      },
+      {
+       "name": "Silent Princess",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 32,
+     "materials": [
+      {
+       "name": "Shard of Dinraal's Horn",
+       "count": 2
+      },
+      {
+       "name": "Silent Princess",
+       "count": 10
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "climbers-bandanna",
+   "name": "Climber's Bandanna",
+   "set": "Climbing Set",
+   "slot": "head",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Climbing Jump Stamina Up",
+    "requiresLevel": 2
+   },
+   "effect": "Climb Speed Up",
+   "whereFound": "Chest in Ree Dahee Shrine at the Dueling Peaks.",
+   "rebuyPrice": "4,000 rupees (Tarrey Town, after you first find it)",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Keese Wing",
+       "count": 3
+      },
+      {
+       "name": "Rushroom",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Electric Keese Wing",
+       "count": 5
+      },
+      {
+       "name": "Hightail Lizard",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Hot-Footed Frog",
+       "count": 10
+      },
+      {
+       "name": "Ice Keese Wing",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Fire Keese Wing",
+       "count": 5
+      },
+      {
+       "name": "Swift Violet",
+       "count": 15
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "climbing-boots",
+   "name": "Climbing Boots",
+   "set": "Climbing Set",
+   "slot": "legs",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Climbing Jump Stamina Up",
+    "requiresLevel": 2
+   },
+   "effect": "Climb Speed Up",
+   "whereFound": "Chest in Tahno O'ah Shrine (Mount Lanayru area).",
+   "rebuyPrice": "4,000 rupees (Tarrey Town, after you first find it)",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Keese Wing",
+       "count": 3
+      },
+      {
+       "name": "Rushroom",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Electric Keese Wing",
+       "count": 5
+      },
+      {
+       "name": "Hightail Lizard",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Hot-Footed Frog",
+       "count": 10
+      },
+      {
+       "name": "Ice Keese Wing",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Fire Keese Wing",
+       "count": 5
+      },
+      {
+       "name": "Swift Violet",
+       "count": 15
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "climbing-gear",
+   "name": "Climbing Gear",
+   "set": "Climbing Set",
+   "slot": "body",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Climbing Jump Stamina Up",
+    "requiresLevel": 2
+   },
+   "effect": "Climb Speed Up",
+   "whereFound": "Chest in Chaas Qeta Shrine on Tenoko Island.",
+   "rebuyPrice": "4,000 rupees (Tarrey Town, after you first find it)",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Keese Wing",
+       "count": 3
+      },
+      {
+       "name": "Rushroom",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Electric Keese Wing",
+       "count": 5
+      },
+      {
+       "name": "Hightail Lizard",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Hot-Footed Frog",
+       "count": 10
+      },
+      {
+       "name": "Ice Keese Wing",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Fire Keese Wing",
+       "count": 5
+      },
+      {
+       "name": "Swift Violet",
+       "count": 15
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "dark-hood",
+   "name": "Dark Hood",
+   "set": "Dark Set",
+   "slot": "head",
+   "baseDefense": 3,
+   "upgradeable": false,
+   "setBonus": {
+    "name": "Night Speed Up",
+    "requiresLevel": 0
+   },
+   "whereFound": "Fang and Bone",
+   "price": "1,999 Mon"
+  },
+  {
+   "id": "dark-trousers",
+   "name": "Dark Trousers",
+   "set": "Dark Set",
+   "slot": "legs",
+   "baseDefense": 3,
+   "upgradeable": false,
+   "setBonus": {
+    "name": "Night Speed Up",
+    "requiresLevel": 0
+   },
+   "whereFound": "Fang and Bone",
+   "price": "999 Mon"
+  },
+  {
+   "id": "dark-tunic",
+   "name": "Dark Tunic",
+   "set": "Dark Set",
+   "slot": "body",
+   "baseDefense": 3,
+   "upgradeable": false,
+   "setBonus": {
+    "name": "Night Speed Up",
+    "requiresLevel": 0
+   },
+   "whereFound": "Fang and Bone",
+   "price": "999 Mon"
+  },
+  {
+   "id": "desert-voe-headband",
+   "name": "Desert Voe Headband",
+   "set": "Desert Voe Set",
+   "slot": "head",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Shock Damage Resist",
+    "requiresLevel": 2
+   },
+   "effect": "Heat Resistance",
+   "whereFound": "Gerudo Town; Tarrey Town",
+   "price": "450 rupees",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "White Chuchu Jelly",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Ice Keese Wing",
+       "count": 3
+      },
+      {
+       "name": "White Chuchu Jelly",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Ice Keese Wing",
+       "count": 8
+      },
+      {
+       "name": "Icy Lizalfos Tail",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Icy Lizalfos Tail",
+       "count": 10
+      },
+      {
+       "name": "Sapphire",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "desert-voe-spaulder",
+   "name": "Desert Voe Spaulder",
+   "set": "Desert Voe Set",
+   "slot": "body",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Shock Damage Resist",
+    "requiresLevel": 2
+   },
+   "effect": "Heat Resistance",
+   "whereFound": "Gerudo Town; Tarrey Town",
+   "price": "1,300 rupees",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "White Chuchu Jelly",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Ice Keese Wing",
+       "count": 3
+      },
+      {
+       "name": "White Chuchu Jelly",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Ice Keese Wing",
+       "count": 8
+      },
+      {
+       "name": "Icy Lizalfos Tail",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Icy Lizalfos Tail",
+       "count": 10
+      },
+      {
+       "name": "Sapphire",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "desert-voe-trousers",
+   "name": "Desert Voe Trousers",
+   "set": "Desert Voe Set",
+   "slot": "legs",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Shock Damage Resist",
+    "requiresLevel": 2
+   },
+   "effect": "Heat Resistance",
+   "whereFound": "Gerudo Town; Tarrey Town",
+   "price": "650 rupees",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "White Chuchu Jelly",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Ice Keese Wing",
+       "count": 3
+      },
+      {
+       "name": "White Chuchu Jelly",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Ice Keese Wing",
+       "count": 8
+      },
+      {
+       "name": "Icy Lizalfos Tail",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Icy Lizalfos Tail",
+       "count": 10
+      },
+      {
+       "name": "Sapphire",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "diamond-circlet",
+   "name": "Diamond Circlet",
+   "set": null,
+   "slot": "head",
+   "baseDefense": 4,
+   "upgradeable": true,
+   "effect": "Guardian Resist Up",
+   "whereFound": "Lomei Labyrinth Island; Starlight Memories",
+   "price": "1,500 rupees + 3 Diamonds",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 7,
+     "materials": [
+      {
+       "name": "Diamond",
+       "count": 2
+      },
+      {
+       "name": "Flint",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Diamond",
+       "count": 4
+      },
+      {
+       "name": "Flint",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 18,
+     "materials": [
+      {
+       "name": "Diamond",
+       "count": 6
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 28,
+     "materials": [
+      {
+       "name": "Diamond",
+       "count": 10
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "fierce-deity-armor",
+   "name": "Fierce Deity Armor",
+   "set": "Fierce Deity Set",
+   "slot": "body",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Charge Atk. Stamina Up",
+    "requiresLevel": 2
+   },
+   "effect": "Attack Up",
+   "source": "Majora's Mask Link amiibo (amiibo rune)",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Hinox Toenail",
+       "count": 5
+      },
+      {
+       "name": "Naydra's Scale",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Hinox Tooth",
+       "count": 5
+      },
+      {
+       "name": "Naydra's Claw",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Hinox Guts",
+       "count": 2
+      },
+      {
+       "name": "Shard of Naydra's Fang",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Lynel Guts",
+       "count": 2
+      },
+      {
+       "name": "Shard of Naydra's Horn",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "fierce-deity-boots",
+   "name": "Fierce Deity Boots",
+   "set": "Fierce Deity Set",
+   "slot": "legs",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Charge Atk. Stamina Up",
+    "requiresLevel": 2
+   },
+   "effect": "Attack Up",
+   "source": "Majora's Mask Link amiibo (amiibo rune)",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Farosh's Scale",
+       "count": 1
+      },
+      {
+       "name": "Hinox Toenail",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Farosh's Claw",
+       "count": 1
+      },
+      {
+       "name": "Hinox Tooth",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Hinox Guts",
+       "count": 2
+      },
+      {
+       "name": "Shard of Farosh's Fang",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Lynel Guts",
+       "count": 2
+      },
+      {
+       "name": "Shard of Farosh's Horn",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "fierce-deity-mask",
+   "name": "Fierce Deity Mask",
+   "set": "Fierce Deity Set",
+   "slot": "head",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Charge Atk. Stamina Up",
+    "requiresLevel": 2
+   },
+   "effect": "Attack Up",
+   "source": "Majora's Mask Link amiibo (amiibo rune)",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Dinraal's Scale",
+       "count": 1
+      },
+      {
+       "name": "Hinox Toenail",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Dinraal's Claw",
+       "count": 1
+      },
+      {
+       "name": "Hinox Tooth",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Hinox Guts",
+       "count": 2
+      },
+      {
+       "name": "Shard of Dinraal's Fang",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Lynel Guts",
+       "count": 2
+      },
+      {
+       "name": "Shard of Dinraal's Horn",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "flamebreaker-armor",
+   "name": "Flamebreaker Armor",
+   "set": "Flamebreaker Set",
+   "slot": "body",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Fireproof",
+    "requiresLevel": 2
+   },
+   "effect": "Flame Guard",
+   "whereFound": "Goron City",
+   "price": "600 rupees",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Fireproof Lizard",
+       "count": 1
+      },
+      {
+       "name": "Moblin Horn",
+       "count": 2
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Fireproof Lizard",
+       "count": 3
+      },
+      {
+       "name": "Moblin Fang",
+       "count": 4
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Moblin Guts",
+       "count": 3
+      },
+      {
+       "name": "Smotherwing Butterfly",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Hinox Guts",
+       "count": 2
+      },
+      {
+       "name": "Smotherwing Butterfly",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "flamebreaker-boots",
+   "name": "Flamebreaker Boots",
+   "set": "Flamebreaker Set",
+   "slot": "legs",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Fireproof",
+    "requiresLevel": 2
+   },
+   "effect": "Flame Guard",
+   "whereFound": "Goron City",
+   "price": "700 rupees",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Fireproof Lizard",
+       "count": 1
+      },
+      {
+       "name": "Moblin Horn",
+       "count": 2
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Fireproof Lizard",
+       "count": 3
+      },
+      {
+       "name": "Moblin Fang",
+       "count": 4
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Moblin Guts",
+       "count": 3
+      },
+      {
+       "name": "Smotherwing Butterfly",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Hinox Guts",
+       "count": 2
+      },
+      {
+       "name": "Smotherwing Butterfly",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "flamebreaker-helm",
+   "name": "Flamebreaker Helm",
+   "set": "Flamebreaker Set",
+   "slot": "head",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Fireproof",
+    "requiresLevel": 2
+   },
+   "effect": "Flame Guard",
+   "whereFound": "Sold in Goron City after the Southern Mine side quest.",
+   "price": "2,000 rupees",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Fireproof Lizard",
+       "count": 1
+      },
+      {
+       "name": "Moblin Horn",
+       "count": 2
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": null,
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Moblin Guts",
+       "count": 3
+      },
+      {
+       "name": "Smotherwing Butterfly",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Hinox Guts",
+       "count": 5
+      },
+      {
+       "name": "Smotherwing Butterfly",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "gerudo-sirwal",
+   "name": "Gerudo Sirwal",
+   "set": "Gerudo Set",
+   "slot": "legs",
+   "baseDefense": 3,
+   "upgradeable": false,
+   "whereFound": "Kara Kara Bazaar; Gerudo Town",
+   "price": "180 rupees"
+  },
+  {
+   "id": "gerudo-top",
+   "name": "Gerudo Top",
+   "set": "Gerudo Set",
+   "slot": "body",
+   "baseDefense": 1,
+   "upgradeable": false,
+   "whereFound": "Kara Kara Bazaar; Gerudo Town",
+   "price": "180 rupees"
+  },
+  {
+   "id": "gerudo-veil",
+   "name": "Gerudo Veil",
+   "set": "Gerudo Set",
+   "slot": "head",
+   "baseDefense": 1,
+   "upgradeable": false,
+   "whereFound": "Kara Kara Bazaar; Gerudo Town",
+   "price": "180 rupees"
+  },
+  {
+   "id": "hylian-hood",
+   "name": "Hylian Hood",
+   "set": "Hylian Set",
+   "slot": "head",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "whereFound": "Hateno Village; Kakariko Village",
+   "price": "60 rupees",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Bokoblin Horn",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Bokoblin Fang",
+       "count": 5
+      },
+      {
+       "name": "Bokoblin Horn",
+       "count": 8
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Bokoblin Fang",
+       "count": 10
+      },
+      {
+       "name": "Bokoblin Guts",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Amber",
+       "count": 15
+      },
+      {
+       "name": "Bokoblin Guts",
+       "count": 15
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "hylian-trousers",
+   "name": "Hylian Trousers",
+   "set": "Hylian Set",
+   "slot": "legs",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "whereFound": "Chest on the Great Plateau; also sold in Kakariko and Hateno Villages.",
+   "price": "90 rupees",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Bokoblin Horn",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Bokoblin Fang",
+       "count": 5
+      },
+      {
+       "name": "Bokoblin Horn",
+       "count": 8
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Bokoblin Fang",
+       "count": 10
+      },
+      {
+       "name": "Bokoblin Guts",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Amber",
+       "count": 15
+      },
+      {
+       "name": "Bokoblin Guts",
+       "count": 15
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "hylian-tunic",
+   "name": "Hylian Tunic",
+   "set": "Hylian Set",
+   "slot": "body",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "whereFound": "Hateno Village; Kakariko Village",
+   "price": "120 rupees",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Bokoblin Horn",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Bokoblin Fang",
+       "count": 5
+      },
+      {
+       "name": "Bokoblin Horn",
+       "count": 8
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Bokoblin Fang",
+       "count": 10
+      },
+      {
+       "name": "Bokoblin Guts",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Amber",
+       "count": 15
+      },
+      {
+       "name": "Bokoblin Guts",
+       "count": 15
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "island-lobster-shirt",
+   "name": "Island Lobster Shirt",
+   "set": null,
+   "slot": "body",
+   "baseDefense": 1,
+   "upgradeable": false,
+   "effect": "Heat Resistance",
+   "source": "The Champions' Ballad DLC"
+  },
+  {
+   "id": "korok-mask",
+   "name": "Korok Mask",
+   "set": null,
+   "slot": "head",
+   "baseDefense": 1,
+   "upgradeable": false,
+   "source": "The Champions' Ballad DLC"
+  },
+  {
+   "id": "lizalfos-mask",
+   "name": "Lizalfos Mask",
+   "set": null,
+   "slot": "head",
+   "baseDefense": 3,
+   "upgradeable": false,
+   "effect": "Lizalfos Disguise",
+   "whereFound": "Fang and Bone",
+   "price": "299 Mon"
+  },
+  {
+   "id": "lynel-mask",
+   "name": "Lynel Mask",
+   "set": null,
+   "slot": "head",
+   "baseDefense": 3,
+   "upgradeable": false,
+   "effect": "Lynel Disguise",
+   "whereFound": "Fang and Bone",
+   "price": "999 Mon + 4 Bubbul Gems"
+  },
+  {
+   "id": "majoras-mask",
+   "name": "Majora's Mask",
+   "set": null,
+   "slot": "head",
+   "baseDefense": 1,
+   "upgradeable": false,
+   "effect": "Bokoblin Disguise, Moblin Disguise, Lizalfos Disguise, Lynel Disguise",
+   "source": "The Master Trials DLC: chest revealed by an EX quest (Misko's journals)"
+  },
+  {
+   "id": "midnas-helmet",
+   "name": "Midna's Helmet",
+   "set": null,
+   "slot": "head",
+   "baseDefense": 7,
+   "upgradeable": false,
+   "effect": "Guardian Resist Up",
+   "source": "The Master Trials DLC: chest revealed by an EX quest (Misko's journals)"
+  },
+  {
+   "id": "moblin-mask",
+   "name": "Moblin Mask",
+   "set": null,
+   "slot": "head",
+   "baseDefense": 3,
+   "upgradeable": false,
+   "effect": "Moblin Disguise",
+   "whereFound": "Fang and Bone",
+   "price": "199 Mon"
+  },
+  {
+   "id": "nintendo-switch-shirt",
+   "name": "Nintendo Switch Shirt",
+   "set": null,
+   "slot": "body",
+   "baseDefense": 1,
+   "upgradeable": false,
+   "whereFound": "Eastern Abbey",
+   "price": "50 rupees"
+  },
+  {
+   "id": "old-shirt",
+   "name": "Old Shirt",
+   "set": "Well-Worn Outfit",
+   "slot": "body",
+   "baseDefense": 1,
+   "upgradeable": false,
+   "whereFound": "Chest in the Shrine of Resurrection at the very start; later rebuyable in Tarrey Town.",
+   "price": "50 rupees"
+  },
+  {
+   "id": "opal-earrings",
+   "name": "Opal Earrings",
+   "set": null,
+   "slot": "head",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "effect": "Swim Speed Up",
+   "whereFound": "Starlight Memories",
+   "price": "200 rupees + 8 Opals",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Flint",
+       "count": 3
+      },
+      {
+       "name": "Opal",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Flint",
+       "count": 3
+      },
+      {
+       "name": "Opal",
+       "count": 8
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Flint",
+       "count": 3
+      },
+      {
+       "name": "Opal",
+       "count": 16
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Flint",
+       "count": 3
+      },
+      {
+       "name": "Opal",
+       "count": 20
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "phantom-armor",
+   "name": "Phantom Armor",
+   "set": "Phantom Set",
+   "slot": "body",
+   "baseDefense": 8,
+   "upgradeable": false,
+   "effect": "Attack Up",
+   "source": "The Master Trials DLC: chest revealed by an EX quest (Misko's journals)"
+  },
+  {
+   "id": "phantom-ganon-armor",
+   "name": "Phantom Ganon Armor",
+   "set": "Phantom Ganon Set",
+   "slot": "body",
+   "baseDefense": 4,
+   "upgradeable": false,
+   "setBonus": {
+    "name": "Bone Atk. Up; Stal enemies ignore you (Disguise)",
+    "requiresLevel": 0
+   },
+   "effect": "Stealth Up",
+   "source": "The Champions' Ballad DLC"
+  },
+  {
+   "id": "phantom-ganon-greaves",
+   "name": "Phantom Ganon Greaves",
+   "set": "Phantom Ganon Set",
+   "slot": "legs",
+   "baseDefense": 4,
+   "upgradeable": false,
+   "setBonus": {
+    "name": "Bone Atk. Up; Stal enemies ignore you (Disguise)",
+    "requiresLevel": 0
+   },
+   "effect": "Stealth Up",
+   "source": "The Champions' Ballad DLC"
+  },
+  {
+   "id": "phantom-ganon-skull",
+   "name": "Phantom Ganon Skull",
+   "set": "Phantom Ganon Set",
+   "slot": "head",
+   "baseDefense": 4,
+   "upgradeable": false,
+   "setBonus": {
+    "name": "Bone Atk. Up; Stal enemies ignore you (Disguise)",
+    "requiresLevel": 0
+   },
+   "effect": "Stealth Up",
+   "source": "The Champions' Ballad DLC"
+  },
+  {
+   "id": "phantom-greaves",
+   "name": "Phantom Greaves",
+   "set": "Phantom Set",
+   "slot": "legs",
+   "baseDefense": 8,
+   "upgradeable": false,
+   "effect": "Attack Up",
+   "source": "The Master Trials DLC: chest revealed by an EX quest (Misko's journals)"
+  },
+  {
+   "id": "phantom-helmet",
+   "name": "Phantom Helmet",
+   "set": "Phantom Set",
+   "slot": "head",
+   "baseDefense": 8,
+   "upgradeable": false,
+   "effect": "Attack Up",
+   "source": "The Master Trials DLC: chest revealed by an EX quest (Misko's journals)"
+  },
+  {
+   "id": "radiant-mask",
+   "name": "Radiant Mask",
+   "set": "Radiant Set",
+   "slot": "head",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Bone Atk. Up; Stal enemies ignore you (Disguise)",
+    "requiresLevel": 2
+   },
+   "effect": "Stal Lure",
+   "whereFound": "Gerudo Town",
+   "price": "800 rupees + 3 Luminous Stone",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Bokoblin Guts",
+       "count": 3
+      },
+      {
+       "name": "Luminous Stone",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Luminous Stone",
+       "count": 8
+      },
+      {
+       "name": "Moblin Guts",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Luminous Stone",
+       "count": 10
+      },
+      {
+       "name": "Molduga Guts",
+       "count": 2
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Luminous Stone",
+       "count": 20
+      },
+      {
+       "name": "Lynel Guts",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "radiant-shirt",
+   "name": "Radiant Shirt",
+   "set": "Radiant Set",
+   "slot": "body",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Bone Atk. Up; Stal enemies ignore you (Disguise)",
+    "requiresLevel": 2
+   },
+   "effect": "Stal Lure",
+   "whereFound": "Gerudo Town",
+   "price": "800 rupees",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Bokoblin Guts",
+       "count": 3
+      },
+      {
+       "name": "Luminous Stone",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Luminous Stone",
+       "count": 8
+      },
+      {
+       "name": "Moblin Guts",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Luminous Stone",
+       "count": 10
+      },
+      {
+       "name": "Molduga Guts",
+       "count": 2
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Luminous Stone",
+       "count": 20
+      },
+      {
+       "name": "Lynel Guts",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "radiant-tights",
+   "name": "Radiant Tights",
+   "set": "Radiant Set",
+   "slot": "legs",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Bone Atk. Up; Stal enemies ignore you (Disguise)",
+    "requiresLevel": 2
+   },
+   "effect": "Stal Lure",
+   "price": "800 rupees",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Bokoblin Guts",
+       "count": 3
+      },
+      {
+       "name": "Luminous Stone",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Luminous Stone",
+       "count": 8
+      },
+      {
+       "name": "Moblin Guts",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Luminous Stone",
+       "count": 10
+      },
+      {
+       "name": "Molduga Guts",
+       "count": 2
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Luminous Stone",
+       "count": 20
+      },
+      {
+       "name": "Lynel Guts",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "ravios-hood",
+   "name": "Ravio's Hood",
+   "set": null,
+   "slot": "head",
+   "baseDefense": 2,
+   "upgradeable": false,
+   "effect": "Climb Speed Up",
+   "source": "The Champions' Ballad DLC"
+  },
+  {
+   "id": "royal-guard-boots",
+   "name": "Royal Guard Boots",
+   "set": "Royal Guard Set",
+   "slot": "legs",
+   "baseDefense": 4,
+   "upgradeable": false,
+   "source": "The Champions' Ballad DLC"
+  },
+  {
+   "id": "royal-guard-cap",
+   "name": "Royal Guard Cap",
+   "set": "Royal Guard Set",
+   "slot": "head",
+   "baseDefense": 4,
+   "upgradeable": false,
+   "source": "The Champions' Ballad DLC"
+  },
+  {
+   "id": "royal-guard-uniform",
+   "name": "Royal Guard Uniform",
+   "set": "Royal Guard Set",
+   "slot": "body",
+   "baseDefense": 4,
+   "upgradeable": false,
+   "source": "The Champions' Ballad DLC"
+  },
+  {
+   "id": "rubber-armor",
+   "name": "Rubber Armor",
+   "set": "Rubber Set",
+   "slot": "body",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Unshockable",
+    "requiresLevel": 2
+   },
+   "effect": "Shock Resistance",
+   "whereFound": "Chest in Toh Yahsa Shrine after the Trial of Thunder shrine quest.",
+   "rebuyPrice": "4,000 rupees (Tarrey Town, after you first find it)",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Yellow Chuchu Jelly",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Voltfruit",
+       "count": 5
+      },
+      {
+       "name": "Yellow Chuchu Jelly",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Yellow Lizalfos Tail",
+       "count": 5
+      },
+      {
+       "name": "Zapshroom",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Topaz",
+       "count": 10
+      },
+      {
+       "name": "Yellow Lizalfos Tail",
+       "count": 10
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "rubber-helm",
+   "name": "Rubber Helm",
+   "set": "Rubber Set",
+   "slot": "head",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Unshockable",
+    "requiresLevel": 2
+   },
+   "effect": "Shock Resistance",
+   "whereFound": "Chest near Lakeside Stable.",
+   "rebuyPrice": "4,000 rupees (Tarrey Town, after you first find it)",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Yellow Chuchu Jelly",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Voltfruit",
+       "count": 5
+      },
+      {
+       "name": "Yellow Chuchu Jelly",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Yellow Lizalfos Tail",
+       "count": 5
+      },
+      {
+       "name": "Zapshroom",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Topaz",
+       "count": 10
+      },
+      {
+       "name": "Yellow Lizalfos Tail",
+       "count": 10
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "rubber-tights",
+   "name": "Rubber Tights",
+   "set": "Rubber Set",
+   "slot": "legs",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Unshockable",
+    "requiresLevel": 2
+   },
+   "effect": "Shock Resistance",
+   "whereFound": "Chest in Qukah Nata Shrine.",
+   "rebuyPrice": "4,000 rupees (Tarrey Town, after you first find it)",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Yellow Chuchu Jelly",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Voltfruit",
+       "count": 5
+      },
+      {
+       "name": "Yellow Chuchu Jelly",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Yellow Lizalfos Tail",
+       "count": 5
+      },
+      {
+       "name": "Zapshroom",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Topaz",
+       "count": 10
+      },
+      {
+       "name": "Yellow Lizalfos Tail",
+       "count": 10
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "ruby-circlet",
+   "name": "Ruby Circlet",
+   "set": null,
+   "slot": "head",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "effect": "Cold Resistance",
+   "whereFound": "Starlight Memories",
+   "price": "500 rupees + 3 Rubies",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Flint",
+       "count": 3
+      },
+      {
+       "name": "Ruby",
+       "count": 2
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Flint",
+       "count": 3
+      },
+      {
+       "name": "Ruby",
+       "count": 4
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Ruby",
+       "count": 6
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Ruby",
+       "count": 10
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "salvager-headwear",
+   "name": "Salvager Headwear",
+   "set": "Salvager Set",
+   "slot": "head",
+   "baseDefense": 5,
+   "upgradeable": false,
+   "effect": "Swim Speed Up",
+   "whereFound": "Lake Hylia",
+   "price": "50 rupee"
+  },
+  {
+   "id": "salvager-trousers",
+   "name": "Salvager Trousers",
+   "set": "Salvager Set",
+   "slot": "legs",
+   "baseDefense": 5,
+   "upgradeable": false,
+   "effect": "Swim Speed Up",
+   "source": "Free version 1.3.3 update (Xenoblade Chronicles 2 tie-in): EX quest chest"
+  },
+  {
+   "id": "salvager-vest",
+   "name": "Salvager Vest",
+   "set": "Salvager Set",
+   "slot": "body",
+   "baseDefense": 5,
+   "upgradeable": false,
+   "effect": "Swim Speed Up",
+   "source": "Free version 1.3.3 update (Xenoblade Chronicles 2 tie-in): EX quest chest"
+  },
+  {
+   "id": "sand-boots",
+   "name": "Sand Boots",
+   "set": null,
+   "slot": "legs",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "effect": "Sand Speed Up",
+   "whereFound": "Gerudo Town",
+   "price": "800 rupees",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Hightail Lizard",
+       "count": 10
+      },
+      {
+       "name": "Molduga Fin",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Molduga Fin",
+       "count": 10
+      },
+      {
+       "name": "Swift Carrot",
+       "count": 10
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Molduga Guts",
+       "count": 3
+      },
+      {
+       "name": "Rushroom",
+       "count": 15
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Molduga Guts",
+       "count": 5
+      },
+      {
+       "name": "Swift Violet",
+       "count": 15
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "sapphire-circlet",
+   "name": "Sapphire Circlet",
+   "set": null,
+   "slot": "head",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "effect": "Heat Resistance",
+   "whereFound": "Starlight Memories",
+   "price": "800 rupees + 3 Sapphires",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Flint",
+       "count": 3
+      },
+      {
+       "name": "Sapphire",
+       "count": 2
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Flint",
+       "count": 3
+      },
+      {
+       "name": "Sapphire",
+       "count": 4
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Sapphire",
+       "count": 6
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Sapphire",
+       "count": 10
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "sheiks-mask",
+   "name": "Sheik's Mask",
+   "set": null,
+   "slot": "head",
+   "baseDefense": 2,
+   "upgradeable": true,
+   "effect": "Stealth Up",
+   "source": "Sheik amiibo (amiibo rune)",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 4,
+     "materials": [
+      {
+       "name": "Silent Princess",
+       "count": 1
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 6,
+     "materials": [
+      {
+       "name": "Silent Princess",
+       "count": 2
+      },
+      {
+       "name": "Star Fragment",
+       "count": 2
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 9,
+     "materials": [
+      {
+       "name": "Silent Princess",
+       "count": 3
+      },
+      {
+       "name": "Star Fragment",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 16,
+     "materials": [
+      {
+       "name": "Silent Princess",
+       "count": 4
+      },
+      {
+       "name": "Star Fragment",
+       "count": 4
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "snow-boots",
+   "name": "Snow Boots",
+   "set": null,
+   "slot": "legs",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "effect": "Snow Speed Up",
+   "whereFound": "Gerudo Town",
+   "price": "800 rupees",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Hightail Lizard",
+       "count": 10
+      },
+      {
+       "name": "Octorok Tentacle",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Octo Balloon",
+       "count": 5
+      },
+      {
+       "name": "Swift Carrot",
+       "count": 10
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Octorok Eyeball",
+       "count": 5
+      },
+      {
+       "name": "Rushroom",
+       "count": 15
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Naydra's Scale",
+       "count": 2
+      },
+      {
+       "name": "Swift Violet",
+       "count": 15
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "snowquill-headdress",
+   "name": "Snowquill Headdress",
+   "set": "Snowquill Set",
+   "slot": "head",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Unfreezable",
+    "requiresLevel": 2
+   },
+   "effect": "Cold Resistance",
+   "whereFound": "Rito Village",
+   "price": "1000 rupees",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Red Chuchu Jelly",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Red Chuchu Jelly",
+       "count": 5
+      },
+      {
+       "name": "Warm Safflina",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Fire Keese Wing",
+       "count": 8
+      },
+      {
+       "name": "Sunshroom",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Red Lizalfos Tail",
+       "count": 10
+      },
+      {
+       "name": "Ruby",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "snowquill-trousers",
+   "name": "Snowquill Trousers",
+   "set": "Snowquill Set",
+   "slot": "legs",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Unfreezable",
+    "requiresLevel": 2
+   },
+   "effect": "Cold Resistance",
+   "whereFound": "Brazen Beak",
+   "price": "550 rupees",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Red Chuchu Jelly",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Red Chuchu Jelly",
+       "count": 5
+      },
+      {
+       "name": "Warm Safflina",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Fire Keese Wing",
+       "count": 8
+      },
+      {
+       "name": "Sunshroom",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Red Lizalfos Tail",
+       "count": 10
+      },
+      {
+       "name": "Ruby",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "snowquill-tunic",
+   "name": "Snowquill Tunic",
+   "set": "Snowquill Set",
+   "slot": "body",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Unfreezable",
+    "requiresLevel": 2
+   },
+   "effect": "Cold Resistance",
+   "whereFound": "Brazen Beak",
+   "price": "600 rupees",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Red Chuchu Jelly",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Red Chuchu Jelly",
+       "count": 5
+      },
+      {
+       "name": "Warm Safflina",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Fire Keese Wing",
+       "count": 8
+      },
+      {
+       "name": "Sunshroom",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Red Lizalfos Tail",
+       "count": 10
+      },
+      {
+       "name": "Ruby",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "soldiers-armor",
+   "name": "Soldier's Armor",
+   "set": "Soldier's Set",
+   "slot": "body",
+   "baseDefense": 4,
+   "upgradeable": true,
+   "whereFound": "Hateno Village",
+   "price": "250 rupees",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 7,
+     "materials": [
+      {
+       "name": "Bokoblin Guts",
+       "count": 3
+      },
+      {
+       "name": "Chuchu Jelly",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Keese Eyeball",
+       "count": 3
+      },
+      {
+       "name": "Moblin Guts",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 18,
+     "materials": [
+      {
+       "name": "Hinox Guts",
+       "count": 1
+      },
+      {
+       "name": "Lizalfos Tail",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 28,
+     "materials": [
+      {
+       "name": "Lynel Guts",
+       "count": 2
+      },
+      {
+       "name": "Lynel Hoof",
+       "count": 4
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "soldiers-greaves",
+   "name": "Soldier's Greaves",
+   "set": "Soldier's Set",
+   "slot": "legs",
+   "baseDefense": 4,
+   "upgradeable": true,
+   "whereFound": "Hateno Village",
+   "price": "200 rupees",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 7,
+     "materials": [
+      {
+       "name": "Bokoblin Guts",
+       "count": 3
+      },
+      {
+       "name": "Chuchu Jelly",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Keese Eyeball",
+       "count": 3
+      },
+      {
+       "name": "Moblin Guts",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 18,
+     "materials": [
+      {
+       "name": "Hinox Guts",
+       "count": 1
+      },
+      {
+       "name": "Lizalfos Tail",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 28,
+     "materials": [
+      {
+       "name": "Lynel Guts",
+       "count": 2
+      },
+      {
+       "name": "Lynel Hoof",
+       "count": 4
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "soldiers-helm",
+   "name": "Soldier's Helm",
+   "set": "Soldier's Set",
+   "slot": "head",
+   "baseDefense": 4,
+   "upgradeable": true,
+   "whereFound": "Hateno Village",
+   "price": "180 rupees",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 7,
+     "materials": [
+      {
+       "name": "Bokoblin Guts",
+       "count": 3
+      },
+      {
+       "name": "Chuchu Jelly",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Keese Eyeball",
+       "count": 3
+      },
+      {
+       "name": "Moblin Guts",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 18,
+     "materials": [
+      {
+       "name": "Hinox Guts",
+       "count": 2
+      },
+      {
+       "name": "Lizalfos Tail",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 28,
+     "materials": [
+      {
+       "name": "Lynel Guts",
+       "count": 2
+      },
+      {
+       "name": "Lynel Hoof",
+       "count": 4
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "stealth-chest-guard",
+   "name": "Stealth Chest Guard",
+   "set": "Stealth Set",
+   "slot": "body",
+   "baseDefense": 2,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Night Speed Up",
+    "requiresLevel": 2
+   },
+   "effect": "Stealth Up",
+   "whereFound": "Kakariko Village",
+   "price": "700 rupees",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 4,
+     "materials": [
+      {
+       "name": "Blue Nightshade",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 6,
+     "materials": [
+      {
+       "name": "Blue Nightshade",
+       "count": 5
+      },
+      {
+       "name": "Sunset Firefly",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 9,
+     "materials": [
+      {
+       "name": "Silent Shroom",
+       "count": 8
+      },
+      {
+       "name": "Sneaky River Snail",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 16,
+     "materials": [
+      {
+       "name": "Silent Princess",
+       "count": 5
+      },
+      {
+       "name": "Stealthfin Trout",
+       "count": 10
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "stealth-mask",
+   "name": "Stealth Mask",
+   "set": "Stealth Set",
+   "slot": "head",
+   "baseDefense": 2,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Night Speed Up",
+    "requiresLevel": 2
+   },
+   "effect": "Stealth Up",
+   "whereFound": "Enchanted",
+   "price": "500 rupees",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 4,
+     "materials": [
+      {
+       "name": "Blue Nightshade",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 6,
+     "materials": [
+      {
+       "name": "Blue Nightshade",
+       "count": 5
+      },
+      {
+       "name": "Sunset Firefly",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 9,
+     "materials": [
+      {
+       "name": "Silent Shroom",
+       "count": 8
+      },
+      {
+       "name": "Sneaky River Snail",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 16,
+     "materials": [
+      {
+       "name": "Silent Princess",
+       "count": 5
+      },
+      {
+       "name": "Stealthfin Trout",
+       "count": 10
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "stealth-tights",
+   "name": "Stealth Tights",
+   "set": "Stealth Set",
+   "slot": "legs",
+   "baseDefense": 2,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Night Speed Up",
+    "requiresLevel": 2
+   },
+   "effect": "Stealth Up",
+   "whereFound": "Kakariko Village",
+   "price": "600 rupees",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 4,
+     "materials": [
+      {
+       "name": "Blue Nightshade",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 6,
+     "materials": [
+      {
+       "name": "Blue Nightshade",
+       "count": 5
+      },
+      {
+       "name": "Sunset Firefly",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 9,
+     "materials": [
+      {
+       "name": "Silent Shroom",
+       "count": 8
+      },
+      {
+       "name": "Sneaky River Snail",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 16,
+     "materials": [
+      {
+       "name": "Silent Princess",
+       "count": 5
+      },
+      {
+       "name": "Stealthfin Trout",
+       "count": 10
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "thunder-helm",
+   "name": "Thunder Helm",
+   "set": null,
+   "slot": "head",
+   "baseDefense": 3,
+   "upgradeable": false,
+   "effect": "Lightning Proof",
+   "whereFound": "Reward from Riju in Gerudo Town after you recover it from the Yiga Clan Hideout."
+  },
+  {
+   "id": "tingles-hood",
+   "name": "Tingle's Hood",
+   "set": "Tingle's Set",
+   "slot": "head",
+   "baseDefense": 2,
+   "upgradeable": false,
+   "setBonus": {
+    "name": "Night Speed Up",
+    "requiresLevel": 0
+   },
+   "source": "The Master Trials DLC: chest revealed by an EX quest (Misko's journals)"
+  },
+  {
+   "id": "tingles-shirt",
+   "name": "Tingle's Shirt",
+   "set": "Tingle's Set",
+   "slot": "body",
+   "baseDefense": 2,
+   "upgradeable": false,
+   "setBonus": {
+    "name": "Night Speed Up",
+    "requiresLevel": 0
+   },
+   "source": "The Master Trials DLC: chest revealed by an EX quest (Misko's journals)"
+  },
+  {
+   "id": "tingles-tights",
+   "name": "Tingle's Tights",
+   "set": "Tingle's Set",
+   "slot": "legs",
+   "baseDefense": 2,
+   "upgradeable": false,
+   "setBonus": {
+    "name": "Night Speed Up",
+    "requiresLevel": 0
+   },
+   "source": "The Master Trials DLC: chest revealed by an EX quest (Misko's journals)"
+  },
+  {
+   "id": "topaz-earrings",
+   "name": "Topaz Earrings",
+   "set": null,
+   "slot": "head",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "effect": "Shock Resistance",
+   "whereFound": "Starlight Memories",
+   "price": "500 rupees + 5 Topaz",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": null,
+     "materials": [
+      {
+       "name": "Flint",
+       "count": 3
+      },
+      {
+       "name": "Topaz",
+       "count": 2
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": null,
+     "materials": [
+      {
+       "name": "Flint",
+       "count": 3
+      },
+      {
+       "name": "Topaz",
+       "count": 4
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": null,
+     "materials": [
+      {
+       "name": "Star Fragment",
+       "count": 1
+      },
+      {
+       "name": "Topaz",
+       "count": 6
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": null,
+     "materials": [
+      {
+       "name": "Star Fragment",
+       "count": 1
+      },
+      {
+       "name": "Topaz",
+       "count": 10
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "trousers-of-time",
+   "name": "Trousers of Time",
+   "set": "Hero of Time Set",
+   "slot": "legs",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Master Sword Beam Up",
+    "requiresLevel": 2
+   },
+   "source": "Ocarina of Time Link amiibo (amiibo rune)",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Amber",
+       "count": 3
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Amber",
+       "count": 5
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Amber",
+       "count": 15
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Amber",
+       "count": 30
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "trousers-of-twilight",
+   "name": "Trousers of Twilight",
+   "set": "Hero of Twilight Set",
+   "slot": "legs",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Master Sword Beam Up",
+    "requiresLevel": 2
+   },
+   "source": "Twilight Princess Link (or Smash Bros. Link) amiibo (amiibo rune)",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Star Fragment",
+       "count": 1
+      },
+      {
+       "name": "Topaz",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Star Fragment",
+       "count": 1
+      },
+      {
+       "name": "Topaz",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Star Fragment",
+       "count": 1
+      },
+      {
+       "name": "Topaz",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Star Fragment",
+       "count": 1
+      },
+      {
+       "name": "Topaz",
+       "count": 10
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "trousers-of-the-hero",
+   "name": "Trousers of the Hero",
+   "set": "Hero Set",
+   "slot": "legs",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Master Sword Beam Up",
+    "requiresLevel": 2
+   },
+   "source": "30th-anniversary 8-bit Link amiibo (amiibo rune)",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": null,
+     "materials": [
+      {
+       "name": "Ruby",
+       "count": 1
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": null,
+     "materials": [
+      {
+       "name": "Ruby",
+       "count": 3
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": null,
+     "materials": [
+      {
+       "name": "Ruby",
+       "count": 5
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": null,
+     "materials": [
+      {
+       "name": "Ruby",
+       "count": 10
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "trousers-of-the-sky",
+   "name": "Trousers of the Sky",
+   "set": "Hero of the Sky Set",
+   "slot": "legs",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Master Sword Beam Up",
+    "requiresLevel": 2
+   },
+   "source": "Skyward Sword Link amiibo (amiibo rune)",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Sapphire",
+       "count": 1
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Sapphire",
+       "count": 3
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Sapphire",
+       "count": 5
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Sapphire",
+       "count": 10
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "trousers-of-the-wild",
+   "name": "Trousers of the Wild",
+   "set": "Hero of the Wild Set",
+   "slot": "legs",
+   "baseDefense": 4,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Master Sword Beam Up",
+    "requiresLevel": 2
+   },
+   "whereFound": "Forgotten Temple, after completing all 120 shrines.",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 7,
+     "materials": [
+      {
+       "name": "Acorn",
+       "count": 10
+      },
+      {
+       "name": "Dinraal's Scale",
+       "count": 2
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Courser Bee Honey",
+       "count": 5
+      },
+      {
+       "name": "Dinraal's Claw",
+       "count": 2
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 18,
+     "materials": [
+      {
+       "name": "Energetic Rhino Beetle",
+       "count": 5
+      },
+      {
+       "name": "Shard of Dinraal's Fang",
+       "count": 2
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 28,
+     "materials": [
+      {
+       "name": "Shard of Dinraal's Horn",
+       "count": 2
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "trousers-of-the-wind",
+   "name": "Trousers of the Wind",
+   "set": "Hero of the Winds Set",
+   "slot": "legs",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Master Sword Beam Up",
+    "requiresLevel": 2
+   },
+   "source": "Toon Link amiibo (amiibo rune)",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Opal",
+       "count": 3
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Opal",
+       "count": 5
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Opal",
+       "count": 10
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Opal",
+       "count": 20
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "tunic-of-time",
+   "name": "Tunic of Time",
+   "set": "Hero of Time Set",
+   "slot": "body",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Master Sword Beam Up",
+    "requiresLevel": 2
+   },
+   "source": "Ocarina of Time Link amiibo (amiibo rune)",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Amber",
+       "count": 3
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Amber",
+       "count": 5
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Amber",
+       "count": 15
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Amber",
+       "count": 30
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "tunic-of-twilight",
+   "name": "Tunic of Twilight",
+   "set": "Hero of Twilight Set",
+   "slot": "body",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Master Sword Beam Up",
+    "requiresLevel": 2
+   },
+   "source": "Twilight Princess Link (or Smash Bros. Link) amiibo (amiibo rune)",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Star Fragment",
+       "count": 1
+      },
+      {
+       "name": "Topaz",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Star Fragment",
+       "count": 1
+      },
+      {
+       "name": "Topaz",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Star Fragment",
+       "count": 1
+      },
+      {
+       "name": "Topaz",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Star Fragment",
+       "count": 1
+      },
+      {
+       "name": "Topaz",
+       "count": 10
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "tunic-of-the-hero",
+   "name": "Tunic of the Hero",
+   "set": "Hero Set",
+   "slot": "body",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Master Sword Beam Up",
+    "requiresLevel": 2
+   },
+   "source": "30th-anniversary 8-bit Link amiibo (amiibo rune)",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": null,
+     "materials": [
+      {
+       "name": "Ruby",
+       "count": 1
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": null,
+     "materials": [
+      {
+       "name": "Ruby",
+       "count": 3
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": null,
+     "materials": [
+      {
+       "name": "Ruby",
+       "count": 5
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": null,
+     "materials": [
+      {
+       "name": "Ruby",
+       "count": 10
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "tunic-of-the-sky",
+   "name": "Tunic of the Sky",
+   "set": "Hero of the Sky Set",
+   "slot": "body",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Master Sword Beam Up",
+    "requiresLevel": 2
+   },
+   "source": "Skyward Sword Link amiibo (amiibo rune)",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Sapphire",
+       "count": 1
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Sapphire",
+       "count": 3
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Sapphire",
+       "count": 5
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Sapphire",
+       "count": 10
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "tunic-of-the-wild",
+   "name": "Tunic of the Wild",
+   "set": "Hero of the Wild Set",
+   "slot": "body",
+   "baseDefense": 4,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Master Sword Beam Up",
+    "requiresLevel": 2
+   },
+   "whereFound": "Forgotten Temple, after completing all 120 shrines.",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 7,
+     "materials": [
+      {
+       "name": "Acorn",
+       "count": 10
+      },
+      {
+       "name": "Naydra's Scale",
+       "count": 2
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Courser Bee Honey",
+       "count": 5
+      },
+      {
+       "name": "Naydra's Claw",
+       "count": 2
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 18,
+     "materials": [
+      {
+       "name": "Energetic Rhino Beetle",
+       "count": 5
+      },
+      {
+       "name": "Shard of Naydra's Fang",
+       "count": 2
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 28,
+     "materials": [
+      {
+       "name": "Shard of Naydra's Horn",
+       "count": 2
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "tunic-of-the-wind",
+   "name": "Tunic of the Wind",
+   "set": "Hero of the Winds Set",
+   "slot": "body",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Master Sword Beam Up",
+    "requiresLevel": 2
+   },
+   "source": "Toon Link amiibo (amiibo rune)",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Opal",
+       "count": 3
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Opal",
+       "count": 5
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Opal",
+       "count": 10
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Opal",
+       "count": 20
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "vah-medoh-divine-helm",
+   "name": "Vah Medoh Divine Helm",
+   "set": null,
+   "slot": "head",
+   "baseDefense": 4,
+   "upgradeable": true,
+   "effect": "Cold Resistance, See Enemy HP",
+   "source": "Revali amiibo (amiibo rune)",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 7,
+     "materials": [
+      {
+       "name": "Ancient Screw",
+       "count": 5
+      },
+      {
+       "name": "Ancient Spring",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Ancient Gear",
+       "count": 10
+      },
+      {
+       "name": "Ancient Spring",
+       "count": 15
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 18,
+     "materials": [
+      {
+       "name": "Ancient Core",
+       "count": 5
+      },
+      {
+       "name": "Ancient Shaft",
+       "count": 15
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 28,
+     "materials": [
+      {
+       "name": "Giant Ancient Core",
+       "count": 2
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "vah-naboris-divine-helm",
+   "name": "Vah Naboris Divine Helm",
+   "set": null,
+   "slot": "head",
+   "baseDefense": 4,
+   "upgradeable": true,
+   "effect": "Shock Resistance, See Enemy HP",
+   "source": "Urbosa amiibo (amiibo rune)",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 7,
+     "materials": [
+      {
+       "name": "Ancient Screw",
+       "count": 5
+      },
+      {
+       "name": "Ancient Spring",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Ancient Gear",
+       "count": 10
+      },
+      {
+       "name": "Ancient Spring",
+       "count": 15
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 18,
+     "materials": [
+      {
+       "name": "Ancient Core",
+       "count": 5
+      },
+      {
+       "name": "Ancient Shaft",
+       "count": 15
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 28,
+     "materials": [
+      {
+       "name": "Giant Ancient Core",
+       "count": 2
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "vah-rudania-divine-helm",
+   "name": "Vah Rudania Divine Helm",
+   "set": null,
+   "slot": "head",
+   "baseDefense": 4,
+   "upgradeable": true,
+   "effect": "Flame Guard, See Enemy HP",
+   "source": "Daruk amiibo (amiibo rune)",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 7,
+     "materials": [
+      {
+       "name": "Ancient Screw",
+       "count": 5
+      },
+      {
+       "name": "Ancient Spring",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Ancient Gear",
+       "count": 10
+      },
+      {
+       "name": "Ancient Spring",
+       "count": 15
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 18,
+     "materials": [
+      {
+       "name": "Ancient Core",
+       "count": 5
+      },
+      {
+       "name": "Ancient Shaft",
+       "count": 15
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 28,
+     "materials": [
+      {
+       "name": "Giant Ancient Core",
+       "count": 2
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "vah-ruta-divine-helm",
+   "name": "Vah Ruta Divine Helm",
+   "set": null,
+   "slot": "head",
+   "baseDefense": 4,
+   "upgradeable": true,
+   "effect": "Swim Speed Up, See Enemy HP",
+   "source": "Mipha amiibo (amiibo rune)",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 7,
+     "materials": [
+      {
+       "name": "Ancient Screw",
+       "count": 5
+      },
+      {
+       "name": "Ancient Spring",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Ancient Gear",
+       "count": 10
+      },
+      {
+       "name": "Ancient Spring",
+       "count": 15
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 18,
+     "materials": [
+      {
+       "name": "Ancient Core",
+       "count": 5
+      },
+      {
+       "name": "Ancient Shaft",
+       "count": 15
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 28,
+     "materials": [
+      {
+       "name": "Giant Ancient Core",
+       "count": 2
+      },
+      {
+       "name": "Star Fragment",
+       "count": 1
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "warm-doublet",
+   "name": "Warm Doublet",
+   "set": null,
+   "slot": "body",
+   "baseDefense": 1,
+   "upgradeable": false,
+   "effect": "Cold Resistance",
+   "whereFound": "From the old man on the Great Plateau; also sold in Hateno Village.",
+   "price": "80 rupees"
+  },
+  {
+   "id": "well-worn-trousers",
+   "name": "Well-Worn Trousers",
+   "set": "Well-Worn Outfit",
+   "slot": "legs",
+   "baseDefense": 1,
+   "upgradeable": false,
+   "whereFound": "Chest in the Shrine of Resurrection at the very start; later rebuyable in Tarrey Town.",
+   "price": "50 rupees"
+  },
+  {
+   "id": "zants-helmet",
+   "name": "Zant's Helmet",
+   "set": null,
+   "slot": "head",
+   "baseDefense": 3,
+   "upgradeable": false,
+   "effect": "Unfreezable",
+   "source": "The Champions' Ballad DLC"
+  },
+  {
+   "id": "zora-armor",
+   "name": "Zora Armor",
+   "set": "Zora Set",
+   "slot": "body",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Swim Dash Stamina Up",
+    "requiresLevel": 2
+   },
+   "effect": "Swim Speed Up",
+   "whereFound": "Gift from King Dorephan in Zora's Domain during the Vah Ruta quest.",
+   "price": "300 rupees",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Lizalfos Horn",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Hyrule Bass",
+       "count": 5
+      },
+      {
+       "name": "Lizalfos Talon",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Hearty Bass",
+       "count": 5
+      },
+      {
+       "name": "Lizalfos Tail",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Lizalfos Tail",
+       "count": 10
+      },
+      {
+       "name": "Opal",
+       "count": 15
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "zora-greaves",
+   "name": "Zora Greaves",
+   "set": "Zora Set",
+   "slot": "legs",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Swim Dash Stamina Up",
+    "requiresLevel": 2
+   },
+   "effect": "Swim Speed Up",
+   "whereFound": "Shrine chest in the Zora's Domain region.",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Lizalfos Horn",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Hyrule Bass",
+       "count": 5
+      },
+      {
+       "name": "Lizalfos Talon",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Hearty Bass",
+       "count": 5
+      },
+      {
+       "name": "Lizalfos Tail",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Lizalfos Tail",
+       "count": 10
+      },
+      {
+       "name": "Opal",
+       "count": 15
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  },
+  {
+   "id": "zora-helm",
+   "name": "Zora Helm",
+   "set": "Zora Set",
+   "slot": "head",
+   "baseDefense": 3,
+   "upgradeable": true,
+   "setBonus": {
+    "name": "Swim Dash Stamina Up",
+    "requiresLevel": 2
+   },
+   "effect": "Swim Speed Up, Spin Attack",
+   "whereFound": "Side-quest reward at Toto Lake in the Zora's Domain region.",
+   "upgrades": [
+    {
+     "level": 1,
+     "defense": 5,
+     "materials": [
+      {
+       "name": "Lizalfos Horn",
+       "count": 3
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 2,
+     "defense": 8,
+     "materials": [
+      {
+       "name": "Hyrule Bass",
+       "count": 5
+      },
+      {
+       "name": "Lizalfos Talon",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 3,
+     "defense": 12,
+     "materials": [
+      {
+       "name": "Hearty Bass",
+       "count": 5
+      },
+      {
+       "name": "Lizalfos Tail",
+       "count": 5
+      }
+     ],
+     "rupees": 0
+    },
+    {
+     "level": 4,
+     "defense": 20,
+     "materials": [
+      {
+       "name": "Lizalfos Tail",
+       "count": 10
+      },
+      {
+       "name": "Opal",
+       "count": 15
+      }
+     ],
+     "rupees": 0
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Slate Companion</title>
+  <meta name="description" content="A Sheikah Slate for your PC: a companion app for Breath of the Wild that reads your save, shows the in-game map from your own game files, and keeps every quest, recipe and shrine in one place.">
+  <link rel="icon" href="art/favicon.png" type="image/png">
+  <style>
+    :root {
+      --bg: #071116; --panel: #10242d; --line: #1f4352; --line-hi: #2d6378;
+      --glow: #39c6ff; --glow-2: #7fe3ff; --orange: #ff9a3c; --text: #d6eef6; --muted: #86a9b6; --faint: #55798a;
+      color-scheme: dark;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body {
+      background: var(--bg); color: var(--text);
+      font: 16px/1.6 "Segoe UI Variable", "Segoe UI", system-ui, -apple-system, "Noto Sans", sans-serif;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background:
+        radial-gradient(ellipse at 50% -10%, rgba(57,198,255,.16), transparent 60%),
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='56' height='98' viewBox='0 0 56 98'><path d='M28 0 56 16v32L28 64 0 48V16z M28 64v34' fill='none' stroke='%2339c6ff' stroke-opacity='.06' stroke-width='1'/></svg>");
+    }
+    main { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 32px 16px 64px; }
+    a { color: var(--glow); }
+    header { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
+    header img { width: 44px; height: 44px; }
+    header .name { font-weight: 700; letter-spacing: .2em; font-size: 15px; }
+    header .sub { color: var(--faint); font-size: 13px; }
+    header nav { margin-left: auto; display: flex; gap: 18px; font-size: 14px; }
+    header nav a { color: var(--muted); text-decoration: none; }
+    header nav a:hover { color: var(--text); }
+    .eyebrow { color: var(--orange); letter-spacing: .3em; font-size: 12px; font-weight: 700; }
+    h1 { font-size: clamp(32px, 6vw, 56px); line-height: 1.1; margin: 8px 0 14px; letter-spacing: .02em; }
+    .lead { color: var(--muted); font-size: 18px; max-width: 760px; }
+    .downloads { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin: 28px 0 10px; }
+    .dl {
+      display: block; text-decoration: none; color: var(--text); padding: 18px 20px; border-radius: 14px;
+      border: 1px solid var(--line-hi); background: rgba(16,36,45,.85);
+    }
+    .dl:hover { border-color: var(--glow); box-shadow: 0 0 22px rgba(57,198,255,.25); }
+    .dl.primary { border-color: var(--glow); background: linear-gradient(180deg, rgba(57,198,255,.22), rgba(57,198,255,.08)); box-shadow: 0 0 26px rgba(57,198,255,.22); }
+    .dl .os { font-size: 12px; letter-spacing: .2em; color: var(--orange); font-weight: 700; }
+    .dl .file { font-size: 19px; font-weight: 600; margin: 4px 0 2px; word-break: break-all; }
+    .dl .meta { color: var(--faint); font-size: 13px; }
+    .release { color: var(--faint); font-size: 14px; }
+    .callout { border-left: 3px solid var(--orange); background: rgba(255,154,60,.09); border-radius: 0 10px 10px 0; padding: 12px 16px; margin: 22px 0; color: var(--text); }
+    .callout.blue { border-color: var(--glow); background: rgba(57,198,255,.07); }
+    .callout b { color: var(--orange); }
+    .callout.blue b { color: var(--glow); }
+    h2 { font-size: 13px; letter-spacing: .25em; color: var(--glow-2); margin: 44px 0 14px; }
+    figure { margin: 0; }
+    .hero-shot img, .shots img { width: 100%; border-radius: 12px; border: 1px solid var(--line); display: block; }
+    .hero-shot { margin: 18px 0 6px; }
+    .hero-shot img { border-color: var(--line-hi); box-shadow: 0 0 40px rgba(57,198,255,.15); }
+    figcaption { color: var(--faint); font-size: 13px; margin-top: 6px; }
+    .shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+    .feature { border: 1px solid var(--line); background: rgba(16,36,45,.75); border-radius: 12px; padding: 14px 16px; }
+    .feature h3 { margin: 0 0 6px; font-size: 16px; }
+    .feature p { margin: 0; color: var(--muted); font-size: 14px; }
+    ol { padding-left: 20px; color: var(--muted); }
+    ol b { color: var(--text); }
+    footer { margin-top: 56px; color: var(--faint); font-size: 13px; border-top: 1px solid var(--line); padding-top: 16px; }
+    code { background: rgba(57,198,255,.1); padding: 1px 6px; border-radius: 5px; font-size: 14px; }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <img src="art/icon.png" alt="">
+    <div><div class="name">SLATE COMPANION</div><div class="sub">Unofficial companion for Breath of the Wild</div></div>
+    <nav><a href="https://github.com/devall96/SlateCompanion">GitHub</a><a href="https://github.com/devall96/SlateCompanion/releases">Releases</a><a href="https://github.com/devall96/SlateCompanion/issues">Report a problem</a></nav>
+  </header>
+
+  <div class="eyebrow">SHEIKAH SLATE</div>
+  <h1>A Sheikah Slate for your PC</h1>
+  <p class="lead">Slate Companion reads your Breath of the Wild save while you play and ticks off shrines, Korok seeds, towers, memories and quests by itself. It shows the in-game map with the game's own icons, built from your own game files, and keeps a walkthrough, every quest, a cooking simulator, the Hyrule Compendium, armor upgrades and your stats in one place.</p>
+
+  <div class="downloads">
+    <a class="dl" id="dl-win" href="https://github.com/devall96/SlateCompanion/releases/latest/download/SlateCompanion-win-Setup.exe">
+      <div class="os">WINDOWS</div>
+      <div class="file">SlateCompanion-win-Setup.exe</div>
+      <div class="meta"><span id="size-win">Installer</span> · no admin needed · updates itself</div>
+    </a>
+    <a class="dl" id="dl-linux" href="https://github.com/devall96/SlateCompanion/releases/latest/download/SlateCompanion.AppImage">
+      <div class="os">LINUX</div>
+      <div class="file">SlateCompanion.AppImage</div>
+      <div class="meta"><span id="size-linux">AppImage</span> · <code>chmod +x</code>, then run it</div>
+    </a>
+  </div>
+  <div class="release"><span id="release-name">Latest release</span> <span id="release-date"></span> · <a href="https://github.com/devall96/SlateCompanion/releases">all releases</a></div>
+
+  <div class="callout"><b>Bring your own game files.</b> No game content ships with Slate Companion. It's made to be used with your own, legally obtained copy of Breath of the Wild: on first start it asks for your <a href="https://github.com/Revivedx/SavageWindRecomp">Savage Wind</a> folder and builds the map, icons, pictures and in-game text from it, once, on your PC. Your files are only read.</div>
+
+  <figure class="hero-shot">
+    <img src="images/welcome.png" alt="The first start: a welcome with quick tips, asking for your Savage Wind folder">
+    <figcaption>The first start: a welcome with quick tips, then your Savage Wind folder.</figcaption>
+  </figure>
+
+  <h2>WHAT IT DOES</h2>
+  <div class="features">
+    <div class="feature"><h3>Your progress, from your save</h3><p>All 136 shrines, 900 Korok seeds, towers, Divine Beasts, memories and 133 quests tick themselves off as you play. Savage Wind, Cemu, Ryujinx and Yuzu-family saves are found by themselves. Saves are only ever read.</p></div>
+    <div class="feature"><h3>The in-game map</h3><p>Sharp at full zoom, with the game's own icons, your save spot, your pins, the photo at each memory spot, and Link's live position from Savage Wind.</p></div>
+    <div class="feature"><h3>Quests &amp; shrines</h3><p>The story chapter by chapter with both DLC packs, every quest with the game's own quest log, and a short solution for every shrine.</p></div>
+    <div class="feature"><h3>Cooking</h3><p>A pot simulator using the game's own rules, checked against 617 real results, with item icons and the game's descriptions.</p></div>
+    <div class="feature"><h3>Compendium, armor, stats</h3><p>All 389 compendium entries with their photos, armor with a Great Fairy shopping list, and stats like play time, enemies and play sessions.</p></div>
+    <div class="feature"><h3>Stays out of your game's way</h3><p>A native app drawn in software, at low priority, that does nothing until something changes and sleeps when minimized. Nothing is sent anywhere.</p></div>
+  </div>
+
+  <h2>SCREENSHOTS</h2>
+  <div class="shots">
+    <figure><img src="images/home.png" alt="Adventure log" loading="lazy"><figcaption>Adventure log</figcaption></figure>
+    <figure><img src="images/map.png" alt="The in-game map" loading="lazy"><figcaption>The in-game map</figcaption></figure>
+    <figure><img src="images/cooking.png" alt="Cooking" loading="lazy"><figcaption>Cooking</figcaption></figure>
+    <figure><img src="images/compendium.png" alt="Hyrule Compendium" loading="lazy"><figcaption>Hyrule Compendium</figcaption></figure>
+    <figure><img src="images/quests.png" alt="Quests" loading="lazy"><figcaption>Quests with the game's quest log</figcaption></figure>
+    <figure><img src="images/stats.png" alt="Stats" loading="lazy"><figcaption>Stats</figcaption></figure>
+  </div>
+  <p class="release">Map, icons, pictures and in-game text in these screenshots were built from a legally obtained copy of the game, as they are on your PC. They're © Nintendo and aren't part of Slate Companion.</p>
+
+  <h2>GETTING STARTED</h2>
+  <ol>
+    <li><b>Download</b> the installer for Windows or the AppImage for Linux.</li>
+    <li><b>Start it.</b> It looks for Savage Wind on your PC; press <b>Use these</b>, or <b>Choose your Savage Wind folder…</b>.</li>
+    <li><b>Wait under a minute</b> while it builds the map, icons, pictures and text from your game files, once.</li>
+    <li><b>Play.</b> It finds your saves by itself and ticks things off as the game saves.</li>
+  </ol>
+
+  <div class="callout blue"><b>Made with AI, early, and not official.</b> Written by Claude (Anthropic) through Claude Code, directed and tested by <a href="https://github.com/devall96">devall96</a>. Tested on one Windows PC so far. Not affiliated with Nintendo or the Savage Wind team. <i>The Legend of Zelda: Breath of the Wild</i> is © Nintendo.</div>
+
+  <footer>Slate Companion · <a href="https://github.com/devall96/SlateCompanion">source on GitHub</a> (MIT) · no accounts, no telemetry, no ads.</footer>
+</main>
+<script>
+  // Put the visitor's system first, and fill in the version, date and sizes from GitHub. The links work without this.
+  (function () {
+    var linux = /Linux|X11/.test(navigator.userAgent) && !/Android/.test(navigator.userAgent);
+    var first = document.getElementById(linux ? "dl-linux" : "dl-win");
+    first.classList.add("primary");
+    first.parentNode.insertBefore(first, first.parentNode.firstChild);
+    function mb(b) { return (b / 1048576).toFixed(0) + " MB"; }
+    fetch("https://api.github.com/repos/devall96/SlateCompanion/releases/latest", { headers: { Accept: "application/vnd.github+json" } })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (rel) {
+        if (!rel) return;
+        document.getElementById("release-name").textContent = rel.name || rel.tag_name;
+        if (rel.published_at) document.getElementById("release-date").textContent = "· " + new Date(rel.published_at).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+        (rel.assets || []).forEach(function (a) {
+          if (a.name === "SlateCompanion-win-Setup.exe") document.getElementById("size-win").textContent = "Installer · " + mb(a.size);
+          if (a.name === "SlateCompanion.AppImage") document.getElementById("size-linux").textContent = "AppImage · " + mb(a.size);
+        });
+      })
+      .catch(function () { /* offline or rate-limited: the page still works */ });
+  })();
+</script>
+</body>
+</html>

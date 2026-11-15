@@ -1,0 +1,6909 @@
+{
+ "_meta": {
+  "description": "BOTW recipe table. \"table\" is the game's CookData exactly in priority order; \"dishes\" groups the entries per result.",
+  "matching": "See cooking-rules.md. Each slot must be filled by a DIFFERENT distinct ingredient (several copies of one ingredient fill one slot). Extra ingredients that fill no slot are allowed. The first matching entry in table order wins.",
+  "heartBonus": "HB from the table, in quarter hearts, added after doubling.",
+  "sources": [
+   "Pistonite/botw-recipe research/output/cookdata-recipes.yaml (decode of the game file Cooking/CookData; MIT)",
+   "Pistonite/botw-recipe research/output/recipe-actors.yaml (English names; MIT)",
+   "Monster dish names cross-checked with savage13/cooking.rs src/cook_recipes.json (BSD-2-Clause)"
+  ],
+  "counts": {
+   "tableRecipes": 125,
+   "tableSingleRecipes": 13,
+   "distinctResults": 118,
+   "elixirVariants": 11,
+   "dishesTotal": 129
+  }
+ },
+ "table": {
+  "recipes": [
+   {
+    "index": 0,
+    "result": "Item_Cook_C_16",
+    "hb": -12,
+    "actors": [
+     [
+      "Animal_Insect_F"
+     ]
+    ],
+    "tags": [
+     [
+      "CookOre"
+     ],
+     [
+      "CookInsect"
+     ],
+     [
+      "CookEnemy"
+     ]
+    ]
+   },
+   {
+    "index": 1,
+    "result": "Item_Cook_C_16",
+    "hb": -12,
+    "actors": [
+     [
+      "Animal_Insect_F"
+     ]
+    ],
+    "tags": [
+     [
+      "CookInsect"
+     ],
+     [
+      "CookEnemy"
+     ]
+    ]
+   },
+   {
+    "index": 2,
+    "result": "Item_Cook_C_16",
+    "hb": -12,
+    "actors": [
+     [
+      "Animal_Insect_F"
+     ]
+    ],
+    "tags": [
+     [
+      "CookOre",
+      "CookEnemy",
+      "CookInsect"
+     ]
+    ]
+   },
+   {
+    "index": 3,
+    "result": "Item_Cook_O_02",
+    "hb": 0,
+    "actors": [],
+    "tags": [
+     [
+      "CookOre"
+     ]
+    ]
+   },
+   {
+    "index": 4,
+    "result": "Item_Cook_C_17",
+    "hb": 0,
+    "actors": [],
+    "tags": [
+     [
+      "CookEnemy"
+     ],
+     [
+      "CookInsect"
+     ]
+    ]
+   },
+   {
+    "index": 5,
+    "result": "Item_Cook_O_01",
+    "hb": 0,
+    "actors": [],
+    "tags": [
+     [
+      "CookEnemy",
+      "CookInsect"
+     ]
+    ]
+   },
+   {
+    "index": 6,
+    "result": "Item_Cook_N_02",
+    "hb": 4,
+    "actors": [
+     [
+      "Item_Fruit_A",
+      "Item_Fruit_B"
+     ],
+     [
+      "Item_Fruit_B",
+      "Item_Fruit_C",
+      "Item_Fruit_F",
+      "Item_Fruit_H",
+      "Item_Fruit_D",
+      "Item_Fruit_G",
+      "Item_Fruit_A"
+     ],
+     [
+      "Item_Material_07"
+     ],
+     [
+      "Item_Material_01"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 7,
+    "result": "Item_Cook_N_01",
+    "hb": 8,
+    "actors": [
+     [
+      "Item_FishGet_F",
+      "Item_FishGet_G"
+     ],
+     [
+      "Item_FishGet_K"
+     ],
+     [
+      "Item_Material_03"
+     ],
+     [
+      "Item_Material_06"
+     ],
+     [
+      "Item_Ore_H"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 8,
+    "result": "Item_Cook_L_05",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Material_03"
+     ],
+     [
+      "Item_Material_02"
+     ],
+     [
+      "Item_Material_08"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 9,
+    "result": "Item_Cook_L_04",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Material_03"
+     ],
+     [
+      "Item_Ore_H"
+     ],
+     [
+      "Item_Material_08"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 10,
+    "result": "Item_Cook_L_03",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Material_07"
+     ],
+     [
+      "Item_Material_01"
+     ],
+     [
+      "Item_Material_08"
+     ],
+     [
+      "Item_Material_06"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 11,
+    "result": "Item_Cook_L_02",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Material_07"
+     ],
+     [
+      "Item_Material_06"
+     ],
+     [
+      "Item_Material_05"
+     ],
+     [
+      "Item_Material_08"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 12,
+    "result": "Item_Cook_L_01",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Material_08"
+     ]
+    ],
+    "tags": [
+     [
+      "CookMeat"
+     ],
+     [
+      "CookFish"
+     ]
+    ]
+   },
+   {
+    "index": 13,
+    "result": "Item_Cook_F_04",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_PlantGet_B",
+      "Item_PlantGet_C"
+     ],
+     [
+      "Item_Fruit_C"
+     ],
+     [
+      "Item_Fruit_F"
+     ],
+     [
+      "Item_Material_05"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 14,
+    "result": "Item_Cook_K_04",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_FishGet_K"
+     ],
+     [
+      "Item_Material_07"
+     ],
+     [
+      "Item_Material_05"
+     ],
+     [
+      "Item_Material_06"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 15,
+    "result": "Item_Cook_K_03",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Fruit_J"
+     ],
+     [
+      "Item_Material_07"
+     ],
+     [
+      "Item_Material_05"
+     ],
+     [
+      "Item_Material_06"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 16,
+    "result": "Item_Cook_K_05",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Meat_11",
+      "Item_Meat_12"
+     ],
+     [
+      "Item_Material_07"
+     ],
+     [
+      "Item_Material_05"
+     ],
+     [
+      "Item_Material_06"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 17,
+    "result": "Item_Cook_K_02",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Meat_02",
+      "Item_Meat_07"
+     ],
+     [
+      "Item_Material_07"
+     ],
+     [
+      "Item_Material_05"
+     ],
+     [
+      "Item_Material_06"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 18,
+    "result": "Item_Cook_K_01",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Meat_01",
+      "Item_Meat_06"
+     ],
+     [
+      "Item_Material_07"
+     ],
+     [
+      "Item_Material_05"
+     ],
+     [
+      "Item_Material_06"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 19,
+    "result": "Item_Cook_J_09",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Meat_11"
+     ],
+     [
+      "Item_Material_03"
+     ],
+     [
+      "Item_Material_02"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 20,
+    "result": "Item_Cook_J_08",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Meat_12"
+     ],
+     [
+      "Item_Material_03"
+     ],
+     [
+      "Item_Material_02"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 21,
+    "result": "Item_Cook_J_07",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Meat_02"
+     ],
+     [
+      "Item_Material_03"
+     ],
+     [
+      "Item_Material_02"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 22,
+    "result": "Item_Cook_J_05",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Meat_07"
+     ],
+     [
+      "Item_Material_03"
+     ],
+     [
+      "Item_Material_02"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 23,
+    "result": "Item_Cook_J_06",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Meat_01"
+     ],
+     [
+      "Item_Material_03"
+     ],
+     [
+      "Item_Material_02"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 24,
+    "result": "Item_Cook_J_04",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Meat_06"
+     ],
+     [
+      "Item_Material_03"
+     ],
+     [
+      "Item_Material_02"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 25,
+    "result": "Item_Cook_J_03",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_FishGet_K",
+      "Item_FishGet_F",
+      "Item_FishGet_G"
+     ],
+     [
+      "Item_Material_03"
+     ],
+     [
+      "Item_Material_02"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 26,
+    "result": "Item_Cook_J_02",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Fruit_J",
+      "Item_PlantGet_M",
+      "Item_PlantGet_Q"
+     ],
+     [
+      "Item_Material_03"
+     ],
+     [
+      "Item_Material_02"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 27,
+    "result": "Item_Cook_I_06",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Fruit_J"
+     ],
+     [
+      "Item_Material_07"
+     ],
+     [
+      "Item_Material_01"
+     ],
+     [
+      "Item_Material_06"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 28,
+    "result": "Item_Cook_I_05",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_PlantGet_M",
+      "Item_PlantGet_Q"
+     ],
+     [
+      "Item_Material_07"
+     ],
+     [
+      "Item_Material_01"
+     ],
+     [
+      "Item_Material_06"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 29,
+    "result": "Item_Cook_I_11",
+    "hb": 16,
+    "actors": [
+     [
+      "Item_Material_07"
+     ],
+     [
+      "Item_Material_05"
+     ],
+     [
+      "Item_Material_04"
+     ],
+     [
+      "Item_Material_01"
+     ],
+     [
+      "Item_Fruit_B"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 30,
+    "result": "Item_Cook_I_17",
+    "hb": 4,
+    "actors": [
+     [
+      "Item_Material_07"
+     ],
+     [
+      "Item_Material_05"
+     ],
+     [
+      "Item_Material_04"
+     ],
+     [
+      "Item_Material_01"
+     ],
+     [
+      "BeeHome"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 31,
+    "result": "Item_Cook_I_10",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Material_07"
+     ],
+     [
+      "Item_Material_05"
+     ],
+     [
+      "Item_Material_04"
+     ],
+     [
+      "Item_Material_01"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 32,
+    "result": "Item_Cook_I_02",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Fruit_A"
+     ],
+     [
+      "Item_Material_07"
+     ],
+     [
+      "Item_Material_06"
+     ],
+     [
+      "Item_Material_01"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 33,
+    "result": "Item_Cook_I_12",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Material_07"
+     ],
+     [
+      "Item_Material_06"
+     ],
+     [
+      "Item_Material_01"
+     ],
+     [
+      "Item_Fruit_L",
+      "Item_Fruit_K"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 34,
+    "result": "Item_Cook_I_03",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Material_04"
+     ],
+     [
+      "Item_Material_07"
+     ],
+     [
+      "Item_Material_06"
+     ],
+     [
+      "Item_Material_01"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 35,
+    "result": "Item_Cook_I_14",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Material_04"
+     ],
+     [
+      "Item_Material_05"
+     ],
+     [
+      "Item_Material_01"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 36,
+    "result": "Item_Cook_I_13",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Fruit_H"
+     ],
+     [
+      "Item_Material_07"
+     ],
+     [
+      "Item_Material_01"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 37,
+    "result": "Item_Cook_I_01",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Material_07"
+     ],
+     [
+      "Item_Material_06"
+     ],
+     [
+      "Item_Material_01"
+     ]
+    ],
+    "tags": [
+     [
+      "CookFruit"
+     ]
+    ]
+   },
+   {
+    "index": 38,
+    "result": "Item_Cook_I_04",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Material_07"
+     ],
+     [
+      "Item_Material_06"
+     ],
+     [
+      "Item_Ore_H"
+     ]
+    ],
+    "tags": [
+     [
+      "CookMeat"
+     ]
+    ]
+   },
+   {
+    "index": 39,
+    "result": "Item_Cook_I_15",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Material_07"
+     ],
+     [
+      "Item_Material_06"
+     ],
+     [
+      "Item_Ore_H"
+     ]
+    ],
+    "tags": [
+     [
+      "CookFish"
+     ]
+    ]
+   },
+   {
+    "index": 40,
+    "result": "Item_Cook_H_03",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_FishGet_I"
+     ],
+     [
+      "Item_Material_06"
+     ],
+     [
+      "Item_Material_07"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 41,
+    "result": "Item_Cook_G_14",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_FishGet_I"
+     ],
+     [
+      "Item_Material_03"
+     ],
+     [
+      "Item_Ore_H"
+     ],
+     [
+      "Item_Material_06"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 42,
+    "result": "Item_Cook_G_17",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_InsectGet_K",
+      "Item_InsectGet_O",
+      "Item_InsectGet_Z"
+     ],
+     [
+      "Item_Material_03"
+     ],
+     [
+      "Item_Ore_H"
+     ],
+     [
+      "Item_Material_06"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 43,
+    "result": "Item_Cook_G_13",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Fruit_J",
+      "Item_PlantGet_M",
+      "Item_PlantGet_Q"
+     ],
+     [
+      "Item_Material_03"
+     ],
+     [
+      "Item_Ore_H"
+     ],
+     [
+      "Item_Material_06"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 44,
+    "result": "Item_Cook_G_12",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Material_03"
+     ],
+     [
+      "Item_Ore_H"
+     ],
+     [
+      "Item_Material_06"
+     ]
+    ],
+    "tags": [
+     [
+      "CookMushroom"
+     ]
+    ]
+   },
+   {
+    "index": 45,
+    "result": "Item_Cook_K_06",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Ore_H"
+     ],
+     [
+      "Item_Material_05"
+     ]
+    ],
+    "tags": [
+     [
+      "CookMushroom"
+     ],
+     [
+      "CookVegetable",
+      "CookPlant"
+     ]
+    ]
+   },
+   {
+    "index": 46,
+    "result": "Item_Cook_F_03",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Fruit_J",
+      "Item_PlantGet_M",
+      "Item_PlantGet_Q"
+     ],
+     [
+      "Item_Ore_H"
+     ],
+     [
+      "Item_Material_05"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 47,
+    "result": "Item_Cook_F_01",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Ore_H"
+     ],
+     [
+      "Item_Material_05"
+     ]
+    ],
+    "tags": [
+     [
+      "CookMeat"
+     ],
+     [
+      "CookVegetable",
+      "CookPlant"
+     ]
+    ]
+   },
+   {
+    "index": 48,
+    "result": "Item_Cook_F_02",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Ore_H"
+     ],
+     [
+      "Item_Material_05"
+     ]
+    ],
+    "tags": [
+     [
+      "CookFish"
+     ],
+     [
+      "CookVegetable",
+      "CookPlant"
+     ]
+    ]
+   },
+   {
+    "index": 49,
+    "result": "Item_Cook_K_07",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Ore_H"
+     ],
+     [
+      "Item_Material_05"
+     ]
+    ],
+    "tags": [
+     [
+      "CookVegetable",
+      "CookPlant"
+     ]
+    ]
+   },
+   {
+    "index": 50,
+    "result": "Item_Cook_K_08",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_PlantGet_M",
+      "Item_PlantGet_Q"
+     ],
+     [
+      "Item_Material_06"
+     ],
+     [
+      "Item_Material_05"
+     ],
+     [
+      "Item_Material_07"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 51,
+    "result": "Item_Cook_N_04",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Material_04"
+     ],
+     [
+      "Item_Ore_H"
+     ],
+     [
+      "Item_Material_06"
+     ]
+    ],
+    "tags": [
+     [
+      "CookMushroom"
+     ]
+    ]
+   },
+   {
+    "index": 52,
+    "result": "Item_Cook_G_16",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_InsectGet_K",
+      "Item_InsectGet_O",
+      "Item_InsectGet_Z"
+     ],
+     [
+      "Item_Material_04"
+     ],
+     [
+      "Item_Material_03"
+     ],
+     [
+      "Item_Ore_H"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 53,
+    "result": "Item_Cook_E_03",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Meat_12"
+     ],
+     [
+      "Item_Material_04"
+     ],
+     [
+      "Item_Material_03"
+     ],
+     [
+      "Item_Material_06"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 54,
+    "result": "Item_Cook_E_02",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Meat_07"
+     ],
+     [
+      "Item_Material_04"
+     ],
+     [
+      "Item_Material_03"
+     ],
+     [
+      "Item_Material_06"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 55,
+    "result": "Item_Cook_E_01",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Meat_06"
+     ],
+     [
+      "Item_Material_04"
+     ],
+     [
+      "Item_Material_03"
+     ],
+     [
+      "Item_Material_06"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 56,
+    "result": "Item_Cook_N_03",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Material_04"
+     ],
+     [
+      "Item_Material_06"
+     ],
+     [
+      "Item_Ore_H"
+     ]
+    ],
+    "tags": [
+     [
+      "CookVegetable",
+      "CookPlant"
+     ]
+    ]
+   },
+   {
+    "index": 57,
+    "result": "Item_Cook_H_02",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_FishGet_F",
+      "Item_FishGet_G"
+     ],
+     [
+      "Item_Material_06"
+     ],
+     [
+      "Item_Material_07"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 58,
+    "result": "Item_Cook_H_01",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Material_06"
+     ],
+     [
+      "Item_Material_07"
+     ]
+    ],
+    "tags": [
+     [
+      "CookFish"
+     ]
+    ]
+   },
+   {
+    "index": 59,
+    "result": "Item_Cook_G_10",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_FishGet_K",
+      "Item_FishGet_F",
+      "Item_FishGet_G"
+     ],
+     [
+      "Item_Material_03"
+     ],
+     [
+      "Item_Ore_H"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 60,
+    "result": "Item_Cook_G_11",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Material_02"
+     ],
+     [
+      "Item_Material_03"
+     ],
+     [
+      "Item_Material_06"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 61,
+    "result": "Item_Cook_G_09",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Meat_11"
+     ],
+     [
+      "Item_Material_03"
+     ],
+     [
+      "Item_Ore_H"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 62,
+    "result": "Item_Cook_G_06",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Meat_02"
+     ],
+     [
+      "Item_Material_03"
+     ],
+     [
+      "Item_Ore_H"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 63,
+    "result": "Item_Cook_G_05",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Meat_01"
+     ],
+     [
+      "Item_Material_03"
+     ],
+     [
+      "Item_Ore_H"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 64,
+    "result": "Item_Cook_E_04",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Material_03"
+     ],
+     [
+      "Item_Material_04"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 65,
+    "result": "Item_Cook_G_15",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Material_03"
+     ]
+    ],
+    "tags": [
+     [
+      "CookMeat"
+     ]
+    ]
+   },
+   {
+    "index": 66,
+    "result": "Item_Cook_G_02",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Material_03"
+     ]
+    ],
+    "tags": [
+     [
+      "CookFish"
+     ]
+    ]
+   },
+   {
+    "index": 67,
+    "result": "Item_Cook_G_04",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Material_03"
+     ]
+    ],
+    "tags": [
+     [
+      "CookMushroom"
+     ]
+    ]
+   },
+   {
+    "index": 68,
+    "result": "Item_Cook_G_03",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Material_03"
+     ]
+    ],
+    "tags": [
+     [
+      "CookPlant",
+      "CookVegetable"
+     ]
+    ]
+   },
+   {
+    "index": 69,
+    "result": "Item_Cook_I_07",
+    "hb": 4,
+    "actors": [
+     [
+      "Item_Fruit_A"
+     ],
+     [
+      "Item_Material_06"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 70,
+    "result": "Item_Cook_B_20",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Fruit_J"
+     ]
+    ],
+    "tags": [
+     [
+      "CookMeat"
+     ]
+    ]
+   },
+   {
+    "index": 71,
+    "result": "Item_Cook_A_12",
+    "hb": 0,
+    "actors": [
+     [
+      "BeeHome"
+     ]
+    ],
+    "tags": [
+     [
+      "CookMeat"
+     ]
+    ]
+   },
+   {
+    "index": 72,
+    "result": "Item_Cook_A_13",
+    "hb": 0,
+    "actors": [
+     [
+      "BeeHome"
+     ]
+    ],
+    "tags": [
+     [
+      "CookFish"
+     ]
+    ]
+   },
+   {
+    "index": 73,
+    "result": "Item_Cook_A_11",
+    "hb": 0,
+    "actors": [
+     [
+      "BeeHome"
+     ]
+    ],
+    "tags": [
+     [
+      "CookMushroom"
+     ]
+    ]
+   },
+   {
+    "index": 74,
+    "result": "Item_Cook_A_14",
+    "hb": 0,
+    "actors": [
+     [
+      "BeeHome"
+     ]
+    ],
+    "tags": [
+     [
+      "CookPlant",
+      "CookVegetable"
+     ]
+    ]
+   },
+   {
+    "index": 75,
+    "result": "Item_Cook_J_01",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Material_03"
+     ],
+     [
+      "Item_Material_02"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 76,
+    "result": "Item_Cook_I_08",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Fruit_A"
+     ],
+     [
+      "BeeHome"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 77,
+    "result": "Item_Cook_I_09",
+    "hb": 0,
+    "actors": [
+     [
+      "BeeHome"
+     ]
+    ],
+    "tags": [
+     [
+      "CookFruit"
+     ]
+    ]
+   },
+   {
+    "index": 78,
+    "result": "Item_Cook_P_05",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Meat_11"
+     ],
+     [
+      "Item_Material_02"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 79,
+    "result": "Item_Cook_P_04",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Meat_02"
+     ],
+     [
+      "Item_Material_02"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 80,
+    "result": "Item_Cook_P_03",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Meat_01"
+     ],
+     [
+      "Item_Material_02"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 81,
+    "result": "Item_Cook_P_01",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Material_02"
+     ]
+    ],
+    "tags": [
+     [
+      "CookMushroom"
+     ]
+    ]
+   },
+   {
+    "index": 82,
+    "result": "Item_Cook_P_02",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Material_02"
+     ]
+    ],
+    "tags": [
+     [
+      "CookPlant",
+      "CookVegetable"
+     ]
+    ]
+   },
+   {
+    "index": 83,
+    "result": "Item_Cook_D_06",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Meat_11",
+      "Item_Meat_12"
+     ],
+     [
+      "Item_Ore_H"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 84,
+    "result": "Item_Cook_D_05",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Meat_07",
+      "Item_Meat_02"
+     ],
+     [
+      "Item_Ore_H"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 85,
+    "result": "Item_Cook_D_04",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Meat_01",
+      "Item_Meat_06"
+     ],
+     [
+      "Item_Ore_H"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 86,
+    "result": "Item_Cook_D_10",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_InsectGet_K",
+      "Item_InsectGet_O",
+      "Item_InsectGet_Z"
+     ],
+     [
+      "Item_Material_02"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 87,
+    "result": "Item_Cook_D_09",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_InsectGet_K",
+      "Item_InsectGet_O",
+      "Item_InsectGet_Z"
+     ],
+     [
+      "Item_Ore_H"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 88,
+    "result": "Item_Cook_D_03",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Ore_H"
+     ]
+    ],
+    "tags": [
+     [
+      "CookFish"
+     ]
+    ]
+   },
+   {
+    "index": 89,
+    "result": "Item_Cook_M_01",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Material_07"
+     ],
+     [
+      "Item_Ore_H"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 90,
+    "result": "Item_Cook_D_02",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Ore_H"
+     ]
+    ],
+    "tags": [
+     [
+      "CookVegetable",
+      "CookPlant"
+     ]
+    ]
+   },
+   {
+    "index": 91,
+    "result": "Item_Cook_D_01",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Ore_H"
+     ]
+    ],
+    "tags": [
+     [
+      "CookMushroom"
+     ]
+    ]
+   },
+   {
+    "index": 92,
+    "result": "Item_Cook_B_16",
+    "hb": 0,
+    "actors": [],
+    "tags": [
+     [
+      "CookMeat"
+     ],
+     [
+      "CookMeat"
+     ],
+     [
+      "CookMeat"
+     ],
+     [
+      "CookMeat"
+     ]
+    ]
+   },
+   {
+    "index": 93,
+    "result": "Item_Cook_B_11",
+    "hb": 0,
+    "actors": [],
+    "tags": [
+     [
+      "CookVegetable",
+      "CookPlant"
+     ],
+     [
+      "CookVegetable",
+      "CookPlant"
+     ],
+     [
+      "CookVegetable",
+      "CookPlant"
+     ],
+     [
+      "CookVegetable",
+      "CookPlant"
+     ]
+    ]
+   },
+   {
+    "index": 94,
+    "result": "Item_Cook_B_12",
+    "hb": 0,
+    "actors": [],
+    "tags": [
+     [
+      "CookFruit"
+     ],
+     [
+      "CookFruit"
+     ],
+     [
+      "CookFruit"
+     ],
+     [
+      "CookFruit"
+     ]
+    ]
+   },
+   {
+    "index": 95,
+    "result": "Item_Cook_B_13",
+    "hb": 0,
+    "actors": [],
+    "tags": [
+     [
+      "CookMushroom"
+     ],
+     [
+      "CookMushroom"
+     ],
+     [
+      "CookMushroom"
+     ],
+     [
+      "CookMushroom"
+     ]
+    ]
+   },
+   {
+    "index": 96,
+    "result": "Item_Cook_B_15",
+    "hb": 0,
+    "actors": [],
+    "tags": [
+     [
+      "CookFish"
+     ],
+     [
+      "CookFish"
+     ],
+     [
+      "CookFish"
+     ],
+     [
+      "CookFish"
+     ]
+    ]
+   },
+   {
+    "index": 97,
+    "result": "Item_Cook_B_06",
+    "hb": 0,
+    "actors": [],
+    "tags": [
+     [
+      "CookMeat"
+     ],
+     [
+      "CookMeat"
+     ]
+    ]
+   },
+   {
+    "index": 98,
+    "result": "Item_Cook_B_02",
+    "hb": 0,
+    "actors": [],
+    "tags": [
+     [
+      "CookFruit"
+     ],
+     [
+      "CookFruit"
+     ]
+    ]
+   },
+   {
+    "index": 99,
+    "result": "Item_Cook_A_01",
+    "hb": 0,
+    "actors": [],
+    "tags": [
+     [
+      "CookMushroom"
+     ],
+     [
+      "CookMushroom"
+     ]
+    ]
+   },
+   {
+    "index": 100,
+    "result": "Item_Cook_B_01",
+    "hb": 0,
+    "actors": [],
+    "tags": [
+     [
+      "CookVegetable",
+      "CookPlant"
+     ],
+     [
+      "CookVegetable",
+      "CookPlant"
+     ]
+    ]
+   },
+   {
+    "index": 101,
+    "result": "Item_Cook_B_19",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Meat_11",
+      "Item_Meat_12"
+     ]
+    ],
+    "tags": [
+     [
+      "CookFish"
+     ]
+    ]
+   },
+   {
+    "index": 102,
+    "result": "Item_Cook_B_18",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Meat_02",
+      "Item_Meat_07"
+     ]
+    ],
+    "tags": [
+     [
+      "CookFish"
+     ]
+    ]
+   },
+   {
+    "index": 103,
+    "result": "Item_Cook_B_17",
+    "hb": 0,
+    "actors": [],
+    "tags": [
+     [
+      "CookMeat"
+     ],
+     [
+      "CookFish"
+     ]
+    ]
+   },
+   {
+    "index": 104,
+    "result": "Item_Cook_D_07",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Fruit_I"
+     ]
+    ],
+    "tags": [
+     [
+      "CookMeat"
+     ]
+    ]
+   },
+   {
+    "index": 105,
+    "result": "Item_Cook_D_08",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Fruit_I"
+     ]
+    ],
+    "tags": [
+     [
+      "CookFish"
+     ]
+    ]
+   },
+   {
+    "index": 106,
+    "result": "Item_Cook_B_23",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_FishGet_K",
+      "Item_FishGet_M",
+      "Item_InsectGet_K",
+      "Item_InsectGet_O",
+      "Item_InsectGet_Z"
+     ]
+    ],
+    "tags": [
+     [
+      "CookFish"
+     ]
+    ]
+   },
+   {
+    "index": 107,
+    "result": "Item_Cook_B_05",
+    "hb": 0,
+    "actors": [],
+    "tags": [
+     [
+      "CookFish"
+     ],
+     [
+      "CookFish"
+     ]
+    ]
+   },
+   {
+    "index": 108,
+    "result": "Item_Cook_A_05",
+    "hb": 0,
+    "actors": [],
+    "tags": [
+     [
+      "CookPlant",
+      "CookVegetable"
+     ],
+     [
+      "CookMeat"
+     ]
+    ]
+   },
+   {
+    "index": 109,
+    "result": "Item_Cook_A_04",
+    "hb": 0,
+    "actors": [],
+    "tags": [
+     [
+      "CookPlant",
+      "CookVegetable"
+     ],
+     [
+      "CookFish"
+     ]
+    ]
+   },
+   {
+    "index": 110,
+    "result": "Item_Cook_A_02",
+    "hb": 0,
+    "actors": [],
+    "tags": [
+     [
+      "CookPlant",
+      "CookVegetable"
+     ],
+     [
+      "CookMushroom"
+     ]
+    ]
+   },
+   {
+    "index": 111,
+    "result": "Item_Cook_A_03",
+    "hb": 0,
+    "actors": [],
+    "tags": [
+     [
+      "CookPlant",
+      "CookVegetable"
+     ],
+     [
+      "CookFruit"
+     ]
+    ]
+   },
+   {
+    "index": 112,
+    "result": "Item_Cook_A_08",
+    "hb": 0,
+    "actors": [],
+    "tags": [
+     [
+      "CookMushroom"
+     ],
+     [
+      "CookFish"
+     ]
+    ]
+   },
+   {
+    "index": 113,
+    "result": "Item_Cook_A_09",
+    "hb": 0,
+    "actors": [],
+    "tags": [
+     [
+      "CookMushroom"
+     ],
+     [
+      "CookMeat"
+     ]
+    ]
+   },
+   {
+    "index": 114,
+    "result": "Item_Cook_A_07",
+    "hb": 0,
+    "actors": [],
+    "tags": [
+     [
+      "CookMushroom"
+     ],
+     [
+      "CookFruit"
+     ]
+    ]
+   },
+   {
+    "index": 115,
+    "result": "Item_Cook_B_06",
+    "hb": 0,
+    "actors": [],
+    "tags": [
+     [
+      "CookMeat"
+     ]
+    ]
+   },
+   {
+    "index": 116,
+    "result": "Item_Cook_B_23",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_FishGet_K",
+      "Item_FishGet_M",
+      "Item_InsectGet_K",
+      "Item_InsectGet_O",
+      "Item_InsectGet_Z"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 117,
+    "result": "Item_Cook_B_05",
+    "hb": 0,
+    "actors": [],
+    "tags": [
+     [
+      "CookFish"
+     ]
+    ]
+   },
+   {
+    "index": 118,
+    "result": "Item_Cook_A_10",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Material_04"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 119,
+    "result": "Item_Cook_K_09",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Material_05"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 120,
+    "result": "Item_Cook_A_01",
+    "hb": 0,
+    "actors": [],
+    "tags": [
+     [
+      "CookMushroom"
+     ]
+    ]
+   },
+   {
+    "index": 121,
+    "result": "Item_Cook_B_01",
+    "hb": 0,
+    "actors": [],
+    "tags": [
+     [
+      "CookPlant"
+     ]
+    ]
+   },
+   {
+    "index": 122,
+    "result": "Item_Cook_B_02",
+    "hb": 0,
+    "actors": [],
+    "tags": [
+     [
+      "CookFruit"
+     ]
+    ]
+   },
+   {
+    "index": 123,
+    "result": "Item_Cook_B_22",
+    "hb": 0,
+    "actors": [
+     [
+      "Item_Fruit_K"
+     ],
+     [
+      "Item_Fruit_L"
+     ]
+    ],
+    "tags": []
+   },
+   {
+    "index": 124,
+    "result": "Item_Cook_C_16",
+    "hb": -12,
+    "actors": [
+     [
+      "Animal_Insect_F"
+     ]
+    ],
+    "tags": []
+   }
+  ],
+  "singleRecipes": [
+   {
+    "index": 0,
+    "result": "Item_Cook_C_16",
+    "hb": -12,
+    "actors": [
+     "Animal_Insect_F"
+    ],
+    "tags": []
+   },
+   {
+    "index": 1,
+    "result": "Item_Cook_O_02",
+    "hb": 0,
+    "actors": [],
+    "tags": [
+     "CookOre"
+    ]
+   },
+   {
+    "index": 2,
+    "result": "Item_Cook_B_21",
+    "hb": 0,
+    "actors": [
+     "Item_Fruit_I"
+    ],
+    "tags": []
+   },
+   {
+    "index": 3,
+    "result": "Item_Cook_A_10",
+    "hb": 0,
+    "actors": [
+     "Item_Material_04"
+    ],
+    "tags": []
+   },
+   {
+    "index": 4,
+    "result": "Item_Cook_B_06",
+    "hb": 0,
+    "actors": [],
+    "tags": [
+     "CookMeat"
+    ]
+   },
+   {
+    "index": 5,
+    "result": "Item_Cook_B_23",
+    "hb": 0,
+    "actors": [
+     "Item_FishGet_K",
+     "Item_FishGet_M",
+     "Item_InsectGet_K",
+     "Item_InsectGet_O",
+     "Item_InsectGet_Z"
+    ],
+    "tags": []
+   },
+   {
+    "index": 6,
+    "result": "Item_Cook_B_05",
+    "hb": 0,
+    "actors": [],
+    "tags": [
+     "CookFish"
+    ]
+   },
+   {
+    "index": 7,
+    "result": "Item_Cook_A_01",
+    "hb": 0,
+    "actors": [],
+    "tags": [
+     "CookMushroom"
+    ]
+   },
+   {
+    "index": 8,
+    "result": "Item_Cook_I_16",
+    "hb": -8,
+    "actors": [
+     "BeeHome"
+    ],
+    "tags": []
+   },
+   {
+    "index": 9,
+    "result": "Item_Cook_B_22",
+    "hb": -2,
+    "actors": [
+     "Item_Fruit_K",
+     "Item_Fruit_L"
+    ],
+    "tags": []
+   },
+   {
+    "index": 10,
+    "result": "Item_Cook_K_09",
+    "hb": 2,
+    "actors": [
+     "Item_Material_05"
+    ],
+    "tags": []
+   },
+   {
+    "index": 11,
+    "result": "Item_Cook_B_01",
+    "hb": 0,
+    "actors": [],
+    "tags": [
+     "CookPlant"
+    ]
+   },
+   {
+    "index": 12,
+    "result": "Item_Cook_B_02",
+    "hb": 0,
+    "actors": [],
+    "tags": [
+     "CookFruit"
+    ]
+   }
+  ]
+ },
+ "dishes": [
+  {
+   "id": "Item_Cook_C_16",
+   "name": "Fairy Tonic",
+   "kind": "tonic",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 0,
+     "heartBonus": -12,
+     "slots": [
+      {
+       "anyOf": [
+        "Animal_Insect_F"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookOre"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookInsect"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookEnemy"
+       ],
+       "min": 1
+      }
+     ]
+    },
+    {
+     "table": "Recipes",
+     "index": 1,
+     "heartBonus": -12,
+     "slots": [
+      {
+       "anyOf": [
+        "Animal_Insect_F"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookInsect"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookEnemy"
+       ],
+       "min": 1
+      }
+     ]
+    },
+    {
+     "table": "Recipes",
+     "index": 2,
+     "heartBonus": -12,
+     "slots": [
+      {
+       "anyOf": [
+        "Animal_Insect_F"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookOre",
+        "CookEnemy",
+        "CookInsect"
+       ],
+       "min": 1
+      }
+     ]
+    },
+    {
+     "table": "Recipes",
+     "index": 124,
+     "heartBonus": -12,
+     "slots": [
+      {
+       "anyOf": [
+        "Animal_Insect_F"
+       ],
+       "min": 1
+      }
+     ]
+    },
+    {
+     "table": "SingleRecipes",
+     "index": 0,
+     "onlyIngredient": true,
+     "heartBonus": -12,
+     "slots": [
+      {
+       "anyOf": [
+        "Animal_Insect_F"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Any cook containing a Fairy matches this first unless a higher entry wins. Effects are always removed; heal = 2 x raw hearts - 12 quarter hearts."
+  },
+  {
+   "id": "Item_Cook_O_02",
+   "name": "Rock-Hard Food",
+   "kind": "rock-hard",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 3,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookOre"
+       ],
+       "min": 1
+      }
+     ]
+    },
+    {
+     "table": "SingleRecipes",
+     "index": 1,
+     "onlyIngredient": true,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookOre"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Produced by ore/gems/wood (CookOre) with nothing that matches a higher entry. Heals 1 quarter heart; sells for 2."
+  },
+  {
+   "id": "Item_Cook_C_17",
+   "name": "Elixir",
+   "kind": "elixir",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 4,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookEnemy"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookInsect"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Generic elixir result. Needs a critter (CookInsect) and a monster part (CookEnemy). If the critters give no single effect it turns into Dubious Food. The shown name depends on the effect (see the 11 elixir entries)."
+  },
+  {
+   "id": "Item_Cook_O_01",
+   "name": "Dubious Food",
+   "kind": "dubious",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 5,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookEnemy",
+        "CookInsect"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Failure result. Also produced when nothing in the table matches, or when an Elixir has no usable effect. Heals raw hearts (not doubled), at least 1 heart; sells for 2."
+  },
+  {
+   "id": "Item_Cook_N_02",
+   "name": "Fruitcake",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 6,
+     "heartBonus": 4,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Fruit_A",
+        "Item_Fruit_B"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Fruit_B",
+        "Item_Fruit_C",
+        "Item_Fruit_F",
+        "Item_Fruit_H",
+        "Item_Fruit_D",
+        "Item_Fruit_G",
+        "Item_Fruit_A"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_07"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_01"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Fruitcake\"."
+  },
+  {
+   "id": "Item_Cook_N_01",
+   "name": "Seafood Paella",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 7,
+     "heartBonus": 8,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_FishGet_F",
+        "Item_FishGet_G"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_FishGet_K"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_03"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_06"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Ore_H"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Seafood Paella\"."
+  },
+  {
+   "id": "Item_Cook_L_05",
+   "name": "Monster Curry",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 8,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Material_03"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_02"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_08"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Monster Extract dish; hearts and duration are randomised. Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Monster Curry\"."
+  },
+  {
+   "id": "Item_Cook_L_04",
+   "name": "Monster Rice Balls",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 9,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Material_03"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Ore_H"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_08"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Monster Extract dish; hearts and duration are randomised. Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Monster Rice Balls\"."
+  },
+  {
+   "id": "Item_Cook_L_03",
+   "name": "Monster Cake",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 10,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Material_07"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_01"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_08"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_06"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Monster Extract dish; hearts and duration are randomised. Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Monster Cake\"."
+  },
+  {
+   "id": "Item_Cook_L_02",
+   "name": "Monster Soup",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 11,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Material_07"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_06"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_05"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_08"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Monster Extract dish; hearts and duration are randomised. Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Monster Soup\"."
+  },
+  {
+   "id": "Item_Cook_L_01",
+   "name": "Monster Stew",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 12,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Material_08"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookMeat"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookFish"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Monster Extract dishes randomise hearts and duration (see cooking-rules.md). Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Monster Stew\"."
+  },
+  {
+   "id": "Item_Cook_F_04",
+   "name": "Creamy Heart Soup",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 13,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_PlantGet_B",
+        "Item_PlantGet_C"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Fruit_C"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Fruit_F"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_05"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Creamy Heart Soup\"."
+  },
+  {
+   "id": "Item_Cook_K_04",
+   "name": "Clam Chowder",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 14,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_FishGet_K"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_07"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_05"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_06"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Clam Chowder\"."
+  },
+  {
+   "id": "Item_Cook_K_03",
+   "name": "Pumpkin Stew",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 15,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Fruit_J"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_07"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_05"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_06"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Pumpkin Stew\"."
+  },
+  {
+   "id": "Item_Cook_K_05",
+   "name": "Gourmet Meat Stew",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 16,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Meat_11",
+        "Item_Meat_12"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_07"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_05"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_06"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Gourmet Meat Stew\"."
+  },
+  {
+   "id": "Item_Cook_K_02",
+   "name": "Prime Meat Stew",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 17,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Meat_02",
+        "Item_Meat_07"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_07"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_05"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_06"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Prime Meat Stew\"."
+  },
+  {
+   "id": "Item_Cook_K_01",
+   "name": "Meat Stew",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 18,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Meat_01",
+        "Item_Meat_06"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_07"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_05"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_06"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Meat Stew\"."
+  },
+  {
+   "id": "Item_Cook_J_09",
+   "name": "Gourmet Meat Curry",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 19,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Meat_11"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_03"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_02"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Gourmet Meat Curry\"."
+  },
+  {
+   "id": "Item_Cook_J_08",
+   "name": "Gourmet Poultry Curry",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 20,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Meat_12"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_03"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_02"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Gourmet Poultry Curry\"."
+  },
+  {
+   "id": "Item_Cook_J_07",
+   "name": "Prime Meat Curry",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 21,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Meat_02"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_03"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_02"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Prime Meat Curry\"."
+  },
+  {
+   "id": "Item_Cook_J_05",
+   "name": "Prime Poultry Curry",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 22,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Meat_07"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_03"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_02"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Prime Poultry Curry\"."
+  },
+  {
+   "id": "Item_Cook_J_06",
+   "name": "Meat Curry",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 23,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Meat_01"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_03"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_02"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Meat Curry\"."
+  },
+  {
+   "id": "Item_Cook_J_04",
+   "name": "Poultry Curry",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 24,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Meat_06"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_03"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_02"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Poultry Curry\"."
+  },
+  {
+   "id": "Item_Cook_J_03",
+   "name": "Seafood Curry",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 25,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_FishGet_K",
+        "Item_FishGet_F",
+        "Item_FishGet_G"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_03"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_02"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Seafood Curry\"."
+  },
+  {
+   "id": "Item_Cook_J_02",
+   "name": "Vegetable Curry",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 26,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Fruit_J",
+        "Item_PlantGet_M",
+        "Item_PlantGet_Q"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_03"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_02"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Vegetable Curry\"."
+  },
+  {
+   "id": "Item_Cook_I_06",
+   "name": "Pumpkin Pie",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 27,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Fruit_J"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_07"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_01"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_06"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Pumpkin Pie\"."
+  },
+  {
+   "id": "Item_Cook_I_05",
+   "name": "Carrot Cake",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 28,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_PlantGet_M",
+        "Item_PlantGet_Q"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_07"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_01"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_06"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Carrot Cake\"."
+  },
+  {
+   "id": "Item_Cook_I_11",
+   "name": "Wildberry Crepe",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 29,
+     "heartBonus": 16,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Material_07"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_05"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_04"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_01"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Fruit_B"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Wildberry Crepe\"."
+  },
+  {
+   "id": "Item_Cook_I_17",
+   "name": "Honey Crepe",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 30,
+     "heartBonus": 4,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Material_07"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_05"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_04"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_01"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "BeeHome"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Honey Crepe\"."
+  },
+  {
+   "id": "Item_Cook_I_10",
+   "name": "Plain Crepe",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 31,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Material_07"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_05"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_04"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_01"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Plain Crepe\"."
+  },
+  {
+   "id": "Item_Cook_I_02",
+   "name": "Apple Pie",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 32,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Fruit_A"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_07"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_06"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_01"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Apple Pie\"."
+  },
+  {
+   "id": "Item_Cook_I_12",
+   "name": "Nutcake",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 33,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Material_07"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_06"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_01"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Fruit_L",
+        "Item_Fruit_K"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Nutcake\"."
+  },
+  {
+   "id": "Item_Cook_I_03",
+   "name": "Egg Tart",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 34,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Material_04"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_07"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_06"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_01"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Egg Tart\"."
+  },
+  {
+   "id": "Item_Cook_I_14",
+   "name": "Egg Pudding",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 35,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Material_04"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_05"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_01"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Egg Pudding\"."
+  },
+  {
+   "id": "Item_Cook_I_13",
+   "name": "Fried Bananas",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 36,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Fruit_H"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_07"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_01"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Fried Bananas\"."
+  },
+  {
+   "id": "Item_Cook_I_01",
+   "name": "Fruit Pie",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 37,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Material_07"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_06"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_01"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookFruit"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Fruit Pie\"."
+  },
+  {
+   "id": "Item_Cook_I_04",
+   "name": "Meat Pie",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 38,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Material_07"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_06"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Ore_H"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookMeat"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Meat Pie\"."
+  },
+  {
+   "id": "Item_Cook_I_15",
+   "name": "Fish Pie",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 39,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Material_07"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_06"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Ore_H"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookFish"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Fish Pie\"."
+  },
+  {
+   "id": "Item_Cook_H_03",
+   "name": "Salmon Meunière",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 40,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_FishGet_I"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_06"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_07"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Salmon Meunière\"."
+  },
+  {
+   "id": "Item_Cook_G_14",
+   "name": "Salmon Risotto",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 41,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_FishGet_I"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_03"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Ore_H"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_06"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Salmon Risotto\"."
+  },
+  {
+   "id": "Item_Cook_G_17",
+   "name": "Crab Risotto",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 42,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_InsectGet_K",
+        "Item_InsectGet_O",
+        "Item_InsectGet_Z"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_03"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Ore_H"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_06"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Crab Risotto\"."
+  },
+  {
+   "id": "Item_Cook_G_13",
+   "name": "Vegetable Risotto",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 43,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Fruit_J",
+        "Item_PlantGet_M",
+        "Item_PlantGet_Q"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_03"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Ore_H"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_06"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Vegetable Risotto\"."
+  },
+  {
+   "id": "Item_Cook_G_12",
+   "name": "Mushroom Risotto",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 44,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Material_03"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Ore_H"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_06"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookMushroom"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Mushroom Risotto\"."
+  },
+  {
+   "id": "Item_Cook_K_06",
+   "name": "Cream of Mushroom Soup",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 45,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Ore_H"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_05"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookMushroom"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookVegetable",
+        "CookPlant"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Cream of Mushroom Soup\"."
+  },
+  {
+   "id": "Item_Cook_F_03",
+   "name": "Veggie Cream Soup",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 46,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Fruit_J",
+        "Item_PlantGet_M",
+        "Item_PlantGet_Q"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Ore_H"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_05"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Veggie Cream Soup\"."
+  },
+  {
+   "id": "Item_Cook_F_01",
+   "name": "Creamy Meat Soup",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 47,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Ore_H"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_05"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookMeat"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookVegetable",
+        "CookPlant"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Creamy Meat Soup\"."
+  },
+  {
+   "id": "Item_Cook_F_02",
+   "name": "Creamy Seafood Soup",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 48,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Ore_H"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_05"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookFish"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookVegetable",
+        "CookPlant"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Creamy Seafood Soup\"."
+  },
+  {
+   "id": "Item_Cook_K_07",
+   "name": "Cream of Vegetable Soup",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 49,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Ore_H"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_05"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookVegetable",
+        "CookPlant"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Cream of Vegetable Soup\"."
+  },
+  {
+   "id": "Item_Cook_K_08",
+   "name": "Carrot Stew",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 50,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_PlantGet_M",
+        "Item_PlantGet_Q"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_06"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_05"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_07"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Carrot Stew\"."
+  },
+  {
+   "id": "Item_Cook_N_04",
+   "name": "Mushroom Omelet",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 51,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Material_04"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Ore_H"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_06"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookMushroom"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Mushroom Omelet\"."
+  },
+  {
+   "id": "Item_Cook_G_16",
+   "name": "Crab Omelet with Rice",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 52,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_InsectGet_K",
+        "Item_InsectGet_O",
+        "Item_InsectGet_Z"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_04"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_03"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Ore_H"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Crab Omelet with Rice\"."
+  },
+  {
+   "id": "Item_Cook_E_03",
+   "name": "Gourmet Poultry Pilaf",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 53,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Meat_12"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_04"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_03"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_06"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Gourmet Poultry Pilaf\"."
+  },
+  {
+   "id": "Item_Cook_E_02",
+   "name": "Prime Poultry Pilaf",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 54,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Meat_07"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_04"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_03"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_06"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Prime Poultry Pilaf\"."
+  },
+  {
+   "id": "Item_Cook_E_01",
+   "name": "Poultry Pilaf",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 55,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Meat_06"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_04"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_03"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_06"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Poultry Pilaf\"."
+  },
+  {
+   "id": "Item_Cook_N_03",
+   "name": "Vegetable Omelet",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 56,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Material_04"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_06"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Ore_H"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookVegetable",
+        "CookPlant"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Vegetable Omelet\"."
+  },
+  {
+   "id": "Item_Cook_H_02",
+   "name": "Porgy Meunière",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 57,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_FishGet_F",
+        "Item_FishGet_G"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_06"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_07"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Porgy Meunière\"."
+  },
+  {
+   "id": "Item_Cook_H_01",
+   "name": "Seafood Meunière",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 58,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Material_06"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_07"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookFish"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Seafood Meunière\"."
+  },
+  {
+   "id": "Item_Cook_G_10",
+   "name": "Seafood Fried Rice",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 59,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_FishGet_K",
+        "Item_FishGet_F",
+        "Item_FishGet_G"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_03"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Ore_H"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Seafood Fried Rice\"."
+  },
+  {
+   "id": "Item_Cook_G_11",
+   "name": "Curry Pilaf",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 60,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Material_02"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_03"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_06"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Curry Pilaf\"."
+  },
+  {
+   "id": "Item_Cook_G_09",
+   "name": "Gourmet Meat and Rice Bowl",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 61,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Meat_11"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_03"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Ore_H"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Gourmet Meat and Rice Bowl\"."
+  },
+  {
+   "id": "Item_Cook_G_06",
+   "name": "Prime Meat and Rice Bowl",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 62,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Meat_02"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_03"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Ore_H"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Prime Meat and Rice Bowl\"."
+  },
+  {
+   "id": "Item_Cook_G_05",
+   "name": "Meat and Rice Bowl",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 63,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Meat_01"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_03"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Ore_H"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Meat and Rice Bowl\"."
+  },
+  {
+   "id": "Item_Cook_E_04",
+   "name": "Fried Egg and Rice",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 64,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Material_03"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_04"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Fried Egg and Rice\"."
+  },
+  {
+   "id": "Item_Cook_G_15",
+   "name": "Meaty Rice Balls",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 65,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Material_03"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookMeat"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Meaty Rice Balls\"."
+  },
+  {
+   "id": "Item_Cook_G_02",
+   "name": "Seafood Rice Balls",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 66,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Material_03"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookFish"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Seafood Rice Balls\"."
+  },
+  {
+   "id": "Item_Cook_G_04",
+   "name": "Mushroom Rice Balls",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 67,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Material_03"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookMushroom"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Mushroom Rice Balls\"."
+  },
+  {
+   "id": "Item_Cook_G_03",
+   "name": "Veggie Rice Balls",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 68,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Material_03"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookPlant",
+        "CookVegetable"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Veggie Rice Balls\"."
+  },
+  {
+   "id": "Item_Cook_I_07",
+   "name": "Hot Buttered Apple",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 69,
+     "heartBonus": 4,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Fruit_A"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_06"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Hot Buttered Apple\"."
+  },
+  {
+   "id": "Item_Cook_B_20",
+   "name": "Meat-Stuffed Pumpkin",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 70,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Fruit_J"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookMeat"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Meat-Stuffed Pumpkin\"."
+  },
+  {
+   "id": "Item_Cook_A_12",
+   "name": "Glazed Meat",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 71,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "BeeHome"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookMeat"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Glazed Meat\"."
+  },
+  {
+   "id": "Item_Cook_A_13",
+   "name": "Glazed Seafood",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 72,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "BeeHome"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookFish"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Glazed Seafood\"."
+  },
+  {
+   "id": "Item_Cook_A_11",
+   "name": "Glazed Mushrooms",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 73,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "BeeHome"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookMushroom"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Glazed Mushrooms\"."
+  },
+  {
+   "id": "Item_Cook_A_14",
+   "name": "Glazed Veggies",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 74,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "BeeHome"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookPlant",
+        "CookVegetable"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Glazed Veggies\"."
+  },
+  {
+   "id": "Item_Cook_J_01",
+   "name": "Curry Rice",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 75,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Material_03"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_02"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Curry Rice\"."
+  },
+  {
+   "id": "Item_Cook_I_08",
+   "name": "Honeyed Apple",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 76,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Fruit_A"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "BeeHome"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Honeyed Apple\"."
+  },
+  {
+   "id": "Item_Cook_I_09",
+   "name": "Honeyed Fruits",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 77,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "BeeHome"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookFruit"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Honeyed Fruits\"."
+  },
+  {
+   "id": "Item_Cook_P_05",
+   "name": "Gourmet Spiced Meat Skewer",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 78,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Meat_11"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_02"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Gourmet Spiced Meat Skewer\"."
+  },
+  {
+   "id": "Item_Cook_P_04",
+   "name": "Prime Spiced Meat Skewer",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 79,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Meat_02"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_02"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Prime Spiced Meat Skewer\"."
+  },
+  {
+   "id": "Item_Cook_P_03",
+   "name": "Spiced Meat Skewer",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 80,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Meat_01"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_02"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Spiced Meat Skewer\"."
+  },
+  {
+   "id": "Item_Cook_P_01",
+   "name": "Fragrant Mushroom Sauté",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 81,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Material_02"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookMushroom"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Fragrant Mushroom Sauté\"."
+  },
+  {
+   "id": "Item_Cook_P_02",
+   "name": "Herb Sauté",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 82,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Material_02"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookPlant",
+        "CookVegetable"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Herb Sauté\"."
+  },
+  {
+   "id": "Item_Cook_D_06",
+   "name": "Salt-Grilled Gourmet Meat",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 83,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Meat_11",
+        "Item_Meat_12"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Ore_H"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Salt-Grilled Gourmet Meat\"."
+  },
+  {
+   "id": "Item_Cook_D_05",
+   "name": "Salt-Grilled Prime Meat",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 84,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Meat_07",
+        "Item_Meat_02"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Ore_H"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Salt-Grilled Prime Meat\"."
+  },
+  {
+   "id": "Item_Cook_D_04",
+   "name": "Salt-Grilled Meat",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 85,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Meat_01",
+        "Item_Meat_06"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Ore_H"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Salt-Grilled Meat\"."
+  },
+  {
+   "id": "Item_Cook_D_10",
+   "name": "Crab Stir-Fry",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 86,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_InsectGet_K",
+        "Item_InsectGet_O",
+        "Item_InsectGet_Z"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Material_02"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Crab Stir-Fry\"."
+  },
+  {
+   "id": "Item_Cook_D_09",
+   "name": "Salt-Grilled Crab",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 87,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_InsectGet_K",
+        "Item_InsectGet_O",
+        "Item_InsectGet_Z"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Ore_H"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Salt-Grilled Crab\"."
+  },
+  {
+   "id": "Item_Cook_D_03",
+   "name": "Salt-Grilled Fish",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 88,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Ore_H"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookFish"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Salt-Grilled Fish\"."
+  },
+  {
+   "id": "Item_Cook_M_01",
+   "name": "Wheat Bread",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 89,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Material_07"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Ore_H"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Wheat Bread\"."
+  },
+  {
+   "id": "Item_Cook_D_02",
+   "name": "Salt-Grilled Greens",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 90,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Ore_H"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookVegetable",
+        "CookPlant"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Salt-Grilled Greens\"."
+  },
+  {
+   "id": "Item_Cook_D_01",
+   "name": "Salt-Grilled Mushrooms",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 91,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Ore_H"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookMushroom"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Salt-Grilled Mushrooms\"."
+  },
+  {
+   "id": "Item_Cook_B_16",
+   "name": "Copious Meat Skewers",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 92,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookMeat"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookMeat"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookMeat"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookMeat"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Copious Meat Skewers\"."
+  },
+  {
+   "id": "Item_Cook_B_11",
+   "name": "Copious Fried Wild Greens",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 93,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookVegetable",
+        "CookPlant"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookVegetable",
+        "CookPlant"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookVegetable",
+        "CookPlant"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookVegetable",
+        "CookPlant"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Copious Fried Wild Greens\"."
+  },
+  {
+   "id": "Item_Cook_B_12",
+   "name": "Copious Simmered Fruit",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 94,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookFruit"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookFruit"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookFruit"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookFruit"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Copious Simmered Fruit\"."
+  },
+  {
+   "id": "Item_Cook_B_13",
+   "name": "Copious Mushroom Skewers",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 95,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookMushroom"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookMushroom"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookMushroom"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookMushroom"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Copious Mushroom Skewers\"."
+  },
+  {
+   "id": "Item_Cook_B_15",
+   "name": "Copious Seafood Skewers",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 96,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookFish"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookFish"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookFish"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookFish"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Copious Seafood Skewers\"."
+  },
+  {
+   "id": "Item_Cook_B_06",
+   "name": "Meat Skewer",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 97,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookMeat"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookMeat"
+       ],
+       "min": 1
+      }
+     ]
+    },
+    {
+     "table": "Recipes",
+     "index": 115,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookMeat"
+       ],
+       "min": 1
+      }
+     ]
+    },
+    {
+     "table": "SingleRecipes",
+     "index": 4,
+     "onlyIngredient": true,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookMeat"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Meat Skewer\"."
+  },
+  {
+   "id": "Item_Cook_B_02",
+   "name": "Simmered Fruit",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 98,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookFruit"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookFruit"
+       ],
+       "min": 1
+      }
+     ]
+    },
+    {
+     "table": "Recipes",
+     "index": 122,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookFruit"
+       ],
+       "min": 1
+      }
+     ]
+    },
+    {
+     "table": "SingleRecipes",
+     "index": 12,
+     "onlyIngredient": true,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookFruit"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Simmered Fruit\"."
+  },
+  {
+   "id": "Item_Cook_A_01",
+   "name": "Mushroom Skewer",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 99,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookMushroom"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookMushroom"
+       ],
+       "min": 1
+      }
+     ]
+    },
+    {
+     "table": "Recipes",
+     "index": 120,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookMushroom"
+       ],
+       "min": 1
+      }
+     ]
+    },
+    {
+     "table": "SingleRecipes",
+     "index": 7,
+     "onlyIngredient": true,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookMushroom"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Mushroom Skewer\"."
+  },
+  {
+   "id": "Item_Cook_B_01",
+   "name": "Fried Wild Greens",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 100,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookVegetable",
+        "CookPlant"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookVegetable",
+        "CookPlant"
+       ],
+       "min": 1
+      }
+     ]
+    },
+    {
+     "table": "Recipes",
+     "index": 121,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookPlant"
+       ],
+       "min": 1
+      }
+     ]
+    },
+    {
+     "table": "SingleRecipes",
+     "index": 11,
+     "onlyIngredient": true,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookPlant"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Fried Wild Greens\"."
+  },
+  {
+   "id": "Item_Cook_B_19",
+   "name": "Gourmet Meat and Seafood Fry",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 101,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Meat_11",
+        "Item_Meat_12"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookFish"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Gourmet Meat and Seafood Fry\"."
+  },
+  {
+   "id": "Item_Cook_B_18",
+   "name": "Prime Meat and Seafood Fry",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 102,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Meat_02",
+        "Item_Meat_07"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookFish"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Prime Meat and Seafood Fry\"."
+  },
+  {
+   "id": "Item_Cook_B_17",
+   "name": "Meat and Seafood Fry",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 103,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookMeat"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookFish"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Meat and Seafood Fry\"."
+  },
+  {
+   "id": "Item_Cook_D_07",
+   "name": "Pepper Steak",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 104,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Fruit_I"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookMeat"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Pepper Steak\"."
+  },
+  {
+   "id": "Item_Cook_D_08",
+   "name": "Pepper Seafood",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 105,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Fruit_I"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookFish"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Pepper Seafood\"."
+  },
+  {
+   "id": "Item_Cook_B_23",
+   "name": "Seafood Skewer",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 106,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_FishGet_K",
+        "Item_FishGet_M",
+        "Item_InsectGet_K",
+        "Item_InsectGet_O",
+        "Item_InsectGet_Z"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookFish"
+       ],
+       "min": 1
+      }
+     ]
+    },
+    {
+     "table": "Recipes",
+     "index": 116,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_FishGet_K",
+        "Item_FishGet_M",
+        "Item_InsectGet_K",
+        "Item_InsectGet_O",
+        "Item_InsectGet_Z"
+       ],
+       "min": 1
+      }
+     ]
+    },
+    {
+     "table": "SingleRecipes",
+     "index": 5,
+     "onlyIngredient": true,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_FishGet_K",
+        "Item_FishGet_M",
+        "Item_InsectGet_K",
+        "Item_InsectGet_O",
+        "Item_InsectGet_Z"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Seafood Skewer\"."
+  },
+  {
+   "id": "Item_Cook_B_05",
+   "name": "Fish Skewer",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 107,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookFish"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookFish"
+       ],
+       "min": 1
+      }
+     ]
+    },
+    {
+     "table": "Recipes",
+     "index": 117,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookFish"
+       ],
+       "min": 1
+      }
+     ]
+    },
+    {
+     "table": "SingleRecipes",
+     "index": 6,
+     "onlyIngredient": true,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookFish"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Fish Skewer\"."
+  },
+  {
+   "id": "Item_Cook_A_05",
+   "name": "Steamed Meat",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 108,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookPlant",
+        "CookVegetable"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookMeat"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Steamed Meat\"."
+  },
+  {
+   "id": "Item_Cook_A_04",
+   "name": "Steamed Fish",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 109,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookPlant",
+        "CookVegetable"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookFish"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Steamed Fish\"."
+  },
+  {
+   "id": "Item_Cook_A_02",
+   "name": "Steamed Mushrooms",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 110,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookPlant",
+        "CookVegetable"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookMushroom"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Steamed Mushrooms\"."
+  },
+  {
+   "id": "Item_Cook_A_03",
+   "name": "Steamed Fruit",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 111,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookPlant",
+        "CookVegetable"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookFruit"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Steamed Fruit\"."
+  },
+  {
+   "id": "Item_Cook_A_08",
+   "name": "Fish and Mushroom Skewer",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 112,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookMushroom"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookFish"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Fish and Mushroom Skewer\"."
+  },
+  {
+   "id": "Item_Cook_A_09",
+   "name": "Meat and Mushroom Skewer",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 113,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookMushroom"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookMeat"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Meat and Mushroom Skewer\"."
+  },
+  {
+   "id": "Item_Cook_A_07",
+   "name": "Fruit and Mushroom Mix",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 114,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookMushroom"
+       ],
+       "min": 1
+      },
+      {
+       "anyOfTags": [
+        "CookFruit"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Fruit and Mushroom Mix\"."
+  },
+  {
+   "id": "Item_Cook_A_10",
+   "name": "Omelet",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 118,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Material_04"
+       ],
+       "min": 1
+      }
+     ]
+    },
+    {
+     "table": "SingleRecipes",
+     "index": 3,
+     "onlyIngredient": true,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Material_04"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Omelet\"."
+  },
+  {
+   "id": "Item_Cook_K_09",
+   "name": "Milk",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 119,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Material_05"
+       ],
+       "min": 1
+      }
+     ]
+    },
+    {
+     "table": "SingleRecipes",
+     "index": 10,
+     "onlyIngredient": true,
+     "heartBonus": 2,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Material_05"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Milk\"."
+  },
+  {
+   "id": "Item_Cook_B_22",
+   "name": "Sautéed Nuts",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 123,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Fruit_K"
+       ],
+       "min": 1
+      },
+      {
+       "anyOf": [
+        "Item_Fruit_L"
+       ],
+       "min": 1
+      }
+     ]
+    },
+    {
+     "table": "SingleRecipes",
+     "index": 9,
+     "onlyIngredient": true,
+     "heartBonus": -2,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Fruit_K",
+        "Item_Fruit_L"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Sautéed Nuts\"."
+  },
+  {
+   "id": "Item_Cook_B_21",
+   "name": "Sautéed Peppers",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "SingleRecipes",
+     "index": 2,
+     "onlyIngredient": true,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOf": [
+        "Item_Fruit_I"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Sautéed Peppers\"."
+  },
+  {
+   "id": "Item_Cook_I_16",
+   "name": "Honey Candy",
+   "kind": "food",
+   "requires": [
+    {
+     "table": "SingleRecipes",
+     "index": 8,
+     "onlyIngredient": true,
+     "heartBonus": -8,
+     "slots": [
+      {
+       "anyOf": [
+        "BeeHome"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Shown with the effect name in front when the dish has an effect, e.g. \"Hasty Honey Candy\"."
+  },
+  {
+   "id": "Item_Cook_C_17#chilly",
+   "name": "Chilly Elixir",
+   "kind": "elixir",
+   "baseId": "Item_Cook_C_17",
+   "effect": "chilly",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 4,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookInsect"
+       ],
+       "min": 1,
+       "effect": "chilly"
+      },
+      {
+       "anyOfTags": [
+        "CookEnemy"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Elixir whose critters all carry the chilly effect."
+  },
+  {
+   "id": "Item_Cook_C_17#spicy",
+   "name": "Spicy Elixir",
+   "kind": "elixir",
+   "baseId": "Item_Cook_C_17",
+   "effect": "spicy",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 4,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookInsect"
+       ],
+       "min": 1,
+       "effect": "spicy"
+      },
+      {
+       "anyOfTags": [
+        "CookEnemy"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Elixir whose critters all carry the spicy effect."
+  },
+  {
+   "id": "Item_Cook_C_17#electro",
+   "name": "Electro Elixir",
+   "kind": "elixir",
+   "baseId": "Item_Cook_C_17",
+   "effect": "electro",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 4,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookInsect"
+       ],
+       "min": 1,
+       "effect": "electro"
+      },
+      {
+       "anyOfTags": [
+        "CookEnemy"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Elixir whose critters all carry the electro effect."
+  },
+  {
+   "id": "Item_Cook_C_17#fireproof",
+   "name": "Fireproof Elixir",
+   "kind": "elixir",
+   "baseId": "Item_Cook_C_17",
+   "effect": "fireproof",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 4,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookInsect"
+       ],
+       "min": 1,
+       "effect": "fireproof"
+      },
+      {
+       "anyOfTags": [
+        "CookEnemy"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Elixir whose critters all carry the fireproof effect."
+  },
+  {
+   "id": "Item_Cook_C_17#hasty",
+   "name": "Hasty Elixir",
+   "kind": "elixir",
+   "baseId": "Item_Cook_C_17",
+   "effect": "hasty",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 4,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookInsect"
+       ],
+       "min": 1,
+       "effect": "hasty"
+      },
+      {
+       "anyOfTags": [
+        "CookEnemy"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Elixir whose critters all carry the hasty effect."
+  },
+  {
+   "id": "Item_Cook_C_17#sneaky",
+   "name": "Sneaky Elixir",
+   "kind": "elixir",
+   "baseId": "Item_Cook_C_17",
+   "effect": "sneaky",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 4,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookInsect"
+       ],
+       "min": 1,
+       "effect": "sneaky"
+      },
+      {
+       "anyOfTags": [
+        "CookEnemy"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Elixir whose critters all carry the sneaky effect."
+  },
+  {
+   "id": "Item_Cook_C_17#mighty",
+   "name": "Mighty Elixir",
+   "kind": "elixir",
+   "baseId": "Item_Cook_C_17",
+   "effect": "mighty",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 4,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookInsect"
+       ],
+       "min": 1,
+       "effect": "mighty"
+      },
+      {
+       "anyOfTags": [
+        "CookEnemy"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Elixir whose critters all carry the mighty effect."
+  },
+  {
+   "id": "Item_Cook_C_17#tough",
+   "name": "Tough Elixir",
+   "kind": "elixir",
+   "baseId": "Item_Cook_C_17",
+   "effect": "tough",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 4,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookInsect"
+       ],
+       "min": 1,
+       "effect": "tough"
+      },
+      {
+       "anyOfTags": [
+        "CookEnemy"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Elixir whose critters all carry the tough effect."
+  },
+  {
+   "id": "Item_Cook_C_17#enduring",
+   "name": "Enduring Elixir",
+   "kind": "elixir",
+   "baseId": "Item_Cook_C_17",
+   "effect": "enduring",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 4,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookInsect"
+       ],
+       "min": 1,
+       "effect": "enduring"
+      },
+      {
+       "anyOfTags": [
+        "CookEnemy"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Elixir whose critters all carry the enduring effect."
+  },
+  {
+   "id": "Item_Cook_C_17#energizing",
+   "name": "Energizing Elixir",
+   "kind": "elixir",
+   "baseId": "Item_Cook_C_17",
+   "effect": "energizing",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 4,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookInsect"
+       ],
+       "min": 1,
+       "effect": "energizing"
+      },
+      {
+       "anyOfTags": [
+        "CookEnemy"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Elixir whose critters all carry the energizing effect."
+  },
+  {
+   "id": "Item_Cook_C_17#hearty",
+   "name": "Hearty Elixir",
+   "kind": "elixir",
+   "baseId": "Item_Cook_C_17",
+   "effect": "hearty",
+   "requires": [
+    {
+     "table": "Recipes",
+     "index": 4,
+     "heartBonus": 0,
+     "slots": [
+      {
+       "anyOfTags": [
+        "CookInsect"
+       ],
+       "min": 1,
+       "effect": "hearty"
+      },
+      {
+       "anyOfTags": [
+        "CookEnemy"
+       ],
+       "min": 1
+      }
+     ]
+    }
+   ],
+   "notes": "Elixir whose critters all carry the hearty effect."
+  }
+ ],
+ "system": {
+  "lifeRecoverMultiplier": 2.0,
+  "failLifeRecover": 4,
+  "failLifeRecoverMultiplier": 1.0,
+  "stoneFoodLifeRecover": 1,
+  "priceMultiplierByCount": [
+   1.5,
+   1.7999999523162842,
+   2.0999999046325684,
+   2.4000000953674316,
+   2.799999952316284
+  ],
+  "critRateByDistinctCount": [
+   5,
+   10,
+   15,
+   20,
+   25
+  ],
+  "critExtraTime": 300,
+  "effects": {
+   "energizing": {
+    "gameName": "GutsRecover",
+    "baseTime": 0,
+    "rate": 1.399999976158142,
+    "max": 15,
+    "critAmount": 2
+   },
+   "enduring": {
+    "gameName": "ExGutsMaxUp",
+    "baseTime": 0,
+    "rate": 0.5,
+    "max": 20,
+    "critAmount": 2
+   },
+   "hearty": {
+    "gameName": "LifeMaxUp",
+    "baseTime": 0,
+    "rate": 1.0,
+    "max": 108,
+    "min": 4,
+    "critAmount": 4
+   },
+   "chilly": {
+    "gameName": "ResistHot",
+    "baseTime": 120,
+    "rate": 0.3499999940395355,
+    "max": 2,
+    "critAmount": 1
+   },
+   "spicy": {
+    "gameName": "ResistCold",
+    "baseTime": 120,
+    "rate": 0.3499999940395355,
+    "max": 2,
+    "critAmount": 1
+   },
+   "electro": {
+    "gameName": "ResistElectric",
+    "baseTime": 120,
+    "rate": 0.5,
+    "max": 3,
+    "critAmount": 1
+   },
+   "hasty": {
+    "gameName": "MovingSpeed",
+    "baseTime": 30,
+    "rate": 0.44999998807907104,
+    "max": 3,
+    "critAmount": 1
+   },
+   "mighty": {
+    "gameName": "AttackUp",
+    "baseTime": 20,
+    "rate": 0.44999998807907104,
+    "max": 3,
+    "critAmount": 1
+   },
+   "tough": {
+    "gameName": "DefenseUp",
+    "baseTime": 20,
+    "rate": 0.44999998807907104,
+    "max": 3,
+    "critAmount": 1
+   },
+   "sneaky": {
+    "gameName": "Quietness",
+    "baseTime": 90,
+    "rate": 0.3499999940395355,
+    "max": 3,
+    "critAmount": 1
+   },
+   "fireproof": {
+    "gameName": "Fireproof",
+    "baseTime": 120,
+    "rate": 0.30000001192092896,
+    "max": 2,
+    "critAmount": 1
+   }
+  },
+  "lifeRecover": {
+   "max": 120,
+   "critAmount": 12
+  },
+  "elixirNames": {
+   "chilly": "Chilly Elixir",
+   "spicy": "Spicy Elixir",
+   "electro": "Electro Elixir",
+   "fireproof": "Fireproof Elixir",
+   "hasty": "Hasty Elixir",
+   "sneaky": "Sneaky Elixir",
+   "mighty": "Mighty Elixir",
+   "tough": "Tough Elixir",
+   "enduring": "Enduring Elixir",
+   "energizing": "Energizing Elixir",
+   "hearty": "Hearty Elixir"
+  },
+  "source": "Pistonite/botw-recipe research/output/cookdata-system.yaml (CookData System block)"
+ }
+}

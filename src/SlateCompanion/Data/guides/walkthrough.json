@@ -1,0 +1,248 @@
+{
+ "meta": {
+  "note": "Main story route for The Legend of Zelda: Breath of the Wild, written for Slate Companion. After the Great Plateau the order is up to you; this is one common route.",
+  "spoilers": true
+ },
+ "chapters": [
+  {
+   "id": "great-plateau",
+   "title": "The Great Plateau",
+   "recommended": "Starting 3 hearts are enough. Grab the Warm Doublet from the old man, or cook spicy food, before going up Mount Hylia.",
+   "steps": [
+    "Wake up in the Shrine of Resurrection, take the Sheikah Slate from the pedestal and loot the two chests for the Old Shirt and Well-Worn Trousers.",
+    "Leave the shrine, speak to the old man by the campfire, and head for the Great Plateau Tower.",
+    "Activate the tower's terminal to fill in the region map and reveal the plateau's four shrines.",
+    "Clear Oman Au Shrine to get Magnesis.",
+    "Clear Ja Baij Shrine near the Eastern Abbey to get Remote Bombs.",
+    "Clear Owa Daim Shrine to get Stasis.",
+    "Clear Keh Namut Shrine on snowy Mount Hylia to get Cryonis; you need cold protection to get there.",
+    "Meet the old man at the Temple of Time once all four Spirit Orbs are in hand; he reveals who he is and gives you the paraglider.",
+    "Glide off the plateau. The main quest 'Seek Out Impa' now points you to Kakariko Village."
+   ],
+   "tips": [
+    "The old man's cabin has a diary describing a spicy meat-and-fish dish; cooking it for him is one way to get the Warm Doublet.",
+    "Shrines double as fast-travel points, so open every one you pass.",
+    "Collect apples, mushrooms and meat here; hearty meals carry you through the first fights off the plateau.",
+    "Shooting a Bokoblin camp's lookout first or rolling a Remote Bomb in avoids getting mobbed early on."
+   ]
+  },
+  {
+   "id": "kakariko-impa",
+   "title": "Kakariko Village and Impa",
+   "recommended": "3-4 hearts. Buy a Hylian Hood or Stealth gear in Kakariko if you have spare rupees.",
+   "steps": [
+    "Follow the road east past the Dueling Peaks; stop at the Dueling Peaks Tower and the shrines along the way.",
+    "Enter Kakariko Village and climb to Impa's house at the top.",
+    "Talk to Impa. She explains the four Divine Beasts and starts 'Free the Divine Beasts' and 'Locked Mementos'.",
+    "Look at the photos in the Sheikah Slate's album: they mark the places where Link's lost memories can be recovered ('Captured Memories').",
+    "Clear Ta'loh Naeg Shrine in the village for a combat lesson.",
+    "Set off east toward Hateno Village to find Purah."
+   ],
+   "tips": [
+    "The Great Fairy Cotera's fountain is in the hills just above Kakariko; opening it is the cheapest of the four (100 rupees if it is your first).",
+    "Enchanted, the clothing shop in Kakariko, sells Stealth gear, which helps with sneaking up on animals and horses.",
+    "Paya's quest 'The Stolen Heirloom' is a short shrine quest here once you have explored a bit."
+   ]
+  },
+  {
+   "id": "hateno-purah",
+   "title": "Hateno Village and Purah",
+   "recommended": "4+ hearts. The Soldier's set and Hylian set sold in Hateno are solid all-round armor.",
+   "steps": [
+    "Cross the Fort Hateno battlefield and reach Hateno Village; activate Hateno Tower nearby.",
+    "Climb the hill north of the village to the Hateno Ancient Tech Lab.",
+    "Talk to Purah. Before she can help, the furnace outside the lab must be lit.",
+    "Light a torch or wooden weapon at the blue flame in the ancient furnace behind the village chief's house, carry it up the hill without letting it go out, and light the lab's furnace.",
+    "Purah restores the Sheikah Slate's camera, which lets you take photos and fill in the Hyrule Compendium.",
+    "Find one of the memory locations from the photo album and relive it, then return to Impa; she gives you the Champion's Tunic.",
+    "Pick a Divine Beast and head out. A common order is Vah Ruta, Vah Rudania, Vah Medoh, then Vah Naboris."
+   ],
+   "tips": [
+    "Purah also sets up the Sheikah Sensor upgrade quest and the Hyrule Compendium; buy compendium pictures at the lab if you miss an entry.",
+    "A house in Hateno can be bought through the 'From the Ground Up' quest and lets you display weapons and shields.",
+    "Kochi Dye Shop in Hateno can recolour your armor."
+   ]
+  },
+  {
+   "id": "vah-ruta",
+   "title": "Divine Beast Vah Ruta (Zora)",
+   "recommended": "5-6 hearts. Bring plenty of arrows and a stack of hearty food. Rubber gear or non-metal weapons help against the electric Lizalfos on the way up.",
+   "steps": [
+    "Travel into the Lanayru region; Prince Sidon meets you near Inogo Bridge and asks for help.",
+    "Climb the rainy path to Zora's Domain, avoiding or fighting the Lizalfos along the way.",
+    "Meet King Dorephan. He gives you the Zora Armor, which lets you swim up waterfalls.",
+    "Gather Shock Arrows from the area Sidon points to above the East Reservoir.",
+    "Ride Sidon around Vah Ruta and hit its four glowing orbs with Shock Arrows while dodging the ice blocks it throws.",
+    "Inside, use the Divine Beast's map controls to raise and lower its trunk; this moves water and is the key to most rooms.",
+    "Activate all five terminals, then the main control unit.",
+    "Defeat Waterblight Ganon, then touch the main control unit to free Mipha's spirit."
+   ],
+   "tips": [
+    "Waterblight Ganon's second phase throws ice blocks; you can stop or shatter them, and Cryonis pillars give you high ground.",
+    "Reward: a Heart Container and Mipha's Grace, which revives you once when you fall and recharges over time.",
+    "Swim up the waterfall with the Zora Armor to reach the area where you collect the Shock Arrows quickly."
+   ]
+  },
+  {
+   "id": "vah-rudania",
+   "title": "Divine Beast Vah Rudania (Goron)",
+   "recommended": "6+ hearts. You need flame protection: Fireproof Elixirs or two or more pieces of the Flamebreaker set from Goron City. Ice and water weapons are useful.",
+   "steps": [
+    "Head up Death Mountain past Foothill Stable; equip fire protection before the heat starts to burn you.",
+    "In Goron City, talk to Bludo; his back is out and Yunobo has gone missing.",
+    "Find Yunobo trapped in the vault of the Abandoned North Mine; blast the rubble with the mine's cannons to free him.",
+    "Report back to Bludo, who rewards you with Fireproof Elixirs, then find Yunobo at the Bridge of Eldin and save him from the Moblins.",
+    "Escort Yunobo across the bridge and fire him from the cannons at Vah Rudania until it is driven back.",
+    "Inside, use the map controls to tilt Rudania sideways; walls become floors and new paths open.",
+    "Activate the five terminals, then the main control unit.",
+    "Defeat Fireblight Ganon and touch the main control unit to free Daruk's spirit."
+   ],
+   "tips": [
+    "Fireblight Ganon is very vulnerable to ice weapons and ice arrows.",
+    "When it charges a big fireball, a Remote Bomb dropped into its mouth stuns it.",
+    "Reward: a Heart Container and Daruk's Protection, a shield that blocks hits and recharges after use."
+   ]
+  },
+  {
+   "id": "vah-medoh",
+   "title": "Divine Beast Vah Medoh (Rito)",
+   "recommended": "6+ hearts. Cold protection for the flight (Snowquill set or spicy food), a good bow, and the paraglider.",
+   "steps": [
+    "Travel to Rito Village in Tabantha and climb to elder Kaneli at the top.",
+    "Kaneli asks you to find Teba; his wife Saki says he went to the Flight Range at Dronoc's Pass.",
+    "At the Flight Range, pass Teba's test: break five targets within three minutes using the updrafts and slow-motion aiming.",
+    "Teba gives you a bow and twenty Bomb Arrows. Fly with him and blow up Vah Medoh's four cannon-like barrier generators.",
+    "Inside, use the map controls to tilt the whole beast left or right to roll objects and shift wind paths.",
+    "Activate the five terminals, then the main control unit.",
+    "Defeat Windblight Ganon and touch the main control unit to free Revali's spirit."
+   ],
+   "tips": [
+    "Aiming in mid-air after jumping or gliding slows time; this is how you hit Windblight Ganon's eye and its drones.",
+    "Reward: a Heart Container and Revali's Gale, an instant updraft you can use several times before it recharges."
+   ]
+  },
+  {
+   "id": "vah-naboris",
+   "title": "Divine Beast Vah Naboris (Gerudo)",
+   "recommended": "8+ hearts. Heat protection by day and cold protection at night in the desert. Rubber armor is very helpful inside and against the boss.",
+   "steps": [
+    "Cross into the Gerudo Desert. Men may not enter Gerudo Town, so buy a disguise from Vilia at Kara Kara Bazaar ('Forbidden City Entry').",
+    "Enter Gerudo Town and speak to Chief Riju in the palace.",
+    "Riju needs the stolen Thunder Helm back; learn about the thieves in the barracks, then travel to the Yiga Clan Hideout in Karusa Valley.",
+    "Sneak through the hideout, recover the helm and defeat Master Kohga.",
+    "Return to Riju, then ride a sand seal with her toward Vah Naboris and hit the glowing spots on its four feet with Bomb Arrows when Riju's lightning is ready.",
+    "Inside, use the map controls to rotate the beast's sections and route electricity to the right places.",
+    "Activate the five terminals, then the main control unit.",
+    "Defeat Thunderblight Ganon and touch the main control unit to free Urbosa's spirit."
+   ],
+   "tips": [
+    "Thunderblight Ganon is fast and hits hard; perfect dodges into flurry rushes and shield parries are the reliable way in.",
+    "In its second phase it plants metal rods; Magnesis can pull them away before the lightning strikes.",
+    "Reward: a Heart Container, Urbosa's Fury (a lightning strike on charged attacks), and Riju lets you keep the Thunder Helm."
+   ]
+  },
+  {
+   "id": "master-sword",
+   "title": "The Master Sword",
+   "recommended": "13 permanent hearts (see the Master Sword tip). A torch for the Lost Woods.",
+   "steps": [
+    "Travel to the Lost Woods in the Great Hyrule Forest, north of Hyrule Castle.",
+    "Light a torch and follow the direction the flame's embers drift; walking the wrong way turns you back to the start.",
+    "Reach Korok Forest and speak to the Great Deku Tree ('The Hero's Sword').",
+    "Pull the Master Sword from its pedestal. It drains your health as you pull. With fewer than 13 hearts the Deku Tree stops you at a quarter heart the first time, but a second failed attempt kills you."
+   ],
+   "tips": [
+    "The Master Sword never breaks; it runs out of power and recharges after a while.",
+    "It glows and deals double damage near Ganon's malice, in Divine Beasts and against Guardians.",
+    "Hestu is in Korok Forest too, so it's a good time to trade Korok seeds for inventory space."
+   ]
+  },
+  {
+   "id": "hyrule-castle",
+   "title": "Hyrule Castle and Calamity Ganon",
+   "recommended": "13+ hearts or 2+ stamina wheels, your best armor, lots of healing food, fairies, and strong weapons or Ancient arrows. Each Divine Beast you freed weakens Ganon at the start of the fight.",
+   "steps": [
+    "Enter Hyrule Castle; Guardians and strong monsters patrol it, so routes through the docks or the side paths avoid the worst of them.",
+    "Climb to the Sanctum at the top of the main keep.",
+    "Fight Calamity Ganon. Perfect dodges and shield parries open it up for flurry rushes; parry its laser back with your shield.",
+    "Each Blight Ganon you didn't defeat in its Divine Beast appears here as an extra fight.",
+    "After Calamity Ganon falls, Zelda gives you the Bow of Light. Ride across Hyrule Field and shoot the glowing weak points on Dark Beast Ganon, then its eye."
+   ],
+   "tips": [
+    "Defeating Ganon saves a completion star on your file and returns you to just before the final fight, so you can keep exploring.",
+    "Finding all twelve captured memories unlocks one more memory and an extra scene in the ending.",
+    "You can go to Hyrule Castle at any time after the Great Plateau; the Divine Beasts and Master Sword are optional."
+   ]
+  }
+ ],
+ "dlc": {
+  "masterTrials": {
+   "title": "The Master Trials (DLC Pack 1)",
+   "sections": [
+    {
+     "id": "trial-of-the-sword",
+     "title": "Trial of the Sword",
+     "body": [
+      "Put the Master Sword back in its pedestal in Korok Forest to start it; the sword must have power left.",
+      "You start with none of your weapons, armor, food or materials, though runes still work and your hearts and stamina carry in. Each floor's enemies must all be defeated before you can go on.",
+      "It is split into three sets (Beginning, Middle and Final), 54 floors in all, of which 45 are fights and the rest are rest stops. A finished set can be skipped next time.",
+      "Finishing all three sets awakens the Master Sword's full power so it stays in its glowing state for much longer."
+     ]
+    },
+    {
+     "id": "ex-quests",
+     "title": "EX quests",
+     "body": [
+      "Most EX quests start from journals belonging to the treasure hunter Misko; each hints at the location of a chest holding a DLC item.",
+      "The rewards include the Korok Mask (it shakes near hidden Koroks), Majora's Mask, Midna's Helmet, the Phantom armor set and Tingle's outfit.",
+      "The Travel Medallion lets you place one extra fast-travel point anywhere.",
+      "Hero's Path mode on the map replays where you have walked over the last hours of play."
+     ]
+    },
+    {
+     "id": "master-mode",
+     "title": "Master Mode",
+     "body": [
+      "A separate, harder mode with its own save; it has only one autosave slot.",
+      "Most enemies are one tier stronger, notice you sooner and slowly regenerate health. Gold-rank enemies appear, and Lynels show up in extra places.",
+      "Platforms held up by Sky Octoroks float above the world, carrying enemies and chests with strong gear.",
+      "The normal protection that leaves you on a quarter heart after a big hit is removed."
+     ]
+    }
+   ]
+  },
+  "championsBallad": {
+   "title": "The Champions' Ballad (DLC Pack 2)",
+   "sections": [
+    {
+     "id": "one-hit-obliterator",
+     "title": "Divine Beast Tamer's Trial and the One-Hit Obliterator",
+     "body": [
+      "Unlocks after all four Divine Beasts are freed: Zelda's voice sends you back to the Shrine of Resurrection.",
+      "Taking the One-Hit Obliterator there drops you to a quarter heart. It defeats almost anything in one hit but only twice before it needs a few seconds to recharge, and you cannot heal while you carry it.",
+      "Clear the four marked monster camps on the Great Plateau; each one raises a new shrine. Leaving the plateau sends the weapon back to its pedestal."
+     ]
+    },
+    {
+     "id": "champion-songs",
+     "title": "The four champion trials",
+     "body": [
+      "After the plateau, Kass and Monk Maz Koshia lead you through one quest per champion: Mipha, Daruk, Revali and Urbosa.",
+      "Each one has you raise and clear three shrines tied to that champion's region; each shrine gives an emblem.",
+      "With all three emblems, go to that champion's Divine Beast. You are pulled into an illusory version of it and fight that champion's Blight Ganon again.",
+      "Winning unlocks a new memory of that champion and an upgraded champion ability that recharges much faster."
+     ]
+    },
+    {
+     "id": "final-divine-beast",
+     "title": "The final Divine Beast",
+     "body": [
+      "With all four champion songs done, Monk Maz Koshia opens the Final Trial, reached through the Shrine of Resurrection.",
+      "It is a fifth Divine Beast with four chambers themed on the elements. Activate the terminal in each to unlock the door at the back, then defeat Monk Maz Koshia.",
+      "The reward is the Master Cycle Zero, a motorcycle you summon with a new rune. Afterwards Kass sings the finished Champions' Ballad for you."
+     ]
+    }
+   ]
+  }
+ }
+}

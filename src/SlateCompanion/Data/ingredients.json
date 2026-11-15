@@ -1,0 +1,3842 @@
+{
+ "_meta": {
+  "description": "Every BOTW material that can go into a cooking pot (key items, dyes and pictures excluded).",
+  "units": {
+   "hearts": "cureItemHitPointRecover: raw heal in QUARTER hearts as stored in the game (4 = one heart). Cooking doubles it.",
+   "potency": "cureItemEffectLevel: effect points this ingredient adds toward its effect.",
+   "timeBoost": "cookSpiceBoostEffectiveTime in seconds. Monster parts (CookEnemy): added per copy to any timed effect. CookSpice items: added once per distinct item.",
+   "hpBoost": "cookSpiceBoostHitPointRecover in quarter hearts, added once per distinct CookSpice item (not doubled).",
+   "critBoost": "cookSpiceBoostSuccessRate: critical-cook chance bonus in percent.",
+   "sellPrice": "itemSellingPrice (rupees the shop pays you). buyPrice: itemBuyingPrice.",
+   "tags": "Game cooking tags used by the recipe table (CookFruit, CookEnemy, ...)."
+  },
+  "sources": [
+   "Pistonite/botw-recipe research/output/actor-data.yaml (game parameter dump; MIT License)",
+   "savage13/cooking.rs src/cook_items.json for Monster Extract only (BSD-2-Clause)",
+   "whereFound text written for this project"
+  ],
+  "count": 211
+ },
+ "ingredients": [
+  {
+   "id": "Item_Fruit_D",
+   "name": "Hearty Durian",
+   "category": "fruit",
+   "hearts": 12,
+   "effect": "hearty",
+   "potency": 16,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 15,
+   "buyPrice": 60,
+   "tags": [
+    "CookFruit"
+   ],
+   "whereFound": "Durian trees in the Faron rainforest.",
+   "roast": "Item_Roast_09"
+  },
+  {
+   "id": "Item_Fruit_G",
+   "name": "Palm Fruit",
+   "category": "fruit",
+   "hearts": 4,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 4,
+   "buyPrice": 16,
+   "tags": [
+    "CookFruit"
+   ],
+   "whereFound": "Palm trees along the Lurelin and Faron coast.",
+   "roast": "Item_Roast_10"
+  },
+  {
+   "id": "Item_Fruit_A",
+   "name": "Apple",
+   "category": "fruit",
+   "hearts": 2,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 3,
+   "buyPrice": 12,
+   "tags": [
+    "CookFruit"
+   ],
+   "whereFound": "Apple trees all over central Hyrule; also sold in Kakariko and Hateno.",
+   "roast": "Item_Roast_03"
+  },
+  {
+   "id": "Item_Fruit_B",
+   "name": "Wildberry",
+   "category": "fruit",
+   "hearts": 2,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 3,
+   "buyPrice": 12,
+   "tags": [
+    "CookFruit"
+   ],
+   "whereFound": "Bushes in cold regions such as Tabantha and the Hebra foothills.",
+   "roast": "Item_Roast_07"
+  },
+  {
+   "id": "Item_Fruit_F",
+   "name": "Hydromelon",
+   "category": "fruit",
+   "hearts": 2,
+   "effect": "chilly",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 4,
+   "buyPrice": 16,
+   "tags": [
+    "CookFruit"
+   ],
+   "whereFound": "Grows on the ground in the Gerudo Desert; sold in Gerudo Town.",
+   "roast": "Item_Roast_12"
+  },
+  {
+   "id": "Item_Fruit_I",
+   "name": "Spicy Pepper",
+   "category": "fruit",
+   "hearts": 2,
+   "effect": "spicy",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 3,
+   "buyPrice": 12,
+   "tags": [
+    "CookFruit"
+   ],
+   "whereFound": "Small red plants in cool grasslands near Hateno, Kakariko and Hebra.",
+   "roast": "Item_Roast_13"
+  },
+  {
+   "id": "Item_Fruit_C",
+   "name": "Voltfruit",
+   "category": "fruit",
+   "hearts": 2,
+   "effect": "electro",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 4,
+   "buyPrice": 16,
+   "tags": [
+    "CookFruit"
+   ],
+   "whereFound": "Cacti in the Gerudo Desert and Gerudo Highlands.",
+   "roast": "Item_Roast_08"
+  },
+  {
+   "id": "Item_Fruit_E",
+   "name": "Fleet-Lotus Seeds",
+   "category": "fruit",
+   "hearts": 2,
+   "effect": "hasty",
+   "potency": 2,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 5,
+   "buyPrice": 20,
+   "tags": [
+    "CookFruit"
+   ],
+   "whereFound": "Floating lotus plants in ponds around Faron and Lake Hylia.",
+   "roast": "Item_Roast_16"
+  },
+  {
+   "id": "Item_Fruit_H",
+   "name": "Mighty Bananas",
+   "category": "fruit",
+   "hearts": 2,
+   "effect": "mighty",
+   "potency": 2,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 5,
+   "buyPrice": 20,
+   "tags": [
+    "CookFruit"
+   ],
+   "whereFound": "Banana trees in the Faron jungle; sold in Lurelin.",
+   "roast": "Item_Roast_11"
+  },
+  {
+   "id": "Item_Mushroom_N",
+   "name": "Big Hearty Truffle",
+   "category": "mushroom",
+   "hearts": 12,
+   "effect": "hearty",
+   "potency": 16,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 15,
+   "buyPrice": 60,
+   "tags": [
+    "CookMushroom"
+   ],
+   "whereFound": "Rare; deep forests such as the Lost Woods and Faron.",
+   "roast": "Item_Roast_49"
+  },
+  {
+   "id": "Item_Mushroom_F",
+   "name": "Hearty Truffle",
+   "category": "mushroom",
+   "hearts": 8,
+   "effect": "hearty",
+   "potency": 4,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 6,
+   "buyPrice": 24,
+   "tags": [
+    "CookMushroom"
+   ],
+   "whereFound": "Shady forests, often near trees in the Lost Woods and Faron.",
+   "roast": "Item_Roast_05"
+  },
+  {
+   "id": "Item_Mushroom_O",
+   "name": "Endura Shroom",
+   "category": "mushroom",
+   "hearts": 4,
+   "effect": "enduring",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 6,
+   "buyPrice": 24,
+   "tags": [
+    "CookMushroom"
+   ],
+   "whereFound": "Hidden in the Lost Woods and the Hebra and Death Mountain foothills.",
+   "roast": "Item_Roast_53"
+  },
+  {
+   "id": "Item_Mushroom_E",
+   "name": "Hylian Shroom",
+   "category": "mushroom",
+   "hearts": 2,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 3,
+   "buyPrice": 12,
+   "tags": [
+    "CookMushroom"
+   ],
+   "whereFound": "Common under trees and on cliffs in forests across Hyrule.",
+   "roast": "Item_Roast_06"
+  },
+  {
+   "id": "Item_Mushroom_A",
+   "name": "Stamella Shroom",
+   "category": "mushroom",
+   "hearts": 2,
+   "effect": "energizing",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 5,
+   "buyPrice": 20,
+   "tags": [
+    "CookMushroom"
+   ],
+   "whereFound": "Shady forest floors and tree stumps, very common.",
+   "roast": "Item_Roast_04"
+  },
+  {
+   "id": "Item_Mushroom_B",
+   "name": "Chillshroom",
+   "category": "mushroom",
+   "hearts": 2,
+   "effect": "chilly",
+   "potency": 2,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 4,
+   "buyPrice": 16,
+   "tags": [
+    "CookMushroom"
+   ],
+   "whereFound": "Hot climates such as Gerudo Desert oases and Faron.",
+   "roast": "Item_Roast_31"
+  },
+  {
+   "id": "Item_Mushroom_C",
+   "name": "Sunshroom",
+   "category": "mushroom",
+   "hearts": 2,
+   "effect": "spicy",
+   "potency": 2,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 4,
+   "buyPrice": 16,
+   "tags": [
+    "CookMushroom"
+   ],
+   "whereFound": "Snowy areas such as Hebra and Tabantha.",
+   "roast": "Item_Roast_32"
+  },
+  {
+   "id": "Item_Mushroom_H",
+   "name": "Zapshroom",
+   "category": "mushroom",
+   "hearts": 2,
+   "effect": "electro",
+   "potency": 2,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 4,
+   "buyPrice": 16,
+   "tags": [
+    "CookMushroom"
+   ],
+   "whereFound": "Rainy areas, especially the Faron and Zora's Domain regions.",
+   "roast": "Item_Roast_33"
+  },
+  {
+   "id": "Item_MushroomGet_D",
+   "name": "Rushroom",
+   "category": "mushroom",
+   "hearts": 2,
+   "effect": "hasty",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 3,
+   "buyPrice": 12,
+   "tags": [
+    "CookMushroom"
+   ],
+   "whereFound": "Cliff faces and hillsides in many regions.",
+   "roast": "Item_Roast_36"
+  },
+  {
+   "id": "Item_Mushroom_L",
+   "name": "Razorshroom",
+   "category": "mushroom",
+   "hearts": 2,
+   "effect": "mighty",
+   "potency": 2,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 5,
+   "buyPrice": 20,
+   "tags": [
+    "CookMushroom"
+   ],
+   "whereFound": "Forests in Akkala, Faron and the Great Plateau.",
+   "roast": "Item_Roast_37"
+  },
+  {
+   "id": "Item_Mushroom_M",
+   "name": "Ironshroom",
+   "category": "mushroom",
+   "hearts": 2,
+   "effect": "tough",
+   "potency": 2,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 5,
+   "buyPrice": 20,
+   "tags": [
+    "CookMushroom"
+   ],
+   "whereFound": "Forests and grasslands in Akkala, Hebra and Faron.",
+   "roast": "Item_Roast_38"
+  },
+  {
+   "id": "Item_Mushroom_J",
+   "name": "Silent Shroom",
+   "category": "mushroom",
+   "hearts": 2,
+   "effect": "sneaky",
+   "potency": 2,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 3,
+   "buyPrice": 12,
+   "tags": [
+    "CookMushroom"
+   ],
+   "whereFound": "Shady forests; easiest to spot at night when they glow.",
+   "roast": "Item_Roast_39"
+  },
+  {
+   "id": "Item_PlantGet_C",
+   "name": "Big Hearty Radish",
+   "category": "plant",
+   "hearts": 16,
+   "effect": "hearty",
+   "potency": 20,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 15,
+   "buyPrice": 60,
+   "tags": [
+    "CookPlant"
+   ],
+   "whereFound": "Rare; grassy areas in Hateno, Akkala and Faron.",
+   "roast": "Item_Roast_19"
+  },
+  {
+   "id": "Item_PlantGet_B",
+   "name": "Hearty Radish",
+   "category": "plant",
+   "hearts": 10,
+   "effect": "hearty",
+   "potency": 12,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 8,
+   "buyPrice": 32,
+   "tags": [
+    "CookPlant"
+   ],
+   "whereFound": "Grassy areas in Faron, Hateno and Akkala.",
+   "roast": "Item_Roast_18"
+  },
+  {
+   "id": "Item_PlantGet_Q",
+   "name": "Endura Carrot",
+   "category": "plant",
+   "hearts": 8,
+   "effect": "enduring",
+   "potency": 4,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 30,
+   "buyPrice": 120,
+   "tags": [
+    "CookPlant"
+   ],
+   "whereFound": "Rare; Lost Woods, Satori Mountain and Hateno area.",
+   "roast": "Item_Roast_50"
+  },
+  {
+   "id": "Item_PlantGet_A",
+   "name": "Hyrule Herb",
+   "category": "plant",
+   "hearts": 4,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 3,
+   "buyPrice": 12,
+   "tags": [
+    "CookPlant"
+   ],
+   "whereFound": "Grassy fields all over Hyrule."
+  },
+  {
+   "id": "Item_PlantGet_M",
+   "name": "Swift Carrot",
+   "category": "plant",
+   "hearts": 2,
+   "effect": "hasty",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 4,
+   "buyPrice": 16,
+   "tags": [
+    "CookPlant"
+   ],
+   "whereFound": "Fields around Kakariko and Hateno; sold in Kakariko.",
+   "roast": "Item_Roast_24"
+  },
+  {
+   "id": "Item_Fruit_J",
+   "name": "Fortified Pumpkin",
+   "category": "plant",
+   "hearts": 2,
+   "effect": "tough",
+   "potency": 2,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 5,
+   "buyPrice": 20,
+   "tags": [
+    "CookPlant"
+   ],
+   "whereFound": "Pumpkin patches in Kakariko Village.",
+   "roast": "Item_Roast_15"
+  },
+  {
+   "id": "Item_PlantGet_E",
+   "name": "Cool Safflina",
+   "category": "plant",
+   "hearts": 0,
+   "effect": "chilly",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 3,
+   "buyPrice": 12,
+   "tags": [
+    "CookPlant"
+   ],
+   "whereFound": "Snowy peaks such as Hebra and Mount Lanayru."
+  },
+  {
+   "id": "Item_PlantGet_F",
+   "name": "Warm Safflina",
+   "category": "plant",
+   "hearts": 0,
+   "effect": "spicy",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 3,
+   "buyPrice": 12,
+   "tags": [
+    "CookPlant"
+   ],
+   "whereFound": "Desert and Gerudo Highlands."
+  },
+  {
+   "id": "Item_PlantGet_L",
+   "name": "Electric Safflina",
+   "category": "plant",
+   "hearts": 0,
+   "effect": "electro",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 3,
+   "buyPrice": 12,
+   "tags": [
+    "CookPlant"
+   ],
+   "whereFound": "Gerudo Highlands and Gerudo Desert rocks."
+  },
+  {
+   "id": "Item_PlantGet_O",
+   "name": "Swift Violet",
+   "category": "plant",
+   "hearts": 0,
+   "effect": "hasty",
+   "potency": 2,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 10,
+   "buyPrice": 40,
+   "tags": [
+    "CookPlant"
+   ],
+   "whereFound": "Cliffs and high ledges, e.g. around Hebra and Death Mountain."
+  },
+  {
+   "id": "Item_PlantGet_G",
+   "name": "Mighty Thistle",
+   "category": "plant",
+   "hearts": 0,
+   "effect": "mighty",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 5,
+   "buyPrice": 20,
+   "tags": [
+    "CookPlant"
+   ],
+   "whereFound": "Grassy areas near Faron and Lurelin.",
+   "roast": "Item_Roast_27"
+  },
+  {
+   "id": "Item_PlantGet_H",
+   "name": "Armoranth",
+   "category": "plant",
+   "hearts": 0,
+   "effect": "tough",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 5,
+   "buyPrice": 20,
+   "tags": [
+    "CookPlant"
+   ],
+   "whereFound": "Grassy areas around Hateno and Faron.",
+   "roast": "Item_Roast_28"
+  },
+  {
+   "id": "Item_PlantGet_I",
+   "name": "Blue Nightshade",
+   "category": "plant",
+   "hearts": 0,
+   "effect": "sneaky",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 4,
+   "buyPrice": 16,
+   "tags": [
+    "CookPlant"
+   ],
+   "whereFound": "Grass near Kakariko, Hyrule Field and Hebra; glows at night."
+  },
+  {
+   "id": "Item_PlantGet_J",
+   "name": "Silent Princess",
+   "category": "plant",
+   "hearts": 4,
+   "effect": "sneaky",
+   "potency": 3,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 10,
+   "buyPrice": 30,
+   "tags": [
+    "CookPlant"
+   ],
+   "whereFound": "Rare flower around Zora's Domain, Hyrule Castle and the Great Plateau."
+  },
+  {
+   "id": "Item_Meat_11",
+   "name": "Raw Gourmet Meat",
+   "category": "meat",
+   "hearts": 12,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 35,
+   "buyPrice": 140,
+   "tags": [
+    "CookMeat"
+   ],
+   "whereFound": "Drop from the largest game, such as Hebra bears and big goats.",
+   "roast": "Item_Roast_45",
+   "frozen": "Item_Chilled_03"
+  },
+  {
+   "id": "Item_Meat_12",
+   "name": "Raw Whole Bird",
+   "category": "meat",
+   "hearts": 12,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 35,
+   "buyPrice": 140,
+   "tags": [
+    "CookMeat"
+   ],
+   "whereFound": "Drop from the biggest birds, such as eagles and Hebra birds.",
+   "roast": "Item_Roast_46",
+   "frozen": "Item_Chilled_06"
+  },
+  {
+   "id": "Item_Meat_02",
+   "name": "Raw Prime Meat",
+   "category": "meat",
+   "hearts": 6,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 15,
+   "buyPrice": 60,
+   "tags": [
+    "CookMeat"
+   ],
+   "whereFound": "Drop from larger game such as big boars and mountain goats.",
+   "roast": "Item_Roast_40",
+   "frozen": "Item_Chilled_02"
+  },
+  {
+   "id": "Item_Meat_07",
+   "name": "Raw Bird Thigh",
+   "category": "meat",
+   "hearts": 6,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 15,
+   "buyPrice": 60,
+   "tags": [
+    "CookMeat"
+   ],
+   "whereFound": "Drop from larger birds such as ducks and cranes.",
+   "roast": "Item_Roast_41",
+   "frozen": "Item_Chilled_05"
+  },
+  {
+   "id": "Item_Meat_01",
+   "name": "Raw Meat",
+   "category": "meat",
+   "hearts": 4,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 8,
+   "buyPrice": 32,
+   "tags": [
+    "CookMeat"
+   ],
+   "whereFound": "Drop from boars, deer and other small game.",
+   "roast": "Item_Roast_01",
+   "frozen": "Item_Chilled_01"
+  },
+  {
+   "id": "Item_Meat_06",
+   "name": "Raw Bird Drumstick",
+   "category": "meat",
+   "hearts": 4,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 8,
+   "buyPrice": 32,
+   "tags": [
+    "CookMeat"
+   ],
+   "whereFound": "Drop from small birds such as pigeons and sparrows.",
+   "roast": "Item_Roast_02",
+   "frozen": "Item_Chilled_04"
+  },
+  {
+   "id": "BeeHome",
+   "name": "Courser Bee Honey",
+   "category": "spice",
+   "hearts": 8,
+   "effect": "energizing",
+   "potency": 2,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 10,
+   "buyPrice": 40,
+   "tags": [
+    "CookSpice"
+   ],
+   "whereFound": "Knock down a beehive from a tree, then collect the honey."
+  },
+  {
+   "id": "Item_Material_03",
+   "name": "Hylian Rice",
+   "category": "spice",
+   "hearts": 4,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 30,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 3,
+   "buyPrice": 12,
+   "tags": [
+    "CookSpice"
+   ],
+   "whereFound": "Sold in Kakariko and Rito Village; also found in chests."
+  },
+  {
+   "id": "Item_Material_04",
+   "name": "Bird Egg",
+   "category": "spice",
+   "hearts": 4,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 60,
+   "hpBoost": 0,
+   "critBoost": 10,
+   "sellPrice": 3,
+   "buyPrice": 12,
+   "tags": [
+    "CookSpice"
+   ],
+   "whereFound": "Bird nests on trees and cliffs; sold in Hateno and Kakariko.",
+   "roast": "Item_Roast_51",
+   "boiled": "Item_Boiled_01"
+  },
+  {
+   "id": "Item_Material_07",
+   "name": "Tabantha Wheat",
+   "category": "spice",
+   "hearts": 4,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 30,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 3,
+   "buyPrice": 12,
+   "tags": [
+    "CookSpice"
+   ],
+   "whereFound": "Cut tall wheat grass in Tabantha; sold in Rito Village."
+  },
+  {
+   "id": "Item_Material_05",
+   "name": "Fresh Milk",
+   "category": "spice",
+   "hearts": 2,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 50,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 3,
+   "buyPrice": 12,
+   "tags": [
+    "CookSpice"
+   ],
+   "whereFound": "Sold in Hateno and Rito Village; given by some ranch NPCs."
+  },
+  {
+   "id": "Item_Fruit_K",
+   "name": "Acorn",
+   "category": "spice",
+   "hearts": 1,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 20,
+   "hpBoost": 2,
+   "critBoost": 0,
+   "sellPrice": 2,
+   "buyPrice": 8,
+   "tags": [
+    "CookSpice"
+   ],
+   "whereFound": "Fallen from trees in forests; shake or cut trees to drop them.",
+   "roast": "Item_Roast_48"
+  },
+  {
+   "id": "Item_Fruit_L",
+   "name": "Chickaloo Tree Nut",
+   "category": "spice",
+   "hearts": 1,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 10,
+   "hpBoost": 2,
+   "critBoost": 0,
+   "sellPrice": 3,
+   "buyPrice": 12,
+   "tags": [
+    "CookSpice"
+   ],
+   "whereFound": "Trees in the Faron and Lurelin area; shake or cut them.",
+   "roast": "Item_Roast_52"
+  },
+  {
+   "id": "Item_Material_01",
+   "name": "Cane Sugar",
+   "category": "spice",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 50,
+   "hpBoost": 0,
+   "critBoost": 30,
+   "sellPrice": 3,
+   "buyPrice": 12,
+   "tags": [
+    "CookSpice"
+   ],
+   "whereFound": "Sold in Lurelin, Hateno, Zora's Domain and Rito Village."
+  },
+  {
+   "id": "Item_Material_06",
+   "name": "Goat Butter",
+   "category": "spice",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 50,
+   "hpBoost": 0,
+   "critBoost": 10,
+   "sellPrice": 3,
+   "buyPrice": 12,
+   "tags": [
+    "CookSpice"
+   ],
+   "whereFound": "Sold in Hateno and Kakariko; also at Gerudo Town."
+  },
+  {
+   "id": "Item_Material_02",
+   "name": "Goron Spice",
+   "category": "spice",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 60,
+   "hpBoost": 0,
+   "critBoost": 10,
+   "sellPrice": 4,
+   "buyPrice": 16,
+   "tags": [
+    "CookSpice"
+   ],
+   "whereFound": "Sold in Goron City."
+  },
+  {
+   "id": "Item_Ore_H",
+   "name": "Rock Salt",
+   "category": "spice",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 30,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 2,
+   "buyPrice": 12,
+   "tags": [
+    "CookSpice"
+   ],
+   "whereFound": "Mined from ore deposits, especially in the Gerudo region; sold in Goron City."
+  },
+  {
+   "id": "Item_Material_08",
+   "name": "Monster Extract",
+   "category": "other",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 3,
+   "buyPrice": 10,
+   "tags": [
+    "CookSpice"
+   ],
+   "whereFound": "Bought from Kilton's mobile shop with mon."
+  },
+  {
+   "id": "Item_Ore_J",
+   "name": "Star Fragment",
+   "category": "other",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 60,
+   "hpBoost": 0,
+   "critBoost": 100,
+   "sellPrice": 300,
+   "buyPrice": 1500,
+   "tags": [
+    "CookLowPrice",
+    "CookSpice"
+   ],
+   "whereFound": "Watch the night sky for a falling star and run to where it lands."
+  },
+  {
+   "id": "Item_Enemy_38",
+   "name": "Dinraal's Scale",
+   "category": "dragon",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 60,
+   "hpBoost": 5,
+   "critBoost": 100,
+   "sellPrice": 150,
+   "buyPrice": 600,
+   "tags": [
+    "CookLowPrice",
+    "CookSpice"
+   ],
+   "whereFound": "Fallen from Dinraal, the fire dragon, near Eldin and Faron."
+  },
+  {
+   "id": "Item_Enemy_39",
+   "name": "Dinraal's Claw",
+   "category": "dragon",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 180,
+   "hpBoost": 8,
+   "critBoost": 100,
+   "sellPrice": 180,
+   "buyPrice": 720,
+   "tags": [
+    "CookLowPrice",
+    "CookSpice"
+   ],
+   "whereFound": "Shoot Dinraal's claw with an arrow."
+  },
+  {
+   "id": "Item_Enemy_47",
+   "name": "Shard of Dinraal's Fang",
+   "category": "dragon",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 600,
+   "hpBoost": 10,
+   "critBoost": 100,
+   "sellPrice": 250,
+   "buyPrice": 1000,
+   "tags": [
+    "CookLowPrice",
+    "CookSpice"
+   ],
+   "whereFound": "Shoot Dinraal's mouth area with an arrow."
+  },
+  {
+   "id": "Item_Enemy_48",
+   "name": "Shard of Dinraal's Horn",
+   "category": "dragon",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 1800,
+   "hpBoost": 15,
+   "critBoost": 100,
+   "sellPrice": 300,
+   "buyPrice": 1200,
+   "tags": [
+    "CookLowPrice",
+    "CookSpice"
+   ],
+   "whereFound": "Shoot Dinraal's horn with an arrow."
+  },
+  {
+   "id": "Item_Enemy_49",
+   "name": "Naydra's Scale",
+   "category": "dragon",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 60,
+   "hpBoost": 5,
+   "critBoost": 100,
+   "sellPrice": 150,
+   "buyPrice": 600,
+   "tags": [
+    "CookLowPrice",
+    "CookSpice"
+   ],
+   "whereFound": "Fallen from Naydra, the ice dragon, around Lanayru and Mount Lanayru."
+  },
+  {
+   "id": "Item_Enemy_50",
+   "name": "Naydra's Claw",
+   "category": "dragon",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 180,
+   "hpBoost": 8,
+   "critBoost": 100,
+   "sellPrice": 180,
+   "buyPrice": 720,
+   "tags": [
+    "CookLowPrice",
+    "CookSpice"
+   ],
+   "whereFound": "Shoot Naydra's claw with an arrow (after freeing it from Malice)."
+  },
+  {
+   "id": "Item_Enemy_51",
+   "name": "Shard of Naydra's Fang",
+   "category": "dragon",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 600,
+   "hpBoost": 10,
+   "critBoost": 100,
+   "sellPrice": 250,
+   "buyPrice": 1000,
+   "tags": [
+    "CookLowPrice",
+    "CookSpice"
+   ],
+   "whereFound": "Shoot Naydra's mouth area with an arrow."
+  },
+  {
+   "id": "Item_Enemy_52",
+   "name": "Shard of Naydra's Horn",
+   "category": "dragon",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 1800,
+   "hpBoost": 15,
+   "critBoost": 100,
+   "sellPrice": 300,
+   "buyPrice": 1200,
+   "tags": [
+    "CookLowPrice",
+    "CookSpice"
+   ],
+   "whereFound": "Shoot Naydra's horn with an arrow."
+  },
+  {
+   "id": "Item_Enemy_53",
+   "name": "Farosh's Scale",
+   "category": "dragon",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 60,
+   "hpBoost": 5,
+   "critBoost": 100,
+   "sellPrice": 150,
+   "buyPrice": 600,
+   "tags": [
+    "CookLowPrice",
+    "CookSpice"
+   ],
+   "whereFound": "Fallen from Farosh, the electric dragon, near Faron and Gerudo."
+  },
+  {
+   "id": "Item_Enemy_54",
+   "name": "Farosh's Claw",
+   "category": "dragon",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 180,
+   "hpBoost": 8,
+   "critBoost": 100,
+   "sellPrice": 180,
+   "buyPrice": 720,
+   "tags": [
+    "CookLowPrice",
+    "CookSpice"
+   ],
+   "whereFound": "Shoot Farosh's claw with an arrow."
+  },
+  {
+   "id": "Item_Enemy_55",
+   "name": "Shard of Farosh's Fang",
+   "category": "dragon",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 600,
+   "hpBoost": 10,
+   "critBoost": 100,
+   "sellPrice": 250,
+   "buyPrice": 1000,
+   "tags": [
+    "CookLowPrice",
+    "CookSpice"
+   ],
+   "whereFound": "Shoot Farosh's mouth area with an arrow."
+  },
+  {
+   "id": "Item_Enemy_56",
+   "name": "Shard of Farosh's Horn",
+   "category": "dragon",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 1800,
+   "hpBoost": 15,
+   "critBoost": 100,
+   "sellPrice": 300,
+   "buyPrice": 1200,
+   "tags": [
+    "CookLowPrice",
+    "CookSpice"
+   ],
+   "whereFound": "Shoot Farosh's horn with an arrow."
+  },
+  {
+   "id": "Item_FishGet_I",
+   "name": "Hearty Salmon",
+   "category": "fish",
+   "hearts": 16,
+   "effect": "hearty",
+   "potency": 16,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 10,
+   "buyPrice": 40,
+   "tags": [
+    "CookFish"
+   ],
+   "whereFound": "Cold rivers and lakes in Hebra and Mount Lanayru.",
+   "roast": "Item_RoastFish_04",
+   "frozen": "Item_ChilledFish_02"
+  },
+  {
+   "id": "Item_FishGet_K",
+   "name": "Hearty Blueshell Snail",
+   "category": "fish",
+   "hearts": 12,
+   "effect": "hearty",
+   "potency": 12,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 15,
+   "buyPrice": 60,
+   "tags": [
+    "CookFish"
+   ],
+   "whereFound": "Coastal shallows in Faron and Lurelin; glows at night.",
+   "roast": "Item_RoastFish_11",
+   "frozen": "Item_ChilledFish_09"
+  },
+  {
+   "id": "Item_FishGet_B",
+   "name": "Hearty Bass",
+   "category": "fish",
+   "hearts": 8,
+   "effect": "hearty",
+   "potency": 8,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 18,
+   "buyPrice": 72,
+   "tags": [
+    "CookFish"
+   ],
+   "whereFound": "Ponds and lakes, e.g. near Hateno and Lake Hylia.",
+   "roast": "Item_RoastFish_02",
+   "frozen": "Item_ChilledFish_06"
+  },
+  {
+   "id": "Item_FishGet_A",
+   "name": "Hyrule Bass",
+   "category": "fish",
+   "hearts": 4,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 6,
+   "buyPrice": 24,
+   "tags": [
+    "CookFish"
+   ],
+   "whereFound": "Rivers and lakes across central Hyrule.",
+   "roast": "Item_RoastFish_01",
+   "frozen": "Item_ChilledFish_01"
+  },
+  {
+   "id": "Item_FishGet_L",
+   "name": "Staminoka Bass",
+   "category": "fish",
+   "hearts": 4,
+   "effect": "energizing",
+   "potency": 4,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 18,
+   "buyPrice": 72,
+   "tags": [
+    "CookFish"
+   ],
+   "whereFound": "Rivers and lakes in Hyrule Field and Necluda.",
+   "roast": "Item_RoastFish_01",
+   "frozen": "Item_ChilledFish_01"
+  },
+  {
+   "id": "Item_FishGet_C",
+   "name": "Chillfin Trout",
+   "category": "fish",
+   "hearts": 4,
+   "effect": "chilly",
+   "potency": 3,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 6,
+   "buyPrice": 24,
+   "tags": [
+    "CookFish"
+   ],
+   "whereFound": "Cold waters in Hebra, Lanayru and Tabantha.",
+   "roast": "Item_RoastFish_03",
+   "frozen": "Item_ChilledFish_03"
+  },
+  {
+   "id": "Item_FishGet_J",
+   "name": "Sizzlefin Trout",
+   "category": "fish",
+   "hearts": 4,
+   "effect": "spicy",
+   "potency": 3,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 6,
+   "buyPrice": 24,
+   "tags": [
+    "CookFish"
+   ],
+   "whereFound": "Warm waters such as Death Mountain foothills and Eldin.",
+   "roast": "Item_RoastFish_03",
+   "frozen": "Item_ChilledFish_03"
+  },
+  {
+   "id": "Item_FishGet_D",
+   "name": "Voltfin Trout",
+   "category": "fish",
+   "hearts": 4,
+   "effect": "electro",
+   "potency": 3,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 6,
+   "buyPrice": 24,
+   "tags": [
+    "CookFish"
+   ],
+   "whereFound": "Lakes and rivers in Lanayru and Faron.",
+   "roast": "Item_RoastFish_03",
+   "frozen": "Item_ChilledFish_03"
+  },
+  {
+   "id": "Item_FishGet_X",
+   "name": "Stealthfin Trout",
+   "category": "fish",
+   "hearts": 4,
+   "effect": "sneaky",
+   "potency": 2,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 10,
+   "buyPrice": 40,
+   "tags": [
+    "CookFish"
+   ],
+   "whereFound": "Rivers and ponds; easiest to spot at night.",
+   "roast": "Item_RoastFish_03",
+   "frozen": "Item_ChilledFish_03"
+  },
+  {
+   "id": "Item_FishGet_E",
+   "name": "Mighty Carp",
+   "category": "fish",
+   "hearts": 4,
+   "effect": "mighty",
+   "potency": 2,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 10,
+   "buyPrice": 40,
+   "tags": [
+    "CookFish"
+   ],
+   "whereFound": "Rivers in Lanayru and Faron; Lake Hylia.",
+   "roast": "Item_RoastFish_07",
+   "frozen": "Item_ChilledFish_04"
+  },
+  {
+   "id": "Item_FishGet_H",
+   "name": "Armored Carp",
+   "category": "fish",
+   "hearts": 4,
+   "effect": "tough",
+   "potency": 2,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 10,
+   "buyPrice": 40,
+   "tags": [
+    "CookFish"
+   ],
+   "whereFound": "Rivers in Akkala, Lanayru and Faron.",
+   "roast": "Item_RoastFish_07",
+   "frozen": "Item_ChilledFish_04"
+  },
+  {
+   "id": "Item_FishGet_Z",
+   "name": "Sanke Carp",
+   "category": "fish",
+   "hearts": 4,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 20,
+   "buyPrice": 80,
+   "tags": [
+    "CookFish"
+   ],
+   "whereFound": "Ponds around Kakariko and Lake Hylia; also in some shrines.",
+   "roast": "Item_RoastFish_07",
+   "frozen": "Item_ChilledFish_04"
+  },
+  {
+   "id": "Item_FishGet_F",
+   "name": "Mighty Porgy",
+   "category": "fish",
+   "hearts": 4,
+   "effect": "mighty",
+   "potency": 3,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 10,
+   "buyPrice": 40,
+   "tags": [
+    "CookFish"
+   ],
+   "whereFound": "Ocean coasts near Lurelin and Akkala.",
+   "roast": "Item_RoastFish_09",
+   "frozen": "Item_ChilledFish_05"
+  },
+  {
+   "id": "Item_FishGet_G",
+   "name": "Armored Porgy",
+   "category": "fish",
+   "hearts": 4,
+   "effect": "tough",
+   "potency": 3,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 10,
+   "buyPrice": 40,
+   "tags": [
+    "CookFish"
+   ],
+   "whereFound": "Ocean coasts near Lurelin and Akkala.",
+   "roast": "Item_RoastFish_09",
+   "frozen": "Item_ChilledFish_05"
+  },
+  {
+   "id": "Item_FishGet_M",
+   "name": "Sneaky River Snail",
+   "category": "fish",
+   "hearts": 4,
+   "effect": "sneaky",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 6,
+   "buyPrice": 24,
+   "tags": [
+    "CookFish"
+   ],
+   "whereFound": "Shallow water in Lanayru and Akkala; glows at night.",
+   "roast": "Item_RoastFish_13",
+   "frozen": "Item_ChilledFish_08"
+  },
+  {
+   "id": "Item_InsectGet_K",
+   "name": "Razorclaw Crab",
+   "category": "fish",
+   "hearts": 4,
+   "effect": "mighty",
+   "potency": 2,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 8,
+   "buyPrice": 32,
+   "tags": [
+    "CookFish"
+   ],
+   "whereFound": "Beaches and shallow water in Faron and Akkala.",
+   "roast": "Item_RoastFish_15",
+   "frozen": "Item_ChilledFish_07"
+  },
+  {
+   "id": "Item_InsectGet_O",
+   "name": "Ironshell Crab",
+   "category": "fish",
+   "hearts": 4,
+   "effect": "tough",
+   "potency": 2,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 8,
+   "buyPrice": 32,
+   "tags": [
+    "CookFish"
+   ],
+   "whereFound": "Beaches in Lurelin, Akkala and Faron.",
+   "roast": "Item_RoastFish_15",
+   "frozen": "Item_ChilledFish_07"
+  },
+  {
+   "id": "Item_InsectGet_Z",
+   "name": "Bright-Eyed Crab",
+   "category": "fish",
+   "hearts": 4,
+   "effect": "energizing",
+   "potency": 2,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 10,
+   "buyPrice": 40,
+   "tags": [
+    "CookFish"
+   ],
+   "whereFound": "Beaches in Lurelin and Akkala; more common in rain.",
+   "roast": "Item_RoastFish_15",
+   "frozen": "Item_ChilledFish_07"
+  },
+  {
+   "id": "Animal_Insect_F",
+   "name": "Fairy",
+   "category": "other",
+   "hearts": 20,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 2,
+   "buyPrice": 10,
+   "tags": [],
+   "whereFound": "Fairy fountains and around Great Fairy pools; sometimes in barrels."
+  },
+  {
+   "id": "Animal_Insect_N",
+   "name": "Winterwing Butterfly",
+   "category": "critter",
+   "hearts": 0,
+   "effect": "chilly",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 2,
+   "buyPrice": 10,
+   "tags": [
+    "CookInsect"
+   ],
+   "whereFound": "Flutters around cold or snowy areas."
+  },
+  {
+   "id": "Animal_Insect_Q",
+   "name": "Summerwing Butterfly",
+   "category": "critter",
+   "hearts": 0,
+   "effect": "spicy",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 2,
+   "buyPrice": 10,
+   "tags": [
+    "CookInsect"
+   ],
+   "whereFound": "Flutters around warm grasslands and Faron."
+  },
+  {
+   "id": "Animal_Insect_R",
+   "name": "Thunderwing Butterfly",
+   "category": "critter",
+   "hearts": 0,
+   "effect": "electro",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 2,
+   "buyPrice": 10,
+   "tags": [
+    "CookInsect"
+   ],
+   "whereFound": "Desert and Gerudo areas, especially in rain."
+  },
+  {
+   "id": "Animal_Insect_AB",
+   "name": "Smotherwing Butterfly",
+   "category": "critter",
+   "hearts": 0,
+   "effect": "fireproof",
+   "potency": 2,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 2,
+   "buyPrice": 10,
+   "tags": [
+    "CookInsect"
+   ],
+   "whereFound": "Death Mountain and the Eldin region."
+  },
+  {
+   "id": "Animal_Insect_C",
+   "name": "Cold Darner",
+   "category": "critter",
+   "hearts": 0,
+   "effect": "chilly",
+   "potency": 2,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 2,
+   "buyPrice": 10,
+   "tags": [
+    "CookInsect"
+   ],
+   "whereFound": "Near water in hot regions; easiest at night."
+  },
+  {
+   "id": "Animal_Insect_T",
+   "name": "Warm Darner",
+   "category": "critter",
+   "hearts": 0,
+   "effect": "spicy",
+   "potency": 2,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 2,
+   "buyPrice": 10,
+   "tags": [
+    "CookInsect"
+   ],
+   "whereFound": "Near water in cold regions."
+  },
+  {
+   "id": "Animal_Insect_I",
+   "name": "Electric Darner",
+   "category": "critter",
+   "hearts": 0,
+   "effect": "electro",
+   "potency": 2,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 2,
+   "buyPrice": 10,
+   "tags": [
+    "CookInsect"
+   ],
+   "whereFound": "Desert and Gerudo areas, mainly in rain."
+  },
+  {
+   "id": "Animal_Insect_H",
+   "name": "Restless Cricket",
+   "category": "critter",
+   "hearts": 0,
+   "effect": "energizing",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 2,
+   "buyPrice": 10,
+   "tags": [
+    "CookInsect"
+   ],
+   "whereFound": "Grassy fields, especially in Hyrule Field and Necluda."
+  },
+  {
+   "id": "Animal_Insect_G",
+   "name": "Bladed Rhino Beetle",
+   "category": "critter",
+   "hearts": 0,
+   "effect": "mighty",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 4,
+   "buyPrice": 20,
+   "tags": [
+    "CookInsect"
+   ],
+   "whereFound": "On trees in forests; Akkala and Faron."
+  },
+  {
+   "id": "Animal_Insect_P",
+   "name": "Rugged Rhino Beetle",
+   "category": "critter",
+   "hearts": 0,
+   "effect": "tough",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 4,
+   "buyPrice": 20,
+   "tags": [
+    "CookInsect"
+   ],
+   "whereFound": "On trees in forests; Akkala and Faron."
+  },
+  {
+   "id": "Animal_Insect_AA",
+   "name": "Energetic Rhino Beetle",
+   "category": "critter",
+   "hearts": 0,
+   "effect": "energizing",
+   "potency": 6,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 30,
+   "buyPrice": 150,
+   "tags": [
+    "CookInsect"
+   ],
+   "whereFound": "Rare; on trees in Akkala and Faron."
+  },
+  {
+   "id": "Animal_Insect_E",
+   "name": "Sunset Firefly",
+   "category": "critter",
+   "hearts": 0,
+   "effect": "sneaky",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 2,
+   "buyPrice": 10,
+   "tags": [
+    "CookInsect"
+   ],
+   "whereFound": "Swarms over grass and forests at night."
+  },
+  {
+   "id": "Animal_Insect_A",
+   "name": "Hot-Footed Frog",
+   "category": "critter",
+   "hearts": 0,
+   "effect": "hasty",
+   "potency": 2,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 2,
+   "buyPrice": 10,
+   "tags": [
+    "CookInsect"
+   ],
+   "whereFound": "Near water in Necluda and Faron, often in rain."
+  },
+  {
+   "id": "Animal_Insect_B",
+   "name": "Tireless Frog",
+   "category": "critter",
+   "hearts": 8,
+   "effect": "enduring",
+   "potency": 2,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 20,
+   "buyPrice": 100,
+   "tags": [
+    "CookInsect"
+   ],
+   "whereFound": "Wet areas in Faron and Lanayru, mostly in rain."
+  },
+  {
+   "id": "Animal_Insect_S",
+   "name": "Hightail Lizard",
+   "category": "critter",
+   "hearts": 0,
+   "effect": "hasty",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 2,
+   "buyPrice": 10,
+   "tags": [
+    "CookInsect"
+   ],
+   "whereFound": "Grass and rocks all over Hyrule; fast moving."
+  },
+  {
+   "id": "Animal_Insect_M",
+   "name": "Hearty Lizard",
+   "category": "critter",
+   "hearts": 16,
+   "effect": "hearty",
+   "potency": 16,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 20,
+   "buyPrice": 100,
+   "tags": [
+    "CookInsect"
+   ],
+   "whereFound": "Rare; rocks and grass in Faron, Necluda and Hateno."
+  },
+  {
+   "id": "Animal_Insect_X",
+   "name": "Fireproof Lizard",
+   "category": "critter",
+   "hearts": 0,
+   "effect": "fireproof",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 5,
+   "buyPrice": 25,
+   "tags": [
+    "CookInsect"
+   ],
+   "whereFound": "Death Mountain and the Eldin volcano region."
+  },
+  {
+   "id": "Item_Ore_I",
+   "name": "Flint",
+   "category": "ore",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 5,
+   "buyPrice": 20,
+   "tags": [
+    "CookOre"
+   ],
+   "whereFound": "Common drop from ore deposits."
+  },
+  {
+   "id": "Item_Ore_F",
+   "name": "Amber",
+   "category": "ore",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 30,
+   "buyPrice": 120,
+   "tags": [
+    "CookOre"
+   ],
+   "whereFound": "Common drop from ore deposits."
+  },
+  {
+   "id": "Item_Ore_E",
+   "name": "Opal",
+   "category": "ore",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 60,
+   "buyPrice": 240,
+   "tags": [
+    "CookOre"
+   ],
+   "whereFound": "Ore deposits, often near water and Zora's Domain."
+  },
+  {
+   "id": "Item_Ore_G",
+   "name": "Luminous Stone",
+   "category": "ore",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 70,
+   "buyPrice": 280,
+   "tags": [
+    "CookOre"
+   ],
+   "whereFound": "Glowing deposits, often near Zora's Domain and lakes."
+  },
+  {
+   "id": "Item_Ore_D",
+   "name": "Topaz",
+   "category": "ore",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 180,
+   "buyPrice": 720,
+   "tags": [
+    "CookOre"
+   ],
+   "whereFound": "Ore deposits, often in the Gerudo region."
+  },
+  {
+   "id": "Item_Ore_B",
+   "name": "Ruby",
+   "category": "ore",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 210,
+   "buyPrice": 840,
+   "tags": [
+    "CookOre"
+   ],
+   "whereFound": "Ore deposits, often on Death Mountain."
+  },
+  {
+   "id": "Item_Ore_C",
+   "name": "Sapphire",
+   "category": "ore",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 260,
+   "buyPrice": 1040,
+   "tags": [
+    "CookOre"
+   ],
+   "whereFound": "Ore deposits, often in snowy Hebra."
+  },
+  {
+   "id": "Item_Ore_A",
+   "name": "Diamond",
+   "category": "ore",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 500,
+   "buyPrice": 2000,
+   "tags": [
+    "CookOre"
+   ],
+   "whereFound": "Rare drop from rare ore deposits; also Talus monsters."
+  },
+  {
+   "id": "Item_Enemy_00",
+   "name": "Bokoblin Horn",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 40,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 3,
+   "buyPrice": 12,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by Bokoblins."
+  },
+  {
+   "id": "Item_Enemy_01",
+   "name": "Bokoblin Fang",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 80,
+   "hpBoost": 0,
+   "critBoost": 10,
+   "sellPrice": 8,
+   "buyPrice": 32,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by Bokoblins."
+  },
+  {
+   "id": "Item_Enemy_02",
+   "name": "Bokoblin Guts",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 160,
+   "hpBoost": 0,
+   "critBoost": 30,
+   "sellPrice": 20,
+   "buyPrice": 80,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by stronger Bokoblins."
+  },
+  {
+   "id": "Item_Enemy_06",
+   "name": "Moblin Horn",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 40,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 5,
+   "buyPrice": 20,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by Moblins."
+  },
+  {
+   "id": "Item_Enemy_07",
+   "name": "Moblin Fang",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 80,
+   "hpBoost": 0,
+   "critBoost": 10,
+   "sellPrice": 12,
+   "buyPrice": 45,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by Moblins."
+  },
+  {
+   "id": "Item_Enemy_08",
+   "name": "Moblin Guts",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 160,
+   "hpBoost": 0,
+   "critBoost": 30,
+   "sellPrice": 25,
+   "buyPrice": 100,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by stronger Moblins."
+  },
+  {
+   "id": "Item_Enemy_03",
+   "name": "Lizalfos Horn",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 40,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 10,
+   "buyPrice": 40,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by Lizalfos."
+  },
+  {
+   "id": "Item_Enemy_04",
+   "name": "Lizalfos Talon",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 80,
+   "hpBoost": 0,
+   "critBoost": 10,
+   "sellPrice": 15,
+   "buyPrice": 60,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by Lizalfos."
+  },
+  {
+   "id": "Item_Enemy_05",
+   "name": "Lizalfos Tail",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 160,
+   "hpBoost": 0,
+   "critBoost": 30,
+   "sellPrice": 28,
+   "buyPrice": 112,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by stronger Lizalfos."
+  },
+  {
+   "id": "Item_Enemy_42",
+   "name": "Icy Lizalfos Tail",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 160,
+   "hpBoost": 0,
+   "critBoost": 30,
+   "sellPrice": 35,
+   "buyPrice": 140,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by Ice-Breath Lizalfos."
+  },
+  {
+   "id": "Item_Enemy_41",
+   "name": "Red Lizalfos Tail",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 160,
+   "hpBoost": 0,
+   "critBoost": 30,
+   "sellPrice": 35,
+   "buyPrice": 140,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by Fire-Breath Lizalfos."
+  },
+  {
+   "id": "Item_Enemy_43",
+   "name": "Yellow Lizalfos Tail",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 160,
+   "hpBoost": 0,
+   "critBoost": 30,
+   "sellPrice": 35,
+   "buyPrice": 140,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by Electric Lizalfos."
+  },
+  {
+   "id": "Item_Enemy_12",
+   "name": "Lynel Horn",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 40,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 40,
+   "buyPrice": 160,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by Lynels."
+  },
+  {
+   "id": "Item_Enemy_13",
+   "name": "Lynel Hoof",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 80,
+   "hpBoost": 0,
+   "critBoost": 10,
+   "sellPrice": 50,
+   "buyPrice": 200,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by Lynels."
+  },
+  {
+   "id": "Item_Enemy_14",
+   "name": "Lynel Guts",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 160,
+   "hpBoost": 0,
+   "critBoost": 30,
+   "sellPrice": 200,
+   "buyPrice": 800,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by stronger Lynels."
+  },
+  {
+   "id": "Item_Enemy_40",
+   "name": "Chuchu Jelly",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 40,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 5,
+   "buyPrice": 20,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by Chuchus."
+  },
+  {
+   "id": "Item_Enemy_17",
+   "name": "White Chuchu Jelly",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 80,
+   "hpBoost": 0,
+   "critBoost": 10,
+   "sellPrice": 10,
+   "buyPrice": 40,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by Ice Chuchus (or freeze normal jelly)."
+  },
+  {
+   "id": "Item_Enemy_15",
+   "name": "Red Chuchu Jelly",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 80,
+   "hpBoost": 0,
+   "critBoost": 10,
+   "sellPrice": 10,
+   "buyPrice": 40,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by Fire Chuchus (or burn normal jelly)."
+  },
+  {
+   "id": "Item_Enemy_16",
+   "name": "Yellow Chuchu Jelly",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 80,
+   "hpBoost": 0,
+   "critBoost": 10,
+   "sellPrice": 10,
+   "buyPrice": 40,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by Electric Chuchus (or shock normal jelly)."
+  },
+  {
+   "id": "Item_Enemy_18",
+   "name": "Keese Wing",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 40,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 2,
+   "buyPrice": 8,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by Keese."
+  },
+  {
+   "id": "Item_Enemy_46",
+   "name": "Ice Keese Wing",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 80,
+   "hpBoost": 0,
+   "critBoost": 10,
+   "sellPrice": 6,
+   "buyPrice": 24,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by Ice Keese."
+  },
+  {
+   "id": "Item_Enemy_44",
+   "name": "Fire Keese Wing",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 80,
+   "hpBoost": 0,
+   "critBoost": 10,
+   "sellPrice": 6,
+   "buyPrice": 24,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by Fire Keese."
+  },
+  {
+   "id": "Item_Enemy_45",
+   "name": "Electric Keese Wing",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 80,
+   "hpBoost": 0,
+   "critBoost": 10,
+   "sellPrice": 6,
+   "buyPrice": 24,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by Electric Keese."
+  },
+  {
+   "id": "Item_Enemy_19",
+   "name": "Keese Eyeball",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 160,
+   "hpBoost": 0,
+   "critBoost": 30,
+   "sellPrice": 20,
+   "buyPrice": 80,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by Keese of all kinds (uncommon)."
+  },
+  {
+   "id": "Item_Enemy_20",
+   "name": "Octorok Tentacle",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 40,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 10,
+   "buyPrice": 40,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by Octoroks."
+  },
+  {
+   "id": "Item_Enemy_21",
+   "name": "Octorok Eyeball",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 80,
+   "hpBoost": 0,
+   "critBoost": 10,
+   "sellPrice": 25,
+   "buyPrice": 100,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by Octoroks (uncommon)."
+  },
+  {
+   "id": "Item_Enemy_57",
+   "name": "Octo Balloon",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 40,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 5,
+   "buyPrice": 20,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by Octoroks."
+  },
+  {
+   "id": "Item_Enemy_24",
+   "name": "Molduga Fin",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 80,
+   "hpBoost": 0,
+   "critBoost": 10,
+   "sellPrice": 30,
+   "buyPrice": 120,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by Moldugas in the Gerudo Desert."
+  },
+  {
+   "id": "Item_Enemy_25",
+   "name": "Molduga Guts",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 160,
+   "hpBoost": 0,
+   "critBoost": 30,
+   "sellPrice": 110,
+   "buyPrice": 440,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by Moldugas in the Gerudo Desert."
+  },
+  {
+   "id": "Item_Enemy_32",
+   "name": "Hinox Toenail",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 40,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 20,
+   "buyPrice": 80,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by Hinoxes."
+  },
+  {
+   "id": "Item_Enemy_33",
+   "name": "Hinox Tooth",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 80,
+   "hpBoost": 0,
+   "critBoost": 10,
+   "sellPrice": 35,
+   "buyPrice": 140,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by Hinoxes."
+  },
+  {
+   "id": "Item_Enemy_34",
+   "name": "Hinox Guts",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 160,
+   "hpBoost": 0,
+   "critBoost": 30,
+   "sellPrice": 80,
+   "buyPrice": 320,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by Hinoxes (and Stalnoxes)."
+  },
+  {
+   "id": "Item_Enemy_27",
+   "name": "Ancient Screw",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 40,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 12,
+   "buyPrice": 48,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by Guardians and found at Guardian wrecks."
+  },
+  {
+   "id": "Item_Enemy_28",
+   "name": "Ancient Spring",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 40,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 15,
+   "buyPrice": 60,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by Guardians and found at Guardian wrecks."
+  },
+  {
+   "id": "Item_Enemy_26",
+   "name": "Ancient Gear",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 80,
+   "hpBoost": 0,
+   "critBoost": 10,
+   "sellPrice": 30,
+   "buyPrice": 120,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by Guardians."
+  },
+  {
+   "id": "Item_Enemy_29",
+   "name": "Ancient Shaft",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 80,
+   "hpBoost": 0,
+   "critBoost": 10,
+   "sellPrice": 40,
+   "buyPrice": 160,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by Guardians."
+  },
+  {
+   "id": "Item_Enemy_30",
+   "name": "Ancient Core",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 160,
+   "hpBoost": 0,
+   "critBoost": 30,
+   "sellPrice": 80,
+   "buyPrice": 320,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by Guardians (uncommon)."
+  },
+  {
+   "id": "Item_Enemy_31",
+   "name": "Giant Ancient Core",
+   "category": "monster_part",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 160,
+   "hpBoost": 0,
+   "critBoost": 30,
+   "sellPrice": 200,
+   "buyPrice": 800,
+   "tags": [
+    "CookEnemy"
+   ],
+   "whereFound": "Dropped by Guardian Stalkers and some shrine sentries (rare)."
+  },
+  {
+   "id": "Obj_FireWoodBundle",
+   "name": "Wood",
+   "category": "other",
+   "hearts": 0,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 2,
+   "buyPrice": 12,
+   "tags": [
+    "CookOre"
+   ],
+   "whereFound": "Chop down trees with an axe or blade."
+  },
+  {
+   "id": "Item_Roast_03",
+   "name": "Baked Apple",
+   "category": "fruit",
+   "hearts": 3,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 3,
+   "buyPrice": 8,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_Fruit_A"
+   ],
+   "whereFound": "Cook Apple over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Roast_10",
+   "name": "Baked Palm Fruit",
+   "category": "fruit",
+   "hearts": 6,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 6,
+   "buyPrice": 15,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_Fruit_G"
+   ],
+   "whereFound": "Cook Palm Fruit over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Roast_07",
+   "name": "Roasted Wildberry",
+   "category": "fruit",
+   "hearts": 3,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 5,
+   "buyPrice": 13,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_Fruit_B"
+   ],
+   "whereFound": "Cook Wildberry over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Roast_48",
+   "name": "Roasted Acorn",
+   "category": "spice",
+   "hearts": 2,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 2,
+   "buyPrice": 5,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_Fruit_K"
+   ],
+   "whereFound": "Cook Acorn over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Roast_52",
+   "name": "Roasted Tree Nut",
+   "category": "spice",
+   "hearts": 2,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 2,
+   "buyPrice": 5,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_Fruit_L"
+   ],
+   "whereFound": "Cook Chickaloo Tree Nut over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Roast_09",
+   "name": "Roasted Hearty Durian",
+   "category": "fruit",
+   "hearts": 18,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 12,
+   "buyPrice": 30,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_Fruit_D"
+   ],
+   "whereFound": "Cook Hearty Durian over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Roast_12",
+   "name": "Roasted Hydromelon",
+   "category": "fruit",
+   "hearts": 3,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 8,
+   "buyPrice": 20,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_Fruit_F"
+   ],
+   "whereFound": "Cook Hydromelon over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Roast_13",
+   "name": "Charred Pepper",
+   "category": "fruit",
+   "hearts": 3,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 5,
+   "buyPrice": 13,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_Fruit_I"
+   ],
+   "whereFound": "Cook Spicy Pepper over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Roast_08",
+   "name": "Roasted Voltfruit",
+   "category": "fruit",
+   "hearts": 3,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 8,
+   "buyPrice": 20,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_Fruit_C"
+   ],
+   "whereFound": "Cook Voltfruit over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Roast_16",
+   "name": "Roasted Lotus Seeds",
+   "category": "fruit",
+   "hearts": 3,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 8,
+   "buyPrice": 20,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_Fruit_E"
+   ],
+   "whereFound": "Cook Fleet-Lotus Seeds over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Roast_11",
+   "name": "Roasted Mighty Bananas",
+   "category": "fruit",
+   "hearts": 3,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 8,
+   "buyPrice": 20,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_Fruit_H"
+   ],
+   "whereFound": "Cook Mighty Bananas over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Roast_06",
+   "name": "Toasty Hylian Shroom",
+   "category": "mushroom",
+   "hearts": 3,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 3,
+   "buyPrice": 12,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_Mushroom_E"
+   ],
+   "whereFound": "Cook Hylian Shroom over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Roast_04",
+   "name": "Toasty Stamella Shroom",
+   "category": "mushroom",
+   "hearts": 3,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 5,
+   "buyPrice": 13,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_Mushroom_A"
+   ],
+   "whereFound": "Cook Stamella Shroom over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Roast_53",
+   "name": "Toasty Endura Shroom",
+   "category": "mushroom",
+   "hearts": 6,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 5,
+   "buyPrice": 13,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_Mushroom_O"
+   ],
+   "whereFound": "Cook Endura Shroom over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Roast_05",
+   "name": "Toasted Hearty Truffle",
+   "category": "mushroom",
+   "hearts": 12,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 8,
+   "buyPrice": 20,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_Mushroom_F"
+   ],
+   "whereFound": "Cook Hearty Truffle over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Roast_49",
+   "name": "Toasted Big Hearty Truffle",
+   "category": "mushroom",
+   "hearts": 18,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 24,
+   "buyPrice": 58,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_Mushroom_N"
+   ],
+   "whereFound": "Cook Big Hearty Truffle over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Roast_31",
+   "name": "Toasty Chillshroom",
+   "category": "mushroom",
+   "hearts": 3,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 6,
+   "buyPrice": 15,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_Mushroom_B"
+   ],
+   "whereFound": "Cook Chillshroom over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Roast_32",
+   "name": "Toasty Sunshroom",
+   "category": "mushroom",
+   "hearts": 3,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 6,
+   "buyPrice": 15,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_Mushroom_C"
+   ],
+   "whereFound": "Cook Sunshroom over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Roast_33",
+   "name": "Toasty Zapshroom",
+   "category": "mushroom",
+   "hearts": 3,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 6,
+   "buyPrice": 15,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_Mushroom_H"
+   ],
+   "whereFound": "Cook Zapshroom over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Roast_36",
+   "name": "Toasty Rushroom",
+   "category": "mushroom",
+   "hearts": 3,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 5,
+   "buyPrice": 13,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_MushroomGet_D"
+   ],
+   "whereFound": "Cook Rushroom over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Roast_37",
+   "name": "Toasty Razorshroom",
+   "category": "mushroom",
+   "hearts": 3,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 5,
+   "buyPrice": 13,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_Mushroom_L"
+   ],
+   "whereFound": "Cook Razorshroom over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Roast_38",
+   "name": "Toasty Ironshroom",
+   "category": "mushroom",
+   "hearts": 3,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 5,
+   "buyPrice": 13,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_Mushroom_M"
+   ],
+   "whereFound": "Cook Ironshroom over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Roast_39",
+   "name": "Toasty Silent Shroom",
+   "category": "mushroom",
+   "hearts": 3,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 3,
+   "buyPrice": 8,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_Mushroom_J"
+   ],
+   "whereFound": "Cook Silent Shroom over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Roast_18",
+   "name": "Roasted Radish",
+   "category": "plant",
+   "hearts": 15,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 12,
+   "buyPrice": 30,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_PlantGet_B"
+   ],
+   "whereFound": "Cook Hearty Radish over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Roast_19",
+   "name": "Roasted Big Radish",
+   "category": "plant",
+   "hearts": 24,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 24,
+   "buyPrice": 58,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_PlantGet_C"
+   ],
+   "whereFound": "Cook Big Hearty Radish over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Roast_24",
+   "name": "Roasted Swift Carrot",
+   "category": "plant",
+   "hearts": 3,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 6,
+   "buyPrice": 15,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_PlantGet_M"
+   ],
+   "whereFound": "Cook Swift Carrot over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Roast_50",
+   "name": "Roasted Endura Carrot",
+   "category": "plant",
+   "hearts": 12,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 38,
+   "buyPrice": 95,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_PlantGet_Q"
+   ],
+   "whereFound": "Cook Endura Carrot over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Roast_15",
+   "name": "Baked Fortified Pumpkin",
+   "category": "plant",
+   "hearts": 3,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 8,
+   "buyPrice": 20,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_Fruit_J"
+   ],
+   "whereFound": "Cook Fortified Pumpkin over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Roast_27",
+   "name": "Roasted Mighty Thistle",
+   "category": "plant",
+   "hearts": 2,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 8,
+   "buyPrice": 20,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_PlantGet_G"
+   ],
+   "whereFound": "Cook Mighty Thistle over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Roast_28",
+   "name": "Roasted Armoranth",
+   "category": "plant",
+   "hearts": 2,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 8,
+   "buyPrice": 20,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_PlantGet_H"
+   ],
+   "whereFound": "Cook Armoranth over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Roast_51",
+   "name": "Campfire Egg",
+   "category": "spice",
+   "hearts": 6,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 5,
+   "buyPrice": 20,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_Material_04"
+   ],
+   "whereFound": "Cook Bird Egg over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Boiled_01",
+   "name": "Hard-Boiled Egg",
+   "category": "spice",
+   "hearts": 6,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 5,
+   "buyPrice": 20,
+   "tags": [],
+   "variant": "boiled",
+   "variantOf": [
+    "Item_Material_04"
+   ],
+   "whereFound": "Drop a Bird Egg into a hot spring, e.g. near Goron City."
+  },
+  {
+   "id": "Item_Roast_01",
+   "name": "Seared Steak",
+   "category": "meat",
+   "hearts": 6,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 12,
+   "buyPrice": 30,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_Meat_01"
+   ],
+   "whereFound": "Cook Raw Meat over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Roast_40",
+   "name": "Seared Prime Steak",
+   "category": "meat",
+   "hearts": 9,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 24,
+   "buyPrice": 58,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_Meat_02"
+   ],
+   "whereFound": "Cook Raw Prime Meat over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Roast_45",
+   "name": "Seared Gourmet Steak",
+   "category": "meat",
+   "hearts": 18,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 35,
+   "buyPrice": 140,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_Meat_11"
+   ],
+   "whereFound": "Cook Raw Gourmet Meat over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Roast_02",
+   "name": "Roasted Bird Drumstick",
+   "category": "meat",
+   "hearts": 6,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 12,
+   "buyPrice": 30,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_Meat_06"
+   ],
+   "whereFound": "Cook Raw Bird Drumstick over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Roast_41",
+   "name": "Roasted Bird Thigh",
+   "category": "meat",
+   "hearts": 9,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 24,
+   "buyPrice": 28,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_Meat_07"
+   ],
+   "whereFound": "Cook Raw Bird Thigh over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Roast_46",
+   "name": "Roasted Whole Bird",
+   "category": "meat",
+   "hearts": 18,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 35,
+   "buyPrice": 140,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_Meat_12"
+   ],
+   "whereFound": "Cook Raw Whole Bird over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_RoastFish_01",
+   "name": "Roasted Bass",
+   "category": "fish",
+   "hearts": 6,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 9,
+   "buyPrice": 23,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_FishGet_A",
+    "Item_FishGet_L"
+   ],
+   "whereFound": "Cook Hyrule Bass or Staminoka Bass over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_RoastFish_02",
+   "name": "Roasted Hearty Bass",
+   "category": "fish",
+   "hearts": 12,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 12,
+   "buyPrice": 30,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_FishGet_B"
+   ],
+   "whereFound": "Cook Hearty Bass over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_RoastFish_04",
+   "name": "Roasted Hearty Salmon",
+   "category": "fish",
+   "hearts": 18,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 15,
+   "buyPrice": 38,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_FishGet_I"
+   ],
+   "whereFound": "Cook Hearty Salmon over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_RoastFish_03",
+   "name": "Roasted Trout",
+   "category": "fish",
+   "hearts": 6,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 9,
+   "buyPrice": 23,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_FishGet_C",
+    "Item_FishGet_J",
+    "Item_FishGet_D",
+    "Item_FishGet_X"
+   ],
+   "whereFound": "Cook Chillfin Trout or Sizzlefin Trout or Voltfin Trout or Stealthfin Trout over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_RoastFish_07",
+   "name": "Roasted Carp",
+   "category": "fish",
+   "hearts": 6,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 15,
+   "buyPrice": 38,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_FishGet_E",
+    "Item_FishGet_H",
+    "Item_FishGet_Z"
+   ],
+   "whereFound": "Cook Mighty Carp or Armored Carp or Sanke Carp over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_RoastFish_09",
+   "name": "Roasted Porgy",
+   "category": "fish",
+   "hearts": 6,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 15,
+   "buyPrice": 38,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_FishGet_F",
+    "Item_FishGet_G"
+   ],
+   "whereFound": "Cook Mighty Porgy or Armored Porgy over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_RoastFish_13",
+   "name": "Sneaky River Escargot",
+   "category": "fish",
+   "hearts": 6,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 9,
+   "buyPrice": 23,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_FishGet_M"
+   ],
+   "whereFound": "Cook Sneaky River Snail over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_RoastFish_11",
+   "name": "Blueshell Escargot",
+   "category": "fish",
+   "hearts": 18,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 15,
+   "buyPrice": 38,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_FishGet_K"
+   ],
+   "whereFound": "Cook Hearty Blueshell Snail over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_RoastFish_15",
+   "name": "Blackened Crab",
+   "category": "fish",
+   "hearts": 6,
+   "effect": null,
+   "potency": 0,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 12,
+   "buyPrice": 30,
+   "tags": [],
+   "variant": "roasted",
+   "variantOf": [
+    "Item_InsectGet_K",
+    "Item_InsectGet_O",
+    "Item_InsectGet_Z"
+   ],
+   "whereFound": "Cook Razorclaw Crab or Ironshell Crab or Bright-Eyed Crab over an open fire, or drop it on burning ground."
+  },
+  {
+   "id": "Item_Chilled_01",
+   "name": "Icy Meat",
+   "category": "meat",
+   "hearts": 4,
+   "effect": "chilly",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 15,
+   "buyPrice": 35,
+   "tags": [],
+   "variant": "frozen",
+   "variantOf": [
+    "Item_Meat_01"
+   ],
+   "whereFound": "Leave Raw Meat in freezing cold (e.g. Hebra or Mount Lanayru) or hit it with ice."
+  },
+  {
+   "id": "Item_Chilled_02",
+   "name": "Icy Prime Meat",
+   "category": "meat",
+   "hearts": 6,
+   "effect": "chilly",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 28,
+   "buyPrice": 60,
+   "tags": [],
+   "variant": "frozen",
+   "variantOf": [
+    "Item_Meat_02"
+   ],
+   "whereFound": "Leave Raw Prime Meat in freezing cold (e.g. Hebra or Mount Lanayru) or hit it with ice."
+  },
+  {
+   "id": "Item_Chilled_03",
+   "name": "Icy Gourmet Meat",
+   "category": "meat",
+   "hearts": 12,
+   "effect": "chilly",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 40,
+   "buyPrice": 150,
+   "tags": [],
+   "variant": "frozen",
+   "variantOf": [
+    "Item_Meat_11"
+   ],
+   "whereFound": "Leave Raw Gourmet Meat in freezing cold (e.g. Hebra or Mount Lanayru) or hit it with ice."
+  },
+  {
+   "id": "Item_Chilled_04",
+   "name": "Frozen Bird Drumstick",
+   "category": "meat",
+   "hearts": 4,
+   "effect": "chilly",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 15,
+   "buyPrice": 35,
+   "tags": [],
+   "variant": "frozen",
+   "variantOf": [
+    "Item_Meat_06"
+   ],
+   "whereFound": "Leave Raw Bird Drumstick in freezing cold (e.g. Hebra or Mount Lanayru) or hit it with ice."
+  },
+  {
+   "id": "Item_Chilled_05",
+   "name": "Frozen Bird Thigh",
+   "category": "meat",
+   "hearts": 6,
+   "effect": "chilly",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 28,
+   "buyPrice": 60,
+   "tags": [],
+   "variant": "frozen",
+   "variantOf": [
+    "Item_Meat_07"
+   ],
+   "whereFound": "Leave Raw Bird Thigh in freezing cold (e.g. Hebra or Mount Lanayru) or hit it with ice."
+  },
+  {
+   "id": "Item_Chilled_06",
+   "name": "Frozen Whole Bird",
+   "category": "meat",
+   "hearts": 12,
+   "effect": "chilly",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 40,
+   "buyPrice": 150,
+   "tags": [],
+   "variant": "frozen",
+   "variantOf": [
+    "Item_Meat_12"
+   ],
+   "whereFound": "Leave Raw Whole Bird in freezing cold (e.g. Hebra or Mount Lanayru) or hit it with ice."
+  },
+  {
+   "id": "Item_ChilledFish_01",
+   "name": "Frozen Bass",
+   "category": "fish",
+   "hearts": 8,
+   "effect": "chilly",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 14,
+   "buyPrice": 32,
+   "tags": [],
+   "variant": "frozen",
+   "variantOf": [
+    "Item_FishGet_A",
+    "Item_FishGet_L"
+   ],
+   "whereFound": "Leave Hyrule Bass or Staminoka Bass in freezing cold (e.g. Hebra or Mount Lanayru) or hit it with ice."
+  },
+  {
+   "id": "Item_ChilledFish_06",
+   "name": "Frozen Hearty Bass",
+   "category": "fish",
+   "hearts": 8,
+   "effect": "chilly",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 14,
+   "buyPrice": 32,
+   "tags": [],
+   "variant": "frozen",
+   "variantOf": [
+    "Item_FishGet_B"
+   ],
+   "whereFound": "Leave Hearty Bass in freezing cold (e.g. Hebra or Mount Lanayru) or hit it with ice."
+  },
+  {
+   "id": "Item_ChilledFish_02",
+   "name": "Frozen Hearty Salmon",
+   "category": "fish",
+   "hearts": 16,
+   "effect": "chilly",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 18,
+   "buyPrice": 40,
+   "tags": [],
+   "variant": "frozen",
+   "variantOf": [
+    "Item_FishGet_I"
+   ],
+   "whereFound": "Leave Hearty Salmon in freezing cold (e.g. Hebra or Mount Lanayru) or hit it with ice."
+  },
+  {
+   "id": "Item_ChilledFish_03",
+   "name": "Frozen Trout",
+   "category": "fish",
+   "hearts": 4,
+   "effect": "chilly",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 10,
+   "buyPrice": 25,
+   "tags": [],
+   "variant": "frozen",
+   "variantOf": [
+    "Item_FishGet_C",
+    "Item_FishGet_J",
+    "Item_FishGet_D",
+    "Item_FishGet_X"
+   ],
+   "whereFound": "Leave Chillfin Trout or Sizzlefin Trout or Voltfin Trout or Stealthfin Trout in freezing cold (e.g. Hebra or Mount Lanayru) or hit it with ice."
+  },
+  {
+   "id": "Item_ChilledFish_04",
+   "name": "Frozen Carp",
+   "category": "fish",
+   "hearts": 4,
+   "effect": "chilly",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 18,
+   "buyPrice": 40,
+   "tags": [],
+   "variant": "frozen",
+   "variantOf": [
+    "Item_FishGet_E",
+    "Item_FishGet_H",
+    "Item_FishGet_Z"
+   ],
+   "whereFound": "Leave Mighty Carp or Armored Carp or Sanke Carp in freezing cold (e.g. Hebra or Mount Lanayru) or hit it with ice."
+  },
+  {
+   "id": "Item_ChilledFish_05",
+   "name": "Frozen Porgy",
+   "category": "fish",
+   "hearts": 4,
+   "effect": "chilly",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 18,
+   "buyPrice": 40,
+   "tags": [],
+   "variant": "frozen",
+   "variantOf": [
+    "Item_FishGet_F",
+    "Item_FishGet_G"
+   ],
+   "whereFound": "Leave Mighty Porgy or Armored Porgy in freezing cold (e.g. Hebra or Mount Lanayru) or hit it with ice."
+  },
+  {
+   "id": "Item_ChilledFish_07",
+   "name": "Frozen Crab",
+   "category": "fish",
+   "hearts": 8,
+   "effect": "chilly",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 14,
+   "buyPrice": 32,
+   "tags": [],
+   "variant": "frozen",
+   "variantOf": [
+    "Item_InsectGet_K",
+    "Item_InsectGet_O",
+    "Item_InsectGet_Z"
+   ],
+   "whereFound": "Leave Razorclaw Crab or Ironshell Crab or Bright-Eyed Crab in freezing cold (e.g. Hebra or Mount Lanayru) or hit it with ice."
+  },
+  {
+   "id": "Item_ChilledFish_08",
+   "name": "Frozen River Snail",
+   "category": "fish",
+   "hearts": 4,
+   "effect": "chilly",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 10,
+   "buyPrice": 25,
+   "tags": [],
+   "variant": "frozen",
+   "variantOf": [
+    "Item_FishGet_M"
+   ],
+   "whereFound": "Leave Sneaky River Snail in freezing cold (e.g. Hebra or Mount Lanayru) or hit it with ice."
+  },
+  {
+   "id": "Item_ChilledFish_09",
+   "name": "Icy Hearty Blueshell Snail",
+   "category": "fish",
+   "hearts": 12,
+   "effect": "chilly",
+   "potency": 1,
+   "timeBoost": 0,
+   "hpBoost": 0,
+   "critBoost": 0,
+   "sellPrice": 18,
+   "buyPrice": 40,
+   "tags": [],
+   "variant": "frozen",
+   "variantOf": [
+    "Item_FishGet_K"
+   ],
+   "whereFound": "Leave Hearty Blueshell Snail in freezing cold (e.g. Hebra or Mount Lanayru) or hit it with ice."
+  }
+ ]
+}

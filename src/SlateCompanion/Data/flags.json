@@ -1,0 +1,3628 @@
+{
+ "_about": {
+  "generatedBy": "Slate Companion flag research; see FLAGS-SOURCES.md",
+  "saveFormat": "game_data.sav: 12-byte header (u32 version, 0xFFFFFFFF, 1), then 8-byte entries (u32 crc32(flag name), 4 value bytes), little endian on Switch. Arrays and strings repeat the same hash per element/word.",
+  "hash": "zlib/IEEE CRC32 of the ASCII flag name",
+  "verifiedAgainst": "18 game_data.sav and 18 caption.sav files (Switch 1.9.0, rev 0x4730)",
+  "inSave": "true when the flag hash is present in every test save; saveFile names caption.sav when it lives there"
+ },
+ "stats": [
+  {
+   "key": "playtime",
+   "label": "Play time",
+   "flag": "PlayReport_PlayTime",
+   "type": "s32",
+   "unit": "seconds",
+   "notes": "Total play time in seconds; this is the flag Marc Robledo's editor reads as play time (there is no flag named PlayTime).",
+   "inSave": true
+  },
+  {
+   "key": "rupees",
+   "label": "Rupees",
+   "flag": "CurrentRupee",
+   "type": "s32",
+   "unit": "rupees",
+   "notes": "Game data max is 999999.",
+   "inSave": true
+  },
+  {
+   "key": "maxHearts",
+   "label": "Heart containers",
+   "flag": "MaxHartValue",
+   "type": "s32",
+   "unit": "quarter hearts",
+   "notes": "Stored in quarter hearts: divide by 4 (starts at 12 = 3 hearts).",
+   "inSave": true
+  },
+  {
+   "key": "currentHearts",
+   "label": "Current health",
+   "flag": "CurrentHart",
+   "type": "s32",
+   "unit": "quarter hearts",
+   "notes": "Health at save time in quarter hearts; can exceed max when yellow bonus hearts are active.",
+   "inSave": true
+  },
+  {
+   "key": "maxStamina",
+   "label": "Stamina",
+   "flag": "StaminaMax",
+   "type": "f32",
+   "unit": "stamina points",
+   "notes": "Float; 1000.0 is one full wheel, so wheels = value / 1000 (each vessel adds 200).",
+   "inSave": true
+  },
+  {
+   "key": "koroksFound",
+   "label": "Korok seeds found",
+   "flag": "HiddenKorok_Number",
+   "type": "s32",
+   "unit": "seeds",
+   "notes": "Count of Koroks found (max 900); seeds still held are the Obj_KorokNuts item in PorchItem.",
+   "inSave": true
+  },
+  {
+   "key": "spiritOrbsHeld",
+   "label": "Spirit orbs held",
+   "flag": "DungeonClearSealNum",
+   "type": "s32",
+   "unit": "orbs",
+   "notes": "Unspent spirit orbs; matches the Obj_DungeonClearSeal inventory count in the test saves.",
+   "inSave": true
+  },
+  {
+   "key": "shrinesCleared",
+   "label": "Shrines cleared",
+   "flag": "DungeonClearCounter",
+   "type": "s32",
+   "unit": "shrines",
+   "notes": "Counter of completed shrines (max 255 in game data); meaning inferred from name and test-save values.",
+   "inSave": true
+  },
+  {
+   "key": "mons",
+   "label": "Mon",
+   "flag": "CurrentMamo",
+   "type": "s32",
+   "unit": "mon",
+   "notes": "Currency from Kilton.",
+   "inSave": true
+  },
+  {
+   "key": "days",
+   "label": "Days passed",
+   "flag": "WM_NumberOfDays",
+   "type": "s32",
+   "unit": "days",
+   "notes": "In-game day counter.",
+   "inSave": true
+  },
+  {
+   "key": "bloodMoonTimer",
+   "label": "Blood Moon timer",
+   "flag": "WM_BloodyMoonTimer",
+   "type": "f32",
+   "unit": "unknown",
+   "notes": "Timer toward the next Blood Moon; there is no saved count of Blood Moons.",
+   "inSave": true
+  },
+  {
+   "key": "greatFairies",
+   "label": "Great Fairies revived",
+   "flag": "FairyRevivalNum",
+   "type": "s32",
+   "unit": "fairies",
+   "notes": "Max 4 in game data; name suggests number of Great Fairy fountains reopened.",
+   "inSave": true
+  },
+  {
+   "key": "uniqueTalus",
+   "label": "Overworld Talus bosses defeated",
+   "flag": "DefeatedGolemNum",
+   "type": "s32",
+   "unit": "bosses",
+   "notes": "Counts distinct named Stone Talus spawns (the editor's Talus counter).",
+   "inSave": true
+  },
+  {
+   "key": "uniqueHinox",
+   "label": "Overworld Hinox bosses defeated",
+   "flag": "DefeatedForestGiantNum",
+   "type": "s32",
+   "unit": "bosses",
+   "notes": "Counts distinct Hinox spawns (the editor's Hinox counter).",
+   "inSave": true
+  },
+  {
+   "key": "uniqueMolduga",
+   "label": "Overworld Molduga bosses defeated",
+   "flag": "DefeatedSandwormNum",
+   "type": "s32",
+   "unit": "bosses",
+   "notes": "Counts distinct Molduga spawns (the editor's Molduga counter).",
+   "inSave": true
+  },
+  {
+   "key": "lastSaveTimeLower",
+   "label": "Last save time (low word)",
+   "flag": "LastSaveTime_Lower",
+   "type": "s32",
+   "unit": "raw",
+   "notes": "Also stored in caption.sav; combine with LastSaveTime_Upper.",
+   "inSave": true,
+   "saveFile": "caption.sav"
+  },
+  {
+   "key": "lastSaveTimeUpper",
+   "label": "Last save time (high word)",
+   "flag": "LastSaveTime_Upper",
+   "type": "s32",
+   "unit": "raw",
+   "notes": "High half of the save timestamp.",
+   "inSave": true,
+   "saveFile": "caption.sav"
+  },
+  {
+   "key": "distance",
+   "label": "Distance travelled",
+   "flag": null,
+   "type": null,
+   "unit": null,
+   "notes": "No saved distance counter was found (App_Pedometer_StepCount exists but is 0 in all test saves)."
+  },
+  {
+   "key": "bloodMoons",
+   "label": "Blood Moons seen",
+   "flag": null,
+   "type": null,
+   "unit": null,
+   "notes": "No Blood Moon count exists in game data."
+  }
+ ],
+ "defeated": [
+  {
+   "enemy": "Sky Octorok",
+   "actor": "Enemy_AirOctarock",
+   "flag": "Defeated_Enemy_AirOctarock_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Yiga Footsoldier",
+   "actor": "Enemy_Assassin_Junior",
+   "flag": "Defeated_Enemy_Assassin_Junior_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Yiga Blademaster",
+   "actor": "Enemy_Assassin_Middle",
+   "flag": "Defeated_Enemy_Assassin_Middle_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Master Kohga",
+   "actor": "Enemy_Assassin_Senior",
+   "flag": "Defeated_Enemy_Assassin_Senior_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Stalkoblin",
+   "actor": "Enemy_Bokoblin_Bone_Junior",
+   "flag": "Defeated_Enemy_Bokoblin_Bone_Junior_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Silver Bokoblin",
+   "actor": "Enemy_Bokoblin_Dark",
+   "flag": "Defeated_Enemy_Bokoblin_Dark_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Golden Bokoblin",
+   "actor": "Enemy_Bokoblin_Gold",
+   "flag": "Defeated_Enemy_Bokoblin_Gold_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Bokoblin",
+   "actor": "Enemy_Bokoblin_Junior",
+   "flag": "Defeated_Enemy_Bokoblin_Junior_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Blue Bokoblin",
+   "actor": "Enemy_Bokoblin_Middle",
+   "flag": "Defeated_Enemy_Bokoblin_Middle_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Black Bokoblin",
+   "actor": "Enemy_Bokoblin_Senior",
+   "flag": "Defeated_Enemy_Bokoblin_Senior_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Electric Chuchu",
+   "actor": "Enemy_Chuchu_Electric_Junior",
+   "flag": "Defeated_Enemy_Chuchu_Electric_Junior_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Fire Chuchu",
+   "actor": "Enemy_Chuchu_Fire_Junior",
+   "flag": "Defeated_Enemy_Chuchu_Fire_Junior_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Ice Chuchu",
+   "actor": "Enemy_Chuchu_Ice_Junior",
+   "flag": "Defeated_Enemy_Chuchu_Ice_Junior_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Chuchu",
+   "actor": "Enemy_Chuchu_Junior",
+   "flag": "Defeated_Enemy_Chuchu_Junior_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Dark Beast Ganon",
+   "actor": "Enemy_GanonBeast",
+   "flag": "Defeated_Enemy_GanonBeast_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Cursed Moblin",
+   "actor": "Enemy_GanonGrudge_01",
+   "flag": "Defeated_Enemy_GanonGrudge_01_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Cursed Lizalfos",
+   "actor": "Enemy_GanonGrudge_02",
+   "flag": "Defeated_Enemy_GanonGrudge_02_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Cursed Bokoblin",
+   "actor": "Enemy_GanonGrudge",
+   "flag": "Defeated_Enemy_GanonGrudge_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Stalnox",
+   "actor": "Enemy_Giant_Bone",
+   "flag": "Defeated_Enemy_Giant_Bone_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Hinox",
+   "actor": "Enemy_Giant_Junior",
+   "flag": "Defeated_Enemy_Giant_Junior_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Blue Hinox",
+   "actor": "Enemy_Giant_Middle",
+   "flag": "Defeated_Enemy_Giant_Middle_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Black Hinox",
+   "actor": "Enemy_Giant_Senior",
+   "flag": "Defeated_Enemy_Giant_Senior_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Igneo Talus",
+   "actor": "Enemy_Golem_Fire",
+   "flag": "Defeated_Enemy_Golem_Fire_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Igneo Talus Titan",
+   "actor": "Enemy_Golem_Fire_R",
+   "flag": "Defeated_Enemy_Golem_Fire_R_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Frost Talus",
+   "actor": "Enemy_Golem_Ice",
+   "flag": "Defeated_Enemy_Golem_Ice_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Stone Talus",
+   "actor": "Enemy_Golem_Junior",
+   "flag": "Defeated_Enemy_Golem_Junior_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Igneo Pebblit",
+   "actor": "Enemy_Golem_Little_Fire",
+   "flag": "Defeated_Enemy_Golem_Little_Fire_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Frost Pebblit",
+   "actor": "Enemy_Golem_Little_Ice",
+   "flag": "Defeated_Enemy_Golem_Little_Ice_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Stone Pebblit",
+   "actor": "Enemy_Golem_Little",
+   "flag": "Defeated_Enemy_Golem_Little_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Stone Talus (Luminous)",
+   "actor": "Enemy_Golem_Middle",
+   "flag": "Defeated_Enemy_Golem_Middle_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Stone Talus (Rare)",
+   "actor": "Enemy_Golem_Senior",
+   "flag": "Defeated_Enemy_Golem_Senior_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Decayed Guardian",
+   "actor": "Enemy_Guardian_A_Fixed_Moss",
+   "flag": "Defeated_Enemy_Guardian_A_Fixed_Moss_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Guardian Stalker",
+   "actor": "Enemy_Guardian_A",
+   "flag": "Defeated_Enemy_Guardian_A_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Guardian Turret",
+   "actor": "Enemy_Guardian_B",
+   "flag": "Defeated_Enemy_Guardian_B_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Guardian Skywatcher",
+   "actor": "Enemy_Guardian_C",
+   "flag": "Defeated_Enemy_Guardian_C_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Guardian Scout I",
+   "actor": "Enemy_Guardian_Mini_Baby",
+   "flag": "Defeated_Enemy_Guardian_Mini_Baby_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Guardian Scout II",
+   "actor": "Enemy_Guardian_Mini_Junior",
+   "flag": "Defeated_Enemy_Guardian_Mini_Junior_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Guardian Scout III",
+   "actor": "Enemy_Guardian_Mini_Middle",
+   "flag": "Defeated_Enemy_Guardian_Mini_Middle_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Guardian Scout IV",
+   "actor": "Enemy_Guardian_Mini_Senior",
+   "flag": "Defeated_Enemy_Guardian_Mini_Senior_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Electric Keese",
+   "actor": "Enemy_Keese_Electric",
+   "flag": "Defeated_Enemy_Keese_Electric_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Fire Keese",
+   "actor": "Enemy_Keese_Fire",
+   "flag": "Defeated_Enemy_Keese_Fire_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Ice Keese",
+   "actor": "Enemy_Keese_Ice",
+   "flag": "Defeated_Enemy_Keese_Ice_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Keese",
+   "actor": "Enemy_Keese",
+   "flag": "Defeated_Enemy_Keese_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Stalizalfos",
+   "actor": "Enemy_Lizalfos_Bone_Junior",
+   "flag": "Defeated_Enemy_Lizalfos_Bone_Junior_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Silver Lizalfos",
+   "actor": "Enemy_Lizalfos_Dark",
+   "flag": "Defeated_Enemy_Lizalfos_Dark_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Electric Lizalfos",
+   "actor": "Enemy_Lizalfos_Electric",
+   "flag": "Defeated_Enemy_Lizalfos_Electric_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Fire-Breath Lizalfos",
+   "actor": "Enemy_Lizalfos_Fire",
+   "flag": "Defeated_Enemy_Lizalfos_Fire_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Golden Lizalfos",
+   "actor": "Enemy_Lizalfos_Gold",
+   "flag": "Defeated_Enemy_Lizalfos_Gold_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Ice-Breath Lizalfos",
+   "actor": "Enemy_Lizalfos_Ice",
+   "flag": "Defeated_Enemy_Lizalfos_Ice_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Lizalfos",
+   "actor": "Enemy_Lizalfos_Junior",
+   "flag": "Defeated_Enemy_Lizalfos_Junior_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Blue Lizalfos",
+   "actor": "Enemy_Lizalfos_Middle",
+   "flag": "Defeated_Enemy_Lizalfos_Middle_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Black Lizalfos",
+   "actor": "Enemy_Lizalfos_Senior",
+   "flag": "Defeated_Enemy_Lizalfos_Senior_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Silver Lynel",
+   "actor": "Enemy_Lynel_Dark",
+   "flag": "Defeated_Enemy_Lynel_Dark_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Golden Lynel",
+   "actor": "Enemy_Lynel_Gold",
+   "flag": "Defeated_Enemy_Lynel_Gold_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Lynel",
+   "actor": "Enemy_Lynel_Junior",
+   "flag": "Defeated_Enemy_Lynel_Junior_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Blue-Maned Lynel",
+   "actor": "Enemy_Lynel_Middle",
+   "flag": "Defeated_Enemy_Lynel_Middle_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "White-Maned Lynel",
+   "actor": "Enemy_Lynel_Senior",
+   "flag": "Defeated_Enemy_Lynel_Senior_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Stalmoblin",
+   "actor": "Enemy_Moriblin_Bone_Junior",
+   "flag": "Defeated_Enemy_Moriblin_Bone_Junior_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Silver Moblin",
+   "actor": "Enemy_Moriblin_Dark",
+   "flag": "Defeated_Enemy_Moriblin_Dark_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Golden Moblin",
+   "actor": "Enemy_Moriblin_Gold",
+   "flag": "Defeated_Enemy_Moriblin_Gold_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Moblin",
+   "actor": "Enemy_Moriblin_Junior",
+   "flag": "Defeated_Enemy_Moriblin_Junior_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Blue Moblin",
+   "actor": "Enemy_Moriblin_Middle",
+   "flag": "Defeated_Enemy_Moriblin_Middle_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Black Moblin",
+   "actor": "Enemy_Moriblin_Senior",
+   "flag": "Defeated_Enemy_Moriblin_Senior_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Treasure Octorok",
+   "actor": "Enemy_Octarock_Desert",
+   "flag": "Defeated_Enemy_Octarock_Desert_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Forest Octorok",
+   "actor": "Enemy_Octarock_Forest",
+   "flag": "Defeated_Enemy_Octarock_Forest_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Water Octorok",
+   "actor": "Enemy_Octarock",
+   "flag": "Defeated_Enemy_Octarock_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Snow Octorok",
+   "actor": "Enemy_Octarock_Snow",
+   "flag": "Defeated_Enemy_Octarock_Snow_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Rock Octorok",
+   "actor": "Enemy_Octarock_Stone",
+   "flag": "Defeated_Enemy_Octarock_Stone_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Molduking",
+   "actor": "Enemy_SandwormR",
+   "flag": "Defeated_Enemy_SandwormR_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Molduga",
+   "actor": "Enemy_Sandworm",
+   "flag": "Defeated_Enemy_Sandworm_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Windblight Ganon",
+   "actor": "Enemy_SiteBoss_Bow",
+   "flag": "Defeated_Enemy_SiteBoss_Bow_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Fireblight Ganon",
+   "actor": "Enemy_SiteBoss_Lsword",
+   "flag": "Defeated_Enemy_SiteBoss_Lsword_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Waterblight Ganon",
+   "actor": "Enemy_SiteBoss_Spear",
+   "flag": "Defeated_Enemy_SiteBoss_Spear_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Thunderblight Ganon",
+   "actor": "Enemy_SiteBoss_Sword",
+   "flag": "Defeated_Enemy_SiteBoss_Sword_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Electric Wizzrobe",
+   "actor": "Enemy_Wizzrobe_Electric",
+   "flag": "Defeated_Enemy_Wizzrobe_Electric_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Thunder Wizzrobe",
+   "actor": "Enemy_Wizzrobe_Electric_Senior",
+   "flag": "Defeated_Enemy_Wizzrobe_Electric_Senior_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Fire Wizzrobe",
+   "actor": "Enemy_Wizzrobe_Fire",
+   "flag": "Defeated_Enemy_Wizzrobe_Fire_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Meteo Wizzrobe",
+   "actor": "Enemy_Wizzrobe_Fire_Senior",
+   "flag": "Defeated_Enemy_Wizzrobe_Fire_Senior_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Ice Wizzrobe",
+   "actor": "Enemy_Wizzrobe_Ice",
+   "flag": "Defeated_Enemy_Wizzrobe_Ice_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Blizzrobe",
+   "actor": "Enemy_Wizzrobe_Ice_Senior",
+   "flag": "Defeated_Enemy_Wizzrobe_Ice_Senior_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Monk Maz Koshia",
+   "actor": "Priest_Boss_Normal",
+   "flag": "Defeated_Priest_Boss_Normal_Num",
+   "type": "s32",
+   "inSave": true
+  },
+  {
+   "enemy": "Sentry",
+   "actor": "RemainsFire_Drone_A_01",
+   "flag": "Defeated_RemainsFire_Drone_A_01_Num",
+   "type": "s32",
+   "inSave": true
+  }
+ ],
+ "mainQuests": [
+  {
+   "id": "FirstTower",
+   "name": "Follow the Sheikah Slate",
+   "flag": "FirstTower_Finish",
+   "type": "bool",
+   "activatedFlag": "FirstTower_Activated",
+   "notes": "Opening quest on the Great Plateau that ends when the first tower rises.",
+   "steps": [
+    "Leave the Shrine of Resurrection",
+    "Follow the marker on the Sheikah Slate map",
+    "Place the slate in the pedestal to raise the tower"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "FindDungeon",
+   "name": "The Isolated Plateau",
+   "flag": "FindDungeon_Finish",
+   "type": "bool",
+   "activatedFlag": "FindDungeon_Activated",
+   "notes": "Clear the four Great Plateau shrines to earn the paraglider.",
+   "steps": [
+    "Talk to the old man after the tower rises",
+    "Find and clear all four plateau shrines",
+    "Meet the old man at the spot between the shrines",
+    "Receive the paraglider"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Find_Impa",
+   "name": "Seek Out Impa",
+   "flag": "Find_Impa_Finish",
+   "type": "bool",
+   "activatedFlag": "Find_Impa_Activated",
+   "notes": "Travel from the plateau to Kakariko Village to meet Impa.",
+   "steps": [
+    "Glide down from the Great Plateau",
+    "Head east past the Dueling Peaks",
+    "Follow the road north to Kakariko Village",
+    "Speak with Impa"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "CarryingBlueFireEXMini",
+   "name": "Locked Mementos",
+   "flag": "CarryingBlueFireEXMini_Finish",
+   "type": "bool",
+   "activatedFlag": "CarryingBlueFireEXMini_Activated",
+   "notes": "Get the Sheikah Slate repaired at the Hateno Ancient Tech Lab.",
+   "steps": [
+    "Travel to the Hateno Ancient Tech Lab",
+    "Carry the blue flame to the lab's furnace",
+    "Tell the director the furnace is lit",
+    "Photograph Purah with the Camera rune",
+    "Report back to Impa in Kakariko"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "PictureMemory",
+   "name": "Captured Memories",
+   "flag": "PictureMemory_Finish",
+   "type": "bool",
+   "activatedFlag": "PictureMemory_Activated",
+   "notes": "Visit the places in Zelda's album photos to recover memories.",
+   "steps": [
+    "Study the photos in the Sheikah Slate album",
+    "Find each photographed location",
+    "Stand at the spot to trigger the memory",
+    "Report progress to Impa",
+    "Visit the place in the photo in Impa's house"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "FairyFountain",
+   "name": "Find the Fairy Fountain",
+   "flag": "FairyFountain_Finish",
+   "type": "bool",
+   "activatedFlag": "FairyFountain_Activated",
+   "notes": "Pikango in Kakariko wants proof of the Great Fairy Fountain nearby.",
+   "steps": [
+    "Talk to Pikango in Kakariko Village",
+    "Find the Great Fairy Fountain behind the village",
+    "Take a picture of the fountain",
+    "Show the picture to Pikango"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Find_4Relic",
+   "name": "Free the Divine Beasts",
+   "flag": "Find_4Relic_Finish",
+   "type": "bool",
+   "activatedFlag": "Find_4Relic_Activated",
+   "notes": "Umbrella quest that completes once all four Divine Beasts are freed.",
+   "steps": [
+    "Speak with the leaders of the Zora, Goron, Rito and Gerudo",
+    "Free Divine Beast Vah Ruta",
+    "Free Divine Beast Vah Rudania",
+    "Free Divine Beast Vah Medoh",
+    "Free Divine Beast Vah Naboris"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "GotoZoraVillage",
+   "name": "Reach Zora's Domain",
+   "flag": "GotoZoraVillage_Finish",
+   "type": "bool",
+   "activatedFlag": "GotoZoraVillage_Activated",
+   "notes": "Sidon asks you to come to Zora's Domain.",
+   "steps": [
+    "Meet Sidon near Inogo Bridge",
+    "Climb the rainy path to Zora's Domain",
+    "Go up to King Dorephan's throne room"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Water_Relic",
+   "name": "Divine Beast Vah Ruta",
+   "flag": "Water_Relic_Finished",
+   "type": "bool",
+   "activatedFlag": "Water_Relic_Activated",
+   "notes": "Calm Divine Beast Vah Ruta with shock arrows and Sidon's help.",
+   "steps": [
+    "Ask Muzu about shock arrows",
+    "Show Muzu that you wear the Zora armor",
+    "Collect 20 shock arrows on Ploymus Mountain",
+    "Meet Sidon at East Reservoir Lake",
+    "Hit the devices on Vah Ruta with shock arrows",
+    "Enter Vah Ruta and defeat Waterblight Ganon",
+    "Report to King Dorephan"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Fire_Relic",
+   "name": "Divine Beast Vah Rudania",
+   "flag": "Fire_Relic_Finished",
+   "type": "bool",
+   "activatedFlag": "Fire_Relic_Activated",
+   "notes": "Help Yunobo and calm Divine Beast Vah Rudania on Death Mountain.",
+   "steps": [
+    "Talk to Bludo in Goron City",
+    "Find Yunobo in the Abandoned North Mine",
+    "Return to Bludo",
+    "Lower the Bridge of Eldin with Yunobo",
+    "Use the cannons to drive Vah Rudania into the crater",
+    "Enter Vah Rudania and defeat Fireblight Ganon",
+    "Report to Bludo"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Wind_Relic",
+   "name": "Divine Beast Vah Medoh",
+   "flag": "Wind_Relic_Finished",
+   "type": "bool",
+   "activatedFlag": "Wind_Relic_Activated",
+   "notes": "Help Teba bring down Divine Beast Vah Medoh.",
+   "steps": [
+    "Ask Saki where Teba went",
+    "Find Teba at the Flight Range",
+    "Pass Teba's target test",
+    "Destroy Vah Medoh's cannons with bomb arrows",
+    "Enter Vah Medoh and defeat Windblight Ganon",
+    "Report to Kaneli"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Drag_Hero",
+   "name": "Forbidden City Entry",
+   "flag": "Drag_Hero_Finish",
+   "type": "bool",
+   "activatedFlag": "Drag_Hero_Activated",
+   "notes": "Find a way into Gerudo Town, which bars men.",
+   "steps": [
+    "Ask around Kara Kara Bazaar about the man who got in",
+    "Find Vilia and get a Gerudo outfit",
+    "Wear the outfit and enter Gerudo Town"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Electric_Relic",
+   "name": "Divine Beast Vah Naboris",
+   "flag": "Electric_Relic_Finished",
+   "type": "bool",
+   "activatedFlag": "Electric_Relic_Activated",
+   "notes": "Recover the Thunder Helm with Riju and calm Divine Beast Vah Naboris.",
+   "steps": [
+    "Talk to Riju in Gerudo Town",
+    "Speak with Captain Teake in the barracks",
+    "Sneak into the Yiga hideout in Karusa Valley",
+    "Recover the heirloom and return it to Riju",
+    "Meet Riju at the lookout post",
+    "Bomb Vah Naboris's feet while staying near Riju",
+    "Enter Vah Naboris and defeat Thunderblight Ganon",
+    "Report to Riju"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Get_MasterSword",
+   "name": "The Hero's Sword",
+   "flag": "Get_MasterSword_Finish",
+   "type": "bool",
+   "activatedFlag": "Get_MasterSword_Activated",
+   "notes": "Pull the Master Sword in Korok Forest.",
+   "steps": [
+    "Pass through the Lost Woods",
+    "Talk to the Deku Tree in Korok Forest",
+    "Pull the Master Sword from its pedestal (needs 13 full hearts)"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "GanonQuest",
+   "name": "Destroy Ganon",
+   "flag": "GanonQuest_Finished",
+   "type": "bool",
+   "activatedFlag": "GanonQuest_Activated",
+   "notes": "Final quest; completing it means Calamity Ganon has been defeated.",
+   "steps": [
+    "Enter Hyrule Castle",
+    "Defeat Calamity Ganon",
+    "Defeat Dark Beast Ganon"
+   ],
+   "inSave": true
+  }
+ ],
+ "sideQuests": [
+  {
+   "id": "KorokMini_RodShiren",
+   "name": "A Freezing Rod",
+   "flag": "KorokMini_RodShiren_Finish",
+   "type": "bool",
+   "giver": "Kula",
+   "location": "Great Hyrule Forest",
+   "reward": null,
+   "activatedFlag": "KorokMini_RodShiren_Activated",
+   "notes": "Show Kula an ice rod.",
+   "steps": [
+    "Talk to Kula in Korok Forest",
+    "Get an ice rod from an Ice Wizzrobe",
+    "Show it to Kula"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "HatenoMini_LoveInsects",
+   "name": "A Gift for My Beloved",
+   "flag": "HatenoMini_LoveInsects_Finish",
+   "type": "bool",
+   "giver": "Manny",
+   "location": "Hateno Village",
+   "reward": null,
+   "activatedFlag": "HatenoMini_LoveInsects_Activated",
+   "notes": "Find out what Prima wants, then catch crickets for Manny.",
+   "steps": [
+    "Talk to Manny in Hateno Village",
+    "Ask Prima at the inn what she likes",
+    "Tell Manny",
+    "Bring Manny 10 restless crickets"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "TabantaBridgeMini_Sundial",
+   "name": "A Gift for the Great Fairy",
+   "flag": "TabantaBridgeMini_Sundial_Finish",
+   "type": "bool",
+   "giver": "Toren",
+   "location": "Tabantha Bridge Stable",
+   "reward": null,
+   "activatedFlag": "TabantaBridgeMini_Sundial_Activated",
+   "notes": "Make an offering to a Great Fairy for Toren.",
+   "steps": [
+    "Take Toren's 500 rupees at the Tabantha Bridge Stable",
+    "Follow the tower's afternoon shadow to the fountain",
+    "Make the offering",
+    "Report back to Toren"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "CompleteDungeon",
+   "name": "A Gift from the Monks",
+   "flag": "CompleteDungeon_Finish",
+   "type": "bool",
+   "giver": null,
+   "location": "Ancient Shrine",
+   "reward": "Special green outfit",
+   "activatedFlag": "CompleteDungeon_Activated",
+   "notes": "Unlocked after clearing every shrine; collect the monks' gift.",
+   "steps": [
+    "Clear all shrine trials",
+    "Go to the Forgotten Temple",
+    "Open the gift at the Goddess statue"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "FironeMini_HeartPond",
+   "name": "A Gift of Nightshade",
+   "flag": "FironeMini_HeartPond_Finish",
+   "type": "bool",
+   "giver": "Wabbin",
+   "location": "Faron",
+   "reward": null,
+   "activatedFlag": "FironeMini_HeartPond_Activated",
+   "notes": "Help Wabbin talk to Perda using blue nightshade.",
+   "steps": [
+    "Talk to Wabbin",
+    "Bring Wabbin blue nightshade",
+    "Give the nightshade to Perda for him",
+    "Watch the two finally talk"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "UMiiMini_GiveCake",
+   "name": "A Parent's Love",
+   "flag": "UMiiMini_GiveCake_Finish",
+   "type": "bool",
+   "giver": "Ruli",
+   "location": "Tarrey Town",
+   "reward": null,
+   "activatedFlag": "UMiiMini_GiveCake_Activated",
+   "notes": "Bring a monster cake for Ruli's sick daughter.",
+   "steps": [
+    "Talk to Ruli in Tarrey Town",
+    "Cook a monster cake",
+    "Give it to Ruli",
+    "Check on Hunnie"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Carnivorous_Boy",
+   "name": "A Rare Find",
+   "flag": "Carnivorous_Boy_Finish",
+   "type": "bool",
+   "giver": "Trott",
+   "location": "Outskirt Stable",
+   "reward": "Trott buys raw gourmet meat afterward",
+   "activatedFlag": "Carnivorous_Boy_Activated",
+   "notes": "Bring raw gourmet meat to Trott at the Outskirt Stable.",
+   "steps": [
+    "Talk to Trott at the Outskirt Stable",
+    "Get a raw gourmet meat",
+    "Give it to Trott"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "RiversideMini_RoyalRecipe",
+   "name": "A Royal Recipe",
+   "flag": "RiversideMini_RoyalRecipe_Finish",
+   "type": "bool",
+   "giver": "Gotter",
+   "location": "Riverside Stable",
+   "reward": null,
+   "activatedFlag": "RiversideMini_RoyalRecipe_Activated",
+   "notes": "Cook a royal recipe for Gotter.",
+   "steps": [
+    "Talk to Gotter at the Riverside Stable",
+    "Learn which royal dish he wants",
+    "Cook the dish",
+    "Give it to Gotter"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "HigakkareMini_StrangeMan",
+   "name": "A Shady Customer",
+   "flag": "HigakkareMini_StrangeMan_Finish",
+   "type": "bool",
+   "giver": "Hoz",
+   "location": "East Akkala Stable",
+   "reward": null,
+   "activatedFlag": "HigakkareMini_StrangeMan_Activated",
+   "notes": "Photograph the Fang and Bone owner for Hoz.",
+   "steps": [
+    "Talk to Hoz at the East Akkala Stable",
+    "Find the owner of Fang and Bone",
+    "Take his picture and show it to Hoz"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "ZoraMini_FlowedWife",
+   "name": "A Wife Washed Away",
+   "flag": "ZoraMini_FlowedWife_Finish",
+   "type": "bool",
+   "giver": "Fronk",
+   "location": "Zora's Domain",
+   "reward": "Fish",
+   "activatedFlag": "ZoraMini_FlowedWife_Activated",
+   "notes": "Find Fronk's wife Mei.",
+   "steps": [
+    "Talk to Fronk in Zora's Domain",
+    "Search for Mei",
+    "Find her fishing in Lake Hylia"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Oasis_Drug_Challenge",
+   "name": "An Ice Guy",
+   "flag": "Oasis_Drug_Challenge_Finish",
+   "type": "bool",
+   "giver": "Guy",
+   "location": "Kara Kara Bazaar",
+   "reward": null,
+   "activatedFlag": "Oasis_Drug_Challenge_Activated",
+   "notes": "Cook a chilly elixir for Guy at Kara Kara Bazaar.",
+   "steps": [
+    "Talk to Guy at Kara Kara Bazaar",
+    "Catch a cold-themed insect in the Gerudo Highlands",
+    "Cook it with monster parts",
+    "Give the elixir to Guy"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Kakariko_Ch_006",
+   "name": "Arrows of Burning Heat",
+   "flag": "Kakariko_Ch_006_Finish",
+   "type": "bool",
+   "giver": "Rola",
+   "location": "Kakariko Village",
+   "reward": null,
+   "activatedFlag": "Kakariko_Ch_006_Activated",
+   "notes": "Light the torches by the Goddess Statue for Rola.",
+   "steps": [
+    "Talk to Rola at the general store",
+    "Light the torches by the Goddess Statue with fire arrows",
+    "Report back to Rola"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "HyrulePlainMini_Balloon",
+   "name": "Balloon Flight",
+   "flag": "HyrulePlainMini_Balloon_Finish",
+   "type": "bool",
+   "giver": "Shamae",
+   "location": "Woodland Stable",
+   "reward": "Star fragment",
+   "activatedFlag": "HyrulePlainMini_Balloon_Activated",
+   "notes": "Float barrels with Octo balloons for Shamae.",
+   "steps": [
+    "Talk to Shamae at the Woodland Stable",
+    "Get Octo balloons",
+    "Attach them to the barrels so they float"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Kakariko_Ch_004",
+   "name": "By Firefly's Light",
+   "flag": "Kakariko_Ch_004_Finish",
+   "type": "bool",
+   "giver": "Lasli",
+   "location": "Kakariko Village",
+   "reward": null,
+   "activatedFlag": "Kakariko_Ch_004_Activated",
+   "notes": "Bring fireflies to Lasli in Kakariko Village.",
+   "steps": [
+    "Talk to Lasli at the clothing shop",
+    "Catch fireflies",
+    "Bring them to Lasli"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Kakariko_Ch_Cooking2",
+   "name": "Cooking with Koko",
+   "flag": "Kakariko_Ch_Cooking2_Finish",
+   "type": "bool",
+   "giver": "Koko",
+   "location": "Kakariko Village",
+   "reward": null,
+   "activatedFlag": "Kakariko_Ch_Cooking2_Activated",
+   "notes": "Bring goat butter to Koko.",
+   "steps": [
+    "Talk to Koko in Kakariko Village",
+    "Bring her goat butter"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "RitoUmayadoMini_HotRecipe",
+   "name": "Curry for What Ails You",
+   "flag": "RitoUmayadoMini_HotRecipe_Finish",
+   "type": "bool",
+   "giver": "Lester",
+   "location": "Rito Stable",
+   "reward": "Curry rice recipe",
+   "activatedFlag": "RitoUmayadoMini_HotRecipe_Activated",
+   "notes": "Bring Goron spice to Lester at the Rito Stable.",
+   "steps": [
+    "Talk to Lester at the Rito Stable",
+    "Buy Goron spice",
+    "Deliver it to Lester"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "GoronMini_WallCrackTBox",
+   "name": "Death Mountain's Secret",
+   "flag": "GoronMini_WallCrackTBox_Finish",
+   "type": "bool",
+   "giver": "Dugby",
+   "location": "Goron Hot Springs",
+   "reward": "Drillshaft",
+   "activatedFlag": "GoronMini_WallCrackTBox_Activated",
+   "notes": "Decode Dugby's hint about hidden treasure.",
+   "steps": [
+    "Talk to Dugby at the Goron Hot Springs",
+    "Search the cliffs between the hot springs and the Bridge of Eldin",
+    "Find the hidden treasure",
+    "Show it to Dugby"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "ZoraMini_DiveChallenge",
+   "name": "Diving is Beauty!",
+   "flag": "ZoraMini_DiveChallenge_Finish",
+   "type": "bool",
+   "giver": "Gruve",
+   "location": "Zora's Domain",
+   "reward": null,
+   "activatedFlag": "ZoraMini_DiveChallenge_Activated",
+   "notes": "Show Gruve a headfirst dive and a waterfall climb.",
+   "steps": [
+    "Talk to Gruve in Zora's Domain",
+    "Dive in headfirst",
+    "Climb the waterfall",
+    "Talk to Gruve again"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "RitoMini_IceGolem",
+   "name": "Face the Frost Talus ",
+   "flag": "RitoMini_IceGolem_Finish",
+   "type": "bool",
+   "giver": "Gesane",
+   "location": "Rito Village",
+   "reward": "Rupees",
+   "activatedFlag": "RitoMini_IceGolem_Activated",
+   "notes": "Defeat the Frost Talus at Coldsnap Hollow.",
+   "steps": [
+    "Talk to Gesane in Rito Village",
+    "Defeat the Frost Talus at Coldsnap Hollow",
+    "Report back to Gesane"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Rito_KeelSearch",
+   "name": "Find Kheel",
+   "flag": "Rito_KeelSearch_Finish",
+   "type": "bool",
+   "giver": "Amali",
+   "location": "Rito Village",
+   "reward": null,
+   "activatedFlag": "Rito_KeelSearch_Activated",
+   "notes": "Find Amali's daughter Kheel.",
+   "steps": [
+    "Talk to Amali in Rito Village",
+    "Find Kheel at Warbler's Nest",
+    "Tell Amali"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "SanrokuMini_Lizard",
+   "name": "Fireproof Lizard Roundup",
+   "flag": "SanrokuMini_Lizard_Finish",
+   "type": "bool",
+   "giver": "Kima",
+   "location": "Southern Mine",
+   "reward": "Flamebreaker armor",
+   "activatedFlag": "SanrokuMini_Lizard_Activated",
+   "notes": "Catch fireproof lizards for Kima.",
+   "steps": [
+    "Talk to Kima at the Southern Mine",
+    "Catch 10 fireproof lizards",
+    "Give them to Kima"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Kakariko_Cha_003",
+   "name": "Flown the Coop",
+   "flag": "Kakariko_Cha_003_Finish",
+   "type": "bool",
+   "giver": "Cado",
+   "location": "Kakariko Village",
+   "reward": null,
+   "activatedFlag": "Kakariko_Cha_003_Activated",
+   "notes": "Return Cado's ten escaped Cuccos.",
+   "steps": [
+    "Talk to Cado in Kakariko Village",
+    "Find the ten loose Cuccos",
+    "Put each one back in the pen",
+    "Tell Cado"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Zora_FlogMini",
+   "name": "Frog Catching",
+   "flag": "Zora_FlogMini_Finish",
+   "type": "bool",
+   "giver": "Tumbo",
+   "location": "Zora's Domain",
+   "reward": "Armoranth",
+   "activatedFlag": "Zora_FlogMini_Activated",
+   "notes": "Bring Tumbo hot-footed frogs.",
+   "steps": [
+    "Talk to Tumbo in Zora's Domain",
+    "Catch 5 hot-footed frogs (easier in rain)",
+    "Give them to Tumbo"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "UMiiMini_MakeVillage",
+   "name": "From the Ground Up",
+   "flag": "UMiiMini_MakeVillage_Finish",
+   "type": "bool",
+   "giver": "Hudson",
+   "location": "Hateno Village",
+   "reward": "Gems",
+   "activatedFlag": "UMiiMini_MakeVillage_Activated",
+   "notes": "Help Hudson build Tarrey Town.",
+   "steps": [
+    "Meet Hudson in Akkala and bring wood",
+    "Recruit a Goron whose name ends in 'son'",
+    "Bring more wood",
+    "Recruit a Gerudo, then a Rito, then a Zora",
+    "Invite Bolson and Karson to the wedding",
+    "Attend Hudson's wedding"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Gerudo_HorseBuyer",
+   "name": "Good-Sized Horse",
+   "flag": "Gerudo_HorseBuyer_Finish",
+   "type": "bool",
+   "giver": "Zyle",
+   "location": "Gerudo Canyon",
+   "reward": "300 rupees",
+   "activatedFlag": "Gerudo_HorseBuyer_Activated",
+   "notes": "Sell Zyle a horse big enough for him.",
+   "steps": [
+    "Meet Zyle on a road in the Gerudo region",
+    "Bring him a horse of the right size",
+    "Hand over the horse"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "UMiiMini_RichmansHobby",
+   "name": "Hobbies of the Rich",
+   "flag": "UMiiMini_RichmansHobby_Finish",
+   "type": "bool",
+   "giver": "Hagie",
+   "location": "Tarrey Town",
+   "reward": "Rupees",
+   "activatedFlag": "UMiiMini_RichmansHobby_Activated",
+   "notes": "Defeat two Guardians in Torin Wetland for Hagie.",
+   "steps": [
+    "Talk to Hagie in Tarrey Town",
+    "Defeat the two Guardians in Torin Wetland",
+    "Report back to Hagie before night"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "FironeMini_GiantHorse",
+   "name": "Hunt for the Giant Horse",
+   "flag": "FironeMini_GiantHorse_Finish",
+   "type": "bool",
+   "giver": "Straia",
+   "location": "Mounted Archery Camp",
+   "reward": "The giant horse",
+   "activatedFlag": "FironeMini_GiantHorse_Activated",
+   "notes": "Catch the giant horse for Straia.",
+   "steps": [
+    "Talk to Straia in the Faron Grasslands",
+    "Find the giant horse on the Taobab Grasslands",
+    "Tame it and bring it to Straia"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "HatenoMini_MyHome",
+   "name": "Hylian Homeowner",
+   "flag": "HatenoMini_MyHome_Finish",
+   "type": "bool",
+   "giver": "Bolson",
+   "location": "Hateno Village",
+   "reward": "A house",
+   "activatedFlag": "HatenoMini_MyHome_Activated",
+   "notes": "Buy and furnish the house in Hateno Village.",
+   "steps": [
+    "Talk to Bolson by the house",
+    "Bring 30 bundles of wood",
+    "Pay 3,000 rupees",
+    "Buy furniture and upgrades from Bolson"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Kakariko_Ch_Cooking3",
+   "name": "Koko Cuisine",
+   "flag": "Kakariko_Ch_Cooking3_Finish",
+   "type": "bool",
+   "giver": "Koko",
+   "location": "Kakariko Village",
+   "reward": null,
+   "activatedFlag": "Kakariko_Ch_Cooking3_Activated",
+   "notes": "Bring meat to Koko for her father's meal.",
+   "steps": [
+    "Talk to Koko in Kakariko Village",
+    "Bring her meat"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Kakariko_Cha_001",
+   "name": "Koko's Kitchen",
+   "flag": "Kakariko_Cha_001_Finish",
+   "type": "bool",
+   "giver": "Koko",
+   "location": "Kakariko Village",
+   "reward": null,
+   "activatedFlag": "Kakariko_Cha_001_Activated",
+   "notes": "Bring swift carrots to Koko.",
+   "steps": [
+    "Talk to Koko in Kakariko Village",
+    "Bring her swift carrots"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Kakariko_Ch_Cooking4",
+   "name": "Koko's Specialty",
+   "flag": "Kakariko_Ch_Cooking4_Finish",
+   "type": "bool",
+   "giver": "Koko",
+   "location": "Kakariko Village",
+   "reward": null,
+   "activatedFlag": "Kakariko_Ch_Cooking4_Activated",
+   "notes": "Bring courser bee honey to Koko.",
+   "steps": [
+    "Talk to Koko in Kakariko Village",
+    "Find courser bee honey",
+    "Give it to Koko"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "KorokMini_UMAShiren",
+   "name": "Legendary Rabbit Trial",
+   "flag": "KorokMini_UMAShiren_Finish",
+   "type": "bool",
+   "giver": "Peeks",
+   "location": "Great Hyrule Forest",
+   "reward": null,
+   "activatedFlag": "KorokMini_UMAShiren_Activated",
+   "notes": "Show Peeks a picture of a Blupee.",
+   "steps": [
+    "Talk to Peeks in Korok Forest",
+    "Photograph a Blupee",
+    "Show the picture to Peeks"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "MarittaMini_BigWhales",
+   "name": "Leviathan Bones",
+   "flag": "MarittaMini_BigWhales_Finish",
+   "type": "bool",
+   "giver": "Akrah",
+   "location": "Serenne Stable",
+   "reward": "300 rupees",
+   "activatedFlag": "MarittaMini_BigWhales_Activated",
+   "notes": "Photograph the three leviathan skeletons for Akrah.",
+   "steps": [
+    "Talk to Akrah at the Serenne Stable",
+    "Photograph the leviathan bones in Eldin",
+    "Photograph the bones in Hebra",
+    "Photograph the bones in Gerudo",
+    "Show the pictures to Akrah"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "MinakkareMini_Dragonfly",
+   "name": "Little Sister's Big Request",
+   "flag": "MinakkareMini_Dragonfly_Finish",
+   "type": "bool",
+   "giver": "Jana",
+   "location": "South Akkala Stable",
+   "reward": null,
+   "activatedFlag": "MinakkareMini_Dragonfly_Activated",
+   "notes": "Help Jana get dragonflies for her sister Gleema.",
+   "steps": [
+    "Talk to Jana at the South Akkala Stable",
+    "Ask Gleema what she wants",
+    "Tell Jana",
+    "Catch a warm, a cold and an electric darner",
+    "Give them to Gleema"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "ZoraMini_HarvestingStone",
+   "name": "Luminous Stone Gathering",
+   "flag": "ZoraMini_HarvestingStone_Finish",
+   "type": "bool",
+   "giver": "Ledo",
+   "location": "Zora's Domain",
+   "reward": null,
+   "activatedFlag": "ZoraMini_HarvestingStone_Activated",
+   "notes": "Bring luminous stones to Ledo.",
+   "steps": [
+    "Talk to Ledo in Zora's Domain",
+    "Mine 10 luminous stones in Upland Zorana",
+    "Give them to Ledo"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "RinelSearch",
+   "name": "Lynel Safari",
+   "flag": "RinelSearch_Finish",
+   "type": "bool",
+   "giver": "Laflat",
+   "location": "Zora's Domain",
+   "reward": "Zora greaves",
+   "activatedFlag": "RinelSearch_Activated",
+   "notes": "Photograph a red-maned Lynel for Laflat.",
+   "steps": [
+    "Talk to Laflat in Zora's Domain",
+    "Photograph the Lynel on Ploymus Mountain",
+    "Show the picture to Laflat"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Gerudo_Ch_SandWarm",
+   "name": "Medicinal Molduga",
+   "flag": "Gerudo_Ch_SandWarm_Finish",
+   "type": "bool",
+   "giver": "Malena",
+   "location": "Gerudo Town",
+   "reward": null,
+   "activatedFlag": "Gerudo_Ch_SandWarm_Activated",
+   "notes": "Bring Molduga guts to Malena for her sick husband.",
+   "steps": [
+    "Talk to Malena in Gerudo Town",
+    "Defeat a Molduga and take its guts",
+    "Give the guts to Malena"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "MinamihateeluMini_touzoku",
+   "name": "Misko, the Great Bandit",
+   "flag": "MinamihateeluMini_touzoku_Finish",
+   "type": "bool",
+   "giver": "Domidak",
+   "location": "Dueling Peaks Stable",
+   "reward": "Misko's treasure",
+   "activatedFlag": "MinamihateeluMini_touzoku_Activated",
+   "notes": "Solve the riddle of Misko's hidden treasure.",
+   "steps": [
+    "Overhear Domidak and Prissen at the Dueling Peaks Stable",
+    "Work out the riddle",
+    "Find the cave and the treasure"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "OneHundred",
+   "name": "Missing in Action",
+   "flag": "OneHundred_Finish",
+   "type": "bool",
+   "giver": "Sesami",
+   "location": "Gerudo Canyon Stable",
+   "reward": null,
+   "activatedFlag": "OneHundred_Activated",
+   "notes": "Rescue Sesami's four lost friends.",
+   "steps": [
+    "Talk to Sesami at the Gerudo Canyon Stable",
+    "Find and rescue his four friends",
+    "Report back to Sesami"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "My_Hero",
+   "name": "My Hero",
+   "flag": "My_Hero_Finish",
+   "type": "bool",
+   "giver": "Aliza",
+   "location": "Outskirt Stable",
+   "reward": null,
+   "activatedFlag": "My_Hero_Activated",
+   "notes": "Show the Master Sword to Aliza.",
+   "steps": [
+    "Meet Aliza near the Outskirt Stable",
+    "Get the Master Sword",
+    "Show it to Aliza"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Kakariko_Ch_005",
+   "name": "Playtime with Cottla",
+   "flag": "Kakariko_Ch_005_Finish",
+   "type": "bool",
+   "giver": "Cottla",
+   "location": "Kakariko Village",
+   "reward": null,
+   "activatedFlag": "Kakariko_Ch_005_Activated",
+   "notes": "Give Cottla a playmate.",
+   "steps": [
+    "Talk to Cottla in Kakariko Village",
+    "Play with her when she is bored"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "KorokMini_RiddleShiren",
+   "name": "Riddles of Hyrule",
+   "flag": "KorokMini_RiddleShiren_Finish",
+   "type": "bool",
+   "giver": "Walton",
+   "location": "Great Hyrule Forest",
+   "reward": null,
+   "activatedFlag": "KorokMini_RiddleShiren_Activated",
+   "notes": "Answer Walton's five riddles by bringing the right items.",
+   "steps": [
+    "Talk to Walton in Korok Forest",
+    "Bring an item for each riddle",
+    "Answer all five riddles"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "isso_treasure_mini",
+   "name": "Riverbed Reward",
+   "flag": "isso_treasure_mini_Finish",
+   "type": "bool",
+   "giver": "Izra",
+   "location": "Wetland Stable",
+   "reward": null,
+   "activatedFlag": "isso_treasure_mini_Activated",
+   "notes": "Raise the sunken chest in Hylia River for Izra.",
+   "steps": [
+    "Talk to Izra at the Wetland Stable",
+    "Lift the chest from the riverbed with Magnesis",
+    "Open it",
+    "Tell Izra what was inside"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "HatenoMini_BlueFire",
+   "name": "Robbie's Research",
+   "flag": "HatenoMini_BlueFire_Finish",
+   "type": "bool",
+   "giver": "Purah",
+   "location": "Hateno Ancient Tech Lab",
+   "reward": "Access to the ancient oven",
+   "activatedFlag": "HatenoMini_BlueFire_Activated",
+   "notes": "Restart Robbie's ancient oven with the blue flame.",
+   "steps": [
+    "Travel to the Akkala Ancient Tech Lab and meet Robbie",
+    "Carry the blue flame to the lab's furnace",
+    "Tell Robbie the oven works"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Gerudo_tsukamidake",
+   "name": "Rushroom Rush!",
+   "flag": "Gerudo_tsukamidake_Finish",
+   "type": "bool",
+   "giver": "Pirou",
+   "location": "Gerudo Canyon Stable",
+   "reward": "Diamond",
+   "activatedFlag": "Gerudo_tsukamidake_Activated",
+   "notes": "Trade rushrooms to Pirou at the Gerudo Canyon Stable.",
+   "steps": [
+    "Talk to Pirou at the Gerudo Canyon Stable",
+    "Gather 55 rushrooms",
+    "Give them to Pirou"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Hateno_SheikPad_PowerUp",
+   "name": "Slated for Upgrades",
+   "flag": "Hateno_SheikPad_PowerUp_Finish",
+   "type": "bool",
+   "giver": "Purah",
+   "location": "Hateno Ancient Tech Lab",
+   "reward": "Rune upgrades",
+   "activatedFlag": "Hateno_SheikPad_PowerUp_Activated",
+   "notes": "Purah upgrades runes in exchange for ancient parts.",
+   "steps": [
+    "Talk to Purah",
+    "Bring ancient screws for the sensor",
+    "Bring ancient shafts for Remote Bombs",
+    "Bring ancient cores for Stasis"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Bottle_Mes",
+   "name": "Special Delivery",
+   "flag": "Bottle_Mes_Finish",
+   "type": "bool",
+   "giver": "Finley",
+   "location": "Bank of Wishes",
+   "reward": null,
+   "activatedFlag": "Bottle_Mes_Activated",
+   "notes": "Follow a floating letter downstream to see who picks it up.",
+   "steps": [
+    "Talk to Finley at the Bank of Wishes",
+    "Follow the letter down the river without losing it",
+    "Go to Zora's Domain to see the meeting"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "SetugenUmayadoMini_Umahonephoto",
+   "name": "Stalhorse: Pictured!",
+   "flag": "SetugenUmayadoMini_Umahonephoto_Finish",
+   "type": "bool",
+   "giver": "Juannelle",
+   "location": "Snowfield Stable",
+   "reward": null,
+   "activatedFlag": "SetugenUmayadoMini_Umahonephoto_Activated",
+   "notes": "Photograph a Stalhorse for Juannelle.",
+   "steps": [
+    "Talk to Juannelle at the Snowfield Stable",
+    "Find a Stalhorse near the ruins in eastern N. Tabantha Snowfield at night",
+    "Photograph it",
+    "Show the picture to Juannelle"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "UotoriMini_SinkTreasure",
+   "name": "Sunken Treasure",
+   "flag": "UotoriMini_SinkTreasure_Finish",
+   "type": "bool",
+   "giver": "Rozel",
+   "location": "Lurelin Village",
+   "reward": "The sunken treasure",
+   "activatedFlag": "UotoriMini_SinkTreasure_Activated",
+   "notes": "Solve Rozel's riddle about sunken treasure.",
+   "steps": [
+    "Talk to Rozel in Lurelin Village",
+    "Find the center of the golden triangle off Clarnet Coast",
+    "Pull up the treasure",
+    "Tell Rozel"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "HatenoMini_CameraBoy",
+   "name": "Sunshroom Sensing",
+   "flag": "HatenoMini_CameraBoy_Finish",
+   "type": "bool",
+   "giver": "Symin",
+   "location": "Hateno Ancient Tech Lab",
+   "reward": null,
+   "activatedFlag": "HatenoMini_CameraBoy_Activated",
+   "notes": "Symin shows how the upgraded sensor finds compendium entries.",
+   "steps": [
+    "Talk to Symin at the Hateno Ancient Tech Lab",
+    "Photograph a sunshroom behind the lab",
+    "Find three sunshrooms in Retsam Forest",
+    "Give them to Symin"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "UotoriMini_RecoverBay",
+   "name": "Take Back the Sea",
+   "flag": "UotoriMini_RecoverBay_Finish",
+   "type": "bool",
+   "giver": "Sebasto",
+   "location": "Lurelin Village",
+   "reward": null,
+   "activatedFlag": "UotoriMini_RecoverBay_Activated",
+   "notes": "Clear the monster camp on Aris Beach.",
+   "steps": [
+    "Talk to Sebasto in Lurelin Village",
+    "Defeat all monsters on Aris Beach",
+    "Report back to Sebasto"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "RitoMini_Cook",
+   "name": "The Apple of My Eye",
+   "flag": "RitoMini_Cook_Finish",
+   "type": "bool",
+   "giver": "Juney",
+   "location": "Rito Village",
+   "reward": "Rupees",
+   "activatedFlag": "RitoMini_Cook_Activated",
+   "notes": "Bring Juney a baked apple.",
+   "steps": [
+    "Talk to Juney in Rito Village",
+    "Cook a baked apple",
+    "Give it to Juney"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Gerudo_Ch_SnowMT",
+   "name": "The Eighth Heroine",
+   "flag": "Gerudo_Ch_SnowMT_Finish",
+   "type": "bool",
+   "giver": "Bozai",
+   "location": "Gerudo Desert",
+   "reward": "Sand boots",
+   "activatedFlag": "Gerudo_Ch_SnowMT_Activated",
+   "notes": "Photograph the eighth heroine statue for Bozai.",
+   "steps": [
+    "Talk to Bozai",
+    "Find the eighth heroine statue in the Gerudo Highlands",
+    "Take a picture of it",
+    "Show the picture to Bozai"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Gerudo_Ch_SnowBoots",
+   "name": "The Forgotten Sword",
+   "flag": "Gerudo_Ch_SnowBoots_Finish",
+   "type": "bool",
+   "giver": "Bozai",
+   "location": "Gerudo Desert",
+   "reward": "Snow boots",
+   "activatedFlag": "Gerudo_Ch_SnowBoots_Activated",
+   "notes": "Photograph the eighth heroine's sword for Bozai.",
+   "steps": [
+    "Talk to Bozai",
+    "Find the sword at the summit of the Gerudo Highlands",
+    "Take a picture of it",
+    "Show the picture to Bozai"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Giant_ZoraMini",
+   "name": "The Giant of Ralis Pond",
+   "flag": "Giant_ZoraMini_Finish",
+   "type": "bool",
+   "giver": "Torfeau",
+   "location": "Zora's Domain",
+   "reward": null,
+   "activatedFlag": "Giant_ZoraMini_Activated",
+   "notes": "Defeat the Hinox at Ralis Pond for Torfeau.",
+   "steps": [
+    "Talk to Torfeau in Zora's Domain",
+    "Defeat the Hinox at Ralis Pond",
+    "Report back to Torfeau"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "HateeluMini_Treasure",
+   "name": "The Hero's Cache",
+   "flag": "HateeluMini_Treasure_Finish",
+   "type": "bool",
+   "giver": null,
+   "location": "Kitano Bay",
+   "reward": "Gold rupee",
+   "activatedFlag": "HateeluMini_Treasure_Activated",
+   "notes": "Solve Kass's verse about the hero's cache.",
+   "steps": [
+    "Hear Kass's verse near Kitano Bay",
+    "Work out where the pointing rock leads",
+    "Find the hidden treasure"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "FironeMini_HorseEnemy",
+   "name": "The Horseback Hoodlums ",
+   "flag": "FironeMini_HorseEnemy_Finish",
+   "type": "bool",
+   "giver": "Perosa",
+   "location": "Highland Stable",
+   "reward": "Endura carrot",
+   "activatedFlag": "FironeMini_HorseEnemy_Activated",
+   "notes": "Defeat the mounted monster gang near the Highland Stable.",
+   "steps": [
+    "Talk to Perosa at the Highland Stable",
+    "Defeat every member of the horseback gang",
+    "Report back to Perosa"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "GoronMini_ImportGem",
+   "name": "The Jewel Trade",
+   "flag": "GoronMini_ImportGem_Finish",
+   "type": "bool",
+   "giver": "Ramella",
+   "location": "Goron City",
+   "reward": "Payment for the amber",
+   "activatedFlag": "GoronMini_ImportGem_Activated",
+   "notes": "Sell amber to the gem dealer Ramella.",
+   "steps": [
+    "Talk to Ramella in Goron City",
+    "Bring her 10 amber"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "KorokMini_KorokShiren",
+   "name": "The Korok Trials",
+   "flag": "KorokMini_KorokShiren_Finish",
+   "type": "bool",
+   "giver": "Chio",
+   "location": "Great Hyrule Forest",
+   "reward": null,
+   "activatedFlag": "KorokMini_KorokShiren_Activated",
+   "notes": "Complete the three Korok trials around the forest.",
+   "steps": [
+    "Talk to Chio in Korok Forest",
+    "Finish the Trial of Second Sight",
+    "Finish The Lost Pilgrimage",
+    "Finish The Test of Wood",
+    "Report back to Chio"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Gerudo_Ch_Poison",
+   "name": "The Mystery Polluter",
+   "flag": "Gerudo_Ch_Poison_Finish",
+   "type": "bool",
+   "giver": "Dalia",
+   "location": "Gerudo Town",
+   "reward": null,
+   "activatedFlag": "Gerudo_Ch_Poison_Activated",
+   "notes": "Stop the person polluting Dalia's water supply.",
+   "steps": [
+    "Talk to Dalia",
+    "Follow the waterway upstream to find the polluter",
+    "Bring the polluter 10 wildberries",
+    "Return to Dalia"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "OldKorok_Help",
+   "name": "The Priceless Maracas",
+   "flag": "OldKorok_Help_Finish",
+   "type": "bool",
+   "giver": null,
+   "location": "West Necluda",
+   "reward": "Inventory expansion",
+   "activatedFlag": "OldKorok_Help_Activated",
+   "notes": "Recover Hestu's maracas, then trade Korok seeds for slots.",
+   "steps": [
+    "Talk to Hestu",
+    "Defeat the monsters that took his maracas",
+    "Return the maracas",
+    "Trade Korok seeds to Hestu"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "GoronCityMini_BeatGolem",
+   "name": "The Road to Respect",
+   "flag": "GoronCityMini_BeatGolem_Finish",
+   "type": "bool",
+   "giver": "Fugo",
+   "location": "Goron City",
+   "reward": "100 rupees",
+   "activatedFlag": "GoronCityMini_BeatGolem_Activated",
+   "notes": "Defeat the Igneo Talus at Darunia Lake for Fugo.",
+   "steps": [
+    "Talk to Fugo in Goron City",
+    "Defeat the Igneo Talus at Darunia Lake",
+    "Report back to Fugo"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "RiversideMini_CastleWeapon",
+   "name": "The Royal Guard's Gear",
+   "flag": "RiversideMini_CastleWeapon_Finish",
+   "type": "bool",
+   "giver": "Parcy",
+   "location": "Riverside Stable",
+   "reward": null,
+   "activatedFlag": "RiversideMini_CastleWeapon_Activated",
+   "notes": "Show Parcy a royal guard's weapon from Hyrule Castle.",
+   "steps": [
+    "Talk to Parcy at the Riverside Stable",
+    "Find a royal guard's weapon in Hyrule Castle",
+    "Show it to Parcy"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "HyruleDepthMini_WhiteHorse",
+   "name": "The Royal White Stallion",
+   "flag": "HyruleDepthMini_WhiteHorse_Finish",
+   "type": "bool",
+   "giver": "Toffa",
+   "location": "Outskirt Stable",
+   "reward": "Royal saddle and royal bridle",
+   "activatedFlag": "HyruleDepthMini_WhiteHorse_Activated",
+   "notes": "Find the white horse for Toffa at the Outskirt Stable.",
+   "steps": [
+    "Talk to Toffa at the Outskirt Stable",
+    "Find the white horse on Safula Hill",
+    "Tame it and bring it to Toffa"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Gerudo_Ch_FindingValetta",
+   "name": "The Search for Barta",
+   "flag": "Gerudo_Ch_FindingValetta_Finish",
+   "type": "bool",
+   "giver": "Liana",
+   "location": "Gerudo Town",
+   "reward": null,
+   "activatedFlag": "Gerudo_Ch_FindingValetta_Activated",
+   "notes": "Find Barta, who went missing in the southern desert.",
+   "steps": [
+    "Talk to Liana in Gerudo Town",
+    "Search the south of the desert for Barta",
+    "Give Barta a hearty durian",
+    "Tell Liana that Barta is safe"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Gerudo_Ch_SecretClub",
+   "name": "The Secret Club's Secret",
+   "flag": "Gerudo_Ch_SecretClub_Finish",
+   "type": "bool",
+   "giver": "Greta",
+   "location": "Gerudo Town",
+   "reward": "Access to the secret shop",
+   "activatedFlag": "Gerudo_Ch_SecretClub_Activated",
+   "notes": "Learn the password for the members-only shop.",
+   "steps": [
+    "Visit Fashion Passion in Gerudo Town",
+    "Find out the secret club password",
+    "Say the password at the secret entrance"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "HatenoMini_GoatThief",
+   "name": "The Sheep Rustlers",
+   "flag": "HatenoMini_GoatThief_Finished",
+   "type": "bool",
+   "giver": "Koyin",
+   "location": "Hateno Village",
+   "reward": null,
+   "activatedFlag": "HatenoMini_GoatThief_Activated",
+   "notes": "Clear the monsters from Hateno Beach for Koyin.",
+   "steps": [
+    "Talk to Koyin in Hateno Village",
+    "Defeat all monsters on Hateno Beach",
+    "Report back to Koyin"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "RitoMini_Flint",
+   "name": "The Spark of Romance",
+   "flag": "RitoMini_Flint_Finish",
+   "type": "bool",
+   "giver": "Jogo",
+   "location": "Rito Village",
+   "reward": "Rupees",
+   "activatedFlag": "RitoMini_Flint_Activated",
+   "notes": "Bring flint to Jogo.",
+   "steps": [
+    "Talk to Jogo in Rito Village",
+    "Bring him flint"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "HatenoMini_DevilSeal",
+   "name": "The Statue's Bargain",
+   "flag": "HatenoMini_DevilSeal_Finish",
+   "type": "bool",
+   "giver": "Horned Statue",
+   "location": "Hateno Village",
+   "reward": "Heart/stamina swapping",
+   "activatedFlag": "HatenoMini_DevilSeal_Activated",
+   "notes": "The horned statue in Hateno trades hearts and stamina.",
+   "steps": [
+    "Gain one more heart or stamina container",
+    "Talk to the horned statue in Hateno",
+    "Talk to it again to get the container back"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Gerudo_Ch_Helmet",
+   "name": "The Thunder Helm",
+   "flag": "Gerudo_Ch_Helmet_Finish",
+   "type": "bool",
+   "giver": "Riju",
+   "location": "Gerudo Town",
+   "reward": "Thunder Helm",
+   "activatedFlag": "Gerudo_Ch_Helmet_Activated",
+   "notes": "Earned by finishing the Gerudo Town requests.",
+   "steps": [
+    "Complete the Gerudo Town side quests",
+    "Return to Riju"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "HatenoMini_WeaponMania",
+   "name": "The Weapon Connoisseur",
+   "flag": "HatenoMini_WeaponMania_Finish",
+   "type": "bool",
+   "giver": "Nebb",
+   "location": "Hateno Village",
+   "reward": "Diamond",
+   "activatedFlag": "HatenoMini_WeaponMania_Activated",
+   "notes": "Show Nebb a series of specific weapons.",
+   "steps": [
+    "Talk to Nebb in Hateno Village",
+    "Show him each weapon he asks for in turn",
+    "Finish the list of weapons"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "FironeMini_TerribleThunder",
+   "name": "Thunder Magnet",
+   "flag": "FironeMini_TerribleThunder_Finish",
+   "type": "bool",
+   "giver": "Cima",
+   "location": "Lakeside Stable",
+   "reward": null,
+   "activatedFlag": "FironeMini_TerribleThunder_Activated",
+   "notes": "Find out why lightning keeps hitting the Lakeside Stable.",
+   "steps": [
+    "Talk to Cima at the Lakeside Stable",
+    "Remove the metal weapon stuck on the stable roof",
+    "Tell Cima"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "GerudoMiniJewel",
+   "name": "Tools of the Trade",
+   "flag": "GerudoMiniJewel_Finished",
+   "type": "bool",
+   "giver": "Isha",
+   "location": "Gerudo Town",
+   "reward": "Jewelry shop reopens",
+   "activatedFlag": "GerudoMiniJewel_Activated",
+   "notes": "Bring flint to Isha so she can reopen her jewelry shop.",
+   "steps": [
+    "Talk to Isha in Gerudo Town",
+    "Collect 10 flint",
+    "Deliver the flint to Isha"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "UotoriMini_RecipeSea",
+   "name": "What's for Dinner?",
+   "flag": "UotoriMini_RecipeSea_Finish",
+   "type": "bool",
+   "giver": "Kiana",
+   "location": "Lurelin Village",
+   "reward": "Seafood paella",
+   "activatedFlag": "UotoriMini_RecipeSea_Activated",
+   "notes": "Bring Kiana the ingredients for seafood paella.",
+   "steps": [
+    "Talk to Kiana in Lurelin Village",
+    "Bring goat butter",
+    "Bring a hearty blueshell snail"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "HutagoHatago_Ch_001",
+   "name": "Wild Horses",
+   "flag": "HutagoHatago_Ch_001_Finish",
+   "type": "bool",
+   "giver": "Rensa",
+   "location": "Dueling Peaks Stable",
+   "reward": null,
+   "activatedFlag": "HutagoHatago_Ch_001_Activated",
+   "notes": "Ride a wild horse to the stable within the time limit.",
+   "steps": [
+    "Talk to Rensa at the Dueling Peaks Stable",
+    "Catch a wild horse",
+    "Ride it to the stable within two minutes"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "ZoraMini_ReliefSearch",
+   "name": "Zora Stone Monuments",
+   "flag": "ZoraMini_ReliefSearch_Finish",
+   "type": "bool",
+   "giver": "Jiahto",
+   "location": "Zora's Domain",
+   "reward": null,
+   "activatedFlag": "ZoraMini_ReliefSearch_Activated",
+   "notes": "Find the ten Zora stone monuments for Jiahto.",
+   "steps": [
+    "Talk to Jiahto in Zora's Domain",
+    "Find the ten stone monuments around the domain",
+    "Report back to Jiahto"
+   ],
+   "inSave": true
+  }
+ ],
+ "shrineQuests": [
+  {
+   "id": "GoronsRock",
+   "name": "A Brother's Roast",
+   "flag": "GoronsRock_Finish",
+   "type": "bool",
+   "location": "Goron City",
+   "shrine": "Kayra Mah Shrine",
+   "shrineDungeonId": "Dungeon025",
+   "activatedFlag": "GoronsRock_Activated",
+   "notes": "Bring a rock roast to Gonguron.",
+   "steps": [
+    "Talk to Bladon at Gorko Tunnel",
+    "Find a rock roast near Gortram Cliff",
+    "Cook it and give it to Gonguron"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "SearchStone",
+   "name": "A Fragmented Monument",
+   "flag": "SearchStone_Finish",
+   "type": "bool",
+   "location": "Palmorae Ruins",
+   "shrine": null,
+   "shrineDungeonId": null,
+   "activatedFlag": "SearchStone_Activated",
+   "notes": "Photograph the monument fragments for Garini.",
+   "steps": [
+    "Talk to Garini",
+    "Photograph each monument fragment",
+    "Kneel on the platform with Garini"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "MtMotelMini_Landscape",
+   "name": "A Landscape of a Stable",
+   "flag": "MtMotelMini_Landscape_Finished",
+   "type": "bool",
+   "location": "Foothill Stable",
+   "shrine": "Tah Muhl Shrine",
+   "shrineDungeonId": "Dungeon000",
+   "activatedFlag": "MtMotelMini_Landscape_Activated",
+   "notes": "A painting at the Foothill Stable shows the shrine location.",
+   "steps": [
+    "Look at the painting at the Foothill Stable",
+    "Find the place it shows",
+    "Find the shrine"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Thunder_Sword",
+   "name": "A Song of Storms",
+   "flag": "Thunder_Sword_Finish",
+   "type": "bool",
+   "location": "Calora Lake",
+   "shrine": "Qukah Nata Shrine",
+   "shrineDungeonId": "Dungeon096",
+   "activatedFlag": "Thunder_Sword_Activated",
+   "notes": "Attract lightning to the big rock.",
+   "steps": [
+    "Hear Kass's song near Calora Lake",
+    "Carry a metal weapon to the large rock during a storm",
+    "Let lightning break the rock"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "SeekerEye",
+   "name": "Cliffside Etchings",
+   "flag": "SeekerEye_Finish",
+   "type": "bool",
+   "location": "Tabantha Bridge Stable",
+   "shrine": null,
+   "shrineDungeonId": null,
+   "activatedFlag": "SeekerEye_Activated",
+   "notes": "Shoot the etching on the cliff that Geggle points out.",
+   "steps": [
+    "Talk to Geggle at the Tabantha Bridge Stable",
+    "Find the etching on the cliff",
+    "Shoot a shock arrow at its center"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Remains_Fancier",
+   "name": "Guardian Slideshow",
+   "flag": "Remains_Fancier_Finish",
+   "type": "bool",
+   "location": "Puffer Beach",
+   "shrine": null,
+   "shrineDungeonId": null,
+   "activatedFlag": "Remains_Fancier_Activated",
+   "notes": "Show Loone pictures of three Guardian types for her orb.",
+   "steps": [
+    "Talk to Loone at Puffer Beach",
+    "Photograph three types of Guardians",
+    "Show her the pictures",
+    "Place her orb on the pedestal"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "MacuseIseki",
+   "name": "Into the Vortex",
+   "flag": "MacuseIseki_Finish",
+   "type": "bool",
+   "location": "Rist Peninsula",
+   "shrine": "Ritaag Zumo Shrine",
+   "shrineDungeonId": "Dungeon109",
+   "activatedFlag": "MacuseIseki_Activated",
+   "notes": "Carry the orb to the center of Rist Peninsula.",
+   "steps": [
+    "Read the stone tablet",
+    "Pick up the orb",
+    "Carry it to the center of the peninsula"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Relief_Landing",
+   "name": "Master of the Wind",
+   "flag": "Relief_Landing_Finish",
+   "type": "bool",
+   "location": "Horon Lagoon",
+   "shrine": null,
+   "shrineDungeonId": null,
+   "activatedFlag": "Relief_Landing_Activated",
+   "notes": "Glide onto the altar above the bay.",
+   "steps": [
+    "Hear Kass's song",
+    "Break the rocks on the altar",
+    "Glide down onto the altar"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Rito_BrosRock",
+   "name": "Recital at Warbler's Nest",
+   "flag": "Rito_BrosRock_Finish",
+   "type": "bool",
+   "location": "Rito Village",
+   "shrine": null,
+   "shrineDungeonId": null,
+   "activatedFlag": "Rito_BrosRock_Activated",
+   "notes": "Gather the five sisters for their recital.",
+   "steps": [
+    "Talk to Kheel",
+    "Find each sister and help Genli",
+    "Listen to the song at Warbler's Nest",
+    "Solve the song's riddle"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "HatenoMini_ThreeTree",
+   "name": "Secret of the Cedars",
+   "flag": "HatenoMini_ThreeTree_Finished",
+   "type": "bool",
+   "location": "Hateno Village",
+   "shrine": "Tahno O'ah Shrine",
+   "shrineDungeonId": "Dungeon119",
+   "activatedFlag": "HatenoMini_ThreeTree_Activated",
+   "notes": "A riddle about three cedars that reveals a hidden shrine.",
+   "steps": [
+    "Talk to Clavia in Hateno Village",
+    "Line up the three summit cedars so they look like one",
+    "Turn your back to them and head toward the sea",
+    "Find the shrine"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "SecretofObject",
+   "name": "Secret of the Snowy Peaks",
+   "flag": "SecretofObject_Finish",
+   "type": "bool",
+   "location": "Mount Granajh",
+   "shrine": null,
+   "shrineDungeonId": null,
+   "activatedFlag": "SecretofObject_Activated",
+   "notes": "Cast a shadow on the glowing pedestal in the snow.",
+   "steps": [
+    "Find the pedestal on Mount Granajh",
+    "Wait for it to glow",
+    "Cast a shadow on it"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "DarkWoods",
+   "name": "Shrouded Shrine",
+   "flag": "DarkWoods_Finish",
+   "type": "bool",
+   "location": "Thyphlo Ruins",
+   "shrine": null,
+   "shrineDungeonId": null,
+   "activatedFlag": "DarkWoods_Activated",
+   "notes": "Find the shrine hidden in the dark Thyphlo Ruins.",
+   "steps": [
+    "Enter the Thyphlo Ruins",
+    "Find the orb held by the Hinox",
+    "Place the orb on the pedestal"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Shadow_Sign",
+   "name": "Sign of the Shadow",
+   "flag": "Shadow_Sign_Finish",
+   "type": "bool",
+   "location": "Gerudo Tower",
+   "shrine": null,
+   "shrineDungeonId": null,
+   "activatedFlag": "Shadow_Sign_Activated",
+   "notes": "Use Gerudo Tower's shadow to find the target.",
+   "steps": [
+    "Hear Kass's song at Gerudo Tower",
+    "Wait for the light from the northwest",
+    "Shoot an arrow at the light from the shadow"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "NakedIsland",
+   "name": "Stranded on Eventide",
+   "flag": "NakedIsland_Finish",
+   "type": "bool",
+   "location": "Eventide Island",
+   "shrine": null,
+   "shrineDungeonId": null,
+   "activatedFlag": "NakedIsland_Activated",
+   "notes": "Survive Eventide Island without your gear.",
+   "steps": [
+    "Sail to Eventide Island",
+    "Find the three orbs",
+    "Place them on the three altars"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Gaman",
+   "name": "Test of Will",
+   "flag": "Gaman_Finish",
+   "type": "bool",
+   "location": "Mount Nabooru",
+   "shrine": null,
+   "shrineDungeonId": null,
+   "activatedFlag": "Gaman_Activated",
+   "notes": "Endure the heat of the Goron brothers' ring.",
+   "steps": [
+    "Talk to the Goron Blood Brothers",
+    "Stand in the hot ring with heat protection",
+    "Endure the hotter second round"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "RitoSongMystery",
+   "name": "The Ancient Rito Song",
+   "flag": "RitoSongMystery_Finished",
+   "type": "bool",
+   "location": "Rito Village",
+   "shrine": null,
+   "shrineDungeonId": null,
+   "activatedFlag": "RitoSongMystery_Activated",
+   "notes": "Decode the ancient Rito song.",
+   "steps": [
+    "Talk to Bedoli in Rito Village",
+    "Hear the rest of the song from Laissa",
+    "Follow the clue with a flame"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "RitoRabitMountain",
+   "name": "The Bird in the Mountains",
+   "flag": "RitoRabitMountain_Finish",
+   "type": "bool",
+   "location": "Rito Village",
+   "shrine": "Mozo Shenno Shrine",
+   "shrineDungeonId": "Dungeon087",
+   "activatedFlag": "RitoRabitMountain_Activated",
+   "notes": "Look for the bird shape from the cedar tree.",
+   "steps": [
+    "Talk to Molli in Rito Village",
+    "Climb the lone cedar in the Hebra Mountains",
+    "Look for the bird shape and glide there"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "StatueofZora",
+   "name": "The Ceremonial Song",
+   "flag": "StatueofZora_Finish",
+   "type": "bool",
+   "location": "Zora's Domain",
+   "shrine": null,
+   "shrineDungeonId": null,
+   "activatedFlag": "StatueofZora_Activated",
+   "notes": "Return the trident to the pedestal in Veiled Falls.",
+   "steps": [
+    "Talk to Laruta",
+    "Talk to Trello",
+    "Recover the dropped trident",
+    "Put it in the pedestal at Veiled Falls"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Animal_Forest",
+   "name": "The Crowned Beast",
+   "flag": "Animal_Forest_Finish",
+   "type": "bool",
+   "location": "Rabia Plain",
+   "shrine": null,
+   "shrineDungeonId": null,
+   "activatedFlag": "Animal_Forest_Activated",
+   "notes": "A riddle from Kass about a crowned beast.",
+   "steps": [
+    "Hear Kass's song",
+    "Find a mountain buck",
+    "Ride it to the pedestal",
+    "Enter the revealed shrine"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "CursedStatue",
+   "name": "The Cursed Statue",
+   "flag": "CursedStatue_Finish",
+   "type": "bool",
+   "location": "Fort Hateno",
+   "shrine": null,
+   "shrineDungeonId": null,
+   "activatedFlag": "CursedStatue_Activated",
+   "notes": "Shoot the glowing eyes of the cursed statue.",
+   "steps": [
+    "Talk to Calip",
+    "Find the cursed statue near Fort Hateno",
+    "Shoot its eyes when they glow at night"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Desert_Maze",
+   "name": "The Desert Labyrinth",
+   "flag": "Desert_Maze_Finish",
+   "type": "bool",
+   "location": "South Lomei Labyrinth",
+   "shrine": "Dila Maag Shrine",
+   "shrineDungeonId": "Dungeon103",
+   "activatedFlag": "Desert_Maze_Activated",
+   "notes": "Navigate the labyrinth at the foot of Daval Peak.",
+   "steps": [
+    "Reach the labyrinth",
+    "Work through the maze",
+    "Find the shrine at its end"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "SandStorm",
+   "name": "The Eye of the Sandstorm",
+   "flag": "SandStorm_Finish",
+   "type": "bool",
+   "location": "Kara Kara Bazaar",
+   "shrine": "Dako Tah Shrine",
+   "shrineDungeonId": "Dungeon032",
+   "activatedFlag": "SandStorm_Activated",
+   "notes": "Find the shrine in the sandstorm by Kara Kara Bazaar.",
+   "steps": [
+    "Talk to Nobiro at Kara Kara Bazaar",
+    "Wait for the sandstorm to clear",
+    "Go to the shrine"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "GoronCamp",
+   "name": "The Gut Check Challenge",
+   "flag": "GoronCamp_Finish",
+   "type": "bool",
+   "location": "Gut Check Rock",
+   "shrine": null,
+   "shrineDungeonId": null,
+   "activatedFlag": "GoronCamp_Activated",
+   "notes": "Climb the cliff in the Gut Check Challenge.",
+   "steps": [
+    "Talk to Bayge",
+    "Climb the cliff to the top",
+    "Reach the shrine"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "FirstOhenro",
+   "name": "The Lost Pilgrimage",
+   "flag": "FirstOhenro_Finish",
+   "type": "bool",
+   "location": "Korok Forest",
+   "shrine": null,
+   "shrineDungeonId": null,
+   "activatedFlag": "FirstOhenro_Activated",
+   "notes": "Secretly follow the Korok Oaki to his destination.",
+   "steps": [
+    "Talk to Tasho in Korok Forest",
+    "Follow Oaki without being seen",
+    "Reach the shrine with him"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Gerudo_CarryIce",
+   "name": "The Perfect Drink",
+   "flag": "Gerudo_CarryIce_Finished",
+   "type": "bool",
+   "location": "East Barrens",
+   "shrine": null,
+   "shrineDungeonId": null,
+   "activatedFlag": "Gerudo_CarryIce_Activated",
+   "notes": "Carry ice from the icehouse so Pokki gets her drink.",
+   "steps": [
+    "Talk to Pokki outside the shrine",
+    "Ask Anche at the icehouse for ice",
+    "Carry the ice to the canteen before it melts",
+    "Tell Pokki"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "MouthofDragon",
+   "name": "The Serpent's Jaws",
+   "flag": "MouthofDragon_Finish",
+   "type": "bool",
+   "location": "Pagos Woods",
+   "shrine": null,
+   "shrineDungeonId": null,
+   "activatedFlag": "MouthofDragon_Activated",
+   "notes": "Offer Farosh's scale at the Spring of Courage.",
+   "steps": [
+    "Hear Kass's song in Pagos Woods",
+    "Find the Spring of Courage",
+    "Get a scale from Farosh",
+    "Throw it into the spring"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "KnightDoll",
+   "name": "The Seven Heroines",
+   "flag": "KnightDoll_Finish",
+   "type": "bool",
+   "location": "Gerudo Town",
+   "shrine": null,
+   "shrineDungeonId": null,
+   "activatedFlag": "KnightDoll_Activated",
+   "notes": "Place orbs matching the seven heroines' symbols.",
+   "steps": [
+    "Visit the statues east of Gerudo Town",
+    "Match each orb to the right statue's symbol"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "MagneticFld",
+   "name": "The Silent Swordswomen",
+   "flag": "MagneticFld_Finish",
+   "type": "bool",
+   "location": "Gerudo Town",
+   "shrine": "Kema Zoos Shrine",
+   "shrineDungeonId": "Dungeon063",
+   "activatedFlag": "MagneticFld_Activated",
+   "notes": "Follow the swordswomen statues through the sandstorm.",
+   "steps": [
+    "Talk to Laine",
+    "Follow the direction of the statues",
+    "Find the shrine in the sandstorm"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "DokuroEye",
+   "name": "The Skull's Eye",
+   "flag": "DokuroEye_Finish",
+   "type": "bool",
+   "location": "Akkala Ancient Tech Lab",
+   "shrine": "Zuna Kai Shrine",
+   "shrineDungeonId": "Dungeon102",
+   "activatedFlag": "DokuroEye_Activated",
+   "notes": "Reach the shrine on the left eye of Skull Lake.",
+   "steps": [
+    "Talk to Jerrin at the Akkala Ancient Tech Lab",
+    "Climb or glide to the left eye of Skull Lake",
+    "Enter the shrine"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "HigakkareMini_RedDragon",
+   "name": "The Spring of Power",
+   "flag": "HigakkareMini_RedDragon_Finish",
+   "type": "bool",
+   "location": "East Akkala Stable",
+   "shrine": null,
+   "shrineDungeonId": null,
+   "activatedFlag": "HigakkareMini_RedDragon_Activated",
+   "notes": "Offer Dinraal's scale at the Spring of Power.",
+   "steps": [
+    "Visit the Spring of Power west of the East Akkala Stable",
+    "Get a scale from Dinraal",
+    "Throw it into the spring"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "HatenoMini_WhiteDragon",
+   "name": "The Spring of Wisdom",
+   "flag": "HatenoMini_WhiteDragon_Finish",
+   "type": "bool",
+   "location": "Hateno Village",
+   "shrine": null,
+   "shrineDungeonId": null,
+   "activatedFlag": "HatenoMini_WhiteDragon_Activated",
+   "notes": "Free Naydra and offer its scale at the Spring of Wisdom.",
+   "steps": [
+    "Talk to Medda in Hateno",
+    "Climb Mount Lanayru",
+    "Shoot the Malice off Naydra",
+    "Throw Naydra's scale into the spring"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "StolenBook",
+   "name": "The Stolen Heirloom",
+   "flag": "StolenBook_Finish",
+   "type": "bool",
+   "location": "Kakariko Village",
+   "shrine": null,
+   "shrineDungeonId": null,
+   "activatedFlag": "StolenBook_Activated",
+   "notes": "Recover Impa's stolen heirloom from the Yiga.",
+   "steps": [
+    "Talk to Paya and the gate guards",
+    "Follow the trail of the thieves",
+    "Defeat the Yiga",
+    "Return the orb to its stand"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "ShieldofKolog",
+   "name": "The Test of Wood",
+   "flag": "ShieldofKolog_Finish",
+   "type": "bool",
+   "location": "Korok Forest",
+   "shrine": null,
+   "shrineDungeonId": null,
+   "activatedFlag": "ShieldofKolog_Activated",
+   "notes": "Reach the destination using only the Korok gear.",
+   "steps": [
+    "Talk to Damia in Korok Forest",
+    "Equip the forest dweller's sword, bow and shield",
+    "Travel to the destination"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Threebros_giant",
+   "name": "The Three Giant Brothers",
+   "flag": "Threebros_giant_Finish",
+   "type": "bool",
+   "location": "Mount Taran",
+   "shrine": null,
+   "shrineDungeonId": null,
+   "activatedFlag": "Threebros_giant_Activated",
+   "notes": "Take the orbs from the three Hinox on Mount Taran.",
+   "steps": [
+    "Read the stone tablet",
+    "Defeat or rob each Hinox brother",
+    "Place the three orbs on the pedestals"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "TwoWheels",
+   "name": "The Two Rings",
+   "flag": "TwoWheels_Finish",
+   "type": "bool",
+   "location": "West Hyrule Plains",
+   "shrine": null,
+   "shrineDungeonId": null,
+   "activatedFlag": "TwoWheels_Activated",
+   "notes": "Shoot one arrow through two ring-shaped rocks.",
+   "steps": [
+    "Hear Kass's song",
+    "Line up the two ring rocks",
+    "Shoot a single arrow through both"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "SunazarashiRace",
+   "name": "The Undefeated Champ",
+   "flag": "SunazarashiRace_Finish",
+   "type": "bool",
+   "location": "Sand-Seal Rally",
+   "shrine": null,
+   "shrineDungeonId": null,
+   "activatedFlag": "SunazarashiRace_Activated",
+   "notes": "Beat Tali's sand-seal race record.",
+   "steps": [
+    "Talk to Tali at the Sand-Seal Rally",
+    "Finish the race in under 1 minute 30 seconds",
+    "Place the jewel on the pedestal"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "GodTree",
+   "name": "Trial of Second Sight",
+   "flag": "GodTree_Finish",
+   "type": "bool",
+   "location": "Korok Forest",
+   "shrine": null,
+   "shrineDungeonId": null,
+   "activatedFlag": "GodTree_Activated",
+   "notes": "Find the trees holding iron orbs in their mouths.",
+   "steps": [
+    "Talk to Zooki in Korok Forest",
+    "Find the trees with iron orbs",
+    "Look beyond them for the shrine"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "FourJewel",
+   "name": "Trial of Thunder",
+   "flag": "FourJewel_Finish",
+   "type": "bool",
+   "location": "Thundra Plateau",
+   "shrine": null,
+   "shrineDungeonId": null,
+   "activatedFlag": "FourJewel_Activated",
+   "notes": "Place four orbs on Thundra Plateau.",
+   "steps": [
+    "Reach Thundra Plateau",
+    "Read the diagrams on the stone pillars",
+    "Put the four orbs in the right spots"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Solitary_Maze",
+   "name": "Trial of the Labyrinth",
+   "flag": "Solitary_Maze_Finish",
+   "type": "bool",
+   "location": "Lomei Labyrinth Island",
+   "shrine": "Tu Ka'loh Shrine",
+   "shrineDungeonId": "Dungeon105",
+   "activatedFlag": "Solitary_Maze_Activated",
+   "notes": "Navigate the labyrinth on the island in the Akkala Sea.",
+   "steps": [
+    "Reach Lomei Labyrinth Island",
+    "Work through the maze",
+    "Find the shrine"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "Cliff_Maze",
+   "name": "Trial on the Cliff",
+   "flag": "Cliff_Maze_Finish",
+   "type": "bool",
+   "location": "North Lomei Labyrinth",
+   "shrine": "Qaza Tokki Shrine",
+   "shrineDungeonId": "Dungeon116",
+   "activatedFlag": "Cliff_Maze_Activated",
+   "notes": "Navigate the maze in north-east Tabantha Tundra.",
+   "steps": [
+    "Reach the maze ruins",
+    "Work through the maze",
+    "Find the shrine at its center"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "BloodyMoonRelief",
+   "name": "Under a Red Moon",
+   "flag": "BloodyMoonRelief_Finish",
+   "type": "bool",
+   "location": "Hyrule Ridge",
+   "shrine": null,
+   "shrineDungeonId": null,
+   "activatedFlag": "BloodyMoonRelief_Activated",
+   "notes": "Stand on a pedestal without armor during a Blood Moon.",
+   "steps": [
+    "Hear Kass's song",
+    "Find the pedestal",
+    "Remove all armor",
+    "Stand on the pedestal under a Blood Moon"
+   ],
+   "inSave": true
+  },
+  {
+   "id": "DontDamageFlower",
+   "name": "Watch Out for the Flowers",
+   "flag": "DontDamageFlower_Finish",
+   "type": "bool",
+   "location": "Hylia River",
+   "shrine": "Hila Rao Shrine",
+   "shrineDungeonId": "Dungeon029",
+   "activatedFlag": "DontDamageFlower_Activated",
+   "notes": "Reach the shrine without trampling Magda's flowers.",
+   "steps": [
+    "Talk to Magda",
+    "Walk to the shrine without stepping on the flowers"
+   ],
+   "inSave": true
+  }
+ ],
+ "divineBeasts": [
+  {
+   "id": "RemainsWater",
+   "name": "Divine Beast Vah Ruta",
+   "flag": "Clear_RemainsWater",
+   "type": "bool",
+   "enteredFlag": "Enter_RemainsWater",
+   "questFlag": "Water_Relic_Finished",
+   "notes": "Clear_ flag is set when the beast is freed; the quest flag is set after reporting back.",
+   "inSave": true
+  },
+  {
+   "id": "RemainsFire",
+   "name": "Divine Beast Vah Rudania",
+   "flag": "Clear_RemainsFire",
+   "type": "bool",
+   "enteredFlag": "Enter_RemainsFire",
+   "questFlag": "Fire_Relic_Finished",
+   "notes": "Clear_ flag is set when the beast is freed; the quest flag is set after reporting back.",
+   "inSave": true
+  },
+  {
+   "id": "RemainsWind",
+   "name": "Divine Beast Vah Medoh",
+   "flag": "Clear_RemainsWind",
+   "type": "bool",
+   "enteredFlag": "Enter_RemainsWind",
+   "questFlag": "Wind_Relic_Finished",
+   "notes": "Clear_ flag is set when the beast is freed; the quest flag is set after reporting back.",
+   "inSave": true
+  },
+  {
+   "id": "RemainsElectric",
+   "name": "Divine Beast Vah Naboris",
+   "flag": "Clear_RemainsElectric",
+   "type": "bool",
+   "enteredFlag": "Enter_RemainsElectric",
+   "questFlag": "Electric_Relic_Finished",
+   "notes": "Clear_ flag is set when the beast is freed; the quest flag is set after reporting back.",
+   "inSave": true
+  }
+ ],
+ "memories": [
+  {
+   "id": "memory01",
+   "index": 1,
+   "name": "Subdued Ceremony",
+   "flag": "IsPlayed_Demo126_0",
+   "type": "bool",
+   "place": "Sacred Grounds",
+   "notes": "Photo memory; the RememberTag at this spot sets this flag after the flashback plays.",
+   "inSave": true
+  },
+  {
+   "id": "memory02",
+   "index": 2,
+   "name": "Revali's Flap",
+   "flag": "IsPlayed_Demo151_0",
+   "type": "bool",
+   "place": "Rito Village",
+   "notes": "Champion memory; this cutscene is played by the event entry for that race in Demo309_2.",
+   "inSave": true
+  },
+  {
+   "id": "memory03",
+   "index": 3,
+   "name": "Resolve and Grief",
+   "flag": "IsPlayed_Demo127_0",
+   "type": "bool",
+   "place": "Lake Kolomo",
+   "notes": "Photo memory; the RememberTag at this spot sets this flag after the flashback plays.",
+   "inSave": true
+  },
+  {
+   "id": "memory04",
+   "index": 4,
+   "name": "Daruk's Mettle",
+   "flag": "IsPlayed_Demo150_0",
+   "type": "bool",
+   "place": "Goron City",
+   "notes": "Champion memory; this cutscene is played by the event entry for that race in Demo309_2.",
+   "inSave": true
+  },
+  {
+   "id": "memory05",
+   "index": 5,
+   "name": "Zelda's Resentment",
+   "flag": "IsPlayed_Demo128_0",
+   "type": "bool",
+   "place": "Ancient Columns",
+   "notes": "Photo memory; the RememberTag at this spot sets this flag after the flashback plays.",
+   "inSave": true
+  },
+  {
+   "id": "memory06",
+   "index": 6,
+   "name": "Urbosa's Hand",
+   "flag": "IsPlayed_Demo153_0",
+   "type": "bool",
+   "place": "Gerudo Town",
+   "notes": "Champion memory; this cutscene is played by the event entry for that race in Demo309_2.",
+   "inSave": true
+  },
+  {
+   "id": "memory07",
+   "index": 7,
+   "name": "Blades of the Yiga",
+   "flag": "IsPlayed_Demo129_0",
+   "type": "bool",
+   "place": "Kara Kara Bazaar",
+   "notes": "Photo memory; the RememberTag at this spot sets this flag after the flashback plays.",
+   "inSave": true
+  },
+  {
+   "id": "memory08",
+   "index": 8,
+   "name": "A Premonition",
+   "flag": "IsPlayed_Demo130_0",
+   "type": "bool",
+   "place": "Eldin Canyon",
+   "notes": "Photo memory; the RememberTag at this spot sets this flag after the flashback plays.",
+   "inSave": true
+  },
+  {
+   "id": "memory09",
+   "index": 9,
+   "name": "Silent Princess",
+   "flag": "IsPlayed_Demo131_0",
+   "type": "bool",
+   "place": "Irch Plain",
+   "notes": "Photo memory; the RememberTag at this spot sets this flag after the flashback plays.",
+   "inSave": true
+  },
+  {
+   "id": "memory10",
+   "index": 10,
+   "name": "Mipha's Touch",
+   "flag": "IsPlayed_Demo152_0",
+   "type": "bool",
+   "place": "Zora's Domain",
+   "notes": "Champion memory; this cutscene is played by the event entry for that race in Demo309_2.",
+   "inSave": true
+  },
+  {
+   "id": "memory11",
+   "index": 11,
+   "name": "Shelter from the Storm",
+   "flag": "IsPlayed_Demo133_0",
+   "type": "bool",
+   "place": "West Necluda",
+   "notes": "Photo memory; the RememberTag at this spot sets this flag after the flashback plays.",
+   "inSave": true
+  },
+  {
+   "id": "memory12",
+   "index": 12,
+   "name": "Father and Daughter",
+   "flag": "IsPlayed_Demo134_0",
+   "type": "bool",
+   "place": "Hyrule Castle",
+   "notes": "Photo memory; the RememberTag at this spot sets this flag after the flashback plays.",
+   "inSave": true
+  },
+  {
+   "id": "memory13",
+   "index": 13,
+   "name": "Slumbering Power",
+   "flag": "IsPlayed_Demo135_0",
+   "type": "bool",
+   "place": "Spring of Power",
+   "notes": "Photo memory; the RememberTag at this spot sets this flag after the flashback plays.",
+   "inSave": true
+  },
+  {
+   "id": "memory14",
+   "index": 14,
+   "name": "To Mount Lanayru",
+   "flag": "IsPlayed_Demo132_0",
+   "type": "bool",
+   "place": "Sanidin Park",
+   "notes": "Photo memory; the RememberTag at this spot sets this flag after the flashback plays.",
+   "inSave": true
+  },
+  {
+   "id": "memory15",
+   "index": 15,
+   "name": "Return of Calamity Ganon",
+   "flag": "IsPlayed_Demo136_0",
+   "type": "bool",
+   "place": "Lanayru Road",
+   "notes": "Photo memory; the RememberTag at this spot sets this flag after the flashback plays.",
+   "inSave": true
+  },
+  {
+   "id": "memory16",
+   "index": 16,
+   "name": "Despair",
+   "flag": "IsPlayed_Demo137_0",
+   "type": "bool",
+   "place": "Hyrule Field",
+   "notes": "Photo memory; the RememberTag at this spot sets this flag after the flashback plays.",
+   "inSave": true
+  },
+  {
+   "id": "memory17",
+   "index": 17,
+   "name": "Zelda's Awakening",
+   "flag": "IsPlayed_Demo138_0",
+   "type": "bool",
+   "place": "Ash Swamp",
+   "notes": "Photo memory; the RememberTag at this spot sets this flag after the flashback plays.",
+   "inSave": true
+  },
+  {
+   "id": "memory18",
+   "index": 18,
+   "name": "The Master Sword",
+   "flag": null,
+   "type": null,
+   "place": "Korok Forest",
+   "candidateFlag": "IsPlayed_Demo109_2",
+   "notes": "Not confirmed; demo 109_2 is titled as the Master Sword flashback but no source ties it to the memory list."
+  }
+ ],
+ "inventory": {
+  "description": "PorchItem is a String64 array of 420 slots: each slot is 16 consecutive entries with the same hash, holding the item actor name as raw bytes (NUL padded). Slots are filled from 0 with no gaps and the first empty name ends the list. Items are grouped in pouch order: weapons, bows, arrows, shields, armor, materials, food, key items. PorchItem_Value1 (s32 array, 420) and PorchItem_EquipFlag (bool array, 420) are parallel arrays indexed by the same slot number. Value1 means: weapon/bow/shield durability x100; arrow, material, food and key-item count; armor dye colour index (0 = default, -1 for armor that cannot be dyed). EquipFlag is 1 for equipped items. Bonus modifiers live in separate arrays indexed by the n-th weapon, n-th bow and n-th shield in pouch order (not by slot). Cooked-dish effects live in CookEffect0/1 indexed by the n-th food item.",
+  "checkedAgainst": "Read-only check of the provided Switch 1.9.0 test saves (rev 0x4730): 138 filled slots, layout as described.",
+  "flags": {
+   "PorchItem": {
+    "type": "string64_array",
+    "length": 420,
+    "notes": "Item actor names; 16 entries per slot.",
+    "inSave": true,
+    "hash": "0x5f283289"
+   },
+   "PorchItem_Value1": {
+    "type": "s32_array",
+    "length": 420,
+    "notes": "Durability x100, count, or dye index (see description).",
+    "inSave": true,
+    "hash": "0x6a09fc59"
+   },
+   "PorchItem_EquipFlag": {
+    "type": "bool_array",
+    "length": 420,
+    "notes": "Equipped flag per slot.",
+    "inSave": true,
+    "hash": "0x824892be"
+   },
+   "PorchSword_FlagSp": {
+    "type": "s32_array",
+    "length": 20,
+    "notes": "Modifier bit flags for the n-th weapon.",
+    "inSave": true,
+    "hash": "0x57ee221d"
+   },
+   "PorchSword_ValueSp": {
+    "type": "s32_array",
+    "length": 20,
+    "notes": "Modifier value for the n-th weapon.",
+    "inSave": true,
+    "hash": "0xa6d926bc"
+   },
+   "PorchBow_FlagSp": {
+    "type": "s32_array",
+    "length": 14,
+    "notes": "Modifier bit flags for the n-th bow.",
+    "inSave": true,
+    "hash": "0x0cbf052a"
+   },
+   "PorchBow_ValueSp": {
+    "type": "s32_array",
+    "length": 14,
+    "notes": "Modifier value for the n-th bow.",
+    "inSave": true,
+    "hash": "0x1e3fd294"
+   },
+   "PorchShield_FlagSp": {
+    "type": "s32_array",
+    "length": 20,
+    "notes": "Modifier bit flags for the n-th shield.",
+    "inSave": true,
+    "hash": "0xc5238d2b"
+   },
+   "PorchShield_ValueSp": {
+    "type": "s32_array",
+    "length": 20,
+    "notes": "Modifier value for the n-th shield.",
+    "inSave": true,
+    "hash": "0x69f17e8a"
+   },
+   "CookEffect0": {
+    "type": "vector2f_array",
+    "length": 60,
+    "notes": "Per food item: x = effect id (-1 none), y = effect level; partly inferred.",
+    "inSave": true,
+    "hash": "0xff95a905"
+   },
+   "CookEffect1": {
+    "type": "vector2f_array",
+    "length": 60,
+    "notes": "Per food item: x appears to be health restored; meaning of fields partly inferred.",
+    "inSave": true,
+    "hash": "0x88929993"
+   },
+   "WeaponPorchStockNum": {
+    "type": "s32",
+    "notes": "Number of weapon slots unlocked.",
+    "inSave": true,
+    "hash": "0x8c270c56"
+   },
+   "BowPorchStockNum": {
+    "type": "s32",
+    "notes": "Number of bow slots unlocked.",
+    "inSave": true,
+    "hash": "0xe7ce4453"
+   },
+   "ShieldPorchStockNum": {
+    "type": "s32",
+    "notes": "Number of shield slots unlocked.",
+    "inSave": true,
+    "hash": "0x2fc0d2ab"
+   },
+   "IsOpenItemCategory": {
+    "type": "bool_array",
+    "length": 7,
+    "notes": "Which pouch tabs have been unlocked.",
+    "inSave": true,
+    "hash": "0xabd3efd8"
+   }
+  },
+  "modifierBits": {
+   "1": "Attack up",
+   "2": "Durability up",
+   "4": "Critical hit up",
+   "8": "Long throw (weapons)",
+   "16": "Five-shot burst (bows)",
+   "32": "Zoom/rapid (bows, unused)",
+   "64": "Quick shot (bows)",
+   "128": "Shield surf up (shields)",
+   "256": "Shield guard up (shields)",
+   "0x80000000": "Set together with a bit to mark the yellow (plus) version"
+  }
+ },
+ "armorUpgrades": {
+  "description": "Armor upgrade level is not a separate flag: each upgrade replaces the item in PorchItem with a different actor name. ActorInfo gives each armor an armorStarNum (1 = base, 5 = four stars) and an armorNextRankName (the actor it becomes after the next Great Fairy upgrade). Upgrade level = armorStarNum - 1. Example: Armor_001_Head (base) -> Armor_002_Head -> Armor_003_Head -> Armor_004_Head -> Armor_015_Head (4 stars).",
+  "source": "MrCheeze/botw-tools ActorInfo.product.xml (armorStarNum, armorNextRankName)",
+  "relatedFlags": [
+   "IsGet_<ArmorActor>",
+   "EquipTime_<ArmorActor>",
+   "PorchTime_<ArmorActor>"
+  ]
+ },
+ "compendium": {
+  "description": "Per compendium entry there are three saved flags keyed by the actor name: IsRegisteredPictureBook_<Actor> (bool, entry registered), IsNewPictureBook_<Actor> (bool, still marked new/unviewed) and PictureBookSize_<Actor> (s32, -1 when no photo is stored). The photos themselves are JPG files named <Actor>.jpg in the pict_book folder next to the save slots, shared by all slots.",
+  "flagPatterns": {
+   "registered": "IsRegisteredPictureBook_{actor}",
+   "isNew": "IsNewPictureBook_{actor}",
+   "photoSize": "PictureBookSize_{actor}"
+  },
+  "entryCount": 394,
+  "example": "IsRegisteredPictureBook_Animal_Deer_A"
+ },
+ "position": {
+  "flag": "PlayerSavePos",
+  "type": "vector3f",
+  "description": "Three consecutive f32 entries (x, y = height, z) in map units; also PlayerSavePosAngleYDegree (f32 facing), PlayerSavePosMapName (string32, e.g. map section like D-6) and PlayerSavePosMapType (string32, e.g. MainField).",
+  "related": [
+   "PlayerSavePosAngleYDegree",
+   "PlayerSavePosMapName",
+   "PlayerSavePosMapType",
+   "Horse_Pos",
+   "Last_Ridden_Horse_Pos"
+  ],
+  "inSave": true
+ },
+ "dlc": {
+  "quests": [
+   {
+    "id": "100enemy",
+    "name": "Trial of the Sword",
+    "flag": "100enemy_Finish",
+    "type": "bool",
+    "dlcPack": 1,
+    "notes": "Trial of the Sword (DLC 1).",
+    "inSave": true
+   },
+   {
+    "id": "BalladOfHeroGerudo",
+    "name": "Champion Urbosa's Song",
+    "flag": "BalladOfHeroGerudo_Finish",
+    "type": "bool",
+    "dlcPack": 2,
+    "notes": "DLC quest.",
+    "inSave": true
+   },
+   {
+    "id": "BalladOfHeroGoron",
+    "name": "Champion Daruk's Song",
+    "flag": "BalladOfHeroGoron_Finish",
+    "type": "bool",
+    "dlcPack": 2,
+    "notes": "DLC quest.",
+    "inSave": true
+   },
+   {
+    "id": "BalladOfHeroRito",
+    "name": "Champion Revali's Song",
+    "flag": "BalladOfHeroRito_Finish",
+    "type": "bool",
+    "dlcPack": 2,
+    "notes": "DLC quest.",
+    "inSave": true
+   },
+   {
+    "id": "BalladOfHeroZora",
+    "name": "Champion Mipha's Song",
+    "flag": "BalladOfHeroZora_Finish",
+    "type": "bool",
+    "dlcPack": 2,
+    "notes": "DLC quest.",
+    "inSave": true
+   },
+   {
+    "id": "BalladOfHeroes",
+    "name": "The Champions' Ballad",
+    "flag": "BalladOfHeroes_Finish",
+    "type": "bool",
+    "dlcPack": 2,
+    "notes": "The Champions' Ballad main quest (DLC 2).",
+    "inSave": true
+   },
+   {
+    "id": "TreasureHunt01",
+    "name": "Strange Mask Rumors",
+    "flag": "TreasureHunt01_Finish",
+    "type": "bool",
+    "dlcPack": 1,
+    "notes": "DLC quest.",
+    "inSave": true
+   },
+   {
+    "id": "TreasureHunt02",
+    "name": "Teleportation Rumors!",
+    "flag": "TreasureHunt02_Finish",
+    "type": "bool",
+    "dlcPack": 1,
+    "notes": "DLC quest.",
+    "inSave": true
+   },
+   {
+    "id": "TreasureHunt03",
+    "name": "Ancient Horse Rumors",
+    "flag": "TreasureHunt03_Finish",
+    "type": "bool",
+    "dlcPack": 2,
+    "notes": "DLC quest.",
+    "inSave": true
+   },
+   {
+    "id": "TreasureHunt04",
+    "name": "Royal Guard Rumors",
+    "flag": "TreasureHunt04_Finish",
+    "type": "bool",
+    "dlcPack": 2,
+    "notes": "DLC quest.",
+    "inSave": true
+   },
+   {
+    "id": "TreasureHunt_touzoku01",
+    "name": "Treasure: Ancient Mask",
+    "flag": "TreasureHunt_touzoku01_Finish",
+    "type": "bool",
+    "dlcPack": 1,
+    "notes": "DLC quest.",
+    "inSave": true
+   },
+   {
+    "id": "TreasureHunt_touzoku02",
+    "name": "Treasure: Twilight Relic",
+    "flag": "TreasureHunt_touzoku02_Finish",
+    "type": "bool",
+    "dlcPack": 1,
+    "notes": "DLC quest.",
+    "inSave": true
+   },
+   {
+    "id": "TreasureHunt_touzoku03",
+    "name": "Treasure: Fairy Clothes",
+    "flag": "TreasureHunt_touzoku03_Finish",
+    "type": "bool",
+    "dlcPack": 1,
+    "notes": "DLC quest.",
+    "inSave": true
+   },
+   {
+    "id": "TreasureHunt_touzoku04",
+    "name": "Treasure: Phantasma",
+    "flag": "TreasureHunt_touzoku04_Finish",
+    "type": "bool",
+    "dlcPack": 1,
+    "notes": "DLC quest.",
+    "inSave": true
+   },
+   {
+    "id": "TreasureHunt_touzoku05",
+    "name": "Treasure: Merchant Hood",
+    "flag": "TreasureHunt_touzoku05_Finish",
+    "type": "bool",
+    "dlcPack": 2,
+    "notes": "DLC quest.",
+    "inSave": true
+   },
+   {
+    "id": "TreasureHunt_touzoku06",
+    "name": "Treasure: Garb of Winds",
+    "flag": "TreasureHunt_touzoku06_Finish",
+    "type": "bool",
+    "dlcPack": 2,
+    "notes": "DLC quest.",
+    "inSave": true
+   },
+   {
+    "id": "TreasureHunt_touzoku07",
+    "name": "Treasure: Usurper King",
+    "flag": "TreasureHunt_touzoku07_Finish",
+    "type": "bool",
+    "dlcPack": 2,
+    "notes": "DLC quest.",
+    "inSave": true
+   },
+   {
+    "id": "TreasureHunt_touzoku08",
+    "name": "Treasure: Dark Armor",
+    "flag": "TreasureHunt_touzoku08_Finish",
+    "type": "bool",
+    "dlcPack": 2,
+    "notes": "DLC quest.",
+    "inSave": true
+   }
+  ],
+  "flags": [
+   {
+    "flag": "AoC_HardMode_Enabled",
+    "type": "bool",
+    "notes": "Master Mode save; stored in caption.sav, not game_data.sav.",
+    "inSave": true,
+    "saveFile": "caption.sav"
+   },
+   {
+    "flag": "IsGet_Obj_Motorcycle",
+    "type": "bool",
+    "notes": "Master Cycle Zero obtained (editor uses this).",
+    "inSave": true
+   },
+   {
+    "flag": "Motorcycle_Energy",
+    "type": "f32",
+    "notes": "Master Cycle Zero fuel.",
+    "inSave": true
+   },
+   {
+    "flag": "IsGet_Obj_WarpDLC",
+    "type": "bool",
+    "notes": "Travel Medallion obtained.",
+    "inSave": true
+   },
+   {
+    "flag": "WarpDLC_DestPos",
+    "type": "vector3f",
+    "notes": "Where the Travel Medallion is placed.",
+    "inSave": true
+   },
+   {
+    "flag": "MasterSword_Add_Power",
+    "type": "s32",
+    "notes": "Master Sword attack bonus from the Trial of the Sword (max 30).",
+    "inSave": true
+   },
+   {
+    "flag": "AoCVerAtLastPlay",
+    "type": "s32",
+    "notes": "DLC version the save was last played with.",
+    "inSave": true
+   },
+   {
+    "flag": "IsGet_Obj_DLC_HeroSoul_Zora",
+    "type": "bool",
+    "notes": "Upgraded champion ability from the ballad (one per race).",
+    "inSave": true
+   }
+  ]
+ }
+}

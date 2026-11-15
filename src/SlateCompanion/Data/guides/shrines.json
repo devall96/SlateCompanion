@@ -1,0 +1,2000 @@
+{
+ "meta": {
+  "source": "Shrine list, trial names, locations and treasure from zelda.fandom.com (facts); solutions written in our own words from those pages.",
+  "counts": {
+   "base": 120,
+   "dlc": 16
+  }
+ },
+ "shrines": [
+  {
+   "name": "Dah Hesho Shrine",
+   "region": "Akkala",
+   "area": "Akkala Highlands",
+   "location": "Akkala Highlands",
+   "trialName": "A Minor Test of Strength",
+   "trial": "Test of Strength (minor)",
+   "solution": "Defeat the Guardian Scout II; the pillars can be broken by bombs or its spin attack. The gate then opens to the monk and the chest.",
+   "chests": 1,
+   "treasure": [
+    "Giant Ancient Core"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Kah Mael Shrine",
+   "region": "Akkala",
+   "area": "Akkala Highlands",
+   "location": "Tingel Island",
+   "trialName": "Drop and Rise",
+   "trial": "Magnesis puzzle",
+   "solution": "Stand on the low end of the big seesaw and use Magnesis to drop the barrel or the metal box onto the high end so you get flung upward, then glide to the monk. While airborne you can instead glide right to a ledge with the chest.",
+   "chests": 1,
+   "treasure": [
+    "Diamond"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Ke'nai Shakah Shrine",
+   "region": "Akkala",
+   "area": "Akkala Highlands",
+   "location": "Ulria Grotto",
+   "trialName": "A Modest Test of Strength",
+   "trial": "Test of Strength (modest)",
+   "solution": "Blow open the cracked rocks in Ulria Grotto (Bomb Arrows while gliding work) to find the entrance. Defeat the Guardian Scout III and the gate to the monk opens; the chest is behind it.",
+   "chests": 1,
+   "treasure": [
+    "Sapphire"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Ritaag Zumo Shrine",
+   "region": "Akkala",
+   "area": "Akkala Highlands",
+   "location": "Rist Peninsula",
+   "trialName": "Ritaag Zumo's Blessing",
+   "trial": "Blessing",
+   "solution": "Carry the nearby Ancient Orb to the pedestal at the centre of Rist Peninsula to raise the shrine.",
+   "chests": 1,
+   "quest": "Into the Vortex",
+   "treasure": [
+    "Giant Ancient Core"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Tutsuwa Nima Shrine",
+   "region": "Akkala",
+   "area": "Akkala Highlands",
+   "location": "Spring of Power",
+   "trialName": "A Major Test of Strength",
+   "trial": "Test of Strength (major)",
+   "solution": "Offer Dinraal's scale at the Spring of Power to open the shrine, then beat the Guardian Scout IV. The shallow water lets you use Cryonis and electricity against it.",
+   "chests": 1,
+   "quest": "The Spring of Power",
+   "treasure": [
+    "Flamespear"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Ze Kasho Shrine",
+   "region": "Akkala",
+   "area": "Akkala Highlands",
+   "location": "South Akkala Stable",
+   "trialName": "Ze Kasho Apparatus",
+   "trial": "Motion control puzzle",
+   "solution": "Tilt the spiked platform until the spikes slide apart into a path, then hit the Shock Switch (re-hitting it from range) so the flipping panels block the lasers as you cross. In the last room, tilt the maze so all three orbs sit on their switches together. For the chest, ride the rotating platform up and glide to the ledge right of the exit door.",
+   "chests": 1,
+   "treasure": [
+    "Silverscale Spear"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Tu Ka'loh Shrine",
+   "region": "Akkala",
+   "area": "Akkala Sea",
+   "location": "Lomei Labyrinth Island",
+   "trialName": "Tu Ka'loh's Blessing",
+   "trial": "Blessing",
+   "solution": "Find your way through the Lomei Labyrinth Island maze, then follow the spiral path up to the shrine.",
+   "chests": 1,
+   "quest": "Trial of the Labyrinth",
+   "treasure": [
+    "Barbarian Helm"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Katosa Aug Shrine",
+   "region": "Akkala",
+   "area": "Deep Akkala",
+   "location": "East Akkala Stable",
+   "trialName": "Katosa Aug Apparatus",
+   "trial": "Motion control puzzle",
+   "solution": "Tilt the hammer with motion control to knock the launched Ancient Orb into the slot across the room; the moving platform then carries you to the monk. Behind the monk, repeat with an angled shot to reach the chest.",
+   "chests": 1,
+   "treasure": [
+    "Great Frostblade"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Zuna Kai Shrine",
+   "region": "Akkala",
+   "area": "Deep Akkala",
+   "location": "Skull Lake",
+   "trialName": "Zuna Kai's Blessing",
+   "trial": "Blessing",
+   "solution": "Reach the top of the spire on the eastern island of Skull Lake (the skull's left eye).",
+   "chests": 1,
+   "quest": "The Skull's Eye",
+   "treasure": [
+    "Flameblade"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Etsu Korima Shrine",
+   "region": "Central Hyrule",
+   "area": "Great Plateau",
+   "location": "Mount Hylia",
+   "trialName": "Path of Light",
+   "trial": "Darkness gauntlet (DLC)",
+   "solution": "Follow the torches and glowing walls past the lasers, spinning spike columns and fire jets, beat the three Guardian Scouts, then climb the stairs. Burn the vines under the wooden platform in the spike-column room to drop the chest.",
+   "chests": 1,
+   "treasure": [
+    "Gold Rupee"
+   ],
+   "dlc": "The Champions' Ballad"
+  },
+  {
+   "name": "Ja Baij Shrine",
+   "region": "Central Hyrule",
+   "area": "Great Plateau",
+   "location": "Eastern Abbey",
+   "trialName": "Bomb Trial",
+   "trial": "Remote Bomb puzzle",
+   "solution": "Take the Remote Bomb rune and bomb the cracked walls. Ride the moving platform with a cube bomb on it and detonate it at the far walls, then send a bomb along the right-hand launcher in the last room to clear the way to the monk. One chest is behind a bombable wall to the right of the first hallway; the other is reached by riding the left launcher in the last room.",
+   "chests": 2,
+   "treasure": [
+    "Traveler's Claymore",
+    "Amber"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Keh Namut Shrine",
+   "region": "Central Hyrule",
+   "area": "Great Plateau",
+   "location": "Mount Hylia",
+   "trialName": "Cryonis Trial",
+   "trial": "Cryonis puzzle",
+   "solution": "Collect Cryonis, climb an ice pillar to the ledge, and raise the portcullis with a pillar beneath it. Past the Guardian Scout, push up one end of the balanced slab with ice to make a ramp to the monk; an ice block also reaches the chest ledge near the Scout.",
+   "chests": 1,
+   "treasure": [
+    "Traveler's Spear"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Oman Au Shrine",
+   "region": "Central Hyrule",
+   "area": "Great Plateau",
+   "location": "Great Plateau",
+   "trialName": "Magnesis Trial",
+   "trial": "Magnesis puzzle",
+   "solution": "Get Magnesis from the pedestal, lift the floor slabs to find the ladder, and pull the metal cube out to topple the block wall. Beat the Guardian Scout, swing a metal slab to bridge the last platforms, and pull open the metal doors. Lower the chest from the ledge above with Magnesis.",
+   "chests": 1,
+   "treasure": [
+    "Traveler's Bow"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Owa Daim Shrine",
+   "region": "Central Hyrule",
+   "area": "Great Plateau",
+   "location": "Great Plateau",
+   "trialName": "Stasis Trial",
+   "trial": "Stasis puzzle",
+   "solution": "Freeze the spinning gear to cross on the slab, freeze the rolling boulder to walk up the ramp, then freeze the last boulder, whack it with the sledgehammer and let it fly out of the way. The chest sits behind where the boulder drops; reach it while the boulder is frozen.",
+   "chests": 1,
+   "treasure": [
+    "Traveler's Shield"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Rohta Chigah Shrine",
+   "region": "Central Hyrule",
+   "area": "Great Plateau",
+   "location": "Great Plateau",
+   "trialName": "Stop to Start",
+   "trial": "Stasis / Magnesis gauntlet",
+   "solution": "Lay a metal path over the floor spikes with Magnesis, then freeze the second gear and the second conveyor belt with Stasis. Glide past the swinging spiked balls, step on the floor switch and outrun the advancing spike wall, climbing a launcher at the end to glide to the monk. The chest sits right of the first spike floor; reach it with Magnesis.",
+   "chests": 1,
+   "treasure": [
+    "Forest Dweller's Shield"
+   ],
+   "dlc": "The Champions' Ballad"
+  },
+  {
+   "name": "Ruvo Korbah Shrine",
+   "region": "Central Hyrule",
+   "area": "Great Plateau",
+   "location": "Great Plateau",
+   "trialName": "A Major Test of Strength+",
+   "trial": "Test of Strength (major+)",
+   "solution": "Beat the Guardian Scout IV, then stand on the back room's floor switch to lower the arena platform. Fight through the Scouts below, use the Small Key on the portcullis, and defeat the final four Scouts to open the way to the monk.",
+   "chests": 3,
+   "treasure": [
+    "Bomb Arrow ×10",
+    "Giant Ancient Core",
+    "Small Key"
+   ],
+   "dlc": "The Champions' Ballad"
+  },
+  {
+   "name": "Yowaka Ita Shrine",
+   "region": "Central Hyrule",
+   "area": "Great Plateau",
+   "location": "Forest of Spirits",
+   "trialName": "Collected Soul",
+   "trial": "Magnesis puzzle",
+   "solution": "Grab the metal bowl with Magnesis and use it to catch the rolling orbs. Drop the small orb in the slot by the entrance to open the monk's gate; the large orb's slot opens a side room with a chest, and a second chest can be caught with the bowl.",
+   "chests": 2,
+   "treasure": [
+    "Bomb Arrow ×5",
+    "Phrenic Bow"
+   ],
+   "dlc": "The Champions' Ballad"
+  },
+  {
+   "name": "Bosh Kala Shrine",
+   "region": "Central Hyrule",
+   "area": "Hyrule Field",
+   "location": "Hyrule Field",
+   "trialName": "The Wind Guides You",
+   "trial": "Wind / fan puzzle",
+   "solution": "Open the paraglider in front of each fan and ride the gusts to the monk's ledge at the far end. Glide from the left-hand fan to a chest near the entrance, and drop from the monk's platform to a second chest across from it.",
+   "chests": 2,
+   "treasure": [
+    "Amber",
+    "Soldier's Claymore"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Dah Kaso Shrine",
+   "region": "Central Hyrule",
+   "area": "Hyrule Field",
+   "location": "Digdogg Suspension Bridge",
+   "trialName": "A Minor Test of Strength",
+   "trial": "Test of Strength (minor)",
+   "solution": "Defeat the Guardian Scout II to open the gate to the monk; the chest is behind the same gate.",
+   "chests": 1,
+   "treasure": [
+    "Ancient Core"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Kaam Ya'tak Shrine",
+   "region": "Central Hyrule",
+   "area": "Hyrule Field",
+   "location": "Hyrule Field",
+   "trialName": "Trial of Power",
+   "trial": "Stasis / boulder puzzle",
+   "solution": "Smash each stone door with a boulder: swing the first via Magnesis or Stasis, burn wooden supports to release others, use the hammer and Stasis to freeze tilting floors. At the end, stand on the Launcher and hit the Shock Switch to fly up to the monk.",
+   "chests": 5,
+   "treasure": [
+    "Edge of Duality",
+    "Knight's Broadsword",
+    "Ancient Core",
+    "Silver Rupee",
+    "Diamond"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Katah Chuki Shrine",
+   "region": "Central Hyrule",
+   "area": "Hyrule Field",
+   "location": "Quarry Ruins",
+   "trialName": "A Minor Test of Strength",
+   "trial": "Test of Strength (minor)",
+   "solution": "Defeat the Guardian Scout II that rises in the arena to open the gate to the monk and the chest.",
+   "chests": 1,
+   "treasure": [
+    "Royal Halberd"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Monya Toma Shrine",
+   "region": "Central Hyrule",
+   "area": "Hyrule Field",
+   "location": "Salari Hill",
+   "trialName": "Drawing Parabolas",
+   "trial": "Launcher puzzle",
+   "solution": "Smash the wooden boxes in front of the second launcher and use the Shock Switch to aim the third, then set the orb on the first launcher so it bounces through the chain into the slot. Turn the chest toward the second launcher with the switch and launch yourself to it.",
+   "chests": 1,
+   "treasure": [
+    "Thunderblade"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Namika Ozz Shrine",
+   "region": "Central Hyrule",
+   "area": "Hyrule Field",
+   "location": "Crenel Hills",
+   "trialName": "A Modest Test of Strength",
+   "trial": "Test of Strength (modest)",
+   "solution": "Defeat the Guardian Scout III to open the gate to the monk; the chest is behind the same gate.",
+   "chests": 1,
+   "treasure": [
+    "Frostspear"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Noya Neha Shrine",
+   "region": "Central Hyrule",
+   "area": "Hyrule Field",
+   "location": "Hyrule Castle West",
+   "trialName": "A Minor Test of Strength",
+   "trial": "Test of Strength (minor)",
+   "solution": "Burn away the thorns at the cave entrance, then defeat the Guardian Scout II to open the portcullis to the monk.",
+   "chests": 1,
+   "treasure": [
+    "Knight's Shield"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Rota Ooh Shrine",
+   "region": "Central Hyrule",
+   "area": "Hyrule Field",
+   "location": "Outskirt Stable",
+   "trialName": "Passing of the Gates",
+   "trial": "Electricity puzzle",
+   "treasure": [
+    "Feathered Edge"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Saas Ko'sah Shrine",
+   "region": "Central Hyrule",
+   "area": "Hyrule Field",
+   "location": "Docks",
+   "trialName": "A Major Test of Strength",
+   "trial": "Test of Strength (major)",
+   "solution": "Beat the Guardian Scout IV; the room has no pillars, so lift the floor metal blocks with Magnesis for cover. The chest is behind the gate that opens.",
+   "chests": 1,
+   "treasure": [
+    "Flameblade"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Wahgo Katta Shrine",
+   "region": "Central Hyrule",
+   "area": "Hyrule Field",
+   "location": "Riverside Stable",
+   "trialName": "Metal Connections",
+   "trial": "Magnesis puzzle",
+   "solution": "Stack the metal blocks under the ledge holding the metal slab and climb up to it. Then stack the blocks under the monk's ledge and drop the slab onto its edge as a ramp to climb. The chest is on top of the platform the blocks lean against.",
+   "chests": 1,
+   "treasure": [
+    "Amber"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Zalta Wa Shrine",
+   "region": "Central Hyrule",
+   "area": "Hyrule Field",
+   "location": "Breach of Demise",
+   "trialName": "Two Orbs to Guide You",
+   "trial": "Ancient Orb / launcher puzzle",
+   "solution": "Shoot the balanced orb into its slot to free a second orb, then hold the floor switch and throw that orb into the small room to set the upper structure moving. Stand on the Launcher, hit the Shock Switch to fly into the structure, and follow it up to the monk.",
+   "chests": 1,
+   "treasure": [
+    "Knight's Bow"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Mijah Rokee Shrine",
+   "region": "Central Hyrule",
+   "area": "Hyrule Ridge",
+   "location": "Washa's Bluff",
+   "trialName": "A Modest Test of Strength",
+   "trial": "Test of Strength (modest)",
+   "solution": "Stand on the pedestal at Washa's Bluff wearing no armor during a Blood Moon to raise the shrine, then defeat the Guardian Scout III inside.",
+   "chests": 1,
+   "quest": "Under a Red Moon",
+   "treasure": [
+    "Frostblade"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Maag No'rah Shrine",
+   "region": "Central Hyrule",
+   "area": "Hyrule Ridge",
+   "location": "Upland Lindor",
+   "trialName": "Maag No'rah's Blessing",
+   "trial": "Blessing",
+   "solution": "Blow up the cracked rock hiding a cave in the Upland Lindor cliff face, south of the Bokoblin camp.",
+   "chests": 1,
+   "treasure": [
+    "Silver Rupee"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Mogg Latan Shrine",
+   "region": "Central Hyrule",
+   "area": "Hyrule Ridge",
+   "location": "Satori Mountain",
+   "trialName": "Synced Swing",
+   "trial": "Magnesis puzzle",
+   "solution": "Ride the swinging platforms (pull the still one with Magnesis to set it moving), shoot the ropes to drop the bridge, and get past the hanging spiked balls. Ride the rail platform, arrange the rail platforms into stairs, then burn the leaves on the door (fire arrow, flint or the lantern) and pull the doors open with Magnesis. Chests: right side of the fourth platform, behind the last spiked ball, and behind the staircase platforms.",
+   "chests": 3,
+   "treasure": [
+    "Forest Dweller's Spear",
+    "Forest Dweller's Bow",
+    "Gold Rupee"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Shae Loya Shrine",
+   "region": "Central Hyrule",
+   "area": "Hyrule Ridge",
+   "location": "Tabantha Bridge Stable",
+   "trialName": "Aim for the Moment",
+   "trial": "Stasis / archery puzzle",
+   "solution": "Freeze the big orb mid-air with Stasis and shoot it so it drops into the slot, starting a second Launcher. Ride that Launcher up and shoot the hidden Shock Switch to open the monk's portcullis; shoot the ropes above the entrance to drop one chest.",
+   "chests": 2,
+   "treasure": [
+    "Falcon Bow",
+    "Topaz"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Shira Gomar Shrine",
+   "region": "Central Hyrule",
+   "area": "Hyrule Ridge",
+   "location": "Hyrule Ridge",
+   "trialName": "Aim for Stillness",
+   "trial": "Wind / fan puzzle",
+   "solution": "Glide across on the fans, sending Remote Bombs along the air currents (or using Bomb Arrows) to break each blocking wall. Freeze the Wind Switch with Stasis so the gate stays up while you glide past the spinning gear. A chest sits on a platform near the gear.",
+   "chests": 1,
+   "treasure": [
+    "Bomb Arrow ×10"
+   ],
+   "dlc": "The Champions' Ballad"
+  },
+  {
+   "name": "Toh Yahsa Shrine",
+   "region": "Central Hyrule",
+   "area": "Hyrule Ridge",
+   "location": "Thundra Plateau",
+   "trialName": "Buried Secrets",
+   "trial": "Remote Bomb puzzle",
+   "solution": "Bomb the block pile to uncover a metal box, then use it with Magnesis to climb across and finally to hold down the big floor switch under the second ladder, which opens the gate. Knock the chest off the ledge right of the entrance with the box, and bomb the wall under the entry platform for the second.",
+   "chests": 2,
+   "quest": "Trial of Thunder",
+   "treasure": [
+    "Rubber Armor",
+    "Opal"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Daqa Koh Shrine",
+   "region": "Eldin",
+   "area": "Eldin Canyon",
+   "location": "Eldin Canyon",
+   "trialName": "Stalled Flight",
+   "trial": "Stasis puzzle",
+   "solution": "Stand on the big launched block and freeze it with Stasis at the moment the generator touches the ceiling connector, then glide into the opened cell. The chest is on a platform in a corner you can glide to from the raised block.",
+   "chests": 1,
+   "treasure": [
+    "Silver Rupee"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Gorae Torr Shrine",
+   "region": "Eldin",
+   "area": "Eldin Canyon",
+   "location": "Gut Check Rock",
+   "trialName": "Gorae Torr's Blessing",
+   "trial": "Blessing",
+   "solution": "Finish the Gut Check Rock climb, grabbing at least 100 rupees within three minutes, so Bayge steps aside.",
+   "chests": 1,
+   "quest": "The Gut Check Challenge",
+   "treasure": [
+    "Great Frostblade"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Kamia Omuna Shrine",
+   "region": "Eldin",
+   "area": "Eldin Canyon",
+   "location": "Lake Darman",
+   "trialName": "Moving Targets",
+   "trial": "Remote Bomb puzzle",
+   "solution": "Load a Remote Bomb into each cannon, aim it with the Shock Switch, and detonate to fire an orb at the glowing targets. Tilt the second target's frame with the motion control pedestal to get a clear shot. Shoot down the chest by the first cannon and pull it out with Magnesis.",
+   "chests": 1,
+   "treasure": [
+    "Diamond"
+   ],
+   "dlc": "The Champions' Ballad"
+  },
+  {
+   "name": "Kayra Mah Shrine",
+   "region": "Eldin",
+   "area": "Eldin Canyon",
+   "location": "Gorko Tunnel",
+   "trialName": "Greedy Hill",
+   "trial": "Rolling hazard gauntlet",
+   "solution": "Climb the slope while dodging or freezing the iron balls and spiked boulders, ignoring the rupee bait until every trap has rolled; then walk to the top. Both chests along the walls are reached by gliding from higher up.",
+   "chests": 2,
+   "quest": "A Brother's Roast",
+   "treasure": [
+    "Ruby",
+    "Bomb Arrow ×5"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Mirro Shaz Shrine",
+   "region": "Eldin",
+   "area": "Eldin Canyon",
+   "location": "Pico Pond",
+   "trialName": "Tempered Power",
+   "trial": "Stasis puzzle",
+   "solution": "Freeze the orb with Stasis, line up behind it and hit it five times with the sledgehammer so it lands in the slot. Then freeze the block on the rail and hit it upward to tip the slab into a ramp to the monk. For the optional last chest, repeat the orb shot with five sledgehammer hits plus one hit from a smaller weapon.",
+   "chests": 3,
+   "treasure": [
+    "Giant Ancient Core",
+    "Iron Sledgehammer ×2"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Mo'a Keet Shrine",
+   "region": "Eldin",
+   "area": "Eldin Canyon",
+   "location": "Eldin Canyon",
+   "trialName": "Metal Makes a Path",
+   "trial": "Stasis / Magnesis puzzle",
+   "solution": "Freeze the rolling boulder with Stasis to get up the first ramp. On the second floor, carry the Iron Ball with Magnesis to shove aside the boulders on the left ramp, which leads to the monk.",
+   "chests": 2,
+   "treasure": [
+    "Knight's Broadsword",
+    "Ruby"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Qua Raym Shrine",
+   "region": "Eldin",
+   "area": "Eldin Canyon",
+   "location": "Goronbi Lake",
+   "trialName": "A Balanced Approach",
+   "trial": "Magnesis / scales puzzle",
+   "solution": "Burn the crate off the left scale, take the key from the chest that drops, and free the three steel blocks. Raise a Remote Bomb on a scale to blast the blocks below the monk, then spread the steel blocks across the scales so one lifts you up without hitting the spikes.",
+   "treasure": [
+    "Knight's Claymore"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Rinu Honika Shrine",
+   "region": "Eldin",
+   "area": "Eldin Canyon",
+   "location": "Eldin Canyon",
+   "trialName": "Block the Blaze",
+   "trial": "Fire / Magnesis puzzle (DLC)",
+   "solution": "Bomb or Magnesis away the fire-spewing columns and use the steel blocks to shield the flames, stacking two to slip through the fiery gate. At the end, tilt the platform with the gyro control and glide to the monk. A steel block also bridges the lava to the chest.",
+   "chests": 1,
+   "treasure": [
+    "Stone Smasher"
+   ],
+   "dlc": "The Champions' Ballad"
+  },
+  {
+   "name": "Sah Dahaj Shrine",
+   "region": "Eldin",
+   "area": "Eldin Canyon",
+   "location": "Eldin Canyon",
+   "trialName": "Power of Fire",
+   "trial": "Fire / torch puzzle",
+   "solution": "Knock the fallen torch into the vines to burn open a passage, then cut the hanging lamp's cable to burn the next vines. Ignite the vines leading to the crates holding the slab so it drops on the floor switch and opens the door. Burn the vines under the hanging chest to drop it.",
+   "chests": 1,
+   "treasure": [
+    "Knight's Bow"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Shae Mo'sah Shrine",
+   "region": "Eldin",
+   "area": "Eldin Canyon",
+   "location": "Goron City",
+   "trialName": "Swinging Flames",
+   "trial": "Fire / lamp puzzle",
+   "solution": "Drop or swing lamps to burn vines, freeing stone barrels to weigh down floor switches and an Iron Ball to turn a wheel. Grab the Small Key, open the door left of the first ramp, and use a barrel (or Stasis) on the last switch to reach the monk.",
+   "chests": 4,
+   "treasure": [
+    "Ruby",
+    "Stone Smasher",
+    "Ice Arrow ×10"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Sharo Lun Shrine",
+   "region": "Eldin",
+   "area": "Eldin Canyon",
+   "location": "Eldin Canyon",
+   "trialName": "Blind Spots",
+   "trial": "Conveyor / Cryonis puzzle",
+   "solution": "Ride the hanging blocks along the conveyor tracks, clinging to their sides to dodge fire and spikes. Use Cryonis to climb the waterfalls to the monk; catch the falling chest at the first waterfall with an ice block.",
+   "chests": 1,
+   "treasure": [
+    "Great Flameblade"
+   ],
+   "dlc": "The Champions' Ballad"
+  },
+  {
+   "name": "Shora Hah Shrine",
+   "region": "Eldin",
+   "area": "Eldin Canyon",
+   "location": "Isle of Rabac",
+   "trialName": "Blue Flame",
+   "trial": "Blue flame puzzle",
+   "solution": "Carry blue flame from lit pedestals to unlit ones using wooden weapons, torches or fire arrows, freezing water spouts with Stasis and moving metal blocks with Magnesis as needed. Finish by spin-attacking with a lit weapon to light the seven pedestals at once and open the last door.",
+   "chests": 6,
+   "treasure": [
+    "Silver Rupee",
+    "Great Flameblade",
+    "Giant Ancient Core",
+    "Forest Dweller's Sword",
+    "Royal Bow",
+    "Ice Arrow x10"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Tah Muhl Shrine",
+   "region": "Eldin",
+   "area": "Eldin Canyon",
+   "location": "Trilby Valley",
+   "trialName": "Passing the Flame",
+   "trial": "Fire / torch puzzle",
+   "solution": "Carry fire from the torches (wooden weapon or arrow) to burn the vines and crates into the next room. Burn the crates holding up the ramp to lower it to the monk. The chests in this room are freed by burning vines and crates; one holds a key you float over the bars with Magnesis to open the locked cell.",
+   "chests": 4,
+   "quest": "A Landscape of a Stable",
+   "treasure": [
+    "Cobble Crusher",
+    "Ruby",
+    "Opal"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Daag Chokah Shrine",
+   "region": "Eldin",
+   "area": "Great Hyrule Forest",
+   "location": "Great Hyrule Forest",
+   "trialName": "Daag Chokah's Blessing",
+   "trial": "Blessing",
+   "solution": "Follow Oaki from the Korok Forest to the shrine without letting him spot you.",
+   "chests": 1,
+   "quest": "The Lost Pilgrimage",
+   "treasure": [
+    "Ancient Core"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Keo Ruug Shrine",
+   "region": "Eldin",
+   "area": "Great Hyrule Forest",
+   "location": "Korok Forest",
+   "trialName": "Fateful Stars",
+   "trial": "Ball / riddle puzzle",
+   "solution": "Count how often each constellation appears on the mural, then drop orbs into the holes whose number of blue lights matches. A second mural behind the wall gives the order for the chest's gate.",
+   "chests": 1,
+   "treasure": [
+    "Knight's Claymore"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Ketoh Wawai Shrine",
+   "region": "Eldin",
+   "area": "Great Hyrule Forest",
+   "location": "Thyphlo Ruins",
+   "trialName": "Ketoh Wawai's Blessing",
+   "trial": "Blessing",
+   "solution": "Follow the bird-shaped torches through the dark Thyphlo Ruins to a Blue Hinox, take the orb from its neck and set it in the nearby pedestal.",
+   "chests": 1,
+   "quest": "Shrouded Shrine",
+   "treasure": [
+    "Ancient Core"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Kuhn Sidajj Shrine",
+   "region": "Eldin",
+   "area": "Great Hyrule Forest",
+   "location": "Lake Saria",
+   "trialName": "Kuhn Sidajj's Blessing",
+   "trial": "Blessing",
+   "solution": "Follow the trail of Ogre Trees holding metal boulders through the Lost Woods, feed a Rusty Shield to one to get the chest from its partner, and return that chest to the Ogre Tree on the island in Lake Saria.",
+   "chests": 1,
+   "quest": "Trial of Second Sight",
+   "treasure": [
+    "Giant Ancient Core"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Maag Halan Shrine",
+   "region": "Eldin",
+   "area": "Great Hyrule Forest",
+   "location": "Mido Swamp",
+   "trialName": "Maag Halan's Blessing",
+   "trial": "Blessing",
+   "solution": "Walk Damia's path using only the Forest Dweller's sword, shield and bow without any of them burning or breaking.",
+   "chests": 1,
+   "quest": "The Test of Wood",
+   "treasure": [
+    "Giant Ancient Core"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Ka'o Makagh Shrine",
+   "region": "Faron",
+   "area": "Faron Grasslands",
+   "location": "Highland Stable",
+   "trialName": "Metal Doors Open the Way",
+   "trial": "Magnesis puzzle",
+   "solution": "Open the metal doors with Magnesis, bomb the blocks holding the loose door, then carry that door around as a bridge between the platforms to reach the monk. Use Magnesis to spot a fake wall block hiding a chest.",
+   "chests": 3,
+   "treasure": [
+    "Opal",
+    "Traveler's Bow",
+    "Gold Rupee"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Pumaag Nitae Shrine",
+   "region": "Faron",
+   "area": "Faron Grasslands",
+   "location": "Faron Grasslands",
+   "trialName": "A Minor Test of Strength",
+   "trial": "Test of Strength (minor)",
+   "solution": "Defeat the Guardian Scout II to raise the gate; the chest is behind it.",
+   "chests": 1,
+   "treasure": [
+    "Boomerang"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Shae Katha Shrine",
+   "region": "Faron",
+   "area": "Faron Grasslands",
+   "location": "Spring of Courage",
+   "trialName": "Shae Katha's Blessing",
+   "trial": "Blessing",
+   "solution": "Hit Farosh to get one of its scales and drop it into the Spring of Courage to open the wall behind the Goddess Statue.",
+   "chests": 1,
+   "quest": "The Serpent's Jaws",
+   "treasure": [
+    "Thunderspear"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Shoqa Tatone Shrine",
+   "region": "Faron",
+   "area": "Faron Grasslands",
+   "location": "Puffer Beach",
+   "trialName": "A Modest Test of Strength",
+   "trial": "Test of Strength (modest)",
+   "solution": "Photograph a Guardian Skywatcher, Scout and Stalker for Loone, take her orb and set it in the pedestal, then defeat the Guardian Scout III inside.",
+   "chests": 1,
+   "quest": "Guardian Slideshow",
+   "treasure": [
+    "Royal Broadsword"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Ya Naga Shrine",
+   "region": "Faron",
+   "area": "Lake Hylia",
+   "location": "Hylia Island",
+   "trialName": "Shatter the Heavens",
+   "trial": "Remote Bomb puzzle",
+   "solution": "Blast a bomb under the stone cube to fling it up the rail and break the cracked ceiling (Stasis or Bomb Arrows help). Then ride the launched cube up to the monk's floor.",
+   "chests": 1,
+   "treasure": [
+    "Eightfold Blade"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Dako Tah Shrine",
+   "region": "Gerudo",
+   "area": "Gerudo Desert",
+   "location": "Great Cliffs",
+   "trialName": "Electric Path",
+   "trial": "Electricity puzzle",
+   "solution": "Use Magnesis to set the metal cube where it powers each switch, riding the platforms it activates, then place it in the round slot and ride the last platform, pushing the big cube aside. Chests hide on the rising platform, the upper room, under the shortcut lift and behind the big cube.",
+   "chests": 4,
+   "quest": "The Eye of the Sandstorm",
+   "treasure": [
+    "Moonlight Scimitar",
+    "Ancient Core",
+    "Silver Rupee",
+    "Radiant Shield"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Daqo Chisay Shrine",
+   "region": "Gerudo",
+   "area": "Gerudo Desert",
+   "location": "Gerudo Town",
+   "trialName": "The Whole Picture",
+   "trial": "Electricity puzzle",
+   "solution": "Use Magnesis to bridge gaps in the floor wiring with the metal barrels, cubes and the chest, carrying power to the switches that open each door. Finish by putting both big cubes on either side of the platform before the last room to power the final door.",
+   "chests": 1,
+   "treasure": [
+    "Thunderblade"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Hawa Koth Shrine",
+   "region": "Gerudo",
+   "area": "Gerudo Desert",
+   "location": "Gerudo Great Skeleton",
+   "trialName": "The Current Solution",
+   "trial": "Electricity puzzle",
+   "solution": "Use Magnesis to bridge current with metal cubes and the chained charged ball, then carry the charged ball across the walkway without touching its switches. In the last room, line up the cube switches to free the gear, and slot the gear into the wall to open the monk's door.",
+   "chests": 3,
+   "treasure": [
+    "Ancient Core",
+    "Gold Rupee",
+    "Sapphire"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Keive Tala Shrine",
+   "region": "Gerudo",
+   "area": "Gerudo Desert",
+   "location": "East Barrens",
+   "trialName": "Big or Small",
+   "trial": "Electricity puzzle",
+   "solution": "Use Magnesis to place the three metal crates in the gaps of the wall circuit to open the gate. Lining up four platforms with the motion control pedestal completes the circuit further and opens the chest room.",
+   "chests": 1,
+   "treasure": [
+    "Radiant Shield"
+   ],
+   "dlc": "The Champions' Ballad"
+  },
+  {
+   "name": "Kema Zoos Shrine",
+   "region": "Gerudo",
+   "area": "Gerudo Desert",
+   "location": "West Barrens",
+   "trialName": "A Delayed Puzzle",
+   "trial": "Electricity puzzle",
+   "solution": "Stop the charged ball with Stasis (then knock it off course with an arrow, or freeze it in a launcher), and drag it with Magnesis next to the switch right of the monk's gate. Placing it by the hidden switch on the left opens the chest.",
+   "chests": 1,
+   "quest": "The Silent Swordswomen",
+   "treasure": [
+    "Moonlight Scimitar"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Korsh O'hu Shrine",
+   "region": "Gerudo",
+   "area": "Gerudo Desert",
+   "location": "East Gerudo Ruins",
+   "trialName": "Korsh O'hu's Blessing",
+   "trial": "Blessing",
+   "solution": "Find the marked spheres in the East Gerudo Ruins and place each one in front of the Heroine statue with the matching symbol.",
+   "chests": 1,
+   "quest": "The Seven Heroines",
+   "treasure": [
+    "Flamespear"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Misae Suma Shrine",
+   "region": "Gerudo",
+   "area": "Gerudo Desert",
+   "location": "East Barrens",
+   "trialName": "Misae Suma's Blessing",
+   "trial": "Blessing",
+   "solution": "Fetch ice from the Northern Icehouse for Furosa's drink, then tell Pokki so she leaves the shrine terminal.",
+   "chests": 1,
+   "quest": "The Perfect Drink",
+   "treasure": [
+    "Diamond"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Raqa Zunzo Shrine",
+   "region": "Gerudo",
+   "area": "Gerudo Desert",
+   "location": "Sand-Seal Rally",
+   "trialName": "Raqa Zunzo's Blessing",
+   "trial": "Blessing",
+   "solution": "Beat Tali's Sand-Seal racing record, then put the Grand Trophy orb into the pedestal to raise the shrine.",
+   "chests": 1,
+   "quest": "The Undefeated Champ",
+   "treasure": [
+    "Radiant Shield"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Takama Shiri Shrine",
+   "region": "Gerudo",
+   "area": "Gerudo Desert",
+   "location": "West Barrens",
+   "trialName": "Dual Purpose",
+   "trial": "Electricity puzzle (DLC)",
+   "solution": "Slide the metal cubes and railed platforms with Magnesis to complete each circuit and open the gates, without standing on live metal unless you wear rubber gear. A switch in the third room opens the chest.",
+   "chests": 1,
+   "treasure": [
+    "Royal Bow"
+   ],
+   "dlc": "The Champions' Ballad"
+  },
+  {
+   "name": "Tho Kayu Shrine",
+   "region": "Gerudo",
+   "area": "Gerudo Desert",
+   "location": "Toruma Dunes",
+   "trialName": "Tho Kayu's Blessing",
+   "trial": "Blessing",
+   "solution": "Light the four torches on the rocks around the area while avoiding or defeating the Molduga.",
+   "chests": 1,
+   "treasure": [
+    "Golden Bow"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Dila Maag Shrine",
+   "region": "Gerudo",
+   "area": "Gerudo Highlands",
+   "location": "South Lomei Labyrinth",
+   "trialName": "Dila Maag's Blessing",
+   "trial": "Blessing",
+   "solution": "Find your way through the South Lomei Labyrinth to the shrine.",
+   "chests": 1,
+   "quest": "The Desert Labyrinth",
+   "treasure": [
+    "Barbarian Armor"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Ishto Soh Shrine",
+   "region": "Gerudo",
+   "area": "Gerudo Highlands",
+   "location": "Gerudo Highlands",
+   "trialName": "Bravery's Grasp",
+   "trial": "Stasis puzzle",
+   "chests": 2,
+   "treasure": [
+    "Topaz",
+    "Ancient Core"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Jee Noh Shrine",
+   "region": "Gerudo",
+   "area": "Gerudo Highlands",
+   "location": "Gerudo Canyon Pass",
+   "trialName": "On the Move",
+   "trial": "Stasis puzzle",
+   "solution": "Freeze the orb on the conveyors and shoot it into its slot, twice (watch the Guardian Scouts in room two). In the last room carry the orb against the belt, timing the laser blocks and freezing the middle laser, then slot it. Jump to the chest on the opposite belt.",
+   "chests": 1,
+   "treasure": [
+    "Opal"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Joloo Nah Shrine",
+   "region": "Gerudo",
+   "area": "Gerudo Highlands",
+   "location": "Mount Nabooru",
+   "trialName": "Joloo Nah Apparatus",
+   "trial": "Motion control puzzle",
+   "solution": "Tilt the first cube until every switch touches the electricity, turn the fan cube to hit all four wind switches (hold the low ones up with the metal cube and Stasis), then light every torch on the last cube while dodging the water spouts. One chest is reached by riding the fan wind; the other drops when you burn the leaves above the lantern.",
+   "chests": 2,
+   "quest": "Test of Will",
+   "treasure": [
+    "Golden Claymore",
+    "Gerudo Spear"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Kay Noh Shrine",
+   "region": "Gerudo",
+   "area": "Gerudo Highlands",
+   "location": "Gerudo Canyon Stable",
+   "trialName": "Power of Electricity",
+   "trial": "Electricity puzzle",
+   "solution": "Set the charged ball in its slot to open the door, then cut the next ball down and slot it to slide the block into place. Take the Small Key through the locked door and arrange the four metal cubes in the water to carry current to both switches.",
+   "chests": 2,
+   "treasure": [
+    "Gerudo Scimitar"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Keeha Yoog Shrine",
+   "region": "Gerudo",
+   "area": "Gerudo Highlands",
+   "location": "Gerudo Highlands",
+   "trialName": "Keeha Yoog's Blessing",
+   "trial": "Blessing",
+   "solution": "Shoot a Shock Arrow at the pedestal in the middle of the lightning mural on the Gerudo Summit cliff to raise the shrine.",
+   "chests": 1,
+   "quest": "Cliffside Etchings",
+   "treasure": [
+    "Diamond"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Kema Kosassa Shrine",
+   "region": "Gerudo",
+   "area": "Gerudo Highlands",
+   "location": "Risoka Snowfield",
+   "trialName": "A Major Test of Strength",
+   "trial": "Test of Strength (major)",
+   "solution": "Defeat the Guardian Scout IV to open the gate; the chest is behind it.",
+   "chests": 1,
+   "treasure": [
+    "Silver Rupee"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Kihiro Moh Shrine",
+   "region": "Gerudo",
+   "area": "Gerudo Highlands",
+   "location": "Gerudo Highlands",
+   "trialName": "Inside the Box",
+   "trial": "Orb counting puzzle (DLC)",
+   "solution": "Count each color of sphere in the ceiling gyroscope and place each colored orb in the matching numbered slot of its row (red 1, green 2, yellow 2, purple 4). For the chest, drop a big metal sphere in the slot marked with three lights.",
+   "chests": 1,
+   "treasure": [
+    "Thunderspear"
+   ],
+   "dlc": "The Champions' Ballad"
+  },
+  {
+   "name": "Kuh Takkar Shrine",
+   "region": "Gerudo",
+   "area": "Gerudo Highlands",
+   "location": "Gerudo Highlands",
+   "trialName": "Melting Ice Hazard",
+   "trial": "Ice block / fire puzzle",
+   "solution": "Melt the ice around the entrance first. Inside, carry an ice block past the fire columns to the door without letting it melt.",
+   "chests": 1,
+   "treasure": [
+    "Frostblade"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Sasa Kai Shrine",
+   "region": "Gerudo",
+   "area": "Gerudo Highlands",
+   "location": "Gerudo Highlands",
+   "trialName": "A Modest Test of Strength",
+   "trial": "Test of Strength (modest)",
+   "solution": "At 3 pm, when Gerudo Tower's shadow covers the pedestal, shoot an arrow at the sun to reveal the shrine, then defeat the Guardian Scout III.",
+   "chests": 1,
+   "quest": "Sign of the Shadow",
+   "treasure": [
+    "Frostblade"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Sho Dantu Shrine",
+   "region": "Gerudo",
+   "area": "Gerudo Highlands",
+   "location": "Gerudo Highlands",
+   "trialName": "Two Bombs",
+   "trial": "Remote Bomb puzzle",
+   "solution": "Put a bomb on each launcher and blow it at the top to hit the caged Shock Switches in the first two rooms. In the last room, leave the square bomb in the cage and let the round one bounce, detonating one while you stand on a raised launcher and the other to reopen the gate. The chest is behind the pillar in the left room.",
+   "chests": 1,
+   "treasure": [
+    "Silver Rupee"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Suma Sahma Shrine",
+   "region": "Gerudo",
+   "area": "Gerudo Highlands",
+   "location": "Mount Granajh",
+   "trialName": "Suma Sahma's Blessing",
+   "trial": "Blessing",
+   "solution": "At 4:00 PM, when the pedestal on Mount Granajh glows, cast the shadow of a snowball or Cryonis block onto it.",
+   "chests": 1,
+   "quest": "Secret of the Snowy Peaks",
+   "treasure": [
+    "Moonlight Scimitar"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Goma Asaagh Shrine",
+   "region": "Hebra",
+   "area": "Hebra Mountains",
+   "location": "Hebra Peak",
+   "trialName": "A Major Test of Strength",
+   "trial": "Test of Strength (major)",
+   "solution": "Defeat the Guardian Scout IV; ice pillars from Cryonis on the wet floor make useful cover.",
+   "chests": 1,
+   "treasure": [
+    "Royal Claymore"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Hia Miu Shrine",
+   "region": "Hebra",
+   "area": "Hebra Mountains",
+   "location": "Icefall Foothills",
+   "trialName": "A Major Test of Strength",
+   "trial": "Test of Strength (major)",
+   "solution": "Defeat the Guardian Scout IV; lift the metal floor blocks with Magnesis for cover.",
+   "chests": 1,
+   "treasure": [
+    "Sapphire"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Kiah Toza Shrine",
+   "region": "Hebra",
+   "area": "Hebra Mountains",
+   "location": "Pikida Stonegrove",
+   "trialName": "Master the Orb",
+   "trial": "Ball rolling puzzle (DLC)",
+   "solution": "Guide the rolling orb down the contraption with Magnesis, Stasis, Cryonis and the floor switches until it lands in the final slot. Raise an ice pillar under the stone block at the back to reach a ladder up to the chest.",
+   "chests": 1,
+   "treasure": [
+    "Falcon Bow"
+   ],
+   "dlc": "The Champions' Ballad"
+  },
+  {
+   "name": "Maka Rah Shrine",
+   "region": "Hebra",
+   "area": "Hebra Mountains",
+   "location": "Lake Kilsie",
+   "trialName": "Steady Thy Heart",
+   "trial": "Spiked boulder gauntlet",
+   "solution": "Light the second torch to open the gate, cross the spinning spiked column over the lava, and hit the switches through the following rooms. Get past the spiked boulders rolling down the final ramp to reach the monk at the top.",
+   "chests": 3,
+   "treasure": [
+    "Ancient Core",
+    "Bomb Arrow x10",
+    "Diamond"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Mozo Shenno Shrine",
+   "region": "Hebra",
+   "area": "Hebra Mountains",
+   "location": "Biron Snowshelf",
+   "trialName": "A Major Test of Strength",
+   "trial": "Test of Strength (major)",
+   "solution": "Glide northwest from the cedar on Talonto Peak to find the shrine under the Biron Snowshelf, then defeat the Guardian Scout IV, using Magnesis-lifted floor blocks as cover.",
+   "chests": 1,
+   "quest": "The Bird in the Mountains",
+   "treasure": [
+    "Diamond"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Noe Rajee Shrine",
+   "region": "Hebra",
+   "area": "Hebra Mountains",
+   "location": "Flight Range",
+   "trialName": "The Four Winds",
+   "trial": "Wind / fan puzzle",
+   "solution": "Glide around the spinning pillar and hit the four switches hidden in it, each adding another wind gust. Ride the gusts to the top, then glide on to the chest and the monk.",
+   "chests": 1,
+   "treasure": [
+    "Shield of the Mind's Eye"
+   ],
+   "dlc": "The Champions' Ballad"
+  },
+  {
+   "name": "Qaza Tokki Shrine",
+   "region": "Hebra",
+   "area": "Hebra Mountains",
+   "location": "North Lomei Labyrinth",
+   "trialName": "Qaza Tokki's Blessing",
+   "trial": "Blessing",
+   "solution": "Work through the North Lomei Labyrinth to the ladders and tunnel that lead to a walkway above the shrine, then drop down.",
+   "chests": 1,
+   "quest": "Trial on the Cliff",
+   "treasure": [
+    "Barbarian Leg Wraps"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Rok Uwog Shrine",
+   "region": "Hebra",
+   "area": "Hebra Mountains",
+   "location": "Pikida Stonegrove",
+   "trialName": "Power of Reach",
+   "trial": "Combat / switch puzzle",
+   "solution": "Clear the vines by the barred window to reach the second room, beat the Guardian Scouts and lower the ramp. Lift the barrels off the switch, take the Small Key from the chest, and use it on the locked door in the first room. The other chest is on a ledge to the right of the entrance-facing wall.",
+   "chests": 2,
+   "treasure": [
+    "Drillshaft"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Sha Warvo Shrine",
+   "region": "Hebra",
+   "area": "Hebra Mountains",
+   "location": "Dronoc's Pass",
+   "trialName": "Path of Hidden Winds",
+   "trial": "Wind / fan puzzle",
+   "solution": "Ride the fan updrafts with the paraglider from platform to platform until you can glide to the monk; the walled fifth fan is reached through a small gap in its wall.",
+   "chests": 2,
+   "treasure": [
+    "Knight's Bow",
+    "Purple Rupee"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Shada Naw Shrine",
+   "region": "Hebra",
+   "area": "Hebra Mountains",
+   "location": "Selmie's Spot",
+   "trialName": "Red Giveaway",
+   "trial": "Ball rolling puzzle",
+   "solution": "Let the fans push the orb across the moving platform onto the ramp, using the metal blocks to keep it from falling. Stand on the launcher when the orb fills the slot so it lifts you to the monk.",
+   "chests": 1,
+   "treasure": [
+    "Great Frostblade"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "To Quomo Shrine",
+   "region": "Hebra",
+   "area": "Hebra Mountains",
+   "location": "Hebra Great Skeleton",
+   "trialName": "To Quomo's Blessing",
+   "trial": "Blessing",
+   "solution": "Roll the big snowballs east of the giant stone door into it to smash it open, then enter the cave under the skeleton.",
+   "chests": 1,
+   "treasure": [
+    "Royal Claymore"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Rin Oyaa Shrine",
+   "region": "Hebra",
+   "area": "Hebra Mountains",
+   "location": "Snowfield Stable",
+   "trialName": "Directing the Wind",
+   "trial": "Wind / fan puzzle",
+   "solution": "Block the two fans that blow the orb into a dead end with the metal blocks, then stand on the launcher when the orb reaches the slot to ride up to the monk. Put a metal block on the launcher to jump across to the chest opposite the monk.",
+   "chests": 1,
+   "treasure": [
+    "Ancient Core"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Sha Gehma Shrine",
+   "region": "Hebra",
+   "area": "Hebra Mountains",
+   "location": "North Tabantha Snowfield",
+   "trialName": "Shift and Lock",
+   "trial": "Metal block / rail puzzle",
+   "solution": "Free the chest pinned under the metal block on the rail and use its Small Key on the monk's portcullis.",
+   "chests": 2,
+   "treasure": [
+    "Royal Broadsword"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Akh Va'quot Shrine",
+   "region": "Hebra",
+   "area": "Tabantha Frontier",
+   "location": "Rito Village",
+   "trialName": "Windmills",
+   "trial": "Wind / fan puzzle",
+   "solution": "Hit the switches to turn the six fans until every windmill spins at once. More chests wait in the pool room behind the elevator.",
+   "chests": 3,
+   "treasure": [
+    "Ancient Core",
+    "Feathered Spear",
+    "Sapphire"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Bareeda Naag Shrine",
+   "region": "Hebra",
+   "area": "Tabantha Frontier",
+   "location": "Tabantha Frontier",
+   "trialName": "Cannon",
+   "trial": "Remote Bomb puzzle",
+   "solution": "Load a round bomb into the cannon and detonate it to fire the orb past the moving platforms into the target. Bomb the cracked blocks near the entrance for one chest; hit the moving target with the second cannon past the monk for another.",
+   "chests": 2,
+   "quest": "The Ancient Rito Song",
+   "treasure": [
+    "Swallow Bow",
+    "Diamond"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Dunba Taag Shrine",
+   "region": "Hebra",
+   "area": "Tabantha Frontier",
+   "location": "Tanagar Canyon",
+   "trialName": "Build and Release",
+   "trial": "Puzzle",
+   "treasure": [
+    "Falcon Bow",
+    "Great Thunderblade"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Gee Ha'rah Shrine",
+   "region": "Hebra",
+   "area": "Tabantha Frontier",
+   "location": "Kopeeki Drifts",
+   "trialName": "Tandem",
+   "trial": "Rope-cutting puzzle",
+   "solution": "In the right-hand room, cut both ropes holding the stone ball so it drops straight onto the switch. The left-hand room's ball must be steered onto a wall switch to open the chest room.",
+   "chests": 1,
+   "treasure": [
+    "Diamond"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Kah Okeo Shrine",
+   "region": "Hebra",
+   "area": "Tabantha Frontier",
+   "location": "Tabantha Frontier",
+   "trialName": "Wind Guide",
+   "trial": "Wind / fan puzzle",
+   "solution": "Take the Korok Leaf from the first chest and use it on Wind Switches and balloon platforms. Bomb the cracked wall to start the updraft, clear the upper walls with the floating bomb barrel, and ride the updraft up to the key that unlocks the monk's gate.",
+   "treasure": [
+    "Korok Leaf",
+    "Gold Rupee",
+    "Forest Dweller's Sword",
+    "Giant Ancient Core",
+    "Thunderspear"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Lanno Kooh Shrine",
+   "region": "Hebra",
+   "area": "Tabantha Frontier",
+   "location": "Tabantha Frontier",
+   "trialName": "Lanno Kooh's Blessing",
+   "trial": "Blessing",
+   "solution": "Cut down a tree and ride the log down the river past the falls to the shrine, or brave the icy water.",
+   "chests": 1,
+   "treasure": [
+    "Gold Rupee"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Rona Kachta Shrine",
+   "region": "Hebra",
+   "area": "Tabantha Frontier",
+   "location": "Forgotten Temple",
+   "trialName": "Rona Kachta's Blessing",
+   "trial": "Blessing",
+   "solution": "Reach the shrine at the back of the Forgotten Temple, past the many Decayed Guardians.",
+   "chests": 1,
+   "treasure": [
+    "Great Flameblade"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Sheem Dagoze Shrine",
+   "region": "Hebra",
+   "area": "Tabantha Frontier",
+   "location": "West Hyrule Plains",
+   "trialName": "Moving in Parallel",
+   "trial": "Ball rolling puzzle",
+   "solution": "Shoot an arrow through two Stone Rings to raise the shrine. Inside, work the two floor switches to tilt the ramps so each Ancient Orb lands in a different socket.",
+   "chests": 1,
+   "quest": "The Two Rings",
+   "treasure": [
+    "Great Thunderblade"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Tena Ko'sah Shrine",
+   "region": "Hebra",
+   "area": "Tabantha Frontier",
+   "location": "Ancient Columns",
+   "trialName": "A Major Test of Strength",
+   "trial": "Test of Strength (major)",
+   "solution": "Defeat the Guardian Scout IV among the breakable pillars to open the gate to the monk and the chest.",
+   "chests": 1,
+   "treasure": [
+    "Knight's Halberd"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Voo Lota Shrine",
+   "region": "Hebra",
+   "area": "Tabantha Frontier",
+   "location": "Warbler's Nest",
+   "trialName": "The Winding Route",
+   "trial": "Wind / fan puzzle",
+   "solution": "After the floor drops, glide into the fan and work across the platforms, gliding over and under the spike walls and riding fans, to a chest holding a small key, then return to unlock the monk's gate. A side platform near the end holds a second chest.",
+   "chests": 2,
+   "quest": "Recital at Warbler's Nest",
+   "treasure": [
+    "Flameblade"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Dagah Keek Shrine",
+   "region": "Lanayru",
+   "area": "Lanayru Great Spring",
+   "location": "Lanayru Great Spring",
+   "trialName": "Dagah Keek's Blessing",
+   "trial": "Blessing",
+   "solution": "Plunge-attack the Lightscale Trident or Ceremonial Trident straight down into the pedestal at Veiled Falls.",
+   "chests": 1,
+   "quest": "The Ceremonial Song",
+   "treasure": [
+    "Silver Rupee"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Mah Eliya Shrine",
+   "region": "Lanayru",
+   "area": "Lanayru Great Spring",
+   "location": "Ploymus Mountain",
+   "trialName": "Secret Stairway",
+   "trial": "Puzzle (DLC)",
+   "treasure": [
+    "Royal Shield"
+   ],
+   "dlc": "The Champions' Ballad"
+  },
+  {
+   "name": "Mezza Lo Shrine",
+   "region": "Lanayru",
+   "area": "Lanayru Great Spring",
+   "location": "Rabia Plain",
+   "trialName": "Ancient Trifecta",
+   "trial": "Rotating pillar puzzle",
+   "chests": 1,
+   "quest": "The Crowned Beast",
+   "treasure": [
+    "Thunderblade"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Ne'ez Yohma Shrine",
+   "region": "Lanayru",
+   "area": "Lanayru Great Spring",
+   "location": "Zora's Domain",
+   "trialName": "Pushing Power",
+   "trial": "Cryonis puzzle",
+   "solution": "Climb the sloped waterfall while dodging the boulders and laser, then use Cryonis to shove the orb off the top so it rolls down into the pedestal by the gate. Drop from the side path onto a block midway down for the chest.",
+   "chests": 1,
+   "treasure": [
+    "Zora Spear"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Rucco Maag Shrine",
+   "region": "Lanayru",
+   "area": "Lanayru Great Spring",
+   "location": "Samasa Plain",
+   "trialName": "Five Flames",
+   "trial": "Puzzle",
+   "treasure": [
+    "Opal",
+    "Silver Bow"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Sato Koda Shrine",
+   "region": "Lanayru",
+   "area": "Lanayru Great Spring",
+   "location": "Upland Zorana",
+   "trialName": "Support and Guidance",
+   "trial": "Ball rolling puzzle",
+   "solution": "Guide the giant orb down the waterfall contraption with Cryonis paths and Stasis on the tilting slabs so the Launcher at the bottom sends it into the slot. Build ice steps to reach the chest above the slot.",
+   "chests": 1,
+   "treasure": [
+    "Giant Ancient Core"
+   ],
+   "dlc": "The Champions' Ballad"
+  },
+  {
+   "name": "Soh Kofi Shrine",
+   "region": "Lanayru",
+   "area": "Lanayru Great Spring",
+   "location": "Lanayru Great Spring",
+   "trialName": "A Minor Test of Strength",
+   "trial": "Test of Strength (minor)",
+   "solution": "Defeat the Guardian Scout II to open the gate; the chest is on the stairs up to the monk.",
+   "chests": 1,
+   "treasure": [
+    "Knight's Bow"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Kee Dafunia Shrine",
+   "region": "Lanayru",
+   "area": "Lanayru Sea",
+   "location": "Lanayru Sea",
+   "trialName": "The Melting Point",
+   "trial": "Ice melting puzzle (DLC)",
+   "solution": "Melt ice with the lit torch to clear the way and to shape the launched blocks into steps up the pillar, then melt the last big block down until you can move it across the pool and use it with Cryonis to climb to the monk. Melt the ice behind the raised platform for the chest.",
+   "chests": 1,
+   "treasure": [
+    "Frostblade"
+   ],
+   "dlc": "The Champions' Ballad"
+  },
+  {
+   "name": "Shai Yota Shrine",
+   "region": "Lanayru",
+   "area": "Lanayru Sea",
+   "location": "Horon Lagoon",
+   "trialName": "Shai Yota's Blessing",
+   "trial": "Blessing",
+   "solution": "Bomb the cracked rocks around Horon Lagoon to start the wind, then glide on the big gust from the large island and land on the pedestal.",
+   "chests": 1,
+   "quest": "Master of the Wind",
+   "treasure": [
+    "Great Flameblade"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Daka Tuss Shrine",
+   "region": "Lanayru",
+   "area": "Lanayru Wetlands",
+   "location": "Shrine Island",
+   "trialName": "Sunken Scoop",
+   "trial": "Magnesis puzzle",
+   "solution": "Scoop an orb over the grate with the metal bowl via Magnesis. In the second room, rest an orb on top of the grate, then press the underwater switch with the bowl so it drops in and drains the pool, opening the way to the monk.",
+   "chests": 1,
+   "treasure": [
+    "Silver Longsword"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Kaya Wan Shrine",
+   "region": "Lanayru",
+   "area": "Lanayru Wetlands",
+   "location": "Wetland Stable",
+   "trialName": "Shields from Water",
+   "trial": "Cryonis puzzle",
+   "solution": "Make ice blocks to climb the waterfall, then ride the raft down the river past the Guardian Scouts and glide from the final drop to the monk. Lift the gate on the river's left with a Cryonis pillar to reach a chest.",
+   "chests": 2,
+   "treasure": [
+    "Ancient Core",
+    "Knight's Broadsword"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Sheh Rata Shrine",
+   "region": "Lanayru",
+   "area": "Lanayru Wetlands",
+   "location": "Lanayru Wetlands",
+   "trialName": "Speed of Light",
+   "trial": "Water level puzzle",
+   "chests": 2,
+   "treasure": [
+    "Giant Boomerang",
+    "Opal"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Jitan Sa'mi Shrine",
+   "region": "Lanayru",
+   "area": "Mount Lanayru",
+   "location": "Spring of Wisdom",
+   "trialName": "Jitan Sa'mi's Blessing",
+   "trial": "Blessing",
+   "solution": "Shoot the glowing Malice eyes on Naydra around Mount Lanayru, shoot it once more for a scale, and offer the scale to the Spring of Wisdom.",
+   "chests": 1,
+   "quest": "The Spring of Wisdom",
+   "treasure": [
+    "Frostspear"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Tahno O'ah Shrine",
+   "region": "Lanayru",
+   "area": "Mount Lanayru",
+   "location": "Madorna Mountain",
+   "trialName": "Tahno O'ah's Blessing",
+   "trial": "Blessing",
+   "solution": "Line up the three trees on Madorna Mountain, head due east, and bomb the rock wall blocking the cave.",
+   "chests": 1,
+   "quest": "Secret of the Cedars",
+   "treasure": [
+    "Climbing Boots"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Dow Na'eh Shrine",
+   "region": "Necluda",
+   "area": "East Necluda",
+   "location": "Lanayru Promenade",
+   "trialName": "Three Boxes",
+   "trial": "Magnesis puzzle",
+   "solution": "Gather all three chests onto the giant floor switch (shoot the ropes to drop the shelf chest, then pull it out with Magnesis). Then use the metal box from the opened room with the launcher to get up to the monk.",
+   "chests": 3,
+   "treasure": [
+    "Amber",
+    "Opal",
+    "Zora Sword"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Kah Yah Shrine",
+   "region": "Necluda",
+   "area": "East Necluda",
+   "location": "Palmorae Ruins",
+   "trialName": "Quick Thinking",
+   "trial": "Floor switch puzzle",
+   "solution": "Hold down the left corridor's floor switch with a barrel or Stasis to reach a chest with a small key, then unlock the monk's door. Holding the right switch opens the second chest.",
+   "chests": 2,
+   "quest": "A Fragmented Monument",
+   "treasure": [
+    "Knight's Claymore"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Kam Urog Shrine",
+   "region": "Necluda",
+   "area": "East Necluda",
+   "location": "East Necluda",
+   "trialName": "Trial of Passage",
+   "trial": "Stasis puzzle",
+   "solution": "Freeze the gears with Stasis to stop the rotating platforms and climb the cylinder, then line up a floating stair platform with the stairs near the top to reach the monk. One chest is in a wall opening; the other rides a rotating platform.",
+   "chests": 2,
+   "quest": "The Cursed Statue",
+   "treasure": [
+    "Opal",
+    "Soldier's Spear"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Muwo Jeem Shrine",
+   "region": "Necluda",
+   "area": "East Necluda",
+   "location": "Cape Cales",
+   "trialName": "A Modest Test of Strength",
+   "trial": "Test of Strength (modest)",
+   "solution": "Defeat the Guardian Scout III to open the portcullis to the monk.",
+   "chests": 1,
+   "treasure": [
+    "Knight's Bow"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Myahm Agana Shrine",
+   "region": "Necluda",
+   "area": "East Necluda",
+   "location": "Hateno Village",
+   "trialName": "Myahm Agana Apparatus",
+   "trial": "Motion control puzzle",
+   "solution": "Tilt the platform to guide the orb through the maze and drop it into the slot, or flip the platform over and roll the orb across its flat underside. Tilt it and glide into the maze to reach the chest.",
+   "chests": 1,
+   "treasure": [
+    "Phrenic Bow"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Tawa Jinn Shrine",
+   "region": "Necluda",
+   "area": "East Necluda",
+   "location": "East Necluda",
+   "trialName": "Tawa Jinn's Blessing",
+   "trial": "Blessing",
+   "solution": "Take the orbs from the three Hinoxes on Mount Taran (by stealth or by fighting) and set them in the pedestals.",
+   "chests": 1,
+   "quest": "The Three Giant Brothers",
+   "treasure": [
+    "Great Thunderblade"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Yah Rin Shrine",
+   "region": "Necluda",
+   "area": "East Necluda",
+   "location": "Lurelin Village",
+   "trialName": "A Weighty Decision",
+   "trial": "Weight / scale puzzle",
+   "solution": "Load the scales with the shrine's metal objects to lift yourself to higher ledges until you reach the monk's pagoda.",
+   "chests": 2,
+   "treasure": [
+    "Knight's Broadsword",
+    "Opal"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Chaas Qeta Shrine",
+   "region": "Necluda",
+   "area": "Necluda Sea",
+   "location": "Tenoko Island",
+   "trialName": "A Major Test of Strength",
+   "trial": "Test of Strength (major)",
+   "solution": "Defeat the Guardian Scout IV to open the portcullis to the monk.",
+   "chests": 1,
+   "treasure": [
+    "Climbing Gear"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Korgu Chideh Shrine",
+   "region": "Necluda",
+   "area": "Necluda Sea",
+   "location": "Eventide Island",
+   "trialName": "Korgu Chideh's Blessing",
+   "trial": "Blessing",
+   "solution": "With all gear taken away, place Eventide Island's three orbs into its three pedestals to raise the shrine.",
+   "chests": 1,
+   "quest": "Stranded on Eventide",
+   "treasure": [
+    "Gold Rupee"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Ha Dahamar Shrine",
+   "region": "Necluda",
+   "area": "West Necluda",
+   "location": "Dueling Peaks Stable",
+   "trialName": "The Water Guides",
+   "trial": "Cryonis puzzle",
+   "solution": "Pass the waterfalls with Cryonis, then place ice blocks on the wall to steer the rolling orb, pinball style, into the socket. The chest is on a ledge between the first two waterfalls.",
+   "chests": 1,
+   "treasure": [
+    "Purple Rupee"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Hila Rao Shrine",
+   "region": "Necluda",
+   "area": "West Necluda",
+   "location": "Floret Sandbar",
+   "trialName": "Drifting",
+   "trial": "Water current puzzle",
+   "solution": "Cross the drifting water channels, then time a Remote Bomb on the floating explosive barrels to break the stone wall at the far exit. One chest is underwater in the second channel; the other floats in the third.",
+   "chests": 2,
+   "quest": "Watch Out for the Flowers",
+   "treasure": [
+    "Ice Arrow x5",
+    "Opal"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Lakna Rokee Shrine",
+   "region": "Necluda",
+   "area": "West Necluda",
+   "location": "West Necluda",
+   "trialName": "Lakna Rokee's Blessing",
+   "trial": "Blessing",
+   "solution": "Tail Dorian out of Kakariko at night, beat the Yiga Blademaster at the pedestal, and place the Sheikah Heirloom in its slot.",
+   "chests": 1,
+   "quest": "The Stolen Heirloom",
+   "treasure": [
+    "Edge of Duality"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Qukah Nata Shrine",
+   "region": "Necluda",
+   "area": "West Necluda",
+   "location": "West Necluda",
+   "trialName": "Qukah Nata's Blessing",
+   "trial": "Blessing",
+   "solution": "Get lightning to strike the mound by Calora Lake by leaving a metal object on top of it.",
+   "chests": 1,
+   "quest": "A Song of Storms",
+   "treasure": [
+    "Rubber Tights"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Ree Dahee Shrine",
+   "region": "Necluda",
+   "area": "West Necluda",
+   "location": "Dueling Peaks",
+   "trialName": "Timing is Critical",
+   "trial": "Ball rolling puzzle",
+   "solution": "Use each switch to tilt the platforms so the orb rolls into its socket, which starts the next moving platform. The chest is above the last tilting platform.",
+   "chests": 1,
+   "treasure": [
+    "Climber's Bandanna"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Shai Utoh Shrine",
+   "region": "Necluda",
+   "area": "West Necluda",
+   "location": "Lakeside Stable",
+   "trialName": "Halt the Tilt",
+   "trial": "Stasis puzzle",
+   "solution": "Freeze the tilting platforms with Stasis so you can climb them to the top. The first chest is up the right side at the second platform; the second sits above the monk and needs a big launch to glide to.",
+   "chests": 2,
+   "treasure": [
+    "Ancient Core",
+    "Traveler's Sword"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Shee Venath Shrine",
+   "region": "Necluda",
+   "area": "West Necluda",
+   "location": "Dueling Peaks",
+   "trialName": "Twin Memories",
+   "trial": "Ancient Orb pattern puzzle",
+   "solution": "Move the five orbs on the grid to match the layout in Shee Vaneer Shrine on the other Dueling Peak; the viewing platform helps. Glide to the chest on the far wall ledge.",
+   "chests": 1,
+   "treasure": [
+    "Serpentine Spear"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Shee Vaneer Shrine",
+   "region": "Necluda",
+   "area": "West Necluda",
+   "location": "Dueling Peaks",
+   "trialName": "Twin Memories",
+   "trial": "Orb placement puzzle",
+   "solution": "Arrange the five orbs on the grid to match the layout in Shee Venath Shrine on the other Dueling Peak; the viewing platform helps you see the grid. Glide to the chest on the far wall ledge.",
+   "chests": 1,
+   "treasure": [
+    "Eightfold Longblade"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Shoda Sah Shrine",
+   "region": "Necluda",
+   "area": "West Necluda",
+   "location": "Floria Falls",
+   "trialName": "Impeccable Timing",
+   "trial": "Launcher puzzle",
+   "solution": "Launch orbs into both slots; each one fires a chest across the room. The left slot's chest has the small key for the door at the end of the bridge.",
+   "chests": 2,
+   "treasure": [
+    "Ice Arrow x5"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Ta'loh Naeg Shrine",
+   "region": "Necluda",
+   "area": "West Necluda",
+   "location": "Kakariko Village",
+   "trialName": "Ta'loh Naeg's Teaching",
+   "trial": "Combat tutorial",
+   "solution": "Follow the monk's lessons against the training Guardian Scout: side hop and flurry rush, backflip and flurry rush, a perfect guard, then a charged attack to finish it. Two chests sit by the elevator and one is behind the gate with the monk.",
+   "chests": 3,
+   "treasure": [
+    "Eightfold Blade",
+    "Shield of the Mind's Eye",
+    "Opal"
+   ],
+   "dlc": null
+  },
+  {
+   "name": "Toto Sah Shrine",
+   "region": "Necluda",
+   "area": "West Necluda",
+   "location": "West Necluda",
+   "trialName": "Toto Sah Apparatus",
+   "trial": "Motion control puzzle",
+   "solution": "Rotate each platform with motion control to form a path, aligning the sliding stairway sections. On the last structure, grab the Small Key chest and open the monk's door; flip the first platform over to find a second chest.",
+   "chests": 2,
+   "treasure": [
+    "Shield of the Mind's Eye"
+   ],
+   "dlc": null
+  }
+ ]
+}

@@ -1,0 +1,10 @@
+﻿bin/
+obj/
+publish/
+releases/
+dist/
+*.user
+.vs/
+.claude/
+# Real saves and test profiles are the player's own data: never commit them.
+testdata/

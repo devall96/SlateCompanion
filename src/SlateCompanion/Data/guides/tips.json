@@ -1,0 +1,126 @@
+{
+ "sections": [
+  {
+   "id": "blood-moon",
+   "title": "Blood Moon",
+   "body": [
+    "Every so often the moon turns red. At midnight a cutscene plays and the world resets: defeated monsters (including bosses like Hinox and Lynels) come back, ore deposits refill, and many materials and weapons lying around the world respawn. There is no fixed schedule; on average it comes around every few hours of real play.",
+    "You can see it coming: the moon rises red in the evening, red specks of malice start floating up at about 11:30 pm, and the sky turns red just before midnight.",
+    "Cooking while those red specks are in the air, from about half an hour before midnight until shortly after the cutscene, gives a guaranteed bonus to the dish's effect. It is a good time to cook important meals and elixirs.",
+    "Hino at Dueling Peaks Stable acts strangely during a Blood Moon and can tell you during the day whether one is coming that night.",
+    "The game can also trigger an off-schedule Blood Moon at any hour when it needs to clear memory. It behaves like a normal one."
+   ]
+  },
+  {
+   "id": "weather-elements",
+   "title": "Weather and the elements",
+   "body": [
+    "Rain makes surfaces slippery, so you keep sliding back down while climbing. Wait it out, cook something, or find a route with ledges to rest on.",
+    "In thunderstorms lightning seeks out metal. When your metal gear starts to sparkle, unequip metal weapons, shields and bows or a strike is coming. Rubber armor protects you, and you can also drop a metal weapon near enemies as bait.",
+    "The temperature gauge shows when you're too cold or too hot. Snowy areas need cold resistance (spicy food, the Warm Doublet, the Snowquill set), the Gerudo Desert by day needs heat resistance (chilly food, the Gerudo or Desert Voe outfits), and desert nights are cold.",
+    "Death Mountain's heat is a separate danger: without flame guard (Fireproof Elixirs or Flamebreaker armor) you catch fire, and wooden weapons and arrows ignite.",
+    "Fire burns grass and creates an updraft you can ride with the paraglider. It also sets wooden shields and weapons alight, and it melts ice.",
+    "Elements counter each other: fire arrows and fire weapons wreck ice enemies, ice works well on fire enemies, and electricity stuns whatever it hits and makes it drop its weapon. Water conducts electricity, so standing in it during a shock attack is risky."
+   ]
+  },
+  {
+   "id": "horses",
+   "title": "Horses, taming and stables",
+   "body": [
+    "Wild horses graze in groups across Hyrule Field and the grasslands. Crouch and sneak up on one from behind, then mount it. It will buck; keep soothing it until it calms. Taming draws on your stamina, so stronger-willed horses need a bigger stamina wheel.",
+    "Coat tells you a lot. Spotted horses are usually gentle but average. Solid-coloured horses tend to have better stats and wilder tempers. A horse's stats are strength, speed, stamina (how many spurs it has) and temperament, and you can see them when you register it.",
+    "Take the horse to any stable and talk to the owner to register it for 20 rupees. Registered horses can be boarded and collected at every stable, and you can keep up to five at once.",
+    "Bond grows when you soothe the horse while riding and feed it apples or carrots. A well-bonded horse follows roads on its own and comes when you whistle from a reasonable distance.",
+    "Special horses: the Giant Horse in Taobab Grassland is hard to tame and can't be soothed, and the Lord of the Mountain on Satori Mountain can be ridden but not registered. Epona can be summoned with the Super Smash Bros. Link amiibo.",
+    "If a registered horse dies, the horse god Malanya can bring it back. You first pay him 1,000 rupees to free him; the first revival is free and later ones need Endura Carrots."
+   ]
+  },
+  {
+   "id": "hestu-korok-seeds",
+   "title": "Hestu and Korok seeds",
+   "body": [
+    "Korok seeds are hidden all over Hyrule: under rocks, at the end of races, in balloon targets and many other small puzzles. There are 900 in total.",
+    "Hestu, a giant Korok, trades seeds for extra inventory slots. You first meet him on the road near Riverside Stable; after that he moves on and ends up in Korok Forest.",
+    "Each pouch has its own price ladder. Weapon slots cost 1, 2, 3, 5, 8, 12, 17, 25, 35, 45 and 55 seeds (11 upgrades, 208 seeds). Bow slots cost 1, 2, 3, 5, 8, 12, 17 and 25 (8 upgrades, 73 seeds). Shield slots cost 1, 2, 3, 4, 5, then 10 five times, 15 five times, and 20 for the last (16 upgrades, 160 seeds).",
+    "Maxing every pouch takes 441 seeds, so you don't need anywhere near all 900. Collecting all 900 earns Hestu's Gift, which is a joke reward."
+   ]
+  },
+  {
+   "id": "master-sword-requirement",
+   "title": "Master Sword requirement",
+   "body": [
+    "To pull the Master Sword you need 13 hearts of maximum health: your 3 starting hearts plus 10 Heart Containers. Heart Containers come from the Divine Beasts and from trading four Spirit Orbs at a Goddess Statue.",
+    "Only permanent heart containers count. Extra yellow hearts from hearty food or elixirs don't help.",
+    "Pulling drains your health. If you are short of hearts on your first try, the Great Deku Tree stops you at a quarter heart and warns you. If you try again without enough hearts, he doesn't step in and you get a Game Over.",
+    "The sword sits in Korok Forest, reached by following the torch embers through the Lost Woods."
+   ]
+  },
+  {
+   "id": "kilton-monster-shop",
+   "title": "Kilton and the Fang and Bone",
+   "body": [
+    "Kilton first sets up his shop near Skull Lake in Akkala. After that he appears at night (from about 9 pm until 5 am) outside Kakariko, Hateno, Lurelin, Rito Village, Zora's Domain and Tarrey Town.",
+    "He buys monster parts and pays in mon, a currency only he accepts. Mon buys monster masks that let you blend in with Bokoblins, Moblins, Lizalfos and Lynels, the Dark set, monster bait items and other oddities.",
+    "After you defeat Calamity Ganon, Kilton tracks the big overworld monsters. Defeat every Stone Talus, every Hinox or every Molduga and he gives you a Medal of Honor for that type."
+   ]
+  },
+  {
+   "id": "kochi-dye-shop",
+   "title": "Kochi Dye Shop",
+   "body": [
+    "Found in Hateno Village, the only dye shop in Hyrule. Each dyeing costs 20 rupees plus five materials of the matching colour.",
+    "The colour you get depends on the materials you bring. Some colours only come from rarer flowers, insects or monster parts.",
+    "Dyeing only changes appearance, never stats. The shop can also return armor to its original colour. Some armor, such as most amiibo and DLC pieces, can't be dyed."
+   ]
+  },
+  {
+   "id": "lynel",
+   "title": "Lynels",
+   "body": [
+    "Lynels are the toughest regular enemies: fast, heavily armed, and able to shoot volleys of arrows and breathe fire. Don't take one on until you have good armor, strong weapons and plenty of healing.",
+    "Shoot it in the face to stun it, then run up, mount its back and hit it repeatedly. When it throws you off, aim for another headshot while you're still in the air.",
+    "Perfect dodges and parries against its sword or club swings open it up for flurry rushes. Hold your shield up for its charges, and keep moving when it starts firing.",
+    "Their shock arrows, hooves, horns and guts are valuable, and their weapons are among the strongest you can carry."
+   ]
+  },
+  {
+   "id": "guardian",
+   "title": "Guardians",
+   "body": [
+    "Decayed Guardians sit still; active Guardian Stalkers walk and give chase. Both lock on with a red laser sight and fire once it turns solid.",
+    "Hold up a shield and press the guard button just before the beam hits to reflect it back; three reflections usually finish a Guardian. Practise with a cheap shield, since a mistimed block damages the shield heavily.",
+    "Shooting the Guardian's eye stuns it briefly, and cutting off a Stalker's legs with a strong weapon stops it moving. Ancient arrows and Ancient or Guardian weapons are especially effective.",
+    "Ancient armor (Guardian Resist Up) and Midna's Helmet reduce Guardian damage. On horseback, keep obstacles between you and the beam."
+   ]
+  },
+  {
+   "id": "hinox",
+   "title": "Hinox",
+   "body": [
+    "Hinox are giants sleeping out in the open. Sneak up and loot the weapons on its necklace before it wakes if you want them.",
+    "Its single eye is the weak point: shoot it to make it fall, then run up and attack. Repeat each time it gets up.",
+    "When it's low on health it straps on leg armor and gets more aggressive. Keep your distance from its grabs and stomps.",
+    "Stalnox, the skeleton version that appears at night, only takes real damage when you hit its eye. Pull the eye out and use it as a weapon for the finishing blow."
+   ]
+  },
+  {
+   "id": "stone-talus",
+   "title": "Stone Talus",
+   "body": [
+    "A Stone Talus looks like a rock pile until you get close. Its weak spot is a glowing ore deposit on its body.",
+    "Climb onto it and hit the ore with a hammer or any weapon. It can't reach you while you're on top, so stay up there as long as your stamina lasts.",
+    "Bombs and blunt weapons are the most efficient. Luminous, Rare and Frost or Igneo variants exist; ice arrows put out an Igneo Talus long enough to climb it.",
+    "Defeated Taluses drop gems and ore, which makes them an excellent source of rupees."
+   ]
+  },
+  {
+   "id": "molduga",
+   "title": "Molduga",
+   "body": [
+    "Moldugas swim under the sand in the Gerudo Desert, and there are four of them. Stand on rock or anything that isn't sand so it can't swallow you.",
+    "It hunts by sound. Throw a Remote Bomb onto the sand and detonate it as it lunges up; this knocks it out on the surface so you can attack its belly.",
+    "Bomb arrows and high-damage weapons finish it quickly. Molduga Fins and Guts are worth a lot and are needed for Sand Boots upgrades."
+   ]
+  }
+ ]
+}

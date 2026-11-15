@@ -1,0 +1,100 @@
+# Builds the Linux AppImage, checks it starts on a clean machine, and optionally attaches it to the GitHub release
+# for the current version.
+name: Linux AppImage
+
+on:
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: "Attach the AppImage to the existing GitHub release v<Version>"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+env:
+  DOTNET_CLI_TELEMETRY_OPTOUT: "1"
+  DOTNET_NOLOGO: "1"
+  AVALONIA_TELEMETRY_OPTOUT: "1"
+
+jobs:
+  build:
+    # The AppImage runs on this glibc (2.39) and anything newer.
+    runs-on: ubuntu-24.04
+    outputs:
+      version: ${{ steps.ver.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Version
+        id: ver
+        run: echo "version=$(grep -oP '(?<=<Version>)[^<]+' src/SlateCompanion/SlateCompanion.csproj)" >> "$GITHUB_OUTPUT"
+
+      - name: Publish
+        run: dotnet publish src/SlateCompanion -c Release -r linux-x64 --self-contained -p:DebugType=none -o publish
+
+      - name: Previous Linux release (for delta updates)
+        if: ${{ inputs.publish }}
+        run: |
+          dotnet tool restore
+          dotnet vpk download github --repoUrl "https://github.com/${{ github.repository }}" --channel linux -o releases || echo "no previous Linux release"
+
+      - name: Pack AppImage
+        run: |
+          dotnet tool restore
+          dotnet vpk pack --packId SlateCompanion --packVersion "${{ steps.ver.outputs.version }}" --packDir publish \
+            --mainExe SlateCompanion --packTitle "Slate Companion" --packAuthors "devall96" \
+            --icon src/SlateCompanion/Assets/icon.png --categories "Game;Utility" -o releases
+          ls -la releases
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: releases-linux
+          path: releases/
+
+  # A desktop-like runner: the app starts under a virtual display and draws its first-start screen.
+  test:
+    needs: build
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: releases-linux
+          path: releases-linux
+      - name: Tools
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends xvfb imagemagick
+      - name: Start it and take a screenshot
+        run: |
+          chmod +x releases-linux/SlateCompanion.AppImage
+          releases-linux/SlateCompanion.AppImage --appimage-extract > /dev/null
+          APP="$(find "$PWD/squashfs-root" -name SlateCompanion -type f -perm -u+x | head -n1)"
+          export SLATECOMPANION_DATA="$PWD/profile"
+          xvfb-run -a -s "-screen 0 1440x900x24" bash -c "\"$APP\" & pid=\$!; sleep 15; import -window root screenshot.png; kill \$pid || true"
+          test -s screenshot.png
+      - uses: actions/upload-artifact@v4
+        with:
+          name: screenshot-linux
+          path: screenshot.png
+
+  publish:
+    needs: [build, test]
+    if: ${{ inputs.publish }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: releases-linux
+          path: releases
+      - name: Attach to release v${{ needs.build.outputs.version }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # Older versions' packages were only downloaded to build the delta; assets.*.json is vpk's own upload checklist.
+        run: |
+          find releases -name '*.nupkg' ! -name "*-${{ needs.build.outputs.version }}-*" -print -delete
+          rm -f releases/assets.*.json
+          gh release upload "v${{ needs.build.outputs.version }}" releases/* --clobber --repo "${{ github.repository }}"
