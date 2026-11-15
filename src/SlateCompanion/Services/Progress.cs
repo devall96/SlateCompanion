@@ -69,10 +69,22 @@ public sealed class Progress : IDisposable
         Changed?.Invoke();
     }
 
+    readonly Lock settingsGate = new();
+
+    /// <summary>
+    /// Changes the settings and writes them. The change is made on a copy that then replaces <see cref="Settings"/>:
+    /// a refresh reading the folder lists on another thread (or a drop handled on a worker) never sees a list
+    /// half-changed ("Collection was modified"), and two changes at once can't write an older copy last.
+    /// </summary>
     public void SaveSettings(Action<AppSettings> change)
     {
-        change(Settings);
-        store.SaveSettings(Settings);
+        lock (settingsGate)
+        {
+            var next = store.Clone(Settings);
+            change(next);
+            Settings = next;
+            store.SaveSettings(next);
+        }
     }
 
     /// <summary>Find saves and re-read the one in use. Safe to call from any thread.</summary>

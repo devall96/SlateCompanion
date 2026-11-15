@@ -79,14 +79,25 @@ public sealed partial class Store
             try
             {
                 var p = PathFor("settings");
-                if (File.Exists(p)) return JsonSerializer.Deserialize<AppSettings>(File.ReadAllText(p), Json) ?? new();
+                if (!File.Exists(p)) return new AppSettings();
+                try { return JsonSerializer.Deserialize<AppSettings>(File.ReadAllText(p), Json) ?? new(); }
+                catch (JsonException e)
+                {
+                    // Kept aside before the defaults get written over it: the linked folders and names are in it.
+                    var aside = p + ".corrupt-" + DateTime.Now.ToString("yyyyMMdd-HHmmss");
+                    File.Move(p, aside, true);
+                    Log.Warn($"settings.json couldn't be read ({e.Message}); kept as {Path.GetFileName(aside)}, starting with defaults");
+                }
             }
-            catch (Exception e) when (e is IOException or JsonException) { }
+            catch (Exception e) when (e is IOException or UnauthorizedAccessException) { Log.Warn("settings.json couldn't be read: " + e.Message); }
             return new AppSettings();
         }
     }
 
-    public void SaveSettings(AppSettings s) => WriteAtomic(PathFor("settings"), JsonSerializer.Serialize(s, Json));
+    public void SaveSettings(AppSettings s) { lock (gate) WriteAtomic(PathFor("settings"), JsonSerializer.Serialize(s, Json)); }
+
+    /// <summary>A deep copy (through JSON, as it's stored).</summary>
+    public AppSettings Clone(AppSettings s) => JsonSerializer.Deserialize<AppSettings>(JsonSerializer.Serialize(s, Json), Json) ?? new();
 
     public T? Get<T>(string key)
     {
@@ -96,7 +107,7 @@ public sealed partial class Store
             var p = PathFor(key);
             if (!File.Exists(p)) return default;
             try { return JsonSerializer.Deserialize<T>(File.ReadAllText(p), Json); }
-            catch (Exception e) when (e is IOException or JsonException) { return default; }
+            catch (Exception e) when (e is IOException or UnauthorizedAccessException or JsonException) { Log.Warn($"{key}.json couldn't be read: {e.Message}"); return default; }
         }
     }
 
@@ -110,8 +121,14 @@ public sealed partial class Store
     {
         lock (gate)
         {
-            var tmp = path + ".tmp";
-            File.WriteAllText(tmp, text);
+            // a temp name of its own (two copies of the app share the folder), flushed before the rename so a
+            // power cut can't leave an empty settings file
+            var tmp = $"{path}.{Environment.ProcessId}.tmp";
+            using (var f = new FileStream(tmp, FileMode.Create, FileAccess.Write, FileShare.None))
+            {
+                f.Write(System.Text.Encoding.UTF8.GetBytes(text));
+                f.Flush(true);
+            }
             File.Move(tmp, path, overwrite: true);
         }
     }
