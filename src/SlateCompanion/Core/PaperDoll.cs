@@ -266,7 +266,14 @@ public static partial class ModelRender
     static T Cached<TK, T>(ConcurrentDictionary<TK, Lazy<T>> cache, TK key, Func<T> make) where TK : notnull
     {
         if (cache.Count > CacheLimit * 4) cache.Clear();
-        return cache.GetOrAdd(key, _ => new Lazy<T>(make, LazyThreadSafetyMode.ExecutionAndPublication)).Value;
+        var lazy = cache.GetOrAdd(key, _ => new Lazy<T>(make, LazyThreadSafetyMode.ExecutionAndPublication));
+        try { return lazy.Value; }
+        catch (Exception)
+        {
+            // A Lazy keeps its exception: one bad file would fail every outfit with it until a restart. Forget it.
+            cache.TryRemove(new KeyValuePair<TK, Lazy<T>>(key, lazy));
+            throw;
+        }
     }
 
     static ActorModel Actor(string romfs, string actor) => Cached(actors, (romfs, actor), () =>

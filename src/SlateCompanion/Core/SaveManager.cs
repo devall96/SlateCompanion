@@ -53,7 +53,10 @@ public static class SaveManager
             var cap = Path.Combine(dir, "caption.sav");
             var when = File.GetLastWriteTime(File.Exists(cap) ? cap : gd);
             double? play = null;
-            try { if (SaveFile.Load(gd).Get("PlayReport_PlayTime") is { Words.Length: > 0 } v) play = v.Words[0]; } catch (Exception) { }
+            // one read, no retries: this lists slots on the Saves screen (UI thread), where Load's retries cost about
+            // 3.75 s per unreadable slot; a slot the game is writing just shows no play time this once
+            try { if (SaveFile.Parse(ReadShared(gd)).Get("PlayReport_PlayTime") is { Words.Length: > 0 } v) play = v.Words[0]; }
+            catch (Exception) { }  // (only the play time is missing)
             var jpg = Path.Combine(dir, "caption.jpg");
             list.Add(new SaveSlot(Path.GetFileName(dir), dir, when, File.Exists(jpg) ? jpg : null, play));
         }
