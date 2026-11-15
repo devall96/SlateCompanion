@@ -160,8 +160,14 @@ public sealed class MapBuilder
             };
             File.WriteAllText(Path.Combine(tmp, "meta.json"), JsonSerializer.Serialize(meta));
             ct.ThrowIfCancellationRequested();
-            if (Directory.Exists(outDir)) Directory.Delete(outDir, true);
-            Directory.Move(tmp, outDir);
+            // The working map is moved aside, not deleted in place: a delete that fails half-way (a tile still open,
+            // antivirus) would leave neither the old map nor the new one.
+            var old = outDir + ".old";
+            TryDelete(old);
+            if (Directory.Exists(outDir)) Directory.Move(outDir, old);
+            try { Directory.Move(tmp, outDir); }
+            catch (Exception) { if (Directory.Exists(old) && !Directory.Exists(outDir)) Directory.Move(old, outDir); throw; }
+            TryDelete(old);
             Progress = 1; Message = $"Built in {sw.Elapsed.TotalSeconds:0} s"; State = "ready";
         }
         catch (OperationCanceledException)
@@ -173,7 +179,7 @@ public sealed class MapBuilder
         {
             TryDelete(tmp);
             Message = e.Message; State = "error";
-            Console.Error.WriteLine(e);
+            Log.Error("Building from the game files failed", e);
         }
         finally
         {
@@ -182,7 +188,11 @@ public sealed class MapBuilder
         }
     }
 
-    static void TryDelete(string dir) { try { if (Directory.Exists(dir)) Directory.Delete(dir, true); } catch (IOException) { } }
+    static void TryDelete(string dir)
+    {
+        try { if (Directory.Exists(dir)) Directory.Delete(dir, true); }
+        catch (Exception e) when (e is IOException or UnauthorizedAccessException) { Log.Warn($"Couldn't delete {dir}: {e.Message}"); }
+    }
 
     // ------------------------------------------------------------------ item icons and pictures
 
@@ -359,6 +369,7 @@ public sealed class MapBuilder
             int next = -1;
             var threads = new Thread[workers];
             long rowBytes = 0;
+            Exception? failure = null;  // a worker's error, raised here after the row (unhandled on a thread, it would end the app)
             for (int k = 0; k < workers; k++)
             {
                 threads[k] = new Thread(() =>
@@ -369,7 +380,9 @@ public sealed class MapBuilder
                     var quarter = new byte[128 * 128 * 4];
                     long mine = 0;
                     int tx;
-                    while ((tx = Interlocked.Increment(ref next)) < t7x && !ct.IsCancellationRequested)
+                    try
+                    {
+                    while ((tx = Interlocked.Increment(ref next)) < t7x && !ct.IsCancellationRequested && Volatile.Read(ref failure) == null)
                     {
                         Region(romfs, tx * 512, row * 512, 512, 512, region);
                         for (int q = 0; q < 4; q++)
@@ -388,11 +401,14 @@ public sealed class MapBuilder
                         Interlocked.Increment(ref done);
                         Progress = 0.9 * done / all;
                     }
+                    }
+                    catch (Exception e) { Interlocked.CompareExchange(ref failure, e, null); }
                     Interlocked.Add(ref rowBytes, mine);
                 }) { IsBackground = true, Priority = ThreadPriority.Lowest };
                 threads[k].Start();
             }
             foreach (var th in threads) th.Join();
+            if (failure != null) System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw(failure);
             total += rowBytes;
             // Each square read leaves ~15 MB of large arrays behind; give them back now rather than let them pile up.
             if (row % 4 == 3)
