@@ -56,8 +56,10 @@ public static class Equipment
     /// <summary>
     /// Sets what's equipped: for each slot given, the item at that PorchItem index (or nothing, for null) and every
     /// other item of that slot taken off. Slots not given stay as they are. Returns what changed, in words.
+    /// <paramref name="expect"/> (index â†’ actor, as the screen showed it) refuses the edit if the pouch changed since:
+    /// the game played meanwhile can put another sword at the same index.
     /// </summary>
-    public static string Apply(SaveFile s, IReadOnlyDictionary<string, int?> choice)
+    public static string Apply(SaveFile s, IReadOnlyDictionary<string, int?> choice, IReadOnlyDictionary<int, string>? expect = null)
     {
         var pouch = Pouch(s);
         // what will be equipped after: arrows need a bow
@@ -66,8 +68,8 @@ public static class Equipment
         var changes = new List<string>();
         foreach (var (slot, idx) in choice)
         {
-            if (idx is int want && !pouch.Any(p => p.index == want && SlotOf(p.actor) == slot))
-                throw new SaveManager.SaveException("That item isn't there", $"The item for {SlotNames[slot]} isn't in this save's pouch any more. Nothing was changed.");
+            if (idx is int want && !pouch.Any(p => p.index == want && SlotOf(p.actor) == slot && (expect == null || !expect.TryGetValue(want, out var a) || a == p.actor)))
+                throw new SaveManager.SaveException("That item isn't there", $"The item for {SlotNames[slot]} isn't in this save's pouch any more (the game may have saved since). Nothing was changed.");
             foreach (var p in pouch.Where(p => SlotOf(p.actor) == slot))
             {
                 bool on = p.index == idx;

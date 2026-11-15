@@ -221,7 +221,9 @@ public sealed class SavesView : ViewBase
         try { await Task.Run(() => SaveManager.Export(t, path, cemu, slot)); App.Main.Toast("Exported to " + Path.GetFileName(path)); }
         catch (SaveManager.SaveException e) { ErrorWindow.Show(e.Title, e.Message); }
         catch (Exception e) when (e is IOException or InvalidDataException or UnauthorizedAccessException) { ErrorWindow.Show("Export failed", e.Message, e); }
-        busy = false; Draw();
+        catch (Exception e) { ErrorWindow.Show("Export failed", e.Message, e); }
+        finally { busy = false; }
+        Draw();
     }
 
     // ---------------------------------------------------------------- helpers
@@ -239,7 +241,10 @@ public sealed class SavesView : ViewBase
         }
         catch (SaveManager.SaveException e) { ErrorWindow.Show(e.Title, e.Message); }
         catch (Exception e) when (e is IOException or InvalidDataException or UnauthorizedAccessException) { ErrorWindow.Show("Something went wrong", e.Message + " Your saves were backed up before anything changed.", e); }
-        busy = false;
+        // anything else (a Bootup.pack laid out differently trips the converter) still shows, and never leaves the
+        // screen stuck with every button off
+        catch (Exception e) { ErrorWindow.Show("Something went wrong", e.Message + " Your saves were backed up before anything changed.", e); }
+        finally { busy = false; }
         Refresh();
     }
 

@@ -247,16 +247,21 @@ public sealed class InventoryView : ViewBase
         var saveDir = Equipment.SaveDirOf(App.Progress.Source);
         var slot = App.Progress.SlotPath;
         if (saveDir == null || slot == null) { ErrorWindow.Show("Only Savage Wind saves", "Equipment can be changed in a Savage Wind save (Saves & settings shows which save is linked)."); return; }
+        if (busy) return;  // (a drop while an edit is still running)
+        // what the screen showed at each index, so an item that moved in the pouch since isn't equipped by mistake
+        var expect = new Dictionary<int, string>();
+        foreach (var i in choice.Values.OfType<int>()) if (items.FirstOrDefault(x => x.Index == i) is { } it) expect[i] = it.Actor;
         busy = true; Draw();
         try
         {
-            var done = await Task.Run(() => SaveManager.EditGameData(saveDir, slot, s => Equipment.Apply(s, choice)));
+            var done = await Task.Run(() => SaveManager.EditGameData(saveDir, slot, s => Equipment.Apply(s, choice, expect)));
             App.Main.Toast(what ?? (done == "nothing to change" ? "Nothing to change" : "Done. Your saves were backed up first."));
             await App.Progress.RefreshAsync();
         }
         catch (SaveManager.SaveException e) { ErrorWindow.Show(e.Title, e.Message); }
         catch (Exception e) when (e is IOException or InvalidDataException or UnauthorizedAccessException) { ErrorWindow.Show("Equipment not changed", e.Message, e); }
-        busy = false;
+        catch (Exception e) { ErrorWindow.Show("Equipment not changed", e.Message + " Your saves were backed up before anything changed.", e); }
+        finally { busy = false; }
         Load();
     }
 
