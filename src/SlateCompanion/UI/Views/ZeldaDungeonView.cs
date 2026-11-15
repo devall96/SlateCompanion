@@ -31,6 +31,12 @@ public sealed class ZeldaDungeonView : ViewBase
     bool covered;
     double scrollY;  // where the page was scrolled to when it was last hidden (restored after a reload)
     Uri? scrollFor;
+    // A link to another website, or one that wanted a new window: shown in a bar, opened in the browser only when the
+    // player asks. (Never by itself: on Linux, WebKitGTK reports every ad frame's loads too, and each would open a tab.)
+    readonly Border notice = new() { IsVisible = false, Padding = new Thickness(12, 8), Margin = new Thickness(0, 0, 0, 10), CornerRadius = new CornerRadius(8) };
+    readonly TextBlock noticeText = new() { VerticalAlignment = VerticalAlignment.Center, TextTrimming = Avalonia.Media.TextTrimming.CharacterEllipsis };
+    Button noticeBack = null!;
+    Uri? outside;
 
     public ZeldaDungeonView() => unloadTimer.Tick += (_, _) => Unload("not looked at for a while");
 
@@ -40,16 +46,26 @@ public sealed class ZeldaDungeonView : ViewBase
         forward = Ui.Button("Forward", () => web?.GoForward(), "small ghost");
         var reload = Ui.Button("Reload", () => { if (web == null) Load(); else web.Refresh(); }, "small ghost");
         var home = Ui.Button("Breath of the Wild", () => Navigate(new Uri(HomeUrl)), "small ghost");
-        var outside = Ui.Button("Open in your browser", () => ErrorWindow.OpenPath(web?.Source?.ToString() ?? last.ToString()), "small");
+        var toBrowser = Ui.Button("Open in your browser", () => ErrorWindow.OpenPath(web?.Source?.ToString() ?? last.ToString()), "small");
         var bar = new Grid { ColumnDefinitions = new ColumnDefinitions("Auto,*,Auto"), Margin = new Thickness(0, 0, 0, 10) };
         bar.Children.Add(Ui.Row(6, back, forward, reload, home));
         address.Margin = new Thickness(12, 0);
         address.Classes.Add("muted"); address.Classes.Add("small");
         Grid.SetColumn(address, 1); bar.Children.Add(address);
-        Grid.SetColumn(outside, 2); bar.Children.Add(outside);
-        var body = new Grid { RowDefinitions = new RowDefinitions("Auto,*") };
+        Grid.SetColumn(toBrowser, 2); bar.Children.Add(toBrowser);
+        var openOutside = Ui.Button("Open in your browser", () => { if (outside != null) ErrorWindow.OpenPath(outside.ToString()); HideNotice(); }, "small primary");
+        noticeBack = Ui.Button("Back to Zelda Dungeon", () => { HideNotice(); Navigate(last); }, "small ghost");
+        var close = Ui.Button("Dismiss", HideNotice, "small ghost");
+        var ng = new Grid { ColumnDefinitions = new ColumnDefinitions("*,Auto") };
+        ng.Children.Add(noticeText);
+        var nb = Ui.Row(8, openOutside, noticeBack, close); Grid.SetColumn(nb, 1); ng.Children.Add(nb);
+        notice.Child = ng;
+        notice.Background = Ui.Brush("Panel");
+        notice.BorderBrush = Ui.Brush("Glow"); notice.BorderThickness = new Thickness(1);
+        var body = new Grid { RowDefinitions = new RowDefinitions("Auto,Auto,*") };
         body.Children.Add(bar);
-        Grid.SetRow(host, 1); body.Children.Add(host);
+        Grid.SetRow(notice, 1); body.Children.Add(notice);
+        Grid.SetRow(host, 2); body.Children.Add(host);
         var note = Ui.Text("Zelda Dungeon's website, as it is. Not part of Slate Companion.", "faint small");
         return Rows.Page(Ui.Header("Zelda Dungeon", note), body);
     }
@@ -104,19 +120,25 @@ public sealed class ZeldaDungeonView : ViewBase
             if (e is WindowsWebView2EnvironmentRequestedEventArgs w2) w2.UserDataFolder = folder;
             else if (e is GtkWebViewEnvironmentRequestedEventArgs g) { g.BaseDataDirectory = folder; g.BaseCacheDirectory = Path.Combine(folder, "cache"); }
         };
-        w.NavigationStarted += (_, e) =>
-        {
-            // other websites open in the player's own browser; this tab stays on Zelda Dungeon
-            if (e.Request is { } r && !IsZeldaDungeon(r) && r.Scheme is "http" or "https") { e.Cancel = true; ErrorWindow.OpenPath(r.ToString()); }
-        };
+        // The page can never open anything outside this tab: no new windows, no browser, no other program. Only the
+        // player's own press on "Open in your browser" does that.
+        // New windows (target=_blank links, ads' pop-ups): always refused; a Zelda Dungeon page opens here instead,
+        // anything else is dropped.
         w.NewWindowRequested += (_, e) =>
         {
             e.Handled = true;
-            if (e.Request is { } r) { if (IsZeldaDungeon(r)) w.Navigate(r); else ErrorWindow.OpenPath(r.ToString()); }
+            if (e.Request is { } r && IsZeldaDungeon(r)) w.Navigate(r);
+        };
+        // Links the system would hand to another program (mailto:, app links…) are stopped. Web pages and frames load
+        // as in any browser (on Linux this also sees every ad frame, so it must never do more than cancel).
+        w.NavigationStarted += (_, e) =>
+        {
+            if (e.Request is { } r && r.Scheme is not ("http" or "https" or "about" or "data" or "blob")) e.Cancel = true;
         };
         w.NavigationCompleted += async (_, _) =>
         {
-            if (w.Source is { } s && IsZeldaDungeon(s)) last = s;
+            if (w.Source is { } s && IsZeldaDungeon(s)) { last = s; if (outside != null && noticeBack.IsVisible) HideNotice(); }
+            else if (w.Source is { Scheme: "http" or "https" } other) ShowNotice(other, $"You're on {other.Host}, outside Zelda Dungeon.", left: true);
             if (scrollFor != null && scrollFor == w.Source && scrollY > 0)
             {
                 scrollFor = null;
@@ -133,6 +155,16 @@ public sealed class ZeldaDungeonView : ViewBase
         Loads++;
         Log.Info($"Zelda Dungeon: page opened ({(info != null ? $"{info.Type} {info.Version}" : "web engine")})");
     }
+
+    void ShowNotice(Uri u, string text, bool left)
+    {
+        outside = u;
+        noticeText.Text = text;
+        noticeBack.IsVisible = left;
+        notice.IsVisible = true;
+    }
+
+    void HideNotice() { notice.IsVisible = false; outside = null; }
 
     async void RememberScroll(NativeWebView w)
     {
