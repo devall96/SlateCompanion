@@ -34,24 +34,31 @@ public static class Aamp
         if (d.Length < 0x34 || d[0] != 'A' || d[1] != 'A' || d[2] != 'M' || d[3] != 'P') throw new InvalidDataException("not an AAMP file");
         if (BinaryPrimitives.ReadUInt32LittleEndian(d.AsSpan(4)) != 2) throw new InvalidDataException("only AAMP v2 (Switch) is read");
         int root = 0x30 + (int)BinaryPrimitives.ReadUInt32LittleEndian(d.AsSpan(0x14));
-        return List(d, root, 0);
+        // The header counts every list, object and parameter: a damaged file whose lists point back at themselves
+        // could otherwise fan out without end (the depth limit alone allows 2^32 visits).
+        long budget = (long)BinaryPrimitives.ReadUInt32LittleEndian(d.AsSpan(0x18)) + BinaryPrimitives.ReadUInt32LittleEndian(d.AsSpan(0x1C))
+                      + BinaryPrimitives.ReadUInt32LittleEndian(d.AsSpan(0x20)) + 16;
+        budget = Math.Min(budget, d.Length / 8 + 16);
+        return List(d, root, 0, ref budget);
     }
 
-    static PList List(byte[] d, int at, int depth)
+    static PList List(byte[] d, int at, int depth, ref long budget)
     {
         if (depth > 32) throw new InvalidDataException("AAMP nesting too deep");
+        if (--budget < 0) throw new InvalidDataException("AAMP has more entries than its header says (damaged)");
         var s = d.AsSpan();
         uint name = BinaryPrimitives.ReadUInt32LittleEndian(s[at..]);
         int lo = BinaryPrimitives.ReadUInt16LittleEndian(s[(at + 4)..]) * 4, ln = BinaryPrimitives.ReadUInt16LittleEndian(s[(at + 6)..]);
         int oo = BinaryPrimitives.ReadUInt16LittleEndian(s[(at + 8)..]) * 4, on = BinaryPrimitives.ReadUInt16LittleEndian(s[(at + 10)..]);
         var lists = new List<PList>(ln);
-        for (int i = 0; i < ln; i++) lists.Add(List(d, at + lo + i * 12, depth + 1));
+        for (int i = 0; i < ln; i++) lists.Add(List(d, at + lo + i * 12, depth + 1, ref budget));
         var objs = new List<Obj>(on);
         for (int i = 0; i < on; i++)
         {
             int o = at + oo + i * 8;
             uint oname = BinaryPrimitives.ReadUInt32LittleEndian(s[o..]);
             int po = BinaryPrimitives.ReadUInt16LittleEndian(s[(o + 4)..]) * 4, pn = BinaryPrimitives.ReadUInt16LittleEndian(s[(o + 6)..]);
+            if ((budget -= 1 + pn) < 0) throw new InvalidDataException("AAMP has more entries than its header says (damaged)");
             var ps = new List<Param>(pn);
             for (int k = 0; k < pn; k++)
             {

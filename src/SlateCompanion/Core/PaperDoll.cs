@@ -125,9 +125,18 @@ public static partial class ModelRender
                 var uv = m.Uvs?[v] ?? Vector2.Zero;
                 uvs.Add(uv.X); uvs.Add(uv.Y);
             }
-            var idx = new uint[m.Indices.Length];
-            for (int i = 0; i < idx.Length; i++) idx[i] = (uint)(m.Indices[i] + baseVertex);
-            var part = new OutfitPart { Indices = idx, AlphaTest = m.AlphaTest, Name = $"{m.Model}/{m.Shape}" };
+            // Triangles pointing past this shape's vertices are left out: the graphics card would read outside the
+            // vertex buffer (a driver crash no catch can stop). The software picture checks the same.
+            int nv = m.Positions.Length;
+            var idx = new List<uint>(m.Indices.Length);
+            for (int i = 0; i + 2 < m.Indices.Length; i += 3)
+            {
+                int a = m.Indices[i], b = m.Indices[i + 1], c = m.Indices[i + 2];
+                if ((uint)a >= (uint)nv || (uint)b >= (uint)nv || (uint)c >= (uint)nv) continue;
+                idx.Add((uint)(a + baseVertex)); idx.Add((uint)(b + baseVertex)); idx.Add((uint)(c + baseVertex));
+            }
+            if (idx.Count < m.Indices.Length) Log.Warn($"Paper doll: {m.Model}/{m.Shape}: {(m.Indices.Length - idx.Count) / 3} damaged triangles left out");
+            var part = new OutfitPart { Indices = idx.ToArray(), AlphaTest = m.AlphaTest, Name = $"{m.Model}/{m.Shape}" };
             if (m.Albedo != null && m.Uvs != null)
             {
                 var t = Texture(romfs, folder, m.Albedo);

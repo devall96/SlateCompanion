@@ -197,6 +197,7 @@ public static class ModelReader
                 uint prim = r.U32(lod0 + 0x24), ifmt = r.U32(lod0 + 0x28), icount = r.U32(lod0 + 0x2C), first = r.U32(lod0 + 0x30);
                 if (prim != 3) { notes?.Add($"{modelName}/{shapeName}: primitive type {prim} skipped (only triangle lists)"); continue; }
                 long ib = dataStart + r.U32(lod0 + 0x20);
+                if (ib < 0 || icount > (d.Length - ib) / (ifmt == 0 ? 1 : ifmt == 1 ? 2 : 4)) throw new InvalidDataException($"{modelName}/{shapeName}: index buffer runs past the end of the file (damaged)");
                 var idx = new int[icount];
                 for (int k = 0; k < icount; k++)
                     idx[k] = (int)first + ifmt switch
@@ -345,7 +346,9 @@ public static class ModelReader
         long attrs = r.P(v + 0x10), sizes = r.P(v + 0x38), strides = r.P(v + 0x40);
         long off = dataStart + r.U32(v + 0x50);
         int numAttr = r.D[v + 0x54], numBuf = r.D[v + 0x55];
-        count = (int)r.U32(v + 0x58);
+        uint vc = r.U32(v + 0x58);
+        if (vc > r.D.Length) throw new InvalidDataException("more vertices than the file has bytes (damaged)");
+        count = (int)vc;
         var bufStart = new long[numBuf];
         var bufStride = new int[numBuf];
         for (int i = 0; i < numBuf; i++)
@@ -422,11 +425,13 @@ public static class ModelReader
     {
         public readonly byte[] D = d;
         public long P(long at) => at <= 0 || at + 8 > D.Length ? 0 : (long)BinaryPrimitives.ReadUInt64LittleEndian(D.AsSpan((int)at));
-        public uint U32(long at) => BinaryPrimitives.ReadUInt32LittleEndian(D.AsSpan((int)at));
-        public int S32(long at) => BinaryPrimitives.ReadInt32LittleEndian(D.AsSpan((int)at));
-        public int U16(long at) => BinaryPrimitives.ReadUInt16LittleEndian(D.AsSpan((int)at));
-        public int S16(long at) => BinaryPrimitives.ReadInt16LittleEndian(D.AsSpan((int)at));
-        public float F(long at) => BinaryPrimitives.ReadSingleLittleEndian(D.AsSpan((int)at));
+        // (an offset past the end throws instead of wrapping around to a wrong place in the file)
+        int At(long at, int len) => at >= 0 && at + len <= D.Length ? (int)at : throw new InvalidDataException($"model offset 0x{at:X} is outside the file (damaged)");
+        public uint U32(long at) => BinaryPrimitives.ReadUInt32LittleEndian(D.AsSpan(At(at, 4)));
+        public int S32(long at) => BinaryPrimitives.ReadInt32LittleEndian(D.AsSpan(At(at, 4)));
+        public int U16(long at) => BinaryPrimitives.ReadUInt16LittleEndian(D.AsSpan(At(at, 2)));
+        public int S16(long at) => BinaryPrimitives.ReadInt16LittleEndian(D.AsSpan(At(at, 2)));
+        public float F(long at) => BinaryPrimitives.ReadSingleLittleEndian(D.AsSpan(At(at, 4)));
         public string Str(long at)
         {
             if (at <= 0 || at + 2 > D.Length) return "";
@@ -437,7 +442,8 @@ public static class ModelReader
         {
             var keys = new List<string>();
             if (at <= 0) return keys;
-            int n = (int)U32(at + 4);
+            long n = U32(at + 4);
+            if (at + 8 + (n + 1) * 0x10 > D.Length) throw new InvalidDataException("model dictionary is longer than the file (damaged)");
             for (int i = 1; i <= n; i++) keys.Add(Str(P(at + 8 + i * 0x10 + 8)));
             return keys;
         }
