@@ -1,7 +1,8 @@
 {
  "meta": {
   "note": "Main story route for The Legend of Zelda: Breath of the Wild, written for Slate Companion. After the Great Plateau the order is up to you; this is one common route.",
-  "spoilers": true
+  "spoilers": true,
+  "tracking": "Each step's 'track' entry lists save keys (shrine:, tower:, mainQuests:, sideQuests:, divineBeasts:, dlc:, or flag:<save flag>); any one of them done ticks the step. A chapter is done when every step that has one is. DLC sections list keys that must all be done. Flag names come from flags.json."
  },
  "chapters": [
   {
@@ -24,7 +25,38 @@
     "Shrines double as fast-travel points, so open every one you pass.",
     "Collect apples, mushrooms and meat here; hearty meals carry you through the first fights off the plateau.",
     "Shooting a Bokoblin camp's lookout first or rolling a Remote Bomb in avoids getting mobbed early on."
-   ]
+   ],
+   "track": {
+    "steps": [
+     [
+      "flag:FirstTower_Activated"
+     ],
+     [
+      "tower:Tower07"
+     ],
+     [
+      "tower:Tower07"
+     ],
+     [
+      "shrine:Dungeon038"
+     ],
+     [
+      "shrine:Dungeon041"
+     ],
+     [
+      "shrine:Dungeon009"
+     ],
+     [
+      "shrine:Dungeon065"
+     ],
+     [
+      "mainQuests:FindDungeon"
+     ],
+     [
+      "mainQuests:FindDungeon"
+     ]
+    ]
+   }
   },
   {
    "id": "kakariko-impa",
@@ -42,7 +74,30 @@
     "The Great Fairy Cotera's fountain is in the hills just above Kakariko; opening it is the cheapest of the four (100 rupees if it is your first).",
     "Enchanted, the clothing shop in Kakariko, sells Stealth gear, which helps with sneaking up on animals and horses.",
     "Paya's quest 'The Stolen Heirloom' is a short shrine quest here once you have explored a bit."
-   ]
+   ],
+   "track": {
+    "steps": [
+     [
+      "tower:Tower08",
+      "mainQuests:Find_Impa"
+     ],
+     [
+      "mainQuests:Find_Impa",
+      "flag:Location_Kakariko"
+     ],
+     [
+      "mainQuests:Find_Impa"
+     ],
+     null,
+     [
+      "shrine:Dungeon099"
+     ],
+     [
+      "tower:Tower13",
+      "mainQuests:CarryingBlueFireEXMini"
+     ]
+    ]
+   }
   },
   {
    "id": "hateno-purah",
@@ -61,7 +116,36 @@
     "Purah also sets up the Sheikah Sensor upgrade quest and the Hyrule Compendium; buy compendium pictures at the lab if you miss an entry.",
     "A house in Hateno can be bought through the 'From the Ground Up' quest and lets you display weapons and shields.",
     "Kochi Dye Shop in Hateno can recolour your armor."
-   ]
+   ],
+   "track": {
+    "steps": [
+     [
+      "tower:Tower13",
+      "flag:Location_Hateno"
+     ],
+     [
+      "mainQuests:CarryingBlueFireEXMini"
+     ],
+     [
+      "mainQuests:CarryingBlueFireEXMini"
+     ],
+     [
+      "mainQuests:CarryingBlueFireEXMini"
+     ],
+     [
+      "mainQuests:CarryingBlueFireEXMini"
+     ],
+     [
+      "mainQuests:CarryingBlueFireEXMini"
+     ],
+     [
+      "flag:Water_Relic_Activated",
+      "flag:Fire_Relic_Activated",
+      "flag:Wind_Relic_Activated",
+      "flag:Electric_Relic_Activated"
+     ]
+    ]
+   }
   },
   {
    "id": "vah-ruta",
@@ -81,7 +165,36 @@
     "Waterblight Ganon's second phase throws ice blocks; you can stop or shatter them, and Cryonis pillars give you high ground.",
     "Reward: a Heart Container and Mipha's Grace, which revives you once when you fall and recharges over time.",
     "Swim up the waterfall with the Zora Armor to reach the area where you collect the Shock Arrows quickly."
-   ]
+   ],
+   "track": {
+    "steps": [
+     [
+      "mainQuests:GotoZoraVillage"
+     ],
+     [
+      "mainQuests:GotoZoraVillage",
+      "flag:Location_WhiteZora"
+     ],
+     [
+      "flag:Water_Relic_Activated"
+     ],
+     [
+      "flag:Enter_RemainsWater"
+     ],
+     [
+      "flag:Enter_RemainsWater"
+     ],
+     [
+      "flag:Enter_RemainsWater"
+     ],
+     [
+      "divineBeasts:RemainsWater"
+     ],
+     [
+      "divineBeasts:RemainsWater"
+     ]
+    ]
+   }
   },
   {
    "id": "vah-rudania",
@@ -101,7 +214,36 @@
     "Fireblight Ganon is very vulnerable to ice weapons and ice arrows.",
     "When it charges a big fireball, a Remote Bomb dropped into its mouth stuns it.",
     "Reward: a Heart Container and Daruk's Protection, a shield that blocks hits and recharges after use."
-   ]
+   ],
+   "track": {
+    "steps": [
+     [
+      "flag:Fire_Relic_Activated"
+     ],
+     [
+      "flag:Fire_Relic_Activated",
+      "flag:Location_Goron"
+     ],
+     [
+      "flag:Enter_RemainsFire"
+     ],
+     [
+      "flag:Enter_RemainsFire"
+     ],
+     [
+      "flag:Enter_RemainsFire"
+     ],
+     [
+      "flag:Enter_RemainsFire"
+     ],
+     [
+      "divineBeasts:RemainsFire"
+     ],
+     [
+      "divineBeasts:RemainsFire"
+     ]
+    ]
+   }
   },
   {
    "id": "vah-medoh",
@@ -119,7 +261,33 @@
    "tips": [
     "Aiming in mid-air after jumping or gliding slows time; this is how you hit Windblight Ganon's eye and its drones.",
     "Reward: a Heart Container and Revali's Gale, an instant updraft you can use several times before it recharges."
-   ]
+   ],
+   "track": {
+    "steps": [
+     [
+      "flag:Wind_Relic_Activated",
+      "flag:Location_Rito"
+     ],
+     [
+      "flag:Wind_Relic_Activated"
+     ],
+     [
+      "flag:Enter_RemainsWind"
+     ],
+     [
+      "flag:Enter_RemainsWind"
+     ],
+     [
+      "flag:Enter_RemainsWind"
+     ],
+     [
+      "divineBeasts:RemainsWind"
+     ],
+     [
+      "divineBeasts:RemainsWind"
+     ]
+    ]
+   }
   },
   {
    "id": "vah-naboris",
@@ -139,7 +307,36 @@
     "Thunderblight Ganon is fast and hits hard; perfect dodges into flurry rushes and shield parries are the reliable way in.",
     "In its second phase it plants metal rods; Magnesis can pull them away before the lightning strikes.",
     "Reward: a Heart Container, Urbosa's Fury (a lightning strike on charged attacks), and Riju lets you keep the Thunder Helm."
-   ]
+   ],
+   "track": {
+    "steps": [
+     [
+      "mainQuests:Drag_Hero"
+     ],
+     [
+      "flag:Electric_Relic_Activated",
+      "flag:Location_Gerudo"
+     ],
+     [
+      "sideQuests:Gerudo_Ch_Helmet"
+     ],
+     [
+      "sideQuests:Gerudo_Ch_Helmet"
+     ],
+     [
+      "flag:Enter_RemainsElectric"
+     ],
+     [
+      "flag:Enter_RemainsElectric"
+     ],
+     [
+      "divineBeasts:RemainsElectric"
+     ],
+     [
+      "divineBeasts:RemainsElectric"
+     ]
+    ]
+   }
   },
   {
    "id": "master-sword",
@@ -155,7 +352,26 @@
     "The Master Sword never breaks; it runs out of power and recharges after a while.",
     "It glows and deals double damage near Ganon's malice, in Divine Beasts and against Guardians.",
     "Hestu is in Korok Forest too, so it's a good time to trade Korok seeds for inventory space."
-   ]
+   ],
+   "track": {
+    "steps": [
+     [
+      "flag:Get_MasterSword_Activated",
+      "flag:Location_Cokiri"
+     ],
+     [
+      "flag:Get_MasterSword_Activated",
+      "flag:Location_Cokiri"
+     ],
+     [
+      "flag:Get_MasterSword_Activated",
+      "flag:Location_Cokiri"
+     ],
+     [
+      "mainQuests:Get_MasterSword"
+     ]
+    ]
+   }
   },
   {
    "id": "hyrule-castle",
@@ -172,7 +388,22 @@
     "Defeating Ganon saves a completion star on your file and returns you to just before the final fight, so you can keep exploring.",
     "Finding all twelve captured memories unlocks one more memory and an extra scene in the ending.",
     "You can go to Hyrule Castle at any time after the Great Plateau; the Divine Beasts and Master Sword are optional."
-   ]
+   ],
+   "track": {
+    "steps": [
+     null,
+     null,
+     [
+      "mainQuests:GanonQuest"
+     ],
+     [
+      "mainQuests:GanonQuest"
+     ],
+     [
+      "mainQuests:GanonQuest"
+     ]
+    ]
+   }
   }
  ],
  "dlc": {
@@ -187,7 +418,12 @@
       "You start with none of your weapons, armor, food or materials, though runes still work and your hearts and stamina carry in. Each floor's enemies must all be defeated before you can go on.",
       "It is split into three sets (Beginning, Middle and Final), 54 floors in all, of which 45 are fights and the rest are rest stops. A finished set can be skipped next time.",
       "Finishing all three sets awakens the Master Sword's full power so it stays in its glowing state for much longer."
-     ]
+     ],
+     "track": {
+      "done": [
+       "dlc:100enemy"
+      ]
+     }
     },
     {
      "id": "ex-quests",
@@ -197,7 +433,23 @@
       "The rewards include the Korok Mask (it shakes near hidden Koroks), Majora's Mask, Midna's Helmet, the Phantom armor set and Tingle's outfit.",
       "The Travel Medallion lets you place one extra fast-travel point anywhere.",
       "Hero's Path mode on the map replays where you have walked over the last hours of play."
-     ]
+     ],
+     "track": {
+      "done": [
+       "dlc:TreasureHunt01",
+       "dlc:TreasureHunt02",
+       "dlc:TreasureHunt03",
+       "dlc:TreasureHunt04",
+       "dlc:TreasureHunt_touzoku01",
+       "dlc:TreasureHunt_touzoku02",
+       "dlc:TreasureHunt_touzoku03",
+       "dlc:TreasureHunt_touzoku04",
+       "dlc:TreasureHunt_touzoku05",
+       "dlc:TreasureHunt_touzoku06",
+       "dlc:TreasureHunt_touzoku07",
+       "dlc:TreasureHunt_touzoku08"
+      ]
+     }
     },
     {
      "id": "master-mode",
@@ -231,7 +483,15 @@
       "Each one has you raise and clear three shrines tied to that champion's region; each shrine gives an emblem.",
       "With all three emblems, go to that champion's Divine Beast. You are pulled into an illusory version of it and fight that champion's Blight Ganon again.",
       "Winning unlocks a new memory of that champion and an upgraded champion ability that recharges much faster."
-     ]
+     ],
+     "track": {
+      "done": [
+       "dlc:BalladOfHeroGerudo",
+       "dlc:BalladOfHeroGoron",
+       "dlc:BalladOfHeroRito",
+       "dlc:BalladOfHeroZora"
+      ]
+     }
     },
     {
      "id": "final-divine-beast",
@@ -240,7 +500,12 @@
       "With all four champion songs done, Monk Maz Koshia opens the Final Trial, reached through the Shrine of Resurrection.",
       "It is a fifth Divine Beast with four chambers themed on the elements. Activate the terminal in each to unlock the door at the back, then defeat Monk Maz Koshia.",
       "The reward is the Master Cycle Zero, a motorcycle you summon with a new rune. Afterwards Kass sings the finished Champions' Ballad for you."
-     ]
+     ],
+     "track": {
+      "done": [
+       "dlc:BalladOfHeroes"
+      ]
+     }
     }
    ]
   }

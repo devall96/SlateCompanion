@@ -32,6 +32,7 @@ public sealed class Progress : IDisposable
     public string? Platform { get; private set; }
     public string? Error { get; private set; }
     public HashSet<string> SaveDone { get; private set; } = [];
+    HashSet<string> readDone = [];  // what the save itself says, before the walkthrough is worked out from it
     public HashSet<string> Manual { get; }
     public double[]? Position { get; private set; }
     public Dictionary<string, double> Stats { get; private set; } = [];
@@ -52,6 +53,9 @@ public sealed class Progress : IDisposable
         Group("shrineQuests", data.Flags.ShrineQuests.Select(q => (q.Id, q.Flag)));
         Group("divineBeasts", data.Flags.DivineBeasts.Select(q => (q.Id, q.Flag)));
         Group("memories", data.Flags.Memories.Select(q => (q.Id, q.Flag)));
+        Group("dlc", (data.Flags.Dlc?.Quests ?? []).Select(q => (q.Id, q.Flag)));
+        // the walkthrough's own save flags ("flag:Enter_RemainsWater"…: a quest started, a Divine Beast entered)
+        foreach (var key in WalkthroughKeys().Where(k => k.StartsWith("flag:")).Distinct()) t.Add((key, key[5..]));
         tracked = [.. t];
         var s = new List<(string, string, string)>();
         foreach (var st in data.Flags.Stats) if (st.Flag != null) s.Add((st.Key, st.Flag, st.Type ?? "s32"));
@@ -111,7 +115,7 @@ public sealed class Progress : IDisposable
             var slots = src == null ? [] : SaveLocator.ListSlots(src.Folder);
             var chosen = Settings.SelectedSlot == null ? slots.FirstOrDefault() : slots.FirstOrDefault(x => x.Slot == Settings.SelectedSlot) ?? slots.FirstOrDefault();
             Linked = chosen != null;
-            if (chosen == null) { SaveDone = []; Error = null; return; }
+            if (chosen == null) { readDone = []; SaveDone = []; Error = null; return; }
 
             // Read only: the file is opened shared, read in one go and closed (SaveFile.Load).
             var game = SaveFile.Load(Path.Combine(chosen.Path, "game_data.sav"));
@@ -140,7 +144,8 @@ public sealed class Progress : IDisposable
             }
             var pos = game.Get("PlayerSavePos");
             Position = pos is { Words.Length: >= 3 } ? [BitConverter.UInt32BitsToSingle(pos.Words[0]), BitConverter.UInt32BitsToSingle(pos.Words[1]), BitConverter.UInt32BitsToSingle(pos.Words[2])] : null;
-            SaveDone = done;
+            readDone = done;
+            SaveDone = WithWalkthrough(done);
             Stats = stats;
             Slot = chosen.Slot;
             SlotPath = chosen.Path;
@@ -154,6 +159,44 @@ public sealed class Progress : IDisposable
             Error = e.Message;
         }
     }
+
+    /// <summary>
+    /// The walkthrough ticked from the save (when <see cref="AppSettings.TrackWalkthrough"/> is on): a step
+    /// ("chapter:&lt;id&gt;:&lt;n&gt;") when any of its keys is done, a chapter when all its tracked steps are, a DLC
+    /// section when all its keys are. Turning tracking on ticks everything the save has already done.
+    /// </summary>
+    HashSet<string> WithWalkthrough(HashSet<string> done)
+    {
+        if (!Settings.TrackWalkthrough) return done;
+        var all = new HashSet<string>(done);
+        foreach (var c in data.Walkthrough.Chapters)
+        {
+            var steps = c.Track?.Steps;
+            if (steps == null) continue;
+            int tracked = 0, ticked = 0;
+            for (int i = 0; i < steps.Length; i++)
+            {
+                if (steps[i] is not { Length: > 0 } any) continue;
+                tracked++;
+                if (any.Any(done.Contains)) { ticked++; all.Add($"chapter:{c.Id}:{i}"); }
+            }
+            if (tracked > 0 && ticked == tracked) all.Add($"chapter:{c.Id}");
+        }
+        foreach (var s in (data.Walkthrough.Dlc?.Values ?? Enumerable.Empty<DlcPart>()).SelectMany(p => p.Sections))
+            if (s.Track?.Done is { Length: > 0 } keys && keys.All(done.Contains)) all.Add($"chapter:{s.Id}");
+        return all;
+    }
+
+    /// <summary>Walkthrough tracking was switched: works it out again from the save already read.</summary>
+    public void ApplyWalkthroughTracking()
+    {
+        SaveDone = WithWalkthrough(readDone);
+        Changed?.Invoke();
+    }
+
+    IEnumerable<string> WalkthroughKeys() =>
+        data.Walkthrough.Chapters.SelectMany(c => (c.Track?.Steps ?? []).SelectMany(s => s ?? []))
+            .Concat((data.Walkthrough.Dlc?.Values ?? Enumerable.Empty<DlcPart>()).SelectMany(p => p.Sections).SelectMany(s => s.Track?.Done ?? []));
 
     public Counts Count()
     {

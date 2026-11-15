@@ -41,6 +41,15 @@ No images are bundled. `compendium.json` holds only remote image URLs, which the
   - Hestu, Kilton, Kochi Dye Shop, Stable and Malanya.
 - **Hestu numbers:** the Korok seed costs (441 to max all pouches) are taken from the wiki's Hestu table.
 
+## guides/zeldadungeon.json
+
+- **What it holds:** only web addresses: which Zelda Dungeon page belongs to each walkthrough chapter, quest and shrine, with a short label. No text from Zelda Dungeon is copied; the Zelda Dungeon tab shows their website itself, as it is.
+- **How it was made:** from Zelda Dungeon's walkthrough index, side quest catalogue and shrine locations list, and their wiki's main, side and shrine quest categories (2026-11-15). Every page not listed there was opened to check it exists. Quests match by name, shrines by name against `map/markers.json`.
+
+## Walkthrough tracking (`track` in guides/walkthrough.json)
+
+- Each step lists save keys from this app's own data (`flags.json`, `map/markers.json`); the flag names are documented in `FLAGS-SOURCES.md`. They were checked against real saves (test saves and a Savage Wind save from the user's Linux PC, read only).
+
 ## Scripts
 
 The fetch and build scripts were one-off helpers and are not part of the app. Downloaded code was never run.

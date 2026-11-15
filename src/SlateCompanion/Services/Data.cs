@@ -12,7 +12,8 @@ public sealed record Quest(string Id, string Name, string? Flag, string? Notes, 
     string? Reward, string? Shrine);
 public sealed record Named(string Id, string Name, string? Flag);
 public sealed record Flags(StatDef[] Stats, DefeatedDef[] Defeated, Quest[] MainQuests, Quest[] SideQuests, Quest[] ShrineQuests,
-    Named[] DivineBeasts, Named[] Memories);
+    Named[] DivineBeasts, Named[] Memories, DlcFlags? Dlc);
+public sealed record DlcFlags(Named[]? Quests);
 
 public sealed record CompendiumEntry(int Id, string Name, string Category,
     [property: JsonPropertyName("common_locations")] string[]? CommonLocations, string[]? Drops,
@@ -30,8 +31,13 @@ public sealed record FairyCost(int Order, int Rupees);
 public sealed record GreatFairies(string? Note, FairyCost[]? UnlockCostByOrder);
 public sealed record ArmorFile(ArmorPiece[] Armor, GreatFairies? GreatFairies);
 
-public sealed record Chapter(string Id, string Title, string? Recommended, string[]? Steps, string[]? Tips);
-public sealed record Section(string Id, string Title, string[]? Body);
+public sealed record Chapter(string Id, string Title, string? Recommended, string[]? Steps, string[]? Tips, Track? Track);
+public sealed record Section(string Id, string Title, string[]? Body, Track? Track);
+/// <summary>
+/// How a walkthrough chapter follows the save: per step, save keys of which any one done ticks it (null: by hand
+/// only); or, for a section without steps, keys that must all be done.
+/// </summary>
+public sealed record Track(string[]?[]? Steps, string[]? Done);
 public sealed record DlcPart(string Title, Section[] Sections);
 public sealed record Walkthrough(Chapter[] Chapters, Dictionary<string, DlcPart>? Dlc);
 public sealed record ShrineGuide(string Name, string? Region, string? Trial, string? Solution, int? Chests, string? Quest);

@@ -12,6 +12,7 @@ public sealed class QuestsView : ViewBase
 {
     string group = "walkthrough", q = "", show = "all";
     MasterDetail<QuestRow> md = null!;
+    ToggleSwitch track = null!;
     readonly TextBlock summary = Ui.Text("", "muted small");
 
     protected override Control Build()
@@ -19,10 +20,21 @@ public sealed class QuestsView : ViewBase
         md = new MasterDetail<QuestRow>(
             r => Rows.Item(Ui.Check(r.Key, Refresh), r.Title, r.Meta, r.Reward != null ? Ui.Tag(r.Reward, "orange") : r.Dlc ? Ui.Tag("DLC", "orange") : null, App.Progress.IsDone(r.Key)),
             Detail, 440, () => Ui.Text("Pick a quest or chapter to see its steps.", "muted"));
+        // the walkthrough follows the save: switching it on ticks every step and chapter the save has already done
+        track = new ToggleSwitch { IsChecked = App.Progress.Settings.TrackWalkthrough, OnContent = "Tick from my save", OffContent = "Tick from my save", VerticalAlignment = Avalonia.Layout.VerticalAlignment.Center };
+        ToolTip.SetTip(track, "Walkthrough steps and chapters tick themselves from your save. Ticks you made by hand stay either way.");
+        track.IsCheckedChanged += (_, _) =>
+        {
+            bool on = track.IsChecked == true;
+            if (on == App.Progress.Settings.TrackWalkthrough) return;
+            App.Progress.SaveSettings(x => x.TrackWalkthrough = on);
+            App.Progress.ApplyWalkthroughTracking();
+            App.Main.Toast(on ? "Walkthrough synced with your save" : "Walkthrough no longer ticks from your save");
+        };
         var filters = Ui.Row(10,
             Rows.Chips([("walkthrough", "Walkthrough"), ("mainQuests", "Main quests"), ("sideQuests", "Side quests"), ("shrineQuests", "Shrine quests")], group, g => { group = g; Refresh(); }),
             Rows.SearchBox("Find a quest…", s => { q = s; Refresh(); }, 220),
-            Rows.Chips([("all", "All"), ("todo", "To do"), ("done", "Done")], show, s => { show = s; Refresh(); }));
+            Rows.Chips([("all", "All"), ("todo", "To do"), ("done", "Done")], show, s => { show = s; Refresh(); }), track);
         var body = new Grid { RowDefinitions = new RowDefinitions("Auto,Auto,*") };
         body.Children.Add(filters);
         summary.Margin = new Thickness(0, 10);
@@ -35,6 +47,7 @@ public sealed class QuestsView : ViewBase
     {
         var s = Ui.Stack(10, Ui.Text(r.Title, "h3"));
         if (!string.IsNullOrEmpty(r.Meta)) s.Children.Add(Ui.Text(r.Meta, "muted small"));
+        if (ZeldaDungeonLinks.Buttons(r.Key) is { } zd) s.Children.Add(zd);
         if (!r.Key.StartsWith("chapter:"))
         {
             // the game's own quest log: its description, and how it ended once it's done
@@ -43,7 +56,8 @@ public sealed class QuestsView : ViewBase
             if (App.Progress.IsDone(r.Key) && Ui.GameDesc(finish, "COMPLETED") is { } f) s.Children.Add(f);
         }
         if (r.Notes != null) s.Children.Add(Ui.Text(r.Notes));
-        if (r.Steps is { Length: > 0 }) s.Children.Add(Rows.Steps(r.Steps));
+        if (r.Steps is { Length: > 0 })
+            s.Children.Add(r.Key.StartsWith("chapter:") ? ChapterSteps(r.Key, r.Steps) : Rows.Steps(r.Steps));
         foreach (var p in r.Body ?? []) s.Children.Add(Ui.Text(p));
         if (r.Tips is { Length: > 0 }) { s.Children.Add(Ui.Text("TIPS", "h2")); foreach (var t in r.Tips) s.Children.Add(Ui.Text("• " + t, "small")); }
         if (r.Reward != null) s.Children.Add(Ui.Row(6, Ui.Text("Reward:", "muted small"), Ui.Text(r.Reward, "small")));
@@ -51,8 +65,30 @@ public sealed class QuestsView : ViewBase
         return s;
     }
 
+    /// <summary>A chapter's steps, each with its own tick: from the save where the walkthrough knows how, else by hand.</summary>
+    static Control ChapterSteps(string chapterKey, string[] steps)
+    {
+        var id = chapterKey["chapter:".Length..];
+        var track = App.Data.Walkthrough.Chapters.FirstOrDefault(c => c.Id == id)?.Track?.Steps;
+        bool following = App.Progress.Settings.TrackWalkthrough;
+        var list = new StackPanel { Spacing = 6 };
+        for (int i = 0; i < steps.Length; i++)
+        {
+            var key = $"{chapterKey}:{i}";
+            var text = new TextBlock { Text = steps[i], TextWrapping = Avalonia.Media.TextWrapping.Wrap, MaxWidth = 330 };
+            var col = Ui.Stack(2, text);
+            if (following && track is { } t && i < t.Length && t[i] is { Length: > 0 } && !App.Progress.IsDone(key))
+                col.Children.Add(Ui.Text("Ticks itself from your save", "faint small"));
+            var row = Ui.Row(8, Ui.Check(key), col);
+            row.VerticalAlignment = Avalonia.Layout.VerticalAlignment.Top;
+            list.Children.Add(row);
+        }
+        return list;
+    }
+
     protected override void OnShown(object? arg)
     {
+        track.IsChecked = App.Progress.Settings.TrackWalkthrough;
         App.Progress.Changed += Refresh;
         string? pick = null;
         if (arg is ValueTuple<string, string> t) { group = t.Item1; pick = t.Item2; }
@@ -111,7 +147,12 @@ public sealed class ShrinesView : ViewBase
                 if (r.G?.Quest != null) s.Children.Add(Ui.Row(6, Ui.Tag("Shrine quest", "orange"), Ui.Text(r.G.Quest)));
                 s.Children.Add(Ui.Text(r.G?.Solution ?? "No guide written for this shrine yet."));
                 if (r.G?.Chests != null) s.Children.Add(Ui.Text($"Treasure chests: {r.G.Chests}", "muted small"));
-                s.Children.Add(Ui.Button("Show on map", () => App.Main.Go("map", r.M.Id), "small"));
+                var actions = new WrapPanel { Orientation = Orientation.Horizontal };
+                var onMap = Ui.Button("Show on map", () => App.Main.Go("map", r.M.Id), "small");
+                onMap.Margin = new Thickness(0, 0, 8, 6);
+                actions.Children.Add(onMap);
+                if (ZeldaDungeonLinks.Buttons(r.Key) is WrapPanel zd) foreach (var b in zd.Children.ToList()) { zd.Children.Remove(b); actions.Children.Add(b); }
+                s.Children.Add(actions);
                 return s;
             }, 420, () => Ui.Text("Pick a shrine to see how to solve it.", "muted"));
         var regions = new ComboBox { ItemsSource = new[] { "All regions" }.Concat(all.Select(r => r.G?.Region).Where(x => x != null).Distinct().OrderBy(x => x)).ToList(), SelectedIndex = 0, MinWidth = 180 };

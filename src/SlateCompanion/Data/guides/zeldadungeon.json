@@ -1,0 +1,1725 @@
+{
+ "_about": "Which Zelda Dungeon page belongs to each walkthrough chapter, quest and shrine. Only addresses (links) are kept here; nothing of Zelda Dungeon's text. Every address was opened and checked on zeldadungeon.net on 2026-11-15: from their walkthrough index, side quest catalogue, shrine locations list and the wiki's quest categories, plus each page that wasn't listed there.",
+ "links": {
+  "chapter:champion-songs": [
+   {
+    "title": "The Champions' Ballad",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/the-champions-ballad/"
+   }
+  ],
+  "chapter:ex-quests": [
+   {
+    "title": "DLC Pack 1 armor (EX quests)",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/master-trials-armor/"
+   }
+  ],
+  "chapter:final-divine-beast": [
+   {
+    "title": "The Champions' Ballad",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/the-champions-ballad/"
+   }
+  ],
+  "chapter:great-plateau": [
+   {
+    "title": "Great Plateau",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/great-plateau/"
+   }
+  ],
+  "chapter:hateno-purah": [
+   {
+    "title": "Hateno Village",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/hateno-village/"
+   }
+  ],
+  "chapter:hyrule-castle": [
+   {
+    "title": "Hyrule Castle",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/hyrule-castle/"
+   }
+  ],
+  "chapter:kakariko-impa": [
+   {
+    "title": "Dueling Peaks and Kakariko",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/dueling-peaks/"
+   }
+  ],
+  "chapter:master-mode": [
+   {
+    "title": "Downloadable content: Master Mode",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/downloadable-content/"
+   }
+  ],
+  "chapter:master-sword": [
+   {
+    "title": "The Master Sword",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/the-master-sword/"
+   }
+  ],
+  "chapter:one-hit-obliterator": [
+   {
+    "title": "The Champions' Ballad",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/the-champions-ballad/"
+   }
+  ],
+  "chapter:trial-of-the-sword": [
+   {
+    "title": "Trial of the Sword",
+    "url": "https://www.zeldadungeon.net/wiki/Trial_of_the_Sword"
+   }
+  ],
+  "chapter:vah-medoh": [
+   {
+    "title": "Rito Village",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/rito-village/"
+   },
+   {
+    "title": "Vah Medoh dungeon",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/vah-medoh-dungeon/"
+   }
+  ],
+  "chapter:vah-naboris": [
+   {
+    "title": "Gerudo Town",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/gerudo-town/"
+   },
+   {
+    "title": "Vah Naboris dungeon",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/vah-naboris-dungeon/"
+   }
+  ],
+  "chapter:vah-rudania": [
+   {
+    "title": "Goron City",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/goron-city/"
+   },
+   {
+    "title": "Vah Rudania dungeon",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/vah-rudania-dungeon/"
+   }
+  ],
+  "chapter:vah-ruta": [
+   {
+    "title": "Zora's Domain",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/zoras-domain/"
+   },
+   {
+    "title": "Vah Ruta dungeon",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/vah-ruta-dungeon/"
+   }
+  ],
+  "mainQuests:CarryingBlueFireEXMini": [
+   {
+    "title": "Locked Mementos",
+    "url": "https://www.zeldadungeon.net/wiki/Locked_Mementos"
+   }
+  ],
+  "mainQuests:Drag_Hero": [
+   {
+    "title": "Forbidden City Entry",
+    "url": "https://www.zeldadungeon.net/wiki/Forbidden_City_Entry"
+   }
+  ],
+  "mainQuests:Electric_Relic": [
+   {
+    "title": "Divine Beast Vah Naboris",
+    "url": "https://www.zeldadungeon.net/wiki/Divine_Beast_Vah_Naboris_(Main_Quest)"
+   }
+  ],
+  "mainQuests:FairyFountain": [
+   {
+    "title": "Find the Fairy Fountain",
+    "url": "https://www.zeldadungeon.net/wiki/Find_the_Fairy_Fountain"
+   }
+  ],
+  "mainQuests:FindDungeon": [
+   {
+    "title": "The Isolated Plateau",
+    "url": "https://www.zeldadungeon.net/wiki/The_Isolated_Plateau"
+   }
+  ],
+  "mainQuests:Find_4Relic": [
+   {
+    "title": "Free the Divine Beasts",
+    "url": "https://www.zeldadungeon.net/wiki/Free_the_Divine_Beasts"
+   }
+  ],
+  "mainQuests:Find_Impa": [
+   {
+    "title": "Seek Out Impa",
+    "url": "https://www.zeldadungeon.net/wiki/Seek_Out_Impa"
+   }
+  ],
+  "mainQuests:Fire_Relic": [
+   {
+    "title": "Divine Beast Vah Rudania",
+    "url": "https://www.zeldadungeon.net/wiki/Divine_Beast_Vah_Rudania_(Main_Quest)"
+   }
+  ],
+  "mainQuests:FirstTower": [
+   {
+    "title": "Follow the Sheikah Slate",
+    "url": "https://www.zeldadungeon.net/wiki/Follow_the_Sheikah_Slate"
+   }
+  ],
+  "mainQuests:GanonQuest": [
+   {
+    "title": "Destroy Ganon",
+    "url": "https://www.zeldadungeon.net/wiki/Destroy_Ganon"
+   }
+  ],
+  "mainQuests:Get_MasterSword": [
+   {
+    "title": "The Hero's Sword",
+    "url": "https://www.zeldadungeon.net/wiki/The_Hero's_Sword"
+   }
+  ],
+  "mainQuests:GotoZoraVillage": [
+   {
+    "title": "Reach Zora's Domain",
+    "url": "https://www.zeldadungeon.net/wiki/Reach_Zora's_Domain"
+   }
+  ],
+  "mainQuests:PictureMemory": [
+   {
+    "title": "Captured Memories",
+    "url": "https://www.zeldadungeon.net/wiki/Captured_Memories"
+   }
+  ],
+  "mainQuests:Water_Relic": [
+   {
+    "title": "Divine Beast Vah Ruta",
+    "url": "https://www.zeldadungeon.net/wiki/Divine_Beast_Vah_Ruta_(Main_Quest)"
+   }
+  ],
+  "mainQuests:Wind_Relic": [
+   {
+    "title": "Divine Beast Vah Medoh",
+    "url": "https://www.zeldadungeon.net/wiki/Divine_Beast_Vah_Medoh_(Main_Quest)"
+   }
+  ],
+  "shrine:Dungeon000": [
+   {
+    "title": "Tah Muhl Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/tah-muhl-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon001": [
+   {
+    "title": "Jee Noh Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/jee-noh-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon002": [
+   {
+    "title": "Sah Dahaj Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/sah-dahaj-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon003": [
+   {
+    "title": "Hawa Koth Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/hawa-koth-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon004": [
+   {
+    "title": "Zalta Wa Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/zalta-wa-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon005": [
+   {
+    "title": "Ne'ez Yohma Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/neez-yohma-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon006": [
+   {
+    "title": "Yah Rin Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/yah-rin-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon007": [
+   {
+    "title": "Bosh Kala Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/bosh-kala-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon008": [
+   {
+    "title": "Bareeda Naag Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/bareeda-naag-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon009": [
+   {
+    "title": "Owa Daim Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/owa-daim-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon010": [
+   {
+    "title": "Kay Noh Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/kay-noh-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon011": [
+   {
+    "title": "Monya Toma Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/monya-toma-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon012": [
+   {
+    "title": "Voo Lota Shrine",
+    "url": "https://www.zeldadungeon.net/wiki/Voo_Lota_Shrine"
+   }
+  ],
+  "shrine:Dungeon013": [
+   {
+    "title": "Katosa Aug Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/katosa-aug-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon014": [
+   {
+    "title": "Kam Urog Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/kam-urog-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon015": [
+   {
+    "title": "Toto Sah Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/toto-sah-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon016": [
+   {
+    "title": "Rucco Maag Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/rucco-maag-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon017": [
+   {
+    "title": "Shee Vaneer Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/shee-vaneer-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon018": [
+   {
+    "title": "Rok Uwog Shrine",
+    "url": "https://www.zeldadungeon.net/wiki/Rok_Uwog_Shrine"
+   }
+  ],
+  "shrine:Dungeon019": [
+   {
+    "title": "Dow Na'eh Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/dow-naeh-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon020": [
+   {
+    "title": "Sheem Dagoze Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/sheem-dagoze-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon021": [
+   {
+    "title": "Toh Yahsa Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/toh-yahsa-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon022": [
+   {
+    "title": "Keo Ruug Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/keo-ruug-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon023": [
+   {
+    "title": "Sheh Rata Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/sheh-rata-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon024": [
+   {
+    "title": "Mezza Lo Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/mezza-lo-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon025": [
+   {
+    "title": "Kayra Mah Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/kayra-mah-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon026": [
+   {
+    "title": "Shae Mo'sah Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/shae-mosah-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon027": [
+   {
+    "title": "Rota Ooh Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/rota-ooh-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon028": [
+   {
+    "title": "Shora Hah Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/shora-hah-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon029": [
+   {
+    "title": "Hila Rao Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/hila-rao-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon030": [
+   {
+    "title": "Joloo Nah Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/joloo-nah-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon031": [
+   {
+    "title": "Mo'a Keet Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/moa-keet-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon032": [
+   {
+    "title": "Dako Tah Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/dako-tah-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon033": [
+   {
+    "title": "Daka Tuss Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/daka-tuss-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon034": [
+   {
+    "title": "Kah Yah Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/kah-yah-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon035": [
+   {
+    "title": "Akh Va'quot Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/akh-vaquot-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon036": [
+   {
+    "title": "Sho Dantu Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/sho-dantu-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon037": [
+   {
+    "title": "Shae Loya Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/shae-loya-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon038": [
+   {
+    "title": "Oman Au Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/oman-au-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon039": [
+   {
+    "title": "Myahm Agana Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/myahm-agana-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon040": [
+   {
+    "title": "Kaam Ya'tak Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/kaam-yatak-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon041": [
+   {
+    "title": "Ja Baij Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/ja-baij-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon042": [
+   {
+    "title": "Rin Oyaa Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/rin-oyaa-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon043": [
+   {
+    "title": "Kuh Takkar Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/kuh-takkar-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon044": [
+   {
+    "title": "Shee Venath Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/shee-venath-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon045": [
+   {
+    "title": "Ha Dahamar Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/ha-dahamar-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon046": [
+   {
+    "title": "Shada Naw Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/shada-naw-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon047": [
+   {
+    "title": "Ree Dahee Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/ree-dahee-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon048": [
+   {
+    "title": "Ze Kasho Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/ze-kasho-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon049": [
+   {
+    "title": "Kaya Wan Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/kaya-wan-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon050": [
+   {
+    "title": "Shai Utoh Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/shai-utoh-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon051": [
+   {
+    "title": "Maka Rah Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/maka-rah-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon052": [
+   {
+    "title": "Gee Ha'rah Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/gee-harah-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon053": [
+   {
+    "title": "Sha Warvo Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/sha-warvo-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon054": [
+   {
+    "title": "Ka'o Makagh Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/kao-makagh-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon055": [
+   {
+    "title": "Dunba Taag Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/dunba-taag-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon056": [
+   {
+    "title": "Mirro Shaz Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/mirro-shaz-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon057": [
+   {
+    "title": "Wahgo Katta Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/wahgo-katta-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon058": [
+   {
+    "title": "Mogg Latan Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/mogg-latan-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon059": [
+   {
+    "title": "Kah Okeo Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/kah-okeo-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon060": [
+   {
+    "title": "Daqo Chisay Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/daqo-chisay-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon061": [
+   {
+    "title": "Shoda Sah Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/shoda-sah-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon062": [
+   {
+    "title": "Sha Gehma Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/sha-gehma-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon063": [
+   {
+    "title": "Kema Zoos Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/kema-zoos-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon064": [
+   {
+    "title": "Daqa Koh Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/daqa-koh-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon065": [
+   {
+    "title": "Keh Namut Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/keh-namut-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon066": [
+   {
+    "title": "Kah Mael Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/kah-mael-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon067": [
+   {
+    "title": "Qua Raym Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/qua-raym-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon068": [
+   {
+    "title": "Ya Naga Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/ya-naga-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon069": [
+   {
+    "title": "Ishto Soh Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/ishto-soh-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon070": [
+   {
+    "title": "Soh Kofi Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/soh-kofi-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon071": [
+   {
+    "title": "Pumaag Nitae Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/pumaag-nitae-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon072": [
+   {
+    "title": "Dah Kaso Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/dah-kaso-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon073": [
+   {
+    "title": "Katah Chuki Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/katah-chuki-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon074": [
+   {
+    "title": "Noya Neha Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/noya-neha-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon075": [
+   {
+    "title": "Dah Hesho Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/dah-hesho-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon076": [
+   {
+    "title": "Sasa Kai Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/sasa-kai-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon077": [
+   {
+    "title": "Ke'nai Shakah Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/kenai-shakah-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon078": [
+   {
+    "title": "Mijah Rokee Shrine",
+    "url": "https://www.zeldadungeon.net/wiki/Mijah_Rokee_Shrine"
+   }
+  ],
+  "shrine:Dungeon079": [
+   {
+    "title": "Namika Ozz Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/namika-ozz-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon080": [
+   {
+    "title": "Shoqa Tatone Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/shoqa-tatone-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon081": [
+   {
+    "title": "Muwo Jeem Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/muwo-jeem-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon082": [
+   {
+    "title": "Chaas Qeta Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/chaas-qeta-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon083": [
+   {
+    "title": "Tena Ko'sah Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/tena-kosah-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon084": [
+   {
+    "title": "Tutsuwa Nima Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/tutsuwa-nima-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon085": [
+   {
+    "title": "Kema Kosassa Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/kema-kosassa-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon086": [
+   {
+    "title": "Goma Asaagh Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/goma-asaagh-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon087": [
+   {
+    "title": "Mozo Shenno Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/mozo-shenno-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon088": [
+   {
+    "title": "Hia Miu Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/hia-miu-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon089": [
+   {
+    "title": "Saas Ko'sah Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/saas-kosah-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon090": [
+   {
+    "title": "Suma Sahma Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/suma-sahma-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon091": [
+   {
+    "title": "Gorae Torr Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/gorae-torr-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon092": [
+   {
+    "title": "Maag No'rah Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/maag-norah-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon093": [
+   {
+    "title": "Raqa Zunzo Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/raqa-zunzo-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon094": [
+   {
+    "title": "Tho Kayu Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/tho-kayu-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon095": [
+   {
+    "title": "Kuhn Sidajj Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/kuhn-sidajj-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon096": [
+   {
+    "title": "Qukah Nata Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/qukah-nata-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon097": [
+   {
+    "title": "Korgu Chideh Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/korgu-chideh-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon098": [
+   {
+    "title": "Daag Chokah Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/daag-chokah-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon099": [
+   {
+    "title": "Ta'loh Naeg Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/taloh-naeg-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon100": [
+   {
+    "title": "Keeha Yoog Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/keeha-yoog-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon101": [
+   {
+    "title": "Dagah Keek Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/dagah-keek-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon102": [
+   {
+    "title": "Zuna Kai Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/zuna-kai-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon103": [
+   {
+    "title": "Dila Maag Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/dila-maag-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon104": [
+   {
+    "title": "Lanno Kooh Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/lanno-kooh-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon105": [
+   {
+    "title": "Tu Ka'loh Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/tu-kaloh-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon106": [
+   {
+    "title": "Maag Halan Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/maag-halan-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon107": [
+   {
+    "title": "Misae Suma Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/misae-suma-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon108": [
+   {
+    "title": "Ketoh Wawai Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/ketoh-wawai-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon109": [
+   {
+    "title": "Ritaag Zumo Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/ritaag-zumo-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon110": [
+   {
+    "title": "Korsh O'hu Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/korsh-ohu-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon111": [
+   {
+    "title": "Tawa Jinn Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/tawa-jinn-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon112": [
+   {
+    "title": "Lakna Rokee Shrine",
+    "url": "https://www.zeldadungeon.net/wiki/Lakna_Rokee_Shrine"
+   }
+  ],
+  "shrine:Dungeon113": [
+   {
+    "title": "Shae Katha Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/shae-katha-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon114": [
+   {
+    "title": "Shai Yota Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/shai-yota-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon115": [
+   {
+    "title": "Rona Kachta Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/rona-kachta-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon116": [
+   {
+    "title": "Qaza Tokki Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/qaza-tokki-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon117": [
+   {
+    "title": "Jitan Sa'mi Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/jitan-sami-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon118": [
+   {
+    "title": "To Quomo Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/to-quomo-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon119": [
+   {
+    "title": "Tahno O'ah Shrine",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/tahno-oah-shrine-guide/"
+   }
+  ],
+  "shrine:Dungeon120": [
+   {
+    "title": "Yowaka Ita Shrine",
+    "url": "https://www.zeldadungeon.net/wiki/Yowaka_Ita_Shrine"
+   }
+  ],
+  "shrine:Dungeon121": [
+   {
+    "title": "Kihiro Moh Shrine",
+    "url": "https://www.zeldadungeon.net/wiki/Kihiro_Moh_Shrine"
+   }
+  ],
+  "shrine:Dungeon122": [
+   {
+    "title": "Etsu Korima Shrine",
+    "url": "https://www.zeldadungeon.net/wiki/Etsu_Korima_Shrine"
+   }
+  ],
+  "shrine:Dungeon123": [
+   {
+    "title": "Rohta Chigah Shrine",
+    "url": "https://www.zeldadungeon.net/wiki/Rohta_Chigah_Shrine"
+   }
+  ],
+  "shrine:Dungeon124": [
+   {
+    "title": "Sato Koda Shrine",
+    "url": "https://www.zeldadungeon.net/wiki/Sato_Koda_Shrine"
+   }
+  ],
+  "shrine:Dungeon125": [
+   {
+    "title": "Kee Dafunia Shrine",
+    "url": "https://www.zeldadungeon.net/wiki/Kee_Dafunia_Shrine"
+   }
+  ],
+  "shrine:Dungeon126": [
+   {
+    "title": "Mah Eliya Shrine",
+    "url": "https://www.zeldadungeon.net/wiki/Mah_Eliya_Shrine"
+   }
+  ],
+  "shrine:Dungeon127": [
+   {
+    "title": "Noe Rajee Shrine",
+    "url": "https://www.zeldadungeon.net/wiki/Noe_Rajee_Shrine"
+   }
+  ],
+  "shrine:Dungeon128": [
+   {
+    "title": "Kiah Toza Shrine",
+    "url": "https://www.zeldadungeon.net/wiki/Kiah_Toza_Shrine"
+   }
+  ],
+  "shrine:Dungeon129": [
+   {
+    "title": "Shira Gomar Shrine",
+    "url": "https://www.zeldadungeon.net/wiki/Shira_Gomar_Shrine"
+   }
+  ],
+  "shrine:Dungeon130": [
+   {
+    "title": "Kamia Omuna Shrine",
+    "url": "https://www.zeldadungeon.net/wiki/Kamia_Omuna_Shrine"
+   }
+  ],
+  "shrine:Dungeon131": [
+   {
+    "title": "Rinu Honika Shrine",
+    "url": "https://www.zeldadungeon.net/wiki/Rinu_Honika_Shrine"
+   }
+  ],
+  "shrine:Dungeon132": [
+   {
+    "title": "Sharo Lun Shrine",
+    "url": "https://www.zeldadungeon.net/wiki/Sharo_Lun_Shrine"
+   }
+  ],
+  "shrine:Dungeon133": [
+   {
+    "title": "Keive Tala Shrine",
+    "url": "https://www.zeldadungeon.net/wiki/Keive_Tala_Shrine"
+   }
+  ],
+  "shrine:Dungeon134": [
+   {
+    "title": "Takama Shiri Shrine",
+    "url": "https://www.zeldadungeon.net/wiki/Takama_Shiri_Shrine"
+   }
+  ],
+  "shrine:Dungeon135": [
+   {
+    "title": "Ruvo Korbah Shrine",
+    "url": "https://www.zeldadungeon.net/wiki/Ruvo_Korbah_Shrine"
+   }
+  ],
+  "shrineQuests:Animal_Forest": [
+   {
+    "title": "The Crowned Beast",
+    "url": "https://www.zeldadungeon.net/wiki/The_Crowned_Beast"
+   }
+  ],
+  "shrineQuests:BloodyMoonRelief": [
+   {
+    "title": "Under a Red Moon",
+    "url": "https://www.zeldadungeon.net/wiki/Under_a_Red_Moon"
+   }
+  ],
+  "shrineQuests:Cliff_Maze": [
+   {
+    "title": "Trial on the Cliff",
+    "url": "https://www.zeldadungeon.net/wiki/Trial_on_the_Cliff"
+   }
+  ],
+  "shrineQuests:CursedStatue": [
+   {
+    "title": "The Cursed Statue",
+    "url": "https://www.zeldadungeon.net/wiki/The_Cursed_Statue"
+   }
+  ],
+  "shrineQuests:DarkWoods": [
+   {
+    "title": "Shrouded Shrine",
+    "url": "https://www.zeldadungeon.net/wiki/Shrouded_Shrine"
+   }
+  ],
+  "shrineQuests:Desert_Maze": [
+   {
+    "title": "The Desert Labyrinth",
+    "url": "https://www.zeldadungeon.net/wiki/The_Desert_Labyrinth"
+   }
+  ],
+  "shrineQuests:DokuroEye": [
+   {
+    "title": "The Skull's Eye",
+    "url": "https://www.zeldadungeon.net/wiki/The_Skull's_Eye"
+   }
+  ],
+  "shrineQuests:DontDamageFlower": [
+   {
+    "title": "Watch Out for the Flowers",
+    "url": "https://www.zeldadungeon.net/wiki/Watch_Out_for_the_Flowers"
+   }
+  ],
+  "shrineQuests:FirstOhenro": [
+   {
+    "title": "The Lost Pilgrimage (Daag Chokah Shrine)",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/daag-chokah-shrine-guide/"
+   }
+  ],
+  "shrineQuests:FourJewel": [
+   {
+    "title": "Trial of Thunder",
+    "url": "https://www.zeldadungeon.net/wiki/Trial_of_Thunder"
+   }
+  ],
+  "shrineQuests:Gaman": [
+   {
+    "title": "Test of Will",
+    "url": "https://www.zeldadungeon.net/wiki/Test_of_Will"
+   }
+  ],
+  "shrineQuests:Gerudo_CarryIce": [
+   {
+    "title": "The Perfect Drink",
+    "url": "https://www.zeldadungeon.net/wiki/The_Perfect_Drink"
+   }
+  ],
+  "shrineQuests:GodTree": [
+   {
+    "title": "Trial of Second Sight (Kuhn Sidajj Shrine)",
+    "url": "https://www.zeldadungeon.net/breath-of-the-wild-walkthrough/shrine-locations/kuhn-sidajj-shrine-guide/"
+   }
+  ],
+  "shrineQuests:GoronCamp": [
+   {
+    "title": "The Gut Check Challenge",
+    "url": "https://www.zeldadungeon.net/wiki/The_Gut_Check_Challenge"
+   }
+  ],
+  "shrineQuests:GoronsRock": [
+   {
+    "title": "A Brother's Roast",
+    "url": "https://www.zeldadungeon.net/wiki/A_Brother's_Roast"
+   }
+  ],
+  "shrineQuests:HatenoMini_ThreeTree": [
+   {
+    "title": "Secret of the Cedars",
+    "url": "https://www.zeldadungeon.net/wiki/Secret_of_the_Cedars"
+   }
+  ],
+  "shrineQuests:HatenoMini_WhiteDragon": [
+   {
+    "title": "The Spring of Wisdom",
+    "url": "https://www.zeldadungeon.net/wiki/The_Spring_of_Wisdom"
+   }
+  ],
+  "shrineQuests:HigakkareMini_RedDragon": [
+   {
+    "title": "The Spring of Power",
+    "url": "https://www.zeldadungeon.net/wiki/The_Spring_of_Power"
+   }
+  ],
+  "shrineQuests:KnightDoll": [
+   {
+    "title": "The Seven Heroines",
+    "url": "https://www.zeldadungeon.net/wiki/The_Seven_Heroines"
+   }
+  ],
+  "shrineQuests:MacuseIseki": [
+   {
+    "title": "Into the Vortex",
+    "url": "https://www.zeldadungeon.net/wiki/Into_the_Vortex"
+   }
+  ],
+  "shrineQuests:MagneticFld": [
+   {
+    "title": "The Silent Swordswomen",
+    "url": "https://www.zeldadungeon.net/wiki/The_Silent_Swordswomen"
+   }
+  ],
+  "shrineQuests:MouthofDragon": [
+   {
+    "title": "The Serpent's Jaws",
+    "url": "https://www.zeldadungeon.net/wiki/The_Serpent's_Jaws"
+   }
+  ],
+  "shrineQuests:MtMotelMini_Landscape": [
+   {
+    "title": "A Landscape of a Stable",
+    "url": "https://www.zeldadungeon.net/wiki/A_Landscape_of_a_Stable"
+   }
+  ],
+  "shrineQuests:NakedIsland": [
+   {
+    "title": "Stranded on Eventide",
+    "url": "https://www.zeldadungeon.net/wiki/Stranded_on_Eventide"
+   }
+  ],
+  "shrineQuests:Relief_Landing": [
+   {
+    "title": "Master of the Wind",
+    "url": "https://www.zeldadungeon.net/wiki/Master_of_the_Wind"
+   }
+  ],
+  "shrineQuests:Remains_Fancier": [
+   {
+    "title": "Guardian Slideshow",
+    "url": "https://www.zeldadungeon.net/wiki/Guardian_Slideshow"
+   }
+  ],
+  "shrineQuests:RitoRabitMountain": [
+   {
+    "title": "The Bird in the Mountains",
+    "url": "https://www.zeldadungeon.net/wiki/The_Bird_in_the_Mountains"
+   }
+  ],
+  "shrineQuests:RitoSongMystery": [
+   {
+    "title": "The Ancient Rito Song",
+    "url": "https://www.zeldadungeon.net/wiki/The_Ancient_Rito_Song"
+   }
+  ],
+  "shrineQuests:Rito_BrosRock": [
+   {
+    "title": "Recital at Warbler's Nest",
+    "url": "https://www.zeldadungeon.net/wiki/Recital_at_Warbler's_Nest"
+   }
+  ],
+  "shrineQuests:SandStorm": [
+   {
+    "title": "The Eye of the Sandstorm",
+    "url": "https://www.zeldadungeon.net/wiki/The_Eye_of_the_Sandstorm"
+   }
+  ],
+  "shrineQuests:SearchStone": [
+   {
+    "title": "A Fragmented Monument",
+    "url": "https://www.zeldadungeon.net/wiki/A_Fragmented_Monument"
+   }
+  ],
+  "shrineQuests:SecretofObject": [
+   {
+    "title": "Secret of the Snowy Peaks",
+    "url": "https://www.zeldadungeon.net/wiki/Secret_of_the_Snowy_Peaks"
+   }
+  ],
+  "shrineQuests:SeekerEye": [
+   {
+    "title": "Cliffside Etchings",
+    "url": "https://www.zeldadungeon.net/wiki/Cliffside_Etchings"
+   }
+  ],
+  "shrineQuests:Shadow_Sign": [
+   {
+    "title": "Sign of the Shadow",
+    "url": "https://www.zeldadungeon.net/wiki/Sign_of_the_Shadow"
+   }
+  ],
+  "shrineQuests:ShieldofKolog": [
+   {
+    "title": "The Test of Wood",
+    "url": "https://www.zeldadungeon.net/wiki/The_Test_of_Wood"
+   }
+  ],
+  "shrineQuests:Solitary_Maze": [
+   {
+    "title": "Trial of the Labyrinth",
+    "url": "https://www.zeldadungeon.net/wiki/Trial_of_the_Labyrinth"
+   }
+  ],
+  "shrineQuests:StatueofZora": [
+   {
+    "title": "The Ceremonial Song",
+    "url": "https://www.zeldadungeon.net/wiki/The_Ceremonial_Song"
+   }
+  ],
+  "shrineQuests:StolenBook": [
+   {
+    "title": "The Stolen Heirloom",
+    "url": "https://www.zeldadungeon.net/wiki/The_Stolen_Heirloom"
+   }
+  ],
+  "shrineQuests:SunazarashiRace": [
+   {
+    "title": "The Undefeated Champ",
+    "url": "https://www.zeldadungeon.net/wiki/The_Undefeated_Champ"
+   }
+  ],
+  "shrineQuests:Threebros_giant": [
+   {
+    "title": "The Three Giant Brothers",
+    "url": "https://www.zeldadungeon.net/wiki/The_Three_Giant_Brothers"
+   }
+  ],
+  "shrineQuests:Thunder_Sword": [
+   {
+    "title": "A Song of Storms",
+    "url": "https://www.zeldadungeon.net/wiki/A_Song_of_Storms"
+   }
+  ],
+  "shrineQuests:TwoWheels": [
+   {
+    "title": "The Two Rings",
+    "url": "https://www.zeldadungeon.net/wiki/The_Two_Rings"
+   }
+  ],
+  "sideQuests:Bottle_Mes": [
+   {
+    "title": "Special Delivery",
+    "url": "https://www.zeldadungeon.net/wiki/Special_Delivery"
+   }
+  ],
+  "sideQuests:Carnivorous_Boy": [
+   {
+    "title": "A Rare Find",
+    "url": "https://www.zeldadungeon.net/wiki/A_Rare_Find"
+   }
+  ],
+  "sideQuests:CompleteDungeon": [
+   {
+    "title": "A Gift from the Monks",
+    "url": "https://www.zeldadungeon.net/wiki/A_Gift_from_the_Monks"
+   }
+  ],
+  "sideQuests:FironeMini_GiantHorse": [
+   {
+    "title": "Hunt for the Giant Horse",
+    "url": "https://www.zeldadungeon.net/wiki/Hunt_for_the_Giant_Horse"
+   }
+  ],
+  "sideQuests:FironeMini_HeartPond": [
+   {
+    "title": "A Gift of Nightshade",
+    "url": "https://www.zeldadungeon.net/wiki/A_Gift_of_Nightshade"
+   }
+  ],
+  "sideQuests:FironeMini_HorseEnemy": [
+   {
+    "title": "The Horseback Hoodlums ",
+    "url": "https://www.zeldadungeon.net/wiki/The_Horseback_Hoodlums"
+   }
+  ],
+  "sideQuests:FironeMini_TerribleThunder": [
+   {
+    "title": "Thunder Magnet",
+    "url": "https://www.zeldadungeon.net/wiki/Thunder_Magnet"
+   }
+  ],
+  "sideQuests:GerudoMiniJewel": [
+   {
+    "title": "Tools of the Trade",
+    "url": "https://www.zeldadungeon.net/wiki/Tools_of_the_Trade"
+   }
+  ],
+  "sideQuests:Gerudo_Ch_FindingValetta": [
+   {
+    "title": "The Search for Barta",
+    "url": "https://www.zeldadungeon.net/wiki/The_Search_for_Barta"
+   }
+  ],
+  "sideQuests:Gerudo_Ch_Helmet": [
+   {
+    "title": "The Thunder Helm",
+    "url": "https://www.zeldadungeon.net/wiki/The_Thunder_Helm"
+   }
+  ],
+  "sideQuests:Gerudo_Ch_Poison": [
+   {
+    "title": "The Mystery Polluter",
+    "url": "https://www.zeldadungeon.net/wiki/The_Mystery_Polluter"
+   }
+  ],
+  "sideQuests:Gerudo_Ch_SandWarm": [
+   {
+    "title": "Medicinal Molduga",
+    "url": "https://www.zeldadungeon.net/wiki/Medicinal_Molduga"
+   }
+  ],
+  "sideQuests:Gerudo_Ch_SecretClub": [
+   {
+    "title": "The Secret Club's Secret",
+    "url": "https://www.zeldadungeon.net/wiki/The_Secret_Club's_Secret"
+   }
+  ],
+  "sideQuests:Gerudo_Ch_SnowBoots": [
+   {
+    "title": "The Forgotten Sword",
+    "url": "https://www.zeldadungeon.net/wiki/The_Forgotten_Sword"
+   }
+  ],
+  "sideQuests:Gerudo_Ch_SnowMT": [
+   {
+    "title": "The Eighth Heroine",
+    "url": "https://www.zeldadungeon.net/wiki/The_Eighth_Heroine"
+   }
+  ],
+  "sideQuests:Gerudo_HorseBuyer": [
+   {
+    "title": "Good-Sized Horse",
+    "url": "https://www.zeldadungeon.net/wiki/Good-Sized_Horse"
+   }
+  ],
+  "sideQuests:Gerudo_tsukamidake": [
+   {
+    "title": "Rushroom Rush!",
+    "url": "https://www.zeldadungeon.net/wiki/Rushroom_Rush!"
+   }
+  ],
+  "sideQuests:Giant_ZoraMini": [
+   {
+    "title": "The Giant of Ralis Pond",
+    "url": "https://www.zeldadungeon.net/wiki/The_Giant_of_Ralis_Pond"
+   }
+  ],
+  "sideQuests:GoronCityMini_BeatGolem": [
+   {
+    "title": "The Road to Respect",
+    "url": "https://www.zeldadungeon.net/wiki/The_Road_to_Respect"
+   }
+  ],
+  "sideQuests:GoronMini_ImportGem": [
+   {
+    "title": "The Jewel Trade",
+    "url": "https://www.zeldadungeon.net/wiki/The_Jewel_Trade"
+   }
+  ],
+  "sideQuests:GoronMini_WallCrackTBox": [
+   {
+    "title": "Death Mountain's Secret",
+    "url": "https://www.zeldadungeon.net/wiki/Death_Mountain's_Secret"
+   }
+  ],
+  "sideQuests:HateeluMini_Treasure": [
+   {
+    "title": "The Hero's Cache",
+    "url": "https://www.zeldadungeon.net/wiki/The_Hero's_Cache"
+   }
+  ],
+  "sideQuests:HatenoMini_BlueFire": [
+   {
+    "title": "Robbie's Research",
+    "url": "https://www.zeldadungeon.net/wiki/Robbie's_Research"
+   }
+  ],
+  "sideQuests:HatenoMini_CameraBoy": [
+   {
+    "title": "Sunshroom Sensing",
+    "url": "https://www.zeldadungeon.net/wiki/Sunshroom_Sensing"
+   }
+  ],
+  "sideQuests:HatenoMini_DevilSeal": [
+   {
+    "title": "The Statue's Bargain",
+    "url": "https://www.zeldadungeon.net/wiki/The_Statue's_Bargain"
+   }
+  ],
+  "sideQuests:HatenoMini_GoatThief": [
+   {
+    "title": "The Sheep Rustlers",
+    "url": "https://www.zeldadungeon.net/wiki/The_Sheep_Rustlers"
+   }
+  ],
+  "sideQuests:HatenoMini_LoveInsects": [
+   {
+    "title": "A Gift for My Beloved",
+    "url": "https://www.zeldadungeon.net/wiki/A_Gift_for_My_Beloved"
+   }
+  ],
+  "sideQuests:HatenoMini_MyHome": [
+   {
+    "title": "Hylian Homeowner",
+    "url": "https://www.zeldadungeon.net/wiki/Hylian_Homeowner"
+   }
+  ],
+  "sideQuests:HatenoMini_WeaponMania": [
+   {
+    "title": "The Weapon Connoisseur",
+    "url": "https://www.zeldadungeon.net/wiki/The_Weapon_Connoisseur"
+   }
+  ],
+  "sideQuests:Hateno_SheikPad_PowerUp": [
+   {
+    "title": "Slated for Upgrades",
+    "url": "https://www.zeldadungeon.net/wiki/Slated_for_Upgrades"
+   }
+  ],
+  "sideQuests:HigakkareMini_StrangeMan": [
+   {
+    "title": "A Shady Customer",
+    "url": "https://www.zeldadungeon.net/wiki/A_Shady_Customer"
+   }
+  ],
+  "sideQuests:HutagoHatago_Ch_001": [
+   {
+    "title": "Wild Horses",
+    "url": "https://www.zeldadungeon.net/wiki/Wild_Horses"
+   }
+  ],
+  "sideQuests:HyruleDepthMini_WhiteHorse": [
+   {
+    "title": "The Royal White Stallion",
+    "url": "https://www.zeldadungeon.net/wiki/The_Royal_White_Stallion"
+   }
+  ],
+  "sideQuests:HyrulePlainMini_Balloon": [
+   {
+    "title": "Balloon Flight",
+    "url": "https://www.zeldadungeon.net/wiki/Balloon_Flight"
+   }
+  ],
+  "sideQuests:Kakariko_Ch_004": [
+   {
+    "title": "By Firefly's Light",
+    "url": "https://www.zeldadungeon.net/wiki/By_Firefly's_Light"
+   }
+  ],
+  "sideQuests:Kakariko_Ch_005": [
+   {
+    "title": "Playtime with Cottla",
+    "url": "https://www.zeldadungeon.net/wiki/Playtime_with_Cottla"
+   }
+  ],
+  "sideQuests:Kakariko_Ch_006": [
+   {
+    "title": "Arrows of Burning Heat",
+    "url": "https://www.zeldadungeon.net/wiki/Arrows_of_Burning_Heat"
+   }
+  ],
+  "sideQuests:Kakariko_Ch_Cooking2": [
+   {
+    "title": "Cooking with Koko",
+    "url": "https://www.zeldadungeon.net/wiki/Cooking_with_Koko"
+   }
+  ],
+  "sideQuests:Kakariko_Ch_Cooking3": [
+   {
+    "title": "Koko Cuisine",
+    "url": "https://www.zeldadungeon.net/wiki/Koko_Cuisine"
+   }
+  ],
+  "sideQuests:Kakariko_Ch_Cooking4": [
+   {
+    "title": "Koko's Specialty",
+    "url": "https://www.zeldadungeon.net/wiki/Koko's_Specialty"
+   }
+  ],
+  "sideQuests:Kakariko_Cha_001": [
+   {
+    "title": "Koko's Kitchen",
+    "url": "https://www.zeldadungeon.net/wiki/Koko's_Kitchen"
+   }
+  ],
+  "sideQuests:Kakariko_Cha_003": [
+   {
+    "title": "Flown the Coop",
+    "url": "https://www.zeldadungeon.net/wiki/Flown_the_Coop"
+   }
+  ],
+  "sideQuests:KorokMini_KorokShiren": [
+   {
+    "title": "The Korok Trials",
+    "url": "https://www.zeldadungeon.net/wiki/The_Korok_Trials"
+   }
+  ],
+  "sideQuests:KorokMini_RiddleShiren": [
+   {
+    "title": "Riddles of Hyrule",
+    "url": "https://www.zeldadungeon.net/wiki/Riddles_of_Hyrule"
+   }
+  ],
+  "sideQuests:KorokMini_RodShiren": [
+   {
+    "title": "A Freezing Rod",
+    "url": "https://www.zeldadungeon.net/wiki/A_Freezing_Rod"
+   }
+  ],
+  "sideQuests:KorokMini_UMAShiren": [
+   {
+    "title": "Legendary Rabbit Trial",
+    "url": "https://www.zeldadungeon.net/wiki/Legendary_Rabbit_Trial"
+   }
+  ],
+  "sideQuests:MarittaMini_BigWhales": [
+   {
+    "title": "Leviathan Bones",
+    "url": "https://www.zeldadungeon.net/wiki/Leviathan_Bones"
+   }
+  ],
+  "sideQuests:MinakkareMini_Dragonfly": [
+   {
+    "title": "Little Sister's Big Request",
+    "url": "https://www.zeldadungeon.net/wiki/Little_Sister's_Big_Request"
+   }
+  ],
+  "sideQuests:MinamihateeluMini_touzoku": [
+   {
+    "title": "Misko, the Great Bandit",
+    "url": "https://www.zeldadungeon.net/wiki/Misko,_the_Great_Bandit"
+   }
+  ],
+  "sideQuests:My_Hero": [
+   {
+    "title": "My Hero",
+    "url": "https://www.zeldadungeon.net/wiki/My_Hero"
+   }
+  ],
+  "sideQuests:Oasis_Drug_Challenge": [
+   {
+    "title": "An Ice Guy",
+    "url": "https://www.zeldadungeon.net/wiki/An_Ice_Guy"
+   }
+  ],
+  "sideQuests:OldKorok_Help": [
+   {
+    "title": "The Priceless Maracas",
+    "url": "https://www.zeldadungeon.net/wiki/The_Priceless_Maracas"
+   }
+  ],
+  "sideQuests:OneHundred": [
+   {
+    "title": "Missing in Action",
+    "url": "https://www.zeldadungeon.net/wiki/Missing_in_Action"
+   }
+  ],
+  "sideQuests:RinelSearch": [
+   {
+    "title": "Lynel Safari",
+    "url": "https://www.zeldadungeon.net/wiki/Lynel_Safari"
+   }
+  ],
+  "sideQuests:RitoMini_Cook": [
+   {
+    "title": "The Apple of My Eye",
+    "url": "https://www.zeldadungeon.net/wiki/The_Apple_of_My_Eye"
+   }
+  ],
+  "sideQuests:RitoMini_Flint": [
+   {
+    "title": "The Spark of Romance",
+    "url": "https://www.zeldadungeon.net/wiki/The_Spark_of_Romance"
+   }
+  ],
+  "sideQuests:RitoMini_IceGolem": [
+   {
+    "title": "Face the Frost Talus ",
+    "url": "https://www.zeldadungeon.net/wiki/Face_the_Frost_Talus"
+   }
+  ],
+  "sideQuests:RitoUmayadoMini_HotRecipe": [
+   {
+    "title": "Curry for What Ails You",
+    "url": "https://www.zeldadungeon.net/wiki/Curry_for_What_Ails_You"
+   }
+  ],
+  "sideQuests:Rito_KeelSearch": [
+   {
+    "title": "Find Kheel",
+    "url": "https://www.zeldadungeon.net/wiki/Find_Kheel"
+   }
+  ],
+  "sideQuests:RiversideMini_CastleWeapon": [
+   {
+    "title": "The Royal Guard's Gear",
+    "url": "https://www.zeldadungeon.net/wiki/The_Royal_Guard's_Gear"
+   }
+  ],
+  "sideQuests:RiversideMini_RoyalRecipe": [
+   {
+    "title": "A Royal Recipe",
+    "url": "https://www.zeldadungeon.net/wiki/A_Royal_Recipe"
+   }
+  ],
+  "sideQuests:SanrokuMini_Lizard": [
+   {
+    "title": "Fireproof Lizard Roundup",
+    "url": "https://www.zeldadungeon.net/wiki/Fireproof_Lizard_Roundup"
+   }
+  ],
+  "sideQuests:SetugenUmayadoMini_Umahonephoto": [
+   {
+    "title": "Stalhorse: Pictured!",
+    "url": "https://www.zeldadungeon.net/wiki/Stalhorse:_Pictured!"
+   }
+  ],
+  "sideQuests:TabantaBridgeMini_Sundial": [
+   {
+    "title": "A Gift for the Great Fairy",
+    "url": "https://www.zeldadungeon.net/wiki/A_Gift_for_the_Great_Fairy"
+   }
+  ],
+  "sideQuests:UMiiMini_GiveCake": [
+   {
+    "title": "A Parent's Love",
+    "url": "https://www.zeldadungeon.net/wiki/A_Parent's_Love"
+   }
+  ],
+  "sideQuests:UMiiMini_MakeVillage": [
+   {
+    "title": "From the Ground Up",
+    "url": "https://www.zeldadungeon.net/wiki/From_the_Ground_Up"
+   }
+  ],
+  "sideQuests:UMiiMini_RichmansHobby": [
+   {
+    "title": "Hobbies of the Rich",
+    "url": "https://www.zeldadungeon.net/wiki/Hobbies_of_the_Rich"
+   }
+  ],
+  "sideQuests:UotoriMini_RecipeSea": [
+   {
+    "title": "What's for Dinner?",
+    "url": "https://www.zeldadungeon.net/wiki/What's_for_Dinner%3F"
+   }
+  ],
+  "sideQuests:UotoriMini_RecoverBay": [
+   {
+    "title": "Take Back the Sea",
+    "url": "https://www.zeldadungeon.net/wiki/Take_Back_the_Sea"
+   }
+  ],
+  "sideQuests:UotoriMini_SinkTreasure": [
+   {
+    "title": "Sunken Treasure",
+    "url": "https://www.zeldadungeon.net/wiki/Sunken_Treasure"
+   }
+  ],
+  "sideQuests:ZoraMini_DiveChallenge": [
+   {
+    "title": "Diving is Beauty!",
+    "url": "https://www.zeldadungeon.net/wiki/Diving_is_Beauty!"
+   }
+  ],
+  "sideQuests:ZoraMini_FlowedWife": [
+   {
+    "title": "A Wife Washed Away",
+    "url": "https://www.zeldadungeon.net/wiki/A_Wife_Washed_Away"
+   }
+  ],
+  "sideQuests:ZoraMini_HarvestingStone": [
+   {
+    "title": "Luminous Stone Gathering",
+    "url": "https://www.zeldadungeon.net/wiki/Luminous_Stone_Gathering"
+   }
+  ],
+  "sideQuests:ZoraMini_ReliefSearch": [
+   {
+    "title": "Zora Stone Monuments",
+    "url": "https://www.zeldadungeon.net/wiki/Zora_Stone_Monuments"
+   }
+  ],
+  "sideQuests:Zora_FlogMini": [
+   {
+    "title": "Frog Catching",
+    "url": "https://www.zeldadungeon.net/wiki/Frog_Catching"
+   }
+  ],
+  "sideQuests:isso_treasure_mini": [
+   {
+    "title": "Riverbed Reward",
+    "url": "https://www.zeldadungeon.net/wiki/Riverbed_Reward"
+   }
+  ]
+ }
+}

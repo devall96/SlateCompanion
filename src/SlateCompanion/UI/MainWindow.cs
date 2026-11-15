@@ -62,7 +62,7 @@ public sealed class MainWindow : Window
     [
         ("home", "Adventure log"), ("launch", "Play Savage Wind"), ("map", "Map"), ("quests", "Quests & walkthrough"), ("shrines", "Shrines"),
         ("koroks", "Korok seeds"), ("inventory", "Inventory"), ("cooking", "Cooking"), ("compendium", "Hyrule Compendium"), ("armor", "Armor & upgrades"),
-        ("saves", "Save files"), ("guides", "Guides & tips"),
+        ("saves", "Save files"), ("guides", "Guides & tips"), ("zeldadungeon", "Zelda Dungeon"),
     ];
 
     readonly Dictionary<string, Button> runes = [];
@@ -135,6 +135,8 @@ public sealed class MainWindow : Window
             HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Bottom, IsVisible = false,
         };
         search = new SearchOverlay(Go);
+        // (a web page is a native window drawn above everything of the app's: it steps aside while the search is open)
+        search.PropertyChanged += (_, e) => { if (e.Property == IsVisibleProperty) (views.GetValueOrDefault("zeldadungeon") as ZeldaDungeonView)?.Cover(search.IsVisible); };
         // Nothing works without the player's game files: until they're linked and built, this covers the app.
         setup = new SetupOverlay(() => { views.Clear(); Go("home"); Toast("Built from your game files"); });
 
@@ -220,10 +222,10 @@ public sealed class MainWindow : Window
         var bear = App.Data.Compendium.FirstOrDefault(c => c.Name.Contains("bear"))?.Id;
         var samples = new Dictionary<string, object?>
         {
-            ["map"] = Program.Demo ? null : "Memory_Demo126_0",["quests"] = ("sideQuests", "KorokMini_RodShiren"), ["shrines"] = App.Data.Markers.First(m => m.Type == "shrine").Id,
+            ["map"] = Program.Demo ? null : "Memory_Demo126_0",["quests"] = ("walkthrough", "vah-medoh"), ["shrines"] = App.Data.Markers.First(m => m.Type == "shrine").Id,
             ["cooking"] = ("ingredient", "Item_Fruit_A"), ["compendium"] = bear, ["armor"] = App.Data.Armor.Armor.FirstOrDefault(a => a.Name.Contains("Hylian Hood"))?.Id,
         };
-        foreach (var id in Nav.Select(n => n.id).Append("settings"))
+        foreach (var id in Nav.Select(n => n.id).Where(id => id != "zeldadungeon").Append("settings"))  // (not a website)
         {
             Go(id, samples.GetValueOrDefault(id));
             await Task.Delay(id == "map" ? 3500 : 900);
@@ -351,6 +353,7 @@ public sealed class MainWindow : Window
                 "compendium" => new CompendiumView(),
                 "armor" => new ArmorView(),
                 "guides" => new GuidesView(),
+                "zeldadungeon" => new ZeldaDungeonView(),
                 "settings" => new SettingsView(),
                 _ => new HomeView(),
             };

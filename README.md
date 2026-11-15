@@ -45,8 +45,9 @@ The map, icons, item pictures, compendium photos, memory photos and in-game text
 - **Link's live position** and facing from Savage Wind, with **Follow Link**. Your save spot, your own pins (right-click), and the **photo from your album** at each captured-memory spot.
 
 **Everything else**
-- **Quests & walkthrough**: the story chapter by chapter with both DLC packs, all 15 main, 76 side and 42 shrine quests, with the **game's own quest log** next to step-by-step notes.
+- **Quests & walkthrough**: the story chapter by chapter with both DLC packs, all 15 main, 76 side and 42 shrine quests, with the **game's own quest log** next to step-by-step notes. **The walkthrough follows your save**: its steps and chapters tick themselves (shrines, towers, towns reached, quests started or finished, Divine Beasts entered or freed), and turning on *Tick from my save* ticks everything you've already done.
 - **Shrines**: all 136 with a short solution, chest count and the shrine quest behind the hidden ones.
+- **Zelda Dungeon tab**: [Zelda Dungeon](https://www.zeldadungeon.net/)'s own guide, shown as it is inside the app, with a **Read on Zelda Dungeon** button on every chapter, quest and shrine that opens its page. Nothing of theirs is copied into the app. It goes quiet when you don't use it: the page is closed 30 seconds after you leave the tab or the window, and at once when you minimize or Savage Wind is running.
 - **Korok seeds**: by map square and puzzle type, or the closest to your save first.
 - **Cooking**: the game's own cooking pot (drawn from your game files): drag ingredients in or click them. It uses the game's own rules (checked against 617 real in-game results), every recipe and ingredient, with **item icons** and the **game's descriptions**.
 - **Hyrule Compendium**: all 389 entries with the **compendium photo** and the game's own entry text.
@@ -95,7 +96,7 @@ That needs a **Slate Companion** switch on Savage Wind's start screen, which isn
 
 ## Your data
 
-- **Nothing is sent anywhere.** No accounts, no telemetry, no ads. It goes online only to ask GitHub for new versions: of Slate Companion when it opens (can be turned off), and of Savage Wind and Clear Skies when you open the Play screen. Downloads happen only when you press Install or Update.
+- **Nothing is sent anywhere.** No accounts, no telemetry, no ads. It goes online only to ask GitHub for new versions: of Slate Companion when it opens (can be turned off), and of Savage Wind and Clear Skies when you open the Play screen. Downloads happen only when you press Install or Update. The Zelda Dungeon tab loads zeldadungeon.net (with its ads) only while you use it, and up to 30 seconds after; its cookies are kept in the `web` folder next to your ticks.
 - **Logs**: `logs/slatecompanion.log` and crash reports (`logs/crash-*.txt`) in the same folder, with your user name taken out of paths. When something goes wrong, an error window shows the details with **Copy details**, **Open logs folder** and **Report a problem**.
 - Your ticks, pins and history are kept in `%APPDATA%\SlateCompanion` (Windows) or `~/.config/slatecompanion` (Linux), next to what it built from your game files. Delete that folder to start over.
 

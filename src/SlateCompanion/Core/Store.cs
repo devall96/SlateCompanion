@@ -19,6 +19,7 @@ public sealed class AppSettings
     public bool SetupSeen { get; set; }             // the welcome (with quick tips) was completed once
     public string LastView { get; set; } = "home";
     public bool HideDone { get; set; }
+    public bool TrackWalkthrough { get; set; } = true;      // walkthrough chapters and steps tick themselves from the save
     public List<string> MapLayersOff { get; set; } = ["memory"];
     public Dictionary<string, int> ArmorPlan { get; set; } = [];
     public bool CheckUpdatesOnStart { get; set; } = true;  // one request to GitHub when the app opens (installed copies)

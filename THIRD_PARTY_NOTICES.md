@@ -9,6 +9,7 @@ Slate Companion's own code is under the [MIT license](LICENSE). It uses the libr
 | [Avalonia](https://github.com/AvaloniaUI/Avalonia) | MIT | the window and every screen |
 | [SkiaSharp](https://github.com/mono/SkiaSharp) and HarfBuzzSharp | MIT | drawing, image decoding and encoding |
 | [Velopack](https://github.com/velopack/velopack) | MIT | the installer and updates |
+| [Avalonia.Controls.WebView](https://github.com/AvaloniaUI/Avalonia.Controls.WebView) | MIT | the Zelda Dungeon tab (it uses the system's own web engine: Edge WebView2 on Windows, WebKitGTK on Linux) |
 | .NET runtime | MIT | everything |
 
 ## Data (shipped in `src/SlateCompanion/Data`)
