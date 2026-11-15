@@ -34,6 +34,7 @@ public sealed class InventoryView : ViewBase
     readonly StackPanel stats = new() { Orientation = Orientation.Horizontal, Spacing = 10 };
     readonly ContentControl equipped = new(), loadoutsBox = new();
     Outfit? preview;           // a loadout shown on the 3D Link instead of what's equipped
+    string? dollKey;           // what the doll on screen shows (Draw rebuilds it only when this changes)
     string? previewName;
     bool busy;
     static bool EquipEdits => App.Progress.Settings.EquipEdits;
@@ -423,7 +424,10 @@ public sealed class InventoryView : ViewBase
         if (numbers.TryGetValue("stamina", out var st)) Stat("STAMINA WHEELS", $"{st:0.#}");
         if (numbers.TryGetValue("weaponSlots", out var ws)) Stat("POUCH", $"{ws:0} weapons · {numbers.GetValueOrDefault("bowSlots"):0} bows · {numbers.GetValueOrDefault("shieldSlots"):0} shields");
 
-        equipped.Content = Doll();
+        // The doll (with the 3D Link) is rebuilt only when what it shows changed: a new LinkView3D compiles its
+        // shaders and uploads ~100 MB of textures again, a visible hitch on every chip click or alt-tab otherwise.
+        var key = $"{busy}|{EquipEdits}|{preview}|{previewName}|{items.Count}|{string.Join(",", items.Where(i => i.Equipped))}";
+        if (key != dollKey || equipped.Content == null) { equipped.Content = Doll(); dollKey = key; }
         loadoutsBox.Content = Loadouts();
 
         var these = items.Where(i => i.Category == cat).ToList();

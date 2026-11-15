@@ -44,7 +44,10 @@ public static class Drag
         }, Avalonia.Interactivity.RoutingStrategies.Tunnel | Avalonia.Interactivity.RoutingStrategies.Bubble, true);
         c.AddHandler(InputElement.PointerReleasedEvent, (_, e) =>
         {
-            if (pressed != null && !dragging) { pressed = null; click?.Invoke(); e.Handled = true; }
+            // Only a source with a click of its own takes the release: marking it handled otherwise (this runs in the
+            // tunnel phase, before the controls inside) kept buttons inside the card, like a pouch item's Equip, from
+            // ever getting their click.
+            if (pressed != null && !dragging && click != null) { pressed = null; click(); e.Handled = true; }
             pressed = null;
         }, Avalonia.Interactivity.RoutingStrategies.Tunnel | Avalonia.Interactivity.RoutingStrategies.Bubble, true);
     }

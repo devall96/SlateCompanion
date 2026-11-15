@@ -44,7 +44,7 @@ public static class LinkDoll
                 if (romfs == null) return null;
                 var sw = System.Diagnostics.Stopwatch.StartNew();
                 try { var m = ModelRender.BuildOutfit(romfs, o); Log.Info($"3D Link: outfit built in {sw.ElapsedMilliseconds} ms: {o}"); return m; }
-                catch (Exception e) { Log.Warn($"3D Link: outfit couldn't be built ({o}): {e.Message}"); lock (gate) meshes.Remove(key); return (OutfitMesh?)null; }
+                catch (Exception e) { Log.Warn($"3D Link: outfit couldn't be built ({o}): {e.Message}"); lock (gate) { meshes.Remove(key); meshOrder.Remove(key); } return (OutfitMesh?)null; }
             });
             meshes[key] = t; meshOrder.AddFirst(key);
             while (meshOrder.Count > 4) { meshes.Remove(meshOrder.Last!.Value); meshOrder.RemoveLast(); }

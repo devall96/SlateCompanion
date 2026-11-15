@@ -115,7 +115,9 @@ public sealed class CookingView : ViewBase
                 Stroke = Ui.Brush("LineHi"), StrokeThickness = 3, StrokeLineCap = PenLineCap.Round,
             };
             canvas.Children.Add(outline);
-            _ = Assets.EnsurePotAsync().ContinueWith(t => Avalonia.Threading.Dispatcher.UIThread.Post(() => { if (t.Result) Draw(); }));
+            // redrawn only if the picture can now be shown: a pot.png that's there but won't decode (cut short, held by
+            // OneDrive) made this redraw, find no picture, and ask again, on and on (even minimized)
+            _ = Assets.EnsurePotAsync().ContinueWith(t => Avalonia.Threading.Dispatcher.UIThread.Post(() => { if (t.IsCompletedSuccessfully && t.Result && Assets.PotPicture() != null) Draw(); }));
         }
         // what's in the pot: in an arc over its opening, each one taken out by a click
         for (int i = 0; i < pot.Count; i++)

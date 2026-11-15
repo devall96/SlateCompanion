@@ -112,9 +112,11 @@ public sealed class LinkView3D : OpenGlControlBase
 
     protected override void OnOpenGlDeinit(GlInterface gl)
     {
-        if (!ready) return;
-        Release(gl);
-        gl.DeleteProgram(program);
+        // (also after a failed render, which clears ready: the buffers and textures, up to ~100 MB, go all the same)
+        if (program == 0) return;
+        try { Release(gl); gl.DeleteProgram(program); }
+        catch (Exception e) { Log.Warn("3D Link: releasing OpenGL objects: " + e.Message); }
+        program = 0;
         ready = false;
     }
 
@@ -241,6 +243,9 @@ public sealed class LinkView3D : OpenGlControlBase
     }
 
     protected override void OnPointerReleased(PointerReleasedEventArgs e) { dragFrom = null; e.Pointer.Capture(null); }
+
+    // (alt-tab in the middle of a drag: without this he kept turning on plain mouse moves until the next click)
+    protected override void OnPointerCaptureLost(PointerCaptureLostEventArgs e) { dragFrom = null; base.OnPointerCaptureLost(e); }
 
     protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
     {
