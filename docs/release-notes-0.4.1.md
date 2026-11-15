@@ -1,4 +1,4 @@
-## Slate Companion 0.4.1
+## Slate Companion 0.4.1 (hotfix)
 
 > [!TIP]
 > ### ⬇️ Downloads: these are the only files you need
@@ -11,7 +11,7 @@
 >
 > Everything else under *Assets* (`.nupkg`, `.json`, `RELEASES`) is read by the built-in updater: you can ignore it.
 
-**Fix: the Zelda Dungeon tab no longer opens browser tabs by itself.**
+**Hotfix for 0.4.0: the Zelda Dungeon tab no longer opens browser tabs by itself.** Nothing else changed; if you're on 0.4.0, especially on Linux, please update.
 
 ### 🌐 Zelda Dungeon tab
 - 🐧 **No more browser tabs opening by themselves (Linux).** The tab sent every page load that wasn't on zeldadungeon.net to your browser, and on Linux that includes every ad inside the page, so Firefox kept filling up with tabs. With Savage Wind running it also kept closing and reopening the tab, which opened more.
