@@ -168,6 +168,14 @@ public sealed class MainWindow : Window
             if (WindowState == WindowState.Minimized) Pause();
             else if (e.OldValue is WindowState.Minimized && IsActive) Resume();
         };
+        // Closed with the window's button in the middle of a Savage Wind install or update: it would stop between two
+        // file swaps and could leave Savage Wind without its program. It can be cancelled on the Play screen first.
+        Closing += (_, e) =>
+        {
+            if (!SwJob.Running || e.CloseReason != WindowCloseReason.WindowClosing) return;
+            e.Cancel = true;
+            Toast($"{SwJob.Title}: cancel it on the Play screen first, or wait for it to finish");
+        };
         Deactivated += (_, _) => { if (!(currentId == "map" && App.Progress.Settings.LiveInBackground)) Pause(); };
         Activated += (_, _) => Resume();
 

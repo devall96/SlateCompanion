@@ -254,17 +254,35 @@ public static class Launcher
             r["published_at"]?.GetValue<DateTime>() ?? DateTime.MinValue, assets);
     }
 
-    /// <summary>Compares "0.5.3-alpha.5"-style versions by their numbers; &gt; 0 when a is newer.</summary>
+    /// <summary>
+    /// Compares "0.5.3-alpha.5"-style versions as semantic versions; &gt; 0 when a is newer. A pre-release comes before
+    /// its release (0.6.0-alpha.3 &lt; 0.6.0), and pre-release parts compare number by number or by name (alpha &lt; beta).
+    /// Comparing only the numbers made 0.6.0-alpha.3 look newer than 0.6.0, so alpha players were never offered 0.6.0.
+    /// </summary>
     public static int CompareVersions(string a, string b)
     {
-        static int[] Parts(string v) => System.Text.RegularExpressions.Regex.Matches(v, @"\d+").Select(m => int.TryParse(m.Value, out var n) ? n : 0).ToArray();
-        var x = Parts(a); var y = Parts(b);
+        static (int[] core, string[]? pre) Split(string v)
+        {
+            v = v.Trim().TrimStart('v', 'V');
+            int plus = v.IndexOf('+'); if (plus >= 0) v = v[..plus];  // (build metadata doesn't count)
+            int dash = v.IndexOf('-');
+            var core = (dash >= 0 ? v[..dash] : v).Split('.').Select(p => int.TryParse(p, out var n) ? n : 0).ToArray();
+            return (core, dash >= 0 ? v[(dash + 1)..].Split('.') : null);
+        }
+        var (x, xp) = Split(a); var (y, yp) = Split(b);
         for (int i = 0; i < Math.Max(x.Length, y.Length); i++)
         {
             int p = i < x.Length ? x[i] : 0, q = i < y.Length ? y[i] : 0;
             if (p != q) return p.CompareTo(q);
         }
-        return 0;
+        if (xp == null || yp == null) return xp == null ? (yp == null ? 0 : 1) : -1;  // the release is newer than its pre-releases
+        for (int i = 0; i < Math.Min(xp.Length, yp.Length); i++)
+        {
+            bool xn = int.TryParse(xp[i], out var xi), yn = int.TryParse(yp[i], out var yi);
+            int c = xn && yn ? xi.CompareTo(yi) : xn ? -1 : yn ? 1 : string.CompareOrdinal(xp[i], yp[i]);
+            if (c != 0) return Math.Sign(c);
+        }
+        return xp.Length.CompareTo(yp.Length);
     }
 
     /// <summary>Release notes as plain text for a small panel: markdown marks and links taken out, at most n lines.</summary>

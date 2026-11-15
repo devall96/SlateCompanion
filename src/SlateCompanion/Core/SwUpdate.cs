@@ -72,10 +72,14 @@ public static class SwUpdate
                 await using var dst = new FileStream(part, FileMode.Create, FileAccess.Write, FileShare.None, 1 << 16, true);
                 var buf = new byte[1 << 16];
                 long got = 0; int n;
+                // reported a few times a second, not for every 64 KB: each report redraws the Play screen's job panel
+                var since = System.Diagnostics.Stopwatch.StartNew();
                 while ((n = await src.ReadAsync(buf, ct)) > 0)
                 {
                     await dst.WriteAsync(buf.AsMemory(0, n), ct);
                     got += n;
+                    if (since.ElapsedMilliseconds < 150) continue;
+                    since.Restart();
                     progress(total > 0 ? (double)got / total : 0, $"Downloading Savage Wind {r.Version}… {got >> 20} of {total >> 20} MB");
                 }
             }

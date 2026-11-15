@@ -30,14 +30,16 @@ public static class SwJob
         Changed?.Invoke();
         var pr = new Progress<JobProgress>(p => { Last = p; Changed?.Invoke(); });
         Log.Info("Job: " + title);
-        try { await work(pr, cts.Token); App.Main.Toast(title + ": done"); return true; }
-        catch (OperationCanceledException) { App.Main.Toast(title + ": cancelled"); Log.Info("Job cancelled: " + title); return false; }
+        var token = cts.Token;
+        // Off the UI thread: installs and updates walk whole folders, wait on files held by antivirus and copy
+        // gigabytes, which froze the window for seconds at a time (progress still comes back through Progress<T>).
+        try { await Task.Run(() => work(pr, token)); App.Main.Toast(title + ": done"); return true; }
+        catch (OperationCanceledException) when (token.IsCancellationRequested) { App.Main.Toast(title + ": cancelled"); Log.Info("Job cancelled: " + title); return false; }
+        catch (OperationCanceledException e) { ErrorWindow.Show(title + " failed", "The connection timed out. Nothing was changed past the last finished step; try again.", e); return false; }
         catch (SwInstaller.InstallException e) { ErrorWindow.Show(e.Title, e.Message); return false; }
-        catch (Exception e) when (e is IOException or UnauthorizedAccessException or HttpRequestException or InvalidDataException)
-        {
-            ErrorWindow.Show(title + " failed", e.Message, e);
-            return false;
-        }
+        // anything else is shown too (a program antivirus took away, a bad path): callers drop the task, so an
+        // error left to escape here was never seen
+        catch (Exception e) { ErrorWindow.Show(title + " failed", e.Message, e); return false; }
         finally { Running = false; cts.Dispose(); cts = null; Changed?.Invoke(); }
     }
 }
@@ -254,12 +256,8 @@ public sealed class LaunchView : ViewBase
         });
     }
 
-    void GoBack(SwInstall i)
-    {
-        try { SwInstaller.GoBack(i); App.Main.Toast("Back to the previous version"); }
-        catch (SwInstaller.InstallException e) { ErrorWindow.Show(e.Title, e.Message); }
-        Refresh();
-    }
+    // as a job: hundreds of file moves off the UI thread, every error shown, and nothing else started meanwhile
+    void GoBack(SwInstall i) => _ = SwJob.Run("Going back to the previous version", (_, _) => { SwInstaller.GoBack(i); return Task.CompletedTask; });
 
     async void Rename(SwInstall i)
     {
@@ -343,7 +341,7 @@ public sealed class LaunchView : ViewBase
         wg.Children.Add(where); browse.Margin = new Thickness(8, 0, 0, 0); Grid.SetColumn(browse, 1); wg.Children.Add(browse);
         string? source = null;
         var files = GameFilesChoice(f => source = f, "Set up the game files later");
-        var go = Ui.Button(swRelease != null ? $"Install Savage Wind {swRelease.Version}" : "Install", () => InstallNew(where.Text ?? folder, source), "primary");
+        var go = Ui.Button(swRelease != null ? $"Install Savage Wind {swRelease.Version}" : "Install", () => InstallNew(string.IsNullOrWhiteSpace(where.Text) ? folder : where.Text.Trim(), source), "primary");
         go.IsEnabled = swRelease != null && !SwJob.Running;
         var s = Ui.Stack(10, Ui.Text("INSTALL SAVAGE WIND", "faint small"),
             Ui.Text("Downloads the newest release from GitHub, checks it against Savage Wind's signature, and sets it up with your game files: the game code is built and the shaders precompiled, with progress here. Savage Wind's own screens aren't needed.", "muted small"),
@@ -357,19 +355,24 @@ public sealed class LaunchView : ViewBase
     void InstallNew(string parent, string? source)
     {
         var r = swRelease!;
+        if (!Path.IsPathFullyQualified(parent)) { ErrorWindow.Show("Choose a folder", "Where to install needs a full folder path (Browse… picks one)."); return; }
         App.Progress.SaveSettings(x => x.InstallFolder = parent);
         _ = SwJob.Run($"Installing Savage Wind {r.Version}", async (p, ct) =>
         {
             var exe = await SwInstaller.InstallNew(parent, r, new Scaled(p, 0, source != null ? 0.25 : 1), ct);
             var folder = Path.GetDirectoryName(exe)!;
-            App.Progress.SaveSettings(x =>
+            // (the settings and this screen belong to the UI thread; the job runs on a worker)
+            await Dispatcher.UIThread.InvokeAsync(() =>
             {
-                if (OperatingSystem.IsWindows()) { if (!x.SavageWindFolders.Contains(folder, StringComparer.OrdinalIgnoreCase)) x.SavageWindFolders.Add(folder); }
-                else if (!x.SavageWindPrograms.Contains(exe)) x.SavageWindPrograms.Add(exe);
-                x.HiddenInstalls.Remove(exe);
-                x.GameProgram = exe;
+                App.Progress.SaveSettings(x =>
+                {
+                    if (OperatingSystem.IsWindows()) { if (!x.SavageWindFolders.Contains(folder, StringComparer.OrdinalIgnoreCase)) x.SavageWindFolders.Add(folder); }
+                    else if (!x.SavageWindPrograms.Contains(exe)) x.SavageWindPrograms.Add(exe);
+                    x.HiddenInstalls.Remove(exe);
+                    x.GameProgram = exe;
+                });
+                showInstall = false;
             });
-            showInstall = false;
             if (source != null) await SwSetup.Run(new SwInstall(exe, Launcher.DataRootFor(exe)), source, new Scaled(p, 0.25, 1), ct);
         });
     }
