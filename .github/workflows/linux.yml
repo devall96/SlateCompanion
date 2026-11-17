@@ -81,17 +81,14 @@ jobs:
           sudo apt-get install -y --no-install-recommends desktop-file-utils
           APP="$(find "$PWD/squashfs-root" -name SlateCompanion -type f -perm -u+x | head -n1)"
           export HOME="$PWD/home" SLATECOMPANION_DATA="$PWD/menu-profile"
-          mkdir -p "$HOME/Downloads"
-          # a Savage Wind AppImage where a player would have it (its icon is read out of the AppImage)
-          curl -sSL -o "$HOME/Downloads/Savage_Wind-0.5.3-alpha.5-x86_64.AppImage" \
-            https://github.com/Revivedx/SavageWindRecomp/releases/download/v0.5.3-alpha.5/Savage_Wind-0.5.3-alpha.5-x86_64.AppImage
-          chmod +x "$HOME"/Downloads/*.AppImage
+          # an entry an older version made for a Savage Wind AppImage: it goes when the entries are synced
+          mkdir -p "$HOME/.local/share/applications"
+          printf '[Desktop Entry]\nType=Application\nName=Savage Wind\nExec=/nowhere\n' > "$HOME/.local/share/applications/slatecompanion-savagewind-0123456789.desktop"
           "$APP" --app-menu on
           ls -la "$HOME/.local/share/applications" "$HOME/.local/share/icons/hicolor/256x256/apps"
           for f in "$HOME"/.local/share/applications/slatecompanion*.desktop; do echo "== $f"; cat "$f"; desktop-file-validate "$f"; done
-          test "$(ls "$HOME"/.local/share/applications/slatecompanion*.desktop | wc -l)" = 2
+          test "$(ls "$HOME"/.local/share/applications/slatecompanion*.desktop | wc -l)" = 1
           test -s "$HOME/.local/share/icons/hicolor/256x256/apps/slatecompanion.png"
-          ls "$HOME"/.local/share/icons/hicolor/256x256/apps/slatecompanion-savagewind-*.png
           "$APP" --app-menu off
           test -z "$(ls "$HOME"/.local/share/applications/slatecompanion*.desktop 2>/dev/null)"
           test -z "$(ls "$HOME"/.local/share/icons/hicolor/256x256/apps/slatecompanion*.png 2>/dev/null)"

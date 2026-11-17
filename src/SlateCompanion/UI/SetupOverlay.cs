@@ -81,14 +81,6 @@ public sealed class SetupOverlay : Border
                 tips.Children.Add(Ui.Row(8, Ui.Text("◆", "small"), new TextBlock { Text = t, TextWrapping = TextWrapping.Wrap, MaxWidth = 610, FontSize = 13 }));
             foreach (var row in tips.Children.Skip(1).OfType<StackPanel>()) ((TextBlock)row.Children[0]).Foreground = Ui.Brush("Orange");
             s.Children.Add(Ui.Panel(tips, "panel"));
-            // the launcher is optional: asked here once, and Settings can change it any time
-            var useLauncher = new ToggleSwitch { IsChecked = App.Progress.Settings.UseLauncher, OnContent = "", OffContent = "" };
-            useLauncher.IsCheckedChanged += (_, _) => { App.Progress.SaveSettings(x => x.UseLauncher = useLauncher.IsChecked == true); App.Main.ShowLauncher(useLauncher.IsChecked == true); };
-            var lg = new Grid { ColumnDefinitions = new ColumnDefinitions("*,Auto") };
-            var lt = Ui.Stack(2, Ui.Text("Use Slate Companion as your Savage Wind launcher", "h3"),
-                new TextBlock { Text = "A Play screen that starts the game straight away, installs and updates Savage Wind for you, and has all of its settings. Turn it off if you only want the guide; Settings can change this later.", TextWrapping = TextWrapping.Wrap, FontSize = 12, Foreground = Ui.Brush("Muted") });
-            lg.Children.Add(lt); Grid.SetColumn(useLauncher, 1); useLauncher.VerticalAlignment = VerticalAlignment.Center; useLauncher.Margin = new Thickness(12, 0, 0, 0); lg.Children.Add(useLauncher);
-            s.Children.Add(Ui.Panel(lg, "panel"));
             if (DesktopEntries.Supported)
             {
                 var menu = new ToggleSwitch { IsChecked = App.Progress.Settings.AddToApplications, OnContent = "", OffContent = "" };
@@ -99,7 +91,7 @@ public sealed class SetupOverlay : Border
                 };
                 var mg = new Grid { ColumnDefinitions = new ColumnDefinitions("*,Auto") };
                 mg.Children.Add(Ui.Stack(2, Ui.Text("Add to applications", "h3"),
-                    new TextBlock { Text = "Slate Companion, and the copies of Savage Wind it knows, in your app menu so you can start and pin them.", TextWrapping = TextWrapping.Wrap, FontSize = 12, Foreground = Ui.Brush("Muted") }));
+                    new TextBlock { Text = "Slate Companion in your app menu, so you can start and pin it.", TextWrapping = TextWrapping.Wrap, FontSize = 12, Foreground = Ui.Brush("Muted") }));
                 Grid.SetColumn(menu, 1); menu.VerticalAlignment = VerticalAlignment.Center; menu.Margin = new Thickness(12, 0, 0, 0); mg.Children.Add(menu);
                 s.Children.Add(Ui.Panel(mg, "panel"));
             }

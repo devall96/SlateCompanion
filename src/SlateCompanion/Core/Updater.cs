@@ -33,8 +33,7 @@ public static class Updater
     {
         if (pending == null) return;
         await Manager.DownloadUpdatesAsync(pending, progress);
-        // restarting in the middle of a Savage Wind install or update (between two file swaps) could leave it broken
-        if (UI.Views.SwJob.Running) throw new InvalidOperationException("Savage Wind is being installed or updated. Install the Slate Companion update once that has finished.");
+
         Manager.ApplyUpdatesAndRestart(pending);
     }
 }

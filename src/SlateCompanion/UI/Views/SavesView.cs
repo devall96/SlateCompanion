@@ -36,7 +36,7 @@ public sealed class SavesView : ViewBase
     {
         installs = Launcher.FindInstalls(App.Progress.Settings).Where(i => Directory.Exists(i.DataRoot)).ToList();
         var keep = target;
-        var sw = installs.FirstOrDefault(i => i.Exe == keep?.Install.Exe) ?? installs.FirstOrDefault(i => i.Exe == App.Progress.Settings.GameProgram)
+        var sw = installs.FirstOrDefault(i => i.Exe == keep?.Install.Exe)
                  ?? installs.FirstOrDefault(i => SaveManager.Targets(i).Any(t => SaveManager.Slots(t).Count > 0)) ?? installs.FirstOrDefault();
         targets = sw != null ? SaveManager.Targets(sw) : [];
         target = targets.FirstOrDefault(t => t.Profile == keep?.Profile) ?? targets.FirstOrDefault(t => t.InUse) ?? targets.FirstOrDefault();

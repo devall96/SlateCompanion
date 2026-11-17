@@ -7,8 +7,6 @@ namespace SlateCompanion;
 public sealed record SwInstall(string Exe, string DataRoot)
 {
     public string Folder => Path.GetDirectoryName(Exe)!;
-    public string Ini => Path.Combine(DataRoot, "savagewind.ini");
-    public string LaunchFlags => Path.Combine(DataRoot, "launch-flags.txt");
     public bool AppImage => Exe.EndsWith(".AppImage", StringComparison.OrdinalIgnoreCase);
 
     /// <summary>The release's version (sw-manifest.txt, or the AppImage's name); null for a source build.</summary>
@@ -18,13 +16,10 @@ public sealed record SwInstall(string Exe, string DataRoot)
         {
             if (AppImage)
             {
-                // An AppImage keeps its file name when Savage Wind (or Slate Companion) updates it, so the name can be an
+                // An AppImage keeps its file name when Savage Wind updates it, so the name can be an
                 // older version than what's inside. What Savage Wind says at each start ("[savagewind] Savage Wind
                 // <version> (...)" at the top of savagewind.log) is the truth, when that log is newer than the file.
                 if (VersionFromLog() is { } logged) return logged;
-                // Updated by Slate Companion and not started since: the version it installed (the name is the old one,
-                // which made the update look undone and skipped the new version's shader-cache reset).
-                if (VersionFromNote() is { } noted) return noted;
                 var m = System.Text.RegularExpressions.Regex.Match(Path.GetFileName(Exe), @"(\d+\.\d+\.\d+[^-_]*(?:-alpha\.\d+|-beta\.\d+)?)");
                 return m.Success ? m.Groups[1].Value : null;
             }
@@ -37,19 +32,6 @@ public sealed record SwInstall(string Exe, string DataRoot)
             catch (UnauthorizedAccessException) { }
             return null;
         }
-    }
-
-    /// <summary>Beside the AppImage: the version Slate Companion put there (<see cref="SwUpdate"/>), for as long as the file is that one.</summary>
-    public string VersionNote => Exe + ".slate-version";
-
-    string? VersionFromNote()
-    {
-        try
-        {
-            if (!File.Exists(VersionNote) || File.GetLastWriteTimeUtc(VersionNote) < File.GetLastWriteTimeUtc(Exe)) return null;
-            return File.ReadLines(VersionNote).FirstOrDefault()?.Trim() is { Length: > 0 } v ? v : null;
-        }
-        catch (Exception e) when (e is IOException or UnauthorizedAccessException) { return null; }
     }
 
     /// <summary>The version the last start of this program logged (savagewind.log in the data folder), if it's from this file.</summary>
@@ -76,41 +58,12 @@ public sealed record SwInstall(string Exe, string DataRoot)
         return null;
     }
 
-    /// <summary>Why <see cref="SetupPending"/> says what it says (for the log).</summary>
-    public string SetupState()
-    {
-        string? last = null;
-        try { last = File.ReadLines(Path.Combine(DataRoot, "cache", "last-version.txt")).FirstOrDefault()?.Trim(); } catch (Exception) { }
-        return $"version {Version ?? "?"} (from {(AppImage ? (VersionFromLog() != null ? "its log" : VersionFromNote() != null ? "Slate Companion's update note" : "its file name") : "sw-manifest.txt")}), " +
-               $"cache/last-version.txt {last ?? "missing"}, game files {(GameFilesReady ? "ready" : "missing")}";
-    }
-
-    /// <summary>The game files are copied in and the game code built (Savage Wind's own check: extracted/romfs and extracted/exefs/main).</summary>
-    public bool GameFilesReady =>
-        Directory.Exists(Path.Combine(DataRoot, "extracted", "romfs")) && File.Exists(Path.Combine(DataRoot, "extracted", "exefs", "main"));
-
-    /// <summary>
-    /// A new version that hasn't finished its first-start setup yet (Savage Wind's post_update_pending: a release whose
-    /// cache/last-version.txt isn't this version). That setup empties the shader caches and rebuilds the game code, so
-    /// it can't be skipped.
-    /// </summary>
-    public bool SetupPending
-    {
-        get
-        {
-            var v = Version;
-            if (v == null || !GameFilesReady) return false;
-            try { return File.ReadLines(Path.Combine(DataRoot, "cache", "last-version.txt")).FirstOrDefault()?.Trim() != v; }
-            catch (Exception e) when (e is IOException or UnauthorizedAccessException) { return true; }
-        }
-    }
-
     public string Label => (Version is { } v ? $"Savage Wind {v}" : "Savage Wind (built from source)") + " · " + UI.Ui.ShortPath(Folder);
 }
 
 /// <summary>
-/// Starts Savage Wind (straight into the game, past its Configuration screen), with or without Clear Skies, and finds
-/// the copies on this computer. Opening savagewind.exe or Savage Wind Configuration yourself is never changed.
+/// Finds the copies of Savage Wind on this computer (for their saves and game files), and whether one is running.
+/// Slate Companion never starts, changes or updates Savage Wind.
 /// </summary>
 public static class Launcher
 {
@@ -156,8 +109,8 @@ public static class Launcher
 
     /// <summary>
     /// Linux: the player picked Savage Wind's AppImage (or its savagewind program). Its data folder (saves, game files,
-    /// savagewind.ini) is worked out from it the way Savage Wind does, and both are remembered: the program for Play,
-    /// the data folder for saves and game files. Returns the data folder.
+    /// savagewind.ini) is worked out from it the way Savage Wind does, and both are remembered (the data folder is where
+    /// its saves and game files are). Returns the data folder.
     /// </summary>
     public static string AddProgram(string program)
     {
@@ -167,7 +120,6 @@ public static class Launcher
             if (!s.SavageWindPrograms.Contains(program)) s.SavageWindPrograms.Add(program);
             if (Directory.Exists(data) && !s.SavageWindFolders.Contains(data)) s.SavageWindFolders.Add(data);
             s.HiddenInstalls.Remove(program);
-            s.GameProgram ??= program;
         });
         Log.Info($"Savage Wind program added: {Log.Scrub(program)} (data folder {Log.Scrub(data)})");
         return data;
@@ -205,117 +157,5 @@ public static class Launcher
         }
         catch (Exception) { }
         return false;
-    }
-
-    /// <summary>
-    /// Play: straight into the game (--play skips Savage Wind Configuration and the update offer). With Clear Skies on,
-    /// Clear Skies starts it (its layer and mods), passing --play on. Returns null, or why it couldn't start.
-    /// </summary>
-    public static string? Play(SwInstall sw, ClearSkies? cs, string? preset)
-    {
-        try
-        {
-            ProcessStartInfo psi;
-            if (cs != null)
-            {
-                psi = new ProcessStartInfo(cs.Program) { WorkingDirectory = cs.Folder, UseShellExecute = false };
-                psi.ArgumentList.Add("--game"); psi.ArgumentList.Add(sw.Exe);
-                if (!string.IsNullOrEmpty(preset)) { psi.ArgumentList.Add("--preset"); psi.ArgumentList.Add(preset); }
-                if (OperatingSystem.IsWindows()) psi.ArgumentList.Add("--no-update-check");  // (its updates are offered here, on the launch screen)
-                psi.ArgumentList.Add("--play");
-                psi.ArgumentList.Add("--");
-                psi.ArgumentList.Add("--play");
-            }
-            else
-            {
-                psi = new ProcessStartInfo(sw.Exe) { WorkingDirectory = sw.Folder, UseShellExecute = false };
-                psi.ArgumentList.Add("--play");
-            }
-            using var p = Process.Start(psi);
-            return p == null ? "It didn't start." : null;
-        }
-        catch (Exception e) { return e.Message; }
-    }
-
-    /// <summary>Savage Wind as if started by hand (its Configuration screen with --config).</summary>
-    public static string? OpenNormally(SwInstall sw, bool config)
-    {
-        try
-        {
-            var psi = new ProcessStartInfo(sw.Exe) { WorkingDirectory = sw.Folder, UseShellExecute = false };
-            if (config) psi.ArgumentList.Add("--config");
-            using var p = Process.Start(psi);
-            return null;
-        }
-        catch (Exception e) { return e.Message; }
-    }
-
-    // ---------------------------------------------------------------- GitHub (one small request, only when asked for)
-
-    static readonly HttpClient http = new(new SocketsHttpHandler { PooledConnectionLifetime = TimeSpan.FromMinutes(2) }) { Timeout = TimeSpan.FromSeconds(20) };
-    static Launcher() => http.DefaultRequestHeaders.UserAgent.ParseAdd("SlateCompanion");
-
-    public sealed record Release(string Tag, string Version, string Name, string Notes, string Page, DateTime Published, List<(string name, string url, long size)> Assets);
-
-    /// <summary>The newest release of a GitHub repository (pre-releases included: Savage Wind's are all alphas).</summary>
-    public static async Task<Release?> LatestRelease(string repo)
-    {
-        var json = await http.GetStringAsync($"https://api.github.com/repos/{repo}/releases?per_page=5");
-        var arr = JsonNode.Parse(json)?.AsArray();
-        var r = arr?.FirstOrDefault(x => x?["draft"]?.GetValue<bool>() != true);
-        if (r == null) return null;
-        var tag = r["tag_name"]!.GetValue<string>();
-        var assets = r["assets"]!.AsArray().Select(a => (a!["name"]!.GetValue<string>(), a["browser_download_url"]!.GetValue<string>(), a["size"]!.GetValue<long>())).ToList();
-        return new Release(tag, tag.TrimStart('v'), r["name"]?.GetValue<string>() ?? tag, r["body"]?.GetValue<string>() ?? "", r["html_url"]!.GetValue<string>(),
-            r["published_at"]?.GetValue<DateTime>() ?? DateTime.MinValue, assets);
-    }
-
-    /// <summary>
-    /// Compares "0.5.3-alpha.5"-style versions as semantic versions; &gt; 0 when a is newer. A pre-release comes before
-    /// its release (0.6.0-alpha.3 &lt; 0.6.0), and pre-release parts compare number by number or by name (alpha &lt; beta).
-    /// Comparing only the numbers made 0.6.0-alpha.3 look newer than 0.6.0, so alpha players were never offered 0.6.0.
-    /// </summary>
-    public static int CompareVersions(string a, string b)
-    {
-        static (int[] core, string[]? pre) Split(string v)
-        {
-            v = v.Trim().TrimStart('v', 'V');
-            int plus = v.IndexOf('+'); if (plus >= 0) v = v[..plus];  // (build metadata doesn't count)
-            int dash = v.IndexOf('-');
-            var core = (dash >= 0 ? v[..dash] : v).Split('.').Select(p => int.TryParse(p, out var n) ? n : 0).ToArray();
-            return (core, dash >= 0 ? v[(dash + 1)..].Split('.') : null);
-        }
-        var (x, xp) = Split(a); var (y, yp) = Split(b);
-        for (int i = 0; i < Math.Max(x.Length, y.Length); i++)
-        {
-            int p = i < x.Length ? x[i] : 0, q = i < y.Length ? y[i] : 0;
-            if (p != q) return p.CompareTo(q);
-        }
-        if (xp == null || yp == null) return xp == null ? (yp == null ? 0 : 1) : -1;  // the release is newer than its pre-releases
-        for (int i = 0; i < Math.Min(xp.Length, yp.Length); i++)
-        {
-            bool xn = int.TryParse(xp[i], out var xi), yn = int.TryParse(yp[i], out var yi);
-            int c = xn && yn ? xi.CompareTo(yi) : xn ? -1 : yn ? 1 : string.CompareOrdinal(xp[i], yp[i]);
-            if (c != 0) return Math.Sign(c);
-        }
-        return xp.Length.CompareTo(yp.Length);
-    }
-
-    /// <summary>Release notes as plain text for a small panel: markdown marks and links taken out, at most n lines.</summary>
-    public static string PlainNotes(string md, int lines = 14)
-    {
-        var outLines = new List<string>();
-        foreach (var raw in md.Replace("\r", "").Split('\n'))
-        {
-            var l = raw.Trim();
-            if (l.Length == 0 || l.StartsWith("<") || l.StartsWith("![") || l.StartsWith("|") || l.StartsWith("---")) continue;
-            l = System.Text.RegularExpressions.Regex.Replace(l, @"\[([^\]]*)\]\([^)]*\)", "$1");
-            l = l.Replace("**", "").Replace("`", "").TrimStart('#', ' ', '>');
-            if (l.StartsWith("[!")) continue;
-            if (l.StartsWith("- ") || l.StartsWith("* ")) l = "• " + l[2..];
-            outLines.Add(l);
-            if (outLines.Count >= lines) { outLines.Add("…"); break; }
-        }
-        return string.Join("\n", outLines);
     }
 }

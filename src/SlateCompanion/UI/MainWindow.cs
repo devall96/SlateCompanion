@@ -60,7 +60,7 @@ public sealed class MainWindow : Window
 {
     static readonly (string id, string label)[] Nav =
     [
-        ("home", "Adventure log"), ("launch", "Play Savage Wind"), ("map", "Map"), ("quests", "Quests & walkthrough"), ("shrines", "Shrines"),
+        ("home", "Adventure log"), ("map", "Map"), ("quests", "Quests & walkthrough"), ("shrines", "Shrines"),
         ("koroks", "Korok seeds"), ("inventory", "Inventory"), ("cooking", "Cooking"), ("compendium", "Hyrule Compendium"), ("armor", "Armor & upgrades"),
         ("saves", "Save files"), ("guides", "Guides & tips"), ("zeldadungeon", "Zelda Dungeon"),
     ];
@@ -170,14 +170,6 @@ public sealed class MainWindow : Window
             if (WindowState == WindowState.Minimized) Pause();
             else if (e.OldValue is WindowState.Minimized && IsActive) Resume();
         };
-        // Closed with the window's button in the middle of a Savage Wind install or update: it would stop between two
-        // file swaps and could leave Savage Wind without its program. It can be cancelled on the Play screen first.
-        Closing += (_, e) =>
-        {
-            if (!SwJob.Running || e.CloseReason != WindowCloseReason.WindowClosing) return;
-            e.Cancel = true;
-            Toast($"{SwJob.Title}: cancel it on the Play screen first, or wait for it to finish");
-        };
         Deactivated += (_, _) => { if (!(currentId == "map" && App.Progress.Settings.LiveInBackground)) Pause(); };
         Activated += (_, _) => Resume();
 
@@ -185,10 +177,9 @@ public sealed class MainWindow : Window
         pillTimer.Tick += (_, _) => { if (!paused) RenderPill(); };
         pillTimer.Start();
         RenderPill();
-        ShowLauncher(App.Progress.Settings.UseLauncher);
 
         var start = ArgView() ?? App.Progress.Settings.LastView;
-        Opened += (_, _) => Go((Nav.Any(n => n.id == start) || start == "settings") && !(start == "launch" && !App.Progress.Settings.UseLauncher) ? start : "home");
+        Opened += (_, _) => Go(Nav.Any(n => n.id == start) || start == "settings" ? start : "home");
         Opened += async (_, _) => await CheckForUpdate();
         if (Environment.GetEnvironmentVariable("SLATE_TRACE") == "1")
         {
@@ -310,12 +301,6 @@ public sealed class MainWindow : Window
 
     public bool Paused => paused;
 
-    /// <summary>The Play screen (Savage Wind launcher) is optional: its rune shows only when it's on.</summary>
-    public void ShowLauncher(bool on)
-    {
-        if (runes.TryGetValue("launch", out var r)) r.IsVisible = on;
-        if (!on && currentId == "launch") Go("home");
-    }
 
     static string? ArgView()
     {
@@ -343,7 +328,7 @@ public sealed class MainWindow : Window
             v = id switch
             {
                 "map" => new MapScreen(),
-                "launch" => new LaunchView(),
+
                 "inventory" => new InventoryView(),
                 "saves" => new SavesView(),
                 "quests" => new QuestsView(),
