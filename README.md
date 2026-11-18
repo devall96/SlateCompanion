@@ -131,3 +131,7 @@ All guide text was written for Slate Companion. Full details and licences: [THIR
 ## License
 
 [MIT](LICENSE).
+
+---
+
+<p align="center"><a href="https://ko-fi.com/devall96"><img src="https://img.shields.io/badge/Support_me_on-Ko--fi-FF5E5B?logo=ko-fi&logoColor=white&style=for-the-badge" alt="Support me on Ko-fi"></a></p>
