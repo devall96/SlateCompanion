@@ -36,7 +36,7 @@ The map, icons, item pictures, compendium photos, memory photos and in-game text
 
 **Your progress, from your save**
 - Reads your save and **ticks things off by itself as you play**: all 136 shrines, 900 Korok seeds, 15 towers, the Divine Beasts, memories, and the main, side and shrine quests. Blue means done in your save; anything else you can tick by hand (green).
-- Finds saves by itself: **Savage Wind** (every save profile), Cemu, Ryujinx and Yuzu-family emulators. You can also pick a folder or a save file, or drop one on the window.
+- Finds your **Savage Wind** saves by itself, across every save profile. You can also pick a folder or a save file, or drop one on the window.
 - **Tracking only ever reads.** A save is opened read-only, read in one go and closed, after the game has finished writing it. Only the Save files screen changes saves, and only when you ask (see below).
 
 **The map**
@@ -67,7 +67,7 @@ The Play screen starts Savage Wind for you. You choose on the first start, and c
 
 **Save files**
 - Every slot of every Savage Wind copy and save profile, with its picture, date and play time.
-- **Back up**, **restore** a backup, **import** a save (Savage Wind, Switch, Ryujinx, Yuzu or a .zip; **Cemu / Wii U saves are converted** with a port of Savage Wind's own converter, using your game files), import one slot into another, **export** as a .zip (also converted for Cemu), **copy** a slot to another slot, profile or copy, and **delete** one.
+- **Back up**, **restore** a backup, **import** a save (from another Savage Wind copy or a .zip), import one slot into another, **export** as a .zip, **copy** a slot to another slot, profile or copy, and **delete** one.
 - Every change backs the whole save folder up first, into Savage Wind's own backup folder (its Saves tab can restore them too), takes Savage Wind's save lock, and never runs while the game is open.
 
 **Light enough to leave open while you play**
