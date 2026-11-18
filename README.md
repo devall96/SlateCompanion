@@ -1,8 +1,8 @@
 <p align="center"><img src="docs/art/banner.png" alt="Slate Companion"></p>
 
-**Slate Companion** is a companion app for *The Legend of Zelda: Breath of the Wild* on Windows and Linux, styled after the Sheikah Slate. It reads your save while you play and ticks off shrines, Korok seeds, towers, memories and quests by itself, shows the in-game map with Link's live position from [Savage Wind Recomp](https://github.com/Revivedx/SavageWindRecomp), and puts a walkthrough, every quest, a cooking simulator, the Hyrule Compendium, armor upgrades, your inventory and your stats in one place, and manages your save files. Everything it shows from the game comes from **your own copy**, built once from your Savage Wind folder.
+**Slate Companion** is a companion app for *The Legend of Zelda: Breath of the Wild* on Windows and Linux, styled after the Sheikah Slate. It reads your save while you play and ticks off shrines, Korok seeds, towers, memories and quests by itself, shows the in-game map with Link's live position from [Savage Wind Recomp](https://github.com/Revivedx/SavageWindRecomp), and puts a walkthrough, every quest, a cooking simulator, the Hyrule Compendium, armor upgrades, your inventory and your stats in one place, and manages your save files. It can also start Savage Wind for you, with [Clear Skies](https://github.com/devall96/ClearSkies) if you use it. Everything it shows from the game comes from **your own copy**, built once from your Savage Wind folder.
 
-**[⬇ Download Slate Companion](https://devall96.github.io/SlateCompanion/)** · [All releases](https://github.com/devall96/SlateCompanion/releases) · [Install it](#how-to-install) · [What it does](#what-it-does) · [Live position](#links-position-live-from-savage-wind)
+**[⬇ Download Slate Companion](https://devall96.github.io/SlateCompanion/)** · [All releases](https://github.com/devall96/SlateCompanion/releases) · [Install it](#how-to-install) · [What it does](#what-it-does) · [Play](#play-savage-wind-optional) · [Live position](#links-position-live-from-savage-wind)
 
 > [!CAUTION]
 > **No game files are included, and none ever will be**: not in the code, the releases, the issues or the wiki. Slate Companion is made to be used with your own, legally obtained copy of Breath of the Wild: the game files in your Savage Wind folder, dumped from your own Switch. On first start it asks for that folder and builds the map, icons, pictures and in-game text from it, on your PC. Please don't post game files, dumps, keys or the built files here.
@@ -28,7 +28,7 @@
 | ![Quests with the game's own quest log](docs/images/quests.png) | ![Shrines with short solutions](docs/images/shrines.png) |
 | ![Korok seeds by map square and puzzle type](docs/images/koroks.png) | ![Inventory: Link in 3D in his current gear, with loadouts](docs/images/inventory.png) |
 | ![Armor and Great Fairy upgrades with a shopping list](docs/images/armor.png) | ![Guides and tips](docs/images/guides.png) |
-| ![Save files: slots, backups, import and export](docs/images/saves.png) | |
+| ![Play: start Savage Wind, with Clear Skies if you use it](docs/images/launch.png) | ![Save files: slots, backups, import and export](docs/images/saves.png) |
 
 The map, icons, item pictures, compendium photos, memory photos and in-game text in these screenshots were built from a legally obtained copy of the game, as they are on your PC. They're © Nintendo and aren't part of Slate Companion.
 
@@ -58,6 +58,13 @@ The map, icons, item pictures, compendium photos, memory photos and in-game text
 - **Guides**: Blood Moon, weather, horses, Hestu, the Master Sword, shops and boss tips.
 - **Search everything** with Ctrl+K.
 
+**Play Savage Wind (optional)**
+
+The Play screen starts Savage Wind for you. You choose on the first start, and can turn it off any time in Settings. Slate Companion never installs, updates or changes Savage Wind.
+- **Play** starts Savage Wind the normal way, as if you opened it yourself: it shows its Configuration screen or an update first when it wants to.
+- **Your copies**: every copy of Savage Wind on your PC, with a name of your own: pick which one Play starts, open its folder, or remove it from the list (nothing is deleted).
+- **[Clear Skies](https://github.com/devall96/ClearSkies)**: play with Cemu's Clarity look and pick one of its 20 presets, open its mod manager and GameBanana browser, and see when it has an update.
+
 **Save files**
 - Every slot of every Savage Wind copy and save profile, with its picture, date and play time.
 - **Back up**, **restore** a backup, **import** a save (Savage Wind, Switch, Ryujinx, Yuzu or a .zip; **Cemu / Wii U saves are converted** with a port of Savage Wind's own converter, using your game files), import one slot into another, **export** as a .zip (also converted for Cemu), **copy** a slot to another slot, profile or copy, and **delete** one.
@@ -72,9 +79,9 @@ The map, icons, item pictures, compendium photos, memory photos and in-game text
 
 **Windows:** download **[SlateCompanion-win-Setup.exe](https://github.com/devall96/SlateCompanion/releases/latest/download/SlateCompanion-win-Setup.exe)** and run it. It installs for your user only (no admin), adds a Start menu entry, and checks for its own updates when it opens (one small request; you can turn that off in **Saves & settings → Updates**).
 
-**Linux:** download **[SlateCompanion.AppImage](https://github.com/devall96/SlateCompanion/releases/latest/download/SlateCompanion.AppImage)**, make it executable (`chmod +x SlateCompanion.AppImage`, or Properties → Allow executing) and run it. On the first start, pick your Savage Wind AppImage (its saves and game files are found from it), and turn on **Add to applications** to have Slate Companion in your app menu.
+**Linux:** download **[SlateCompanion.AppImage](https://github.com/devall96/SlateCompanion/releases/latest/download/SlateCompanion.AppImage)**, make it executable (`chmod +x SlateCompanion.AppImage`, or Properties → Allow executing) and run it. On the first start, pick your Savage Wind AppImage (its saves and game files are found from it), and turn on **Add to applications** to have Slate Companion and Savage Wind in your app menu.
 
-**First start:** Slate Companion looks for Savage Wind on your PC and lists its game files; press **Use these**, or **Choose your Savage Wind folder…** (the folder with `savagewind.exe`, or `~/.local/share/savagewind` on Linux). It builds the map, icons, pictures and text once, in under a minute, and opens. Then it finds your saves by itself.
+**First start:** Slate Companion looks for Savage Wind on your PC and lists its game files; press **Use these**, or **Choose your Savage Wind folder…** (the folder with `savagewind.exe`, or `~/.local/share/savagewind` on Linux). It builds the map, icons, pictures and text once, in under a minute, and opens. Then it finds your saves by itself. The welcome screen also asks whether you want the Play screen.
 
 You need Savage Wind set up with your own game files, the same as for playing it. An extracted `romfs` folder from your own dump works too.
 
@@ -86,7 +93,7 @@ That needs a **Slate Companion** switch on Savage Wind's start screen, which isn
 
 ## Your data
 
-- **Nothing is sent anywhere.** No accounts, no telemetry, no ads. It goes online only to ask GitHub for new versions: of Slate Companion when it opens (can be turned off). The Zelda Dungeon tab loads zeldadungeon.net (with its ads) only while you use it, and up to 30 seconds after; its cookies are kept in the `web` folder next to your ticks.
+- **Nothing is sent anywhere.** No accounts, no telemetry, no ads. It goes online only to ask GitHub for new versions: of Slate Companion when it opens (can be turned off), and of Clear Skies when you open the Play screen. The Zelda Dungeon tab loads zeldadungeon.net (with its ads) only while you use it, and up to 30 seconds after; its cookies are kept in the `web` folder next to your ticks.
 - **Logs**: `logs/slatecompanion.log` and crash reports (`logs/crash-*.txt`) in the same folder, with your user name taken out of paths. When something goes wrong, an error window shows the details with **Copy details**, **Open logs folder** and **Report a problem**.
 - Your ticks, pins and history are kept in `%APPDATA%\SlateCompanion` (Windows) or `~/.config/slatecompanion` (Linux), next to what it built from your game files. Delete that folder to start over.
 
@@ -112,6 +119,7 @@ Slate Companion stands on other people's work. The facts it ships with (names, c
 - [objmap](https://github.com/zeldamods/objmap) and the zeldamods project: shrine, tower, Korok and place positions (facts only; no map images are used)
 - [marcrobledo/savegame-editors](https://github.com/marcrobledo/savegame-editors) (MIT): save flag names, checked against real saves
 - [Pistonite/botw-recipe](https://github.com/Pistonite/botw-recipe) (MIT) and [savage13/cooking.rs](https://github.com/savage13/cooking.rs) (BSD-2-Clause): cooking data, rules and the 617 test results
+- [Clear Skies](https://github.com/devall96/ClearSkies) (MIT): its icon and preset names
 - The [Hyrule Compendium API](https://github.com/gadhagod/Hyrule-Compendium-API) (MIT): compendium entries, locations and drops
 - The zeldamods wiki (CC BY-SA 4.0): save format facts
 - [Savage Wind Recomp](https://github.com/Revivedx/SavageWindRecomp) (MIT): the list of its settings with their descriptions, the save converter (ported from its `tools/botw_save_convert.py`)

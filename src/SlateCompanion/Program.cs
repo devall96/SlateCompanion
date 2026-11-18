@@ -47,7 +47,7 @@ public static class Program
         if (args.Length >= 2 && args[0] == "--app-menu")
         {
             if (args[1] == "off") { DesktopEntries.RemoveAll(); Console.WriteLine("removed"); }
-            else Console.WriteLine($"{DesktopEntries.Sync()} entries");
+            else { var st = new Store().LoadSettings(); Console.WriteLine($"{DesktopEntries.Sync(Launcher.FindInstalls(st), st.InstallNames)} entries"); }
             return 0;
         }
         // --equip <save folder> <slot folder> <Slot>=<PorchItem index|none> ...: the Inventory's Equip as a command (testing)

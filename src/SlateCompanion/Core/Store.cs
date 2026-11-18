@@ -25,18 +25,16 @@ public sealed class AppSettings
     public bool CheckUpdatesOnStart { get; set; } = true;  // one request to GitHub when the app opens (installed copies)
     public string? SkippedVersion { get; set; }              // "Skip this version" on the update bar
     public List<string> SavageWindPrograms { get; set; } = []; // savagewind / AppImages chosen by hand (Linux mostly)
-    // The Play screen's settings: the screen is taken out for now, and these are kept (unused) so a player's choices
-    // are still there if it comes back.
     public string? GameProgram { get; set; }                 // the copy Play starts
     public string? ClearSkiesProgram { get; set; }           // ClearSkies.exe or its AppImage
     public bool UseClearSkies { get; set; }
     public string? ClearSkiesPreset { get; set; }            // null: the one saved in clearskies.ini
-    public bool UseLauncher { get; set; } = true;            // the Play screen (installs, updates, Savage Wind's settings); off: hidden
+    public bool UseLauncher { get; set; } = true;            // the Play screen (starts Savage Wind, Clear Skies); off: hidden
     public Dictionary<string, string> InstallNames { get; set; } = [];  // a name per copy (its program's path)
     public List<string> HiddenInstalls { get; set; } = [];   // copies removed from the list (never deleted)
-    public string? InstallFolder { get; set; }               // where the last new copy was installed
+    public string? InstallFolder { get; set; }               // (unused: where older versions installed a new copy)
     public bool MinimizeOnPlay { get; set; }
-    public bool AddToApplications { get; set; } = true;     // Linux: a menu entry for Slate Companion
+    public bool AddToApplications { get; set; } = true;     // Linux: menu entries for Slate Companion and Savage Wind AppImages
     public bool EquipEdits { get; set; }                     // Inventory: "Change equipment" (equip, take off, loadouts edit the save)
     public bool GpuDrawing { get; set; } = true;            // draw with the graphics card (takes effect at the next start)
     public bool LiveInBackground { get; set; }               // the map keeps following Link while another window has the focus                 // Play minimizes Slate Companion (it then sleeps)

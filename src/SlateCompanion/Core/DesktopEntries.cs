@@ -6,7 +6,7 @@ namespace SlateCompanion;
 
 /// <summary>
 /// Linux: "Add to applications". Desktop entries in ~/.local/share/applications (the freedesktop.org menu every
-/// desktop reads) for Slate Companion, so it shows up in the app menu
+/// desktop reads) for Slate Companion and for each Savage Wind AppImage it knows, so they show up in the app menu
 /// and can be pinned. Only files named slatecompanion*.desktop are ever written or removed, and turning the switch
 /// off removes them all again. Nothing system-wide, no root.
 /// </summary>
@@ -29,7 +29,7 @@ public static class DesktopEntries
     static string Quote(string path) => "\"" + path.Replace("\\", "\\\\").Replace("\"", "\\\"").Replace("`", "\\`").Replace("$", "\\$") + "\"";
 
     /// <summary>Writes (or rewrites) every entry, and removes ours that no longer have a program. Returns how many there are.</summary>
-    public static int Sync()
+    public static int Sync(IEnumerable<SwInstall> installs, IReadOnlyDictionary<string, string> names)
     {
         if (!Supported) return 0;
         Directory.CreateDirectory(AppsDir);
@@ -49,11 +49,27 @@ public static class DesktopEntries
         Write("slatecompanion.desktop", new StringBuilder()
             .AppendLine("[Desktop Entry]").AppendLine("Type=Application").AppendLine("Name=Slate Companion")
             .AppendLine("GenericName=Breath of the Wild companion")
-            .AppendLine("Comment=Map, walkthrough, cooking, compendium and your progress for Breath of the Wild")
+            .AppendLine("Comment=Map, walkthrough, cooking, compendium and your progress for Breath of the Wild; a launcher for Savage Wind")
             .AppendLine($"Exec={Quote(SelfProgram())}").AppendLine("Icon=slatecompanion").AppendLine("Terminal=false")
             .AppendLine("Categories=Game;").AppendLine("StartupWMClass=SlateCompanion").ToString());
 
-        // ours that are left over (older versions also made entries for Savage Wind AppImages)
+        // each Savage Wind AppImage
+        foreach (var i in installs.Where(i => i.AppImage && File.Exists(i.Exe)))
+        {
+            var id = "slatecompanion-savagewind-" + Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(i.Exe)))[..10].ToLowerInvariant();
+            keep.Add(id + ".desktop");
+            string icon = File.Exists(Path.Combine(IconsDir, id + ".png")) || ExtractIcon(i.Exe, Path.Combine(IconsDir, id + ".png")) ? id : "applications-games";
+            var name = names.GetValueOrDefault(i.Exe) is { Length: > 0 } n ? n : "Savage Wind";
+            var exe = Quote(i.Exe);
+            Write(id + ".desktop", new StringBuilder()
+                .AppendLine("[Desktop Entry]").AppendLine("Type=Application").AppendLine($"Name={name.Replace('\n', ' ')}")
+                .AppendLine("Comment=The Legend of Zelda: Breath of the Wild, on PC (Savage Wind)")
+                .AppendLine($"Exec={exe}").AppendLine($"Icon={icon}").AppendLine("Terminal=false").AppendLine("Categories=Game;")
+                .AppendLine("Actions=config;").AppendLine()
+                .AppendLine("[Desktop Action config]").AppendLine("Name=Savage Wind Configuration").AppendLine($"Exec={exe} --config").ToString());
+        }
+
+        // ours that are left over (a copy removed from the list or deleted)
         foreach (var f in Directory.GetFiles(AppsDir, "slatecompanion*.desktop"))
             if (!keep.Contains(Path.GetFileName(f))) { TryDelete(f); TryDelete(Path.Combine(IconsDir, Path.GetFileNameWithoutExtension(f) + ".png")); }
         Log.Info($"Desktop entries: {keep.Count} in {Log.Scrub(AppsDir)}");
@@ -82,6 +98,46 @@ public static class DesktopEntries
             File.SetUnixFileMode(p, UnixFileMode.UserRead | UnixFileMode.UserWrite | UnixFileMode.UserExecute | UnixFileMode.GroupRead | UnixFileMode.OtherRead);
         }
         catch (Exception e) when (e is IOException or UnauthorizedAccessException) { Log.Warn($"desktop entry {name}: {e.Message}"); }
+    }
+
+    /// <summary>
+    /// The AppImage's own icon: its runtime extracts files without starting the program (--appimage-extract
+    /// <pattern>). Savage Wind's is savagewind.png at the top (.DirIcon links to it); each try in a fresh folder.
+    /// </summary>
+    static bool ExtractIcon(string appImage, string dest)
+    {
+        string? lastError = null;
+        foreach (var pattern in new[] { "savagewind.png", "*.png", ".DirIcon" })
+        {
+            var tmp = Path.Combine(Path.GetTempPath(), "slate-icon-" + Guid.NewGuid().ToString("N")[..8]);
+            try
+            {
+                Directory.CreateDirectory(tmp);
+                var psi = new ProcessStartInfo(appImage) { WorkingDirectory = tmp, UseShellExecute = false, RedirectStandardOutput = true, RedirectStandardError = true };
+                psi.ArgumentList.Add("--appimage-extract"); psi.ArgumentList.Add(pattern);
+                using var p = Process.Start(psi);
+                if (p == null) return false;
+                var err = p.StandardError.ReadToEndAsync();
+                p.StandardOutput.ReadToEnd();
+                if (!p.WaitForExit(20000)) { try { p.Kill(true); } catch (Exception) { } continue; }
+                lastError = err.Result.Trim();
+                var root = Path.Combine(tmp, "squashfs-root");
+                if (!Directory.Exists(root)) continue;
+                foreach (var f in Directory.EnumerateFiles(root, "*", SearchOption.AllDirectories).Select(f => new FileInfo(f)).OrderByDescending(f => f.Exists ? f.Length : 0))
+                {
+                    var src = f.LinkTarget is { } t ? Path.Combine(f.DirectoryName!, t) : f.FullName;
+                    if (!File.Exists(src)) continue;
+                    var sig = new byte[4];
+                    using (var probe = File.OpenRead(src)) if (probe.Read(sig) < 4 || sig[1] != 'P' || sig[2] != 'N' || sig[3] != 'G') continue;
+                    File.Copy(src, dest, true);
+                    return true;
+                }
+            }
+            catch (Exception e) { lastError = e.Message; }
+            finally { try { Directory.Delete(tmp, true); } catch (Exception) { } }
+        }
+        Log.Warn($"AppImage icon not found in {Log.Scrub(appImage)}{(string.IsNullOrEmpty(lastError) ? "" : ": " + lastError)}");
+        return false;
     }
 
     static void TryDelete(string f) { try { if (File.Exists(f)) File.Delete(f); } catch (Exception) { } }

@@ -50,7 +50,7 @@ public sealed class SettingsView : ViewBase
         var page = Ui.Stack(16, Ui.Header("Saves & settings"),
             new Grid { ColumnDefinitions = new ColumnDefinitions("*,*"), Children = { add, Wrap(live, 1) } },
             Ui.Panel(mapBox, "panel"),
-            Ui.Panel(DisplayPanel(), "panel"),
+            Ui.Panel(LauncherPanel(), "panel"),
             Ui.Panel(UpdatesPanel(), "panel"),
             Ui.Text("SAVES FOUND", "h2"), savesList,
             Ui.Text("ABOUT", "h2"),
@@ -62,15 +62,21 @@ public sealed class SettingsView : ViewBase
         static Control Wrap(Control c, int col) { Grid.SetColumn(c, col); return c; }
     }
 
-    /// <summary>Drawing, and (Linux) the app menu entry.</summary>
-    static Control DisplayPanel()
+    /// <summary>The optional Savage Wind launcher (the Play screen).</summary>
+    static Control LauncherPanel()
     {
+        var on = new ToggleSwitch { IsChecked = App.Progress.Settings.UseLauncher, OnContent = "Shown", OffContent = "Hidden" };
+        on.IsCheckedChanged += (_, _) => { App.Progress.SaveSettings(s => s.UseLauncher = on.IsChecked == true); App.Main.ShowLauncher(on.IsChecked == true); };
+        var minimize = new CheckBox { Content = "Minimize Slate Companion when the game starts (it then sleeps; the map's live position pauses)", IsChecked = App.Progress.Settings.MinimizeOnPlay };
+        minimize.IsCheckedChanged += (_, _) => App.Progress.SaveSettings(s => s.MinimizeOnPlay = minimize.IsChecked == true);
+        var t = Ui.Text("The Play screen: starts Savage Wind (with Clear Skies if you use it) and lists your copies of it. Savage Wind opens as it always does, and Slate Companion never installs, updates or changes it. Hidden, Slate Companion never starts Savage Wind.", "muted small");
+        t.TextWrapping = TextWrapping.Wrap;
         var gpu = new CheckBox { Content = "Draw with the graphics card (faster map; off: software drawing). Takes effect the next time Slate Companion starts.", IsChecked = App.Progress.Settings.GpuDrawing };
         gpu.IsCheckedChanged += (_, _) => App.Progress.SaveSettings(s => s.GpuDrawing = gpu.IsChecked == true);
-        var stack = Ui.Stack(8, Ui.Text("DRAWING", "h2"), gpu);
+        var stack = Ui.Stack(8, Ui.Text("SAVAGE WIND LAUNCHER", "h2"), t, on, minimize, Ui.Text("DRAWING", "h2"), gpu);
         if (DesktopEntries.Supported)
         {
-            var menu = new CheckBox { Content = "Add to applications: Slate Companion in the app menu (off removes it)", IsChecked = App.Progress.Settings.AddToApplications };
+            var menu = new CheckBox { Content = "Add to applications: Slate Companion and your Savage Wind AppImages in the app menu (off removes them)", IsChecked = App.Progress.Settings.AddToApplications };
             menu.IsCheckedChanged += (_, _) =>
             {
                 App.Progress.SaveSettings(s => s.AddToApplications = menu.IsChecked == true);

@@ -25,6 +25,7 @@ Only facts are taken: names, coordinates, flag names and numbers. All guide and 
 | [savage13/cooking.rs](https://github.com/savage13/cooking.rs) | BSD-2-Clause | Monster Extract values and 617 recorded in-game results for testing |
 | [gadhagod/Hyrule-Compendium-API](https://github.com/gadhagod/Hyrule-Compendium-API) | MIT | compendium names, categories, locations, drops and stats (no descriptions, no images) |
 | zeldamods.org wiki | CC BY-SA 4.0 | save file format facts |
+| [devall96/ClearSkies](https://github.com/devall96/ClearSkies) | MIT | its icon (`Assets/clearskies.png`) and preset names |
 | [Revivedx/SavageWindRecomp](https://github.com/Revivedx/SavageWindRecomp) | MIT, © Revivedx and the Savage Wind Recomp contributors | `Core/SaveConvert.cs`: a port of `tools/botw_save_convert.py` |
 
 

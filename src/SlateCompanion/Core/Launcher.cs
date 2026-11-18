@@ -62,8 +62,8 @@ public sealed record SwInstall(string Exe, string DataRoot)
 }
 
 /// <summary>
-/// Finds the copies of Savage Wind on this computer (for their saves and game files), and whether one is running.
-/// Slate Companion never starts, changes or updates Savage Wind.
+/// Starts Savage Wind the normal way (it decides whether to show its Configuration screen), with or without Clear
+/// Skies, and finds the copies on this computer. Slate Companion never installs, updates or changes Savage Wind.
 /// </summary>
 public static class Launcher
 {
@@ -109,8 +109,8 @@ public static class Launcher
 
     /// <summary>
     /// Linux: the player picked Savage Wind's AppImage (or its savagewind program). Its data folder (saves, game files,
-    /// savagewind.ini) is worked out from it the way Savage Wind does, and both are remembered (the data folder is where
-    /// its saves and game files are). Returns the data folder.
+    /// savagewind.ini) is worked out from it the way Savage Wind does, and both are remembered: the program for Play,
+    /// the data folder for saves and game files. Returns the data folder.
     /// </summary>
     public static string AddProgram(string program)
     {
@@ -120,6 +120,7 @@ public static class Launcher
             if (!s.SavageWindPrograms.Contains(program)) s.SavageWindPrograms.Add(program);
             if (Directory.Exists(data) && !s.SavageWindFolders.Contains(data)) s.SavageWindFolders.Add(data);
             s.HiddenInstalls.Remove(program);
+            s.GameProgram ??= program;
         });
         Log.Info($"Savage Wind program added: {Log.Scrub(program)} (data folder {Log.Scrub(data)})");
         return data;
@@ -157,5 +158,82 @@ public static class Launcher
         }
         catch (Exception) { }
         return false;
+    }
+
+    /// <summary>
+    /// Play: Savage Wind started as if opened by hand. With Clear Skies on, Clear Skies starts it (its look and mods).
+    /// Returns null, or why it couldn't start.
+    /// </summary>
+    public static string? Play(SwInstall sw, ClearSkies? cs, string? preset)
+    {
+        try
+        {
+            ProcessStartInfo psi;
+            if (cs != null)
+            {
+                psi = new ProcessStartInfo(cs.Program) { WorkingDirectory = cs.Folder, UseShellExecute = false };
+                psi.ArgumentList.Add("--game"); psi.ArgumentList.Add(sw.Exe);
+                if (!string.IsNullOrEmpty(preset)) { psi.ArgumentList.Add("--preset"); psi.ArgumentList.Add(preset); }
+                if (OperatingSystem.IsWindows()) psi.ArgumentList.Add("--no-update-check");  // (its updates are offered here, on the launch screen)
+                psi.ArgumentList.Add("--play");  // (Clear Skies' own: start the game now, not its window)
+            }
+            // nothing passed to Savage Wind: it starts as if opened by hand, and decides itself whether to show
+            // Savage Wind Configuration or an update first
+            else psi = new ProcessStartInfo(sw.Exe) { WorkingDirectory = sw.Folder, UseShellExecute = false };
+            using var p = Process.Start(psi);
+            return p == null ? "It didn't start." : null;
+        }
+        catch (Exception e) { return e.Message; }
+    }
+
+    // ---------------------------------------------------------------- GitHub (one small request, only when asked for)
+
+    static readonly HttpClient http = new(new SocketsHttpHandler { PooledConnectionLifetime = TimeSpan.FromMinutes(2) }) { Timeout = TimeSpan.FromSeconds(20) };
+    static Launcher() => http.DefaultRequestHeaders.UserAgent.ParseAdd("SlateCompanion");
+
+    public sealed record Release(string Tag, string Version, string Name, string Notes, string Page, DateTime Published, List<(string name, string url, long size)> Assets);
+
+    /// <summary>The newest release of a GitHub repository (pre-releases included: Savage Wind's are all alphas).</summary>
+    public static async Task<Release?> LatestRelease(string repo)
+    {
+        var json = await http.GetStringAsync($"https://api.github.com/repos/{repo}/releases?per_page=5");
+        var arr = JsonNode.Parse(json)?.AsArray();
+        var r = arr?.FirstOrDefault(x => x?["draft"]?.GetValue<bool>() != true);
+        if (r == null) return null;
+        var tag = r["tag_name"]!.GetValue<string>();
+        var assets = r["assets"]!.AsArray().Select(a => (a!["name"]!.GetValue<string>(), a["browser_download_url"]!.GetValue<string>(), a["size"]!.GetValue<long>())).ToList();
+        return new Release(tag, tag.TrimStart('v'), r["name"]?.GetValue<string>() ?? tag, r["body"]?.GetValue<string>() ?? "", r["html_url"]!.GetValue<string>(),
+            r["published_at"]?.GetValue<DateTime>() ?? DateTime.MinValue, assets);
+    }
+
+    /// <summary>
+    /// Compares "0.5.3-alpha.5"-style versions as semantic versions; &gt; 0 when a is newer. A pre-release comes before
+    /// its release (0.6.0-alpha.3 &lt; 0.6.0), and pre-release parts compare number by number or by name (alpha &lt; beta).
+    /// Comparing only the numbers made 0.6.0-alpha.3 look newer than 0.6.0, so alpha players were never offered 0.6.0.
+    /// </summary>
+    public static int CompareVersions(string a, string b)
+    {
+        static (int[] core, string[]? pre) Split(string v)
+        {
+            v = v.Trim().TrimStart('v', 'V');
+            int plus = v.IndexOf('+'); if (plus >= 0) v = v[..plus];  // (build metadata doesn't count)
+            int dash = v.IndexOf('-');
+            var core = (dash >= 0 ? v[..dash] : v).Split('.').Select(p => int.TryParse(p, out var n) ? n : 0).ToArray();
+            return (core, dash >= 0 ? v[(dash + 1)..].Split('.') : null);
+        }
+        var (x, xp) = Split(a); var (y, yp) = Split(b);
+        for (int i = 0; i < Math.Max(x.Length, y.Length); i++)
+        {
+            int p = i < x.Length ? x[i] : 0, q = i < y.Length ? y[i] : 0;
+            if (p != q) return p.CompareTo(q);
+        }
+        if (xp == null || yp == null) return xp == null ? (yp == null ? 0 : 1) : -1;  // the release is newer than its pre-releases
+        for (int i = 0; i < Math.Min(xp.Length, yp.Length); i++)
+        {
+            bool xn = int.TryParse(xp[i], out var xi), yn = int.TryParse(yp[i], out var yi);
+            int c = xn && yn ? xi.CompareTo(yi) : xn ? -1 : yn ? 1 : string.CompareOrdinal(xp[i], yp[i]);
+            if (c != 0) return Math.Sign(c);
+        }
+        return xp.Length.CompareTo(yp.Length);
     }
 }

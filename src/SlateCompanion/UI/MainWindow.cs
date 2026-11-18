@@ -60,7 +60,7 @@ public sealed class MainWindow : Window
 {
     static readonly (string id, string label)[] Nav =
     [
-        ("home", "Adventure log"), ("map", "Map"), ("quests", "Quests & walkthrough"), ("shrines", "Shrines"),
+        ("home", "Adventure log"), ("launch", "Play Savage Wind"), ("map", "Map"), ("quests", "Quests & walkthrough"), ("shrines", "Shrines"),
         ("koroks", "Korok seeds"), ("inventory", "Inventory"), ("cooking", "Cooking"), ("compendium", "Hyrule Compendium"), ("armor", "Armor & upgrades"),
         ("saves", "Save files"), ("guides", "Guides & tips"), ("zeldadungeon", "Zelda Dungeon"),
     ];
@@ -177,9 +177,10 @@ public sealed class MainWindow : Window
         pillTimer.Tick += (_, _) => { if (!paused) RenderPill(); };
         pillTimer.Start();
         RenderPill();
+        ShowLauncher(App.Progress.Settings.UseLauncher);
 
         var start = ArgView() ?? App.Progress.Settings.LastView;
-        Opened += (_, _) => Go(Nav.Any(n => n.id == start) || start == "settings" ? start : "home");
+        Opened += (_, _) => Go((Nav.Any(n => n.id == start) || start == "settings") && !(start == "launch" && !App.Progress.Settings.UseLauncher) ? start : "home");
         Opened += async (_, _) => await CheckForUpdate();
         if (Environment.GetEnvironmentVariable("SLATE_TRACE") == "1")
         {
@@ -301,6 +302,12 @@ public sealed class MainWindow : Window
 
     public bool Paused => paused;
 
+    /// <summary>The Play screen (Savage Wind launcher) is optional: its rune shows only when it's on.</summary>
+    public void ShowLauncher(bool on)
+    {
+        if (runes.TryGetValue("launch", out var r)) r.IsVisible = on;
+        if (!on && currentId == "launch") Go("home");
+    }
 
     static string? ArgView()
     {
@@ -328,7 +335,7 @@ public sealed class MainWindow : Window
             v = id switch
             {
                 "map" => new MapScreen(),
-
+                "launch" => new LaunchView(),
                 "inventory" => new InventoryView(),
                 "saves" => new SavesView(),
                 "quests" => new QuestsView(),
