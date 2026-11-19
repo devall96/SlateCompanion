@@ -125,7 +125,11 @@ public sealed class MapBuilder
         var sw = Stopwatch.StartNew();
         try
         {
-            if (Directory.Exists(tmp)) Directory.Delete(tmp, true);
+            // A build that failed before can leave its folder behind with a file still held (a virus scanner reading
+            // the new tiles): it must not stop this one. If it can't be removed, this build uses a folder of its own.
+            foreach (var pattern in new[] { ".building*", ".old*" })
+                foreach (var stale in Directory.GetDirectories(Path.GetDirectoryName(outDir)!, Path.GetFileName(outDir) + pattern)) TryDelete(stale);
+            if (Directory.Exists(tmp)) tmp = $"{outDir}.building-{DateTime.Now:yyyyMMddHHmmss}";
             Directory.CreateDirectory(tmp);
             Message = "Reading the map icons";
             var icons = ExtractIcons(romfs, Path.Combine(tmp, "icons"));
@@ -162,11 +166,13 @@ public sealed class MapBuilder
             ct.ThrowIfCancellationRequested();
             // The working map is moved aside, not deleted in place: a delete that fails half-way (a tile still open,
             // antivirus) would leave neither the old map nor the new one.
+            Message = "Putting the new map in place";
             var old = outDir + ".old";
             TryDelete(old);
-            if (Directory.Exists(outDir)) Directory.Move(outDir, old);
-            try { Directory.Move(tmp, outDir); }
-            catch (Exception) { if (Directory.Exists(old) && !Directory.Exists(outDir)) Directory.Move(old, outDir); throw; }
+            if (Directory.Exists(old)) old = $"{outDir}.old-{DateTime.Now:yyyyMMddHHmmss}";
+            if (Directory.Exists(outDir)) MoveWithRetry(outDir, old);
+            try { PutInPlace(tmp, outDir); }
+            catch (Exception) { if (Directory.Exists(old) && !Directory.Exists(outDir)) MoveWithRetry(old, outDir); throw; }
             TryDelete(old);
             Progress = 1; Message = $"Built in {sw.Elapsed.TotalSeconds:0} s"; State = "ready";
         }
@@ -188,10 +194,64 @@ public sealed class MapBuilder
         }
     }
 
+    /// <summary>A folder deleted, read-only files too, trying again for a few seconds while something holds a file in it.</summary>
     static void TryDelete(string dir)
     {
-        try { if (Directory.Exists(dir)) Directory.Delete(dir, true); }
-        catch (Exception e) when (e is IOException or UnauthorizedAccessException) { Log.Warn($"Couldn't delete {dir}: {e.Message}"); }
+        for (int attempt = 0; ; attempt++)
+        {
+            try
+            {
+                if (!Directory.Exists(dir)) return;
+                foreach (var f in Directory.EnumerateFiles(dir, "*", SearchOption.AllDirectories))
+                    if (File.GetAttributes(f).HasFlag(FileAttributes.ReadOnly)) File.SetAttributes(f, FileAttributes.Normal);
+                Directory.Delete(dir, true);
+                return;
+            }
+            catch (Exception e) when (e is IOException or UnauthorizedAccessException)
+            {
+                if (attempt >= 5) { Log.Warn($"Couldn't delete {Log.Scrub(dir)} (it's tried again at the next build): {e.Message}"); return; }
+                Thread.Sleep(400 + attempt * 300);
+            }
+        }
+    }
+
+    /// <summary>
+    /// A folder renamed. Windows refuses while anything holds a file inside it open (a virus scanner or the search
+    /// indexer reading the thousands of new map tiles), with "Access to the path ... is denied", whatever the user's
+    /// rights: so it's tried again for about 20 seconds.
+    /// </summary>
+    static void MoveWithRetry(string from, string to)
+    {
+        for (int attempt = 0; ; attempt++)
+        {
+            try { Directory.Move(from, to); return; }
+            catch (Exception e) when ((e is IOException or UnauthorizedAccessException) && attempt < 11 && Directory.Exists(from) && !Directory.Exists(to))
+            {
+                if (attempt == 0) Log.Info($"Renaming {Log.Scrub(from)} was refused ({e.Message}); trying again");
+                Thread.Sleep(500 + attempt * 250);
+            }
+        }
+    }
+
+    /// <summary>
+    /// The finished build put where the app reads it: renamed (with retries), or, if the folder stays held, copied
+    /// file by file (a file being scanned can still be read) and the build folder removed as best it can.
+    /// </summary>
+    static void PutInPlace(string build, string dest)
+    {
+        try { MoveWithRetry(build, dest); return; }
+        catch (Exception e) when (e is IOException or UnauthorizedAccessException) { Log.Warn($"The new map folder couldn't be renamed ({e.Message}); copying it instead"); }
+        try
+        {
+            foreach (var f in Directory.EnumerateFiles(build, "*", SearchOption.AllDirectories))
+            {
+                var to = Path.Combine(dest, Path.GetRelativePath(build, f));
+                Directory.CreateDirectory(Path.GetDirectoryName(to)!);
+                File.Copy(f, to, true);
+            }
+        }
+        catch (Exception) { TryDelete(dest); throw; }  // (never a half-copied map: the old one goes back)
+        TryDelete(build);
     }
 
     // ------------------------------------------------------------------ item icons and pictures
@@ -226,7 +286,14 @@ public sealed class MapBuilder
         if (!Directory.Exists(from)) return 0;
         Directory.CreateDirectory(to);
         int n = 0;
-        foreach (var f in Directory.GetFiles(from, pattern)) { File.Copy(f, Path.Combine(to, Path.GetFileName(f)), true); n++; }
+        foreach (var f in Directory.GetFiles(from, pattern))
+        {
+            var dest = Path.Combine(to, Path.GetFileName(f));
+            File.Copy(f, dest, true);
+            // (a dump's files can be read-only, and a copy keeps that: it would stop the folder being deleted later)
+            if (File.GetAttributes(dest).HasFlag(FileAttributes.ReadOnly)) File.SetAttributes(dest, FileAttributes.Normal);
+            n++;
+        }
         return n;
     }
 
