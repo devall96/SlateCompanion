@@ -44,6 +44,10 @@ public sealed class MapCanvas : Control
     public MapItem? Saved { get; set; }
     public (double x, double z, double? yaw)? Live { get; set; }
     public Bitmap? LiveArrow { get; set; }
+    /// <summary>Draw a view cone in front of the live marker, along its yaw (the camera's, from Savage Wind).</summary>
+    public bool ViewCone { get; set; }
+    /// <summary>The game's hour of the day (0-24) for the day and night tint, or null for no tint.</summary>
+    public double? Hour { get; set; }
     public bool ShowGrid { get; set; }
 
     public event Action<MapItem>? ItemClicked;
@@ -151,6 +155,9 @@ public sealed class MapCanvas : Control
                 }
             }
 
+        // day and night: over the map image only, under the icons so they stay easy to read
+        if (Hour is double hour && SkyTint(hour) is { } tint) ctx.FillRectangle(tint, mapRect);
+
         if (ShowGrid)
         {
             // the map's 1000-unit squares, lettered like the game's map grid (no map image)
@@ -171,6 +178,7 @@ public sealed class MapCanvas : Control
         if (Live is { } live)
         {
             var p = ToScreen(live.x, live.z);
+            if (ViewCone && live.yaw is double coneYaw) ctx.DrawGeometry(ConeFill(p, coneYaw), null, Cone(p, coneYaw));
             ctx.DrawEllipse(LiveFill, LivePen, p, 18, 18);
             if (LiveArrow != null && live.yaw is double yaw)
             {
@@ -181,6 +189,57 @@ public sealed class MapCanvas : Control
             else ctx.DrawEllipse(LiveDot, LiveDotPen, p, 7, 7);
         }
     }
+
+    const double ConeLength = 90, ConeHalfAngle = 32 * Math.PI / 180;
+
+    /// <summary>Screen direction of a yaw: yaw 0 looks along +z (down on the map), 90 along +x (right).</summary>
+    static Vector YawDir(double yaw) => new(Math.Sin(yaw * Math.PI / 180), Math.Cos(yaw * Math.PI / 180));
+
+    /// <summary>A wedge from the marker out along the yaw, with a rounded far edge.</summary>
+    static StreamGeometry Cone(Point p, double yaw)
+    {
+        double a = Math.Atan2(Math.Cos(yaw * Math.PI / 180), Math.Sin(yaw * Math.PI / 180));
+        var g = new StreamGeometry();
+        using (var c = g.Open())
+        {
+            c.BeginFigure(p, true);
+            c.LineTo(p + new Vector(Math.Cos(a - ConeHalfAngle), Math.Sin(a - ConeHalfAngle)) * ConeLength);
+            c.ArcTo(p + new Vector(Math.Cos(a + ConeHalfAngle), Math.Sin(a + ConeHalfAngle)) * ConeLength,
+                new Size(ConeLength, ConeLength), 0, false, SweepDirection.Clockwise);
+            c.EndFigure(true);
+        }
+        return g;
+    }
+
+    /// <summary>Bright at the marker, fading out towards the far edge.</summary>
+    static IBrush ConeFill(Point p, double yaw) => new LinearGradientBrush
+    {
+        StartPoint = new RelativePoint(p, RelativeUnit.Absolute),
+        EndPoint = new RelativePoint(p + YawDir(yaw) * ConeLength, RelativeUnit.Absolute),
+        GradientStops = { new GradientStop(Color.Parse("#9039C6FF"), 0), new GradientStop(Color.Parse("#0039C6FF"), 1) },
+    };
+
+    // Night blue, dawn and dusk orange; made once and picked by the hour (a few steps, so no new brush per frame).
+    static readonly IBrush?[] SkyTints = BuildSkyTints();
+
+    static IBrush?[] BuildSkyTints()
+    {
+        var t = new IBrush?[96];  // one per quarter hour
+        for (int i = 0; i < t.Length; i++)
+        {
+            double h = i / 4.0;
+            // night 0..1: full from 20:00 to 4:00, fading over the hour or two either side
+            double night = h >= 21 || h < 4 ? 1 : h >= 19 ? (h - 19) / 2 : h < 6 ? 1 - (h - 4) / 2 : 0;
+            // dusk and dawn glow, peaking at 6:00 and 18:30
+            double glow = Math.Max(0, 1 - Math.Abs(h - 6) / 1.25) + Math.Max(0, 1 - Math.Abs(h - 18.5) / 1.25);
+            if (night <= 0 && glow <= 0) continue;
+            var c = night >= glow ? Color.FromArgb((byte)(night * 115), 8, 16, 52) : Color.FromArgb((byte)(Math.Min(glow, 1) * 55), 255, 140, 40);
+            t[i] = new SolidColorBrush(c);
+        }
+        return t;
+    }
+
+    static IBrush? SkyTint(double hour) => SkyTints[(int)(((hour % 24) + 24) % 24 * 4) % 96];
 
     /// <summary>The zoom level of the tiles drawn now, and the range of them on screen.</summary>
     (int tz, double unitsPerTile, int tx0, int tx1, int ty0, int ty1) VisibleTiles()

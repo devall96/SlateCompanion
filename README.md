@@ -42,7 +42,7 @@ The map, icons, item pictures, compendium photos, memory photos and in-game text
 **The map**
 - **The in-game map**, built from your own game files at 3 pixels per game unit: sharp at full zoom.
 - **The game's own map icons** for shrines, towers, Korok seeds, stables, villages, the castle and Tech Labs. Done things turn blue, or hide.
-- **Link's live position** and facing from Savage Wind, with **Follow Link**. Your save spot, your own pins (right-click), and the **photo from your album** at each captured-memory spot.
+- **Link's live position** from Savage Wind (*coming soon: [needs the next Savage Wind release](#links-position-live-from-savage-wind)*), with **Follow Link**, a **cone showing where the camera looks**, and the map **darkening at night and warming at dawn and dusk** with the game's clock. Your save spot, your own pins (right-click), and the **photo from your album** at each captured-memory spot.
 
 **Everything else**
 - **Quests & walkthrough**: the story chapter by chapter with both DLC packs, all 15 main, 76 side and 42 shrine quests, with the **game's own quest log** next to step-by-step notes. **The walkthrough follows your save**: its steps and chapters tick themselves (shrines, towers, towns reached, quests started or finished, Divine Beasts entered or freed), and turning on *Tick from my save* ticks everything you've already done.
@@ -87,9 +87,17 @@ You need Savage Wind set up with your own game files, the same as for playing it
 
 ## Link's position, live from Savage Wind
 
-The map can show where Link is while you play, by asking Savage Wind over a **read-only** connection on your own PC (`127.0.0.1:7777`). It only reads Link's position, his facing and the time of day: it can't change, move or close the game.
+> [!NOTE]
+> **Coming soon.** The live position needs a small piece inside Savage Wind itself: its read-only *companion socket*. That's on Savage Wind's `test` branch now, but **not in any Savage Wind release yet** (Alpha 6 and older don't have it). Until a release includes it, **Test** (under Live position) in Slate Companion says "not connected" whatever you set, and everything else works as normal. Sorry for shipping the switch before the game side was out!
 
-That needs a **Slate Companion** switch on Savage Wind's start screen, which isn't in a Savage Wind release yet. Until it is, the live position simply stays off and everything else works as normal.
+The map can show where Link is while you play, by asking Savage Wind over a **read-only** connection on your own PC (`127.0.0.1:7777`). It only reads Link's position, which way the camera looks and the time of day: it can't change, move or close the game. The map then shows a cone where the camera looks, and darkens at night and warms at dawn and dusk (both can be turned off on the map).
+
+**Turning it on, once your Savage Wind has it:**
+1. Start Savage Wind. On its start screen (**Savage Wind Configuration**), turn on **Companion apps**. It's saved in `savagewind.ini` (`companion_apps`), so this is once only. It opens the connection at once; turning it off takes effect the next time Savage Wind starts.
+2. In Slate Companion, open **Saves & settings → Live position (Savage Wind)**, leave the port at **7777** and press **Test** once you've loaded a save.
+3. Open the map. Link shows up within a second.
+
+Using another port: start Savage Wind with the launch option `SAVAGEWIND_COMPANION=<port>` (for example `SAVAGEWIND_COMPANION=7788`) and set the same port in Slate Companion. You don't need to run either as administrator. If Savage Wind was started with its developer socket (`SAVAGEWIND_CONTROL`), use that port instead.
 
 ## Your data
 

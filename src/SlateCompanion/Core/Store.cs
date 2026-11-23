@@ -19,6 +19,8 @@ public sealed class AppSettings
     public bool SetupSeen { get; set; }             // the welcome (with quick tips) was completed once
     public string LastView { get; set; } = "home";
     public bool HideDone { get; set; }
+    public bool MapViewCone { get; set; } = true;   // the live marker shows which way the camera looks
+    public bool MapDayNight { get; set; } = true;   // the map darkens at night and warms at dawn and dusk, from the game's hour
     public bool TrackWalkthrough { get; set; } = true;      // walkthrough chapters and steps tick themselves from the save
     public List<string> MapLayersOff { get; set; } = ["memory"];
     public Dictionary<string, int> ArmorPlan { get; set; } = [];

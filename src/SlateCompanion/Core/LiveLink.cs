@@ -65,7 +65,7 @@ public static class LiveLink
             result["error"] = result["connected"]?.GetValue<bool>() == true
                 ? "Savage Wind is open; waiting for you to load a save" : "timed out";
         }
-        catch (SocketException) { Close(); result["connected"] = false; result["error"] = "Savage Wind isn't running, or its Slate Companion switch is off"; }
+        catch (SocketException) { Close(); result["connected"] = false; result["error"] = "Savage Wind isn't running, or its Companion apps switch is off (needs a Savage Wind newer than Alpha 6)"; }
         catch (IOException e) { Close(); result["connected"] = false; result["error"] = e.Message; }
         catch (System.Text.Json.JsonException) { Close(); result["error"] = "unreadable reply"; }
         finally { gate.Release(); }

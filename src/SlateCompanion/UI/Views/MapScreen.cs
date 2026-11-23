@@ -50,12 +50,16 @@ public sealed class MapScreen : ViewBase
 
     readonly MapCanvas canvas = new();
     readonly TextBlock coords = Ui.Text("—", "faint mono");
+    readonly TextBlock clock = Ui.Text("", "mono");
+    Border clockBox = null!;
     readonly StackPanel layerList = new() { Spacing = 2 };
     readonly StackPanel details = new() { Spacing = 6 };
     readonly TextBlock liveInfo = Ui.Text("Live position: waiting for Savage Wind", "muted small");
     readonly TextBlock savedInfo = Ui.Text("No save position yet.", "muted small");
     readonly CheckBox follow = new() { Content = "Follow Link" };
     readonly CheckBox hideDone = new() { Content = "Hide what's done" };
+    readonly CheckBox viewCone = new() { Content = "Show where the camera looks" };
+    readonly CheckBox dayNight = new() { Content = "Day and night on the map" };
     readonly Dictionary<string, List<MapItem>> byLayer = [];
     List<Pin> pins = [];
     DispatcherTimer? liveTimer;
@@ -78,6 +82,9 @@ public sealed class MapScreen : ViewBase
         mapArea.Children.Add(canvas);
         mapArea.Children.Add(zoomBox);
         mapArea.Children.Add(coordBox);
+        // the game's time of day, while the live position is on
+        clockBox = new Border { Child = clock, Background = new SolidColorBrush(Color.Parse("#D9071116")), BorderBrush = Ui.Brush("Line"), BorderThickness = new Thickness(1), CornerRadius = new CornerRadius(8), Padding = new Thickness(12, 6), Margin = new Thickness(12), HorizontalAlignment = HorizontalAlignment.Right, VerticalAlignment = VerticalAlignment.Top, IsVisible = false };
+        mapArea.Children.Add(clockBox);
 
         detailsPanel = Ui.Panel(details, "panel glow");
         detailsPanel.IsVisible = false;
@@ -85,12 +92,25 @@ public sealed class MapScreen : ViewBase
         hideDone.IsChecked = App.Progress.Settings.HideDone;
         hideDone.IsCheckedChanged += (_, _) => { App.Progress.SaveSettings(s => s.HideDone = hideDone.IsChecked == true); Restyle(); };
         follow.IsCheckedChanged += (_, _) => RestartLive();
+        viewCone.IsChecked = canvas.ViewCone = App.Progress.Settings.MapViewCone;
+        viewCone.IsCheckedChanged += (_, _) =>
+        {
+            canvas.ViewCone = viewCone.IsChecked == true;
+            App.Progress.SaveSettings(s => s.MapViewCone = canvas.ViewCone);
+            canvas.Redraw();
+        };
+        dayNight.IsChecked = App.Progress.Settings.MapDayNight;
+        dayNight.IsCheckedChanged += (_, _) =>
+        {
+            App.Progress.SaveSettings(s => s.MapDayNight = dayNight.IsChecked == true);
+            if (dayNight.IsChecked != true) { canvas.Hour = null; canvas.Redraw(); }  // back on: the next live update brings the hour
+        };
 
         var side = Ui.Stack(14,
             Ui.Stack(8, Ui.Text("LAYERS", "h2"), layerList),
             hideDone,
             detailsPanel,
-            Ui.Panel(Ui.Stack(6, Ui.Text("Position", "h3"), savedInfo, Ui.Button("Show save spot", () => { if (App.Progress.Position is { } p) canvas.SetView(p[0], p[2], Math.Max(canvas.Zoom, 6)); }, "small"), liveInfo, follow)),
+            Ui.Panel(Ui.Stack(6, Ui.Text("Position", "h3"), savedInfo, Ui.Button("Show save spot", () => { if (App.Progress.Position is { } p) canvas.SetView(p[0], p[2], Math.Max(canvas.Zoom, 6)); }, "small"), liveInfo, follow, viewCone, dayNight)),
             new Border { Classes = { "note" }, Child = Ui.Text("Right-click the map to drop your own pin. The map is © Nintendo.", "small muted") });
         var sideScroll = new ScrollViewer { Content = new Border { Padding = new Thickness(14), Child = side } };
         var sideBorder = new Border { Width = 300, Child = sideScroll, BorderBrush = Ui.Brush("Line"), BorderThickness = new Thickness(1, 0, 0, 0), Background = new SolidColorBrush(Color.Parse("#EB071116")) };
@@ -371,12 +391,23 @@ public sealed class MapScreen : ViewBase
     void RestartLive()
     {
         liveTimer?.Stop();
-        if (!App.Progress.Settings.LiveEnabled) { liveInfo.Text = "Live position: off (Saves & settings)"; canvas.Live = null; return; }
+        if (!App.Progress.Settings.LiveEnabled) { liveInfo.Text = "Live position: off (Saves & settings)"; canvas.Live = null; canvas.Hour = null; clockBox.IsVisible = false; return; }
         liveTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(1000) };
         liveTimer.Tick += async (_, _) => await PollLive();
         liveTimer.Start();
         _ = PollLive();
     }
+
+    static string Clock(double hour)
+    {
+        int minutes = (int)(((hour % 24) + 24) % 24 * 60);
+        return $"{minutes / 60:00}:{minutes % 60:00}";
+    }
+
+    static string PartOfDay(double hour) => (((hour % 24) + 24) % 24) switch
+    {
+        < 5 => "Night", < 7 => "Dawn", < 12 => "Morning", < 17 => "Afternoon", < 19.5 => "Evening", < 21 => "Dusk", _ => "Night",
+    };
 
     async Task PollLive()
     {
@@ -393,17 +424,23 @@ public sealed class MapScreen : ViewBase
                 double x = r["x"]!.GetValue<double>(), z = r["z"]!.GetValue<double>();
                 double? yaw = r["yaw"]?.GetValue<double>(), hour = r["hour"]?.GetValue<double>();
                 var prev = canvas.Live;
-                if (prev == null || Math.Abs(prev.Value.x - x) > 0.05 || Math.Abs(prev.Value.z - z) > 0.05 || prev.Value.yaw != yaw)
+                double? tint = dayNight.IsChecked == true ? hour : null;
+                bool hourMoved = (canvas.Hour is null) != (tint is null) || (tint is double t && Math.Abs(t - canvas.Hour!.Value) >= 0.25);
+                if (prev == null || Math.Abs(prev.Value.x - x) > 0.05 || Math.Abs(prev.Value.z - z) > 0.05 || prev.Value.yaw != yaw || hourMoved)
                 {
                     canvas.Live = (x, z, yaw);
+                    canvas.Hour = tint;
                     if (follow.IsChecked == true) canvas.SetView(x, z); else canvas.Redraw();
                 }
-                liveInfo.Text = $"● Live  x {x:0} · z {z:0}" + (hour is double h ? $" · {(int)h:00}:{(int)(h % 1 * 60):00}" : "");
+                liveInfo.Text = $"● Live  x {x:0} · z {z:0}" + (hour is double h ? $" · {Clock(h)}" : "");
+                clockBox.IsVisible = hour != null;
+                if (hour is double hh) clock.Text = $"{Clock(hh)}  {PartOfDay(hh)}";
                 liveInfo.Foreground = Ui.Brush("Glow");
             }
             else
             {
-                if (canvas.Live != null) { canvas.Live = null; canvas.Redraw(); }
+                if (canvas.Live != null || canvas.Hour != null) { canvas.Live = null; canvas.Hour = null; canvas.Redraw(); }
+                clockBox.IsVisible = false;
                 liveInfo.Text = "Live: " + (r["error"]?.GetValue<string>() ?? "waiting for Savage Wind");
                 liveInfo.Foreground = Ui.Brush("Muted");
             }

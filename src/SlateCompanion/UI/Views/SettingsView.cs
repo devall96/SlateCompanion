@@ -36,7 +36,7 @@ public sealed class SettingsView : ViewBase
         var port = new NumericUpDown { Value = p.Settings.LivePort, Minimum = 1, Maximum = 65535, Increment = 1, FormatString = "0", Width = 140 };
         port.ValueChanged += (_, _) => p.SaveSettings(s => s.LivePort = (int)(port.Value ?? 7777));
         var live = Ui.Panel(Ui.Stack(10, Ui.Text("LIVE POSITION (SAVAGE WIND)", "h2"),
-            Ui.Text("Shows where Link is on the map while you play, by asking Savage Wind over its local, read-only connection (this computer only). In Savage Wind Configuration turn on Slate Companion; it uses port 7777.", "muted"),
+            Ui.Text("Shows where Link is on the map while you play, by asking Savage Wind over its local, read-only connection (this computer only). In Savage Wind Configuration turn on Companion apps; it uses port 7777. Coming soon: this needs a Savage Wind release newer than Alpha 6.", "muted"),
             Ui.Row(10, liveOn, Ui.Text("Port", "muted"), port, Ui.Button("Test", async () =>
             {
                 liveResult.Text = "Asking Savage Wind…";
