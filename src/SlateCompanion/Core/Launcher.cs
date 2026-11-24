@@ -176,6 +176,10 @@ public static class Launcher
                 if (!string.IsNullOrEmpty(preset)) { psi.ArgumentList.Add("--preset"); psi.ArgumentList.Add(preset); }
                 if (OperatingSystem.IsWindows()) psi.ArgumentList.Add("--no-update-check");  // (its updates are offered here, on the launch screen)
                 psi.ArgumentList.Add("--play");  // (Clear Skies' own: start the game now, not its window)
+                // Savage Wind 0.6+ with HDR on runs its own HDR tone-mapping shader instead of the game's, which Clear
+                // Skies turns into Clarity, so the preset never showed (ClearSkies#1, #2). With a look chosen, the game
+                // keeps its own tone-mapping; Clear Skies passes this on to the game, also in versions before its fix.
+                if (!string.Equals(preset, "off", StringComparison.OrdinalIgnoreCase)) psi.Environment["SAVAGEWIND_HDR_TONEMAP"] = "0";
             }
             // nothing passed to Savage Wind: it starts as if opened by hand, and decides itself whether to show
             // Savage Wind Configuration or an update first
