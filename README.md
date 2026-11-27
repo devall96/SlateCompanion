@@ -63,7 +63,7 @@ The map, icons, item pictures, compendium photos, memory photos and in-game text
 The Play screen starts Savage Wind for you. You choose on the first start, and can turn it off any time in Settings. Slate Companion never installs, updates or changes Savage Wind.
 - **Play** starts Savage Wind the normal way, as if you opened it yourself: it shows its Configuration screen or an update first when it wants to.
 - **Your copies**: every copy of Savage Wind on your PC, with a name of your own: pick which one Play starts, open its folder, or remove it from the list (nothing is deleted).
-- **[Clear Skies](https://github.com/devall96/ClearSkies)**: play with Cemu's Clarity look and pick one of its 20 presets, open its mod manager and GameBanana browser, and see when it has an update.
+- **[Clear Skies](https://github.com/devall96/ClearSkies)**: play with Cemu's Clarity look and pick one of its 20 presets, open its mod manager and GameBanana browser, and update it with one button when it has a new version.
 
 **Save files**
 - Every slot of every Savage Wind copy and save profile, with its picture, date and play time.

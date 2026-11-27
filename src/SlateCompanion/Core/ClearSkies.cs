@@ -5,7 +5,8 @@ namespace SlateCompanion;
 /// <summary>
 /// Clear Skies (github.com/devall96/ClearSkies): Cemu's Clarity look for Savage Wind, as a Vulkan layer its launcher
 /// turns on for the game it starts, plus a mod manager. Slate Companion only starts its launcher with options
-/// (--game, --preset, --play, --gamebanana); it never changes Clear Skies' files.
+/// (--game, --preset, --play, --gamebanana). The only time it changes Clear Skies' files is the Update button
+/// (Launcher.UpdateClearSkies).
 /// </summary>
 public sealed record ClearSkies(string Program)
 {

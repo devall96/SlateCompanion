@@ -50,6 +50,20 @@ public static class Program
             else { var st = new Store().LoadSettings(); Console.WriteLine($"{DesktopEntries.Sync(Launcher.FindInstalls(st), st.InstallNames)} entries"); }
             return 0;
         }
+        // --cs-update <ClearSkies.exe or AppImage>: the Play screen's Clear Skies Update button as a command (testing)
+        if (args.Length >= 2 && args[0] == "--cs-update")
+        {
+            try
+            {
+                var cs = ClearSkies.At(args[1]) ?? throw new FileNotFoundException("No Clear Skies there.");
+                var rel = Launcher.LatestRelease(ClearSkies.Repo).GetAwaiter().GetResult() ?? throw new InvalidOperationException("No release found.");
+                Console.WriteLine($"{cs.Version} -> {rel.Version}");
+                var program = Launcher.UpdateClearSkies(cs, rel).GetAwaiter().GetResult();
+                Console.WriteLine($"{program}: {ClearSkies.At(program)?.Version}");
+                return 0;
+            }
+            catch (Exception e) { Console.Error.WriteLine(e.Message); return 1; }
+        }
         // --equip <save folder> <slot folder> <Slot>=<PorchItem index|none> ...: the Inventory's Equip as a command (testing)
         if (args.Length >= 4 && args[0] == "--equip")
         {

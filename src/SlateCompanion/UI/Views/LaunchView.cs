@@ -223,13 +223,40 @@ public sealed class LaunchView : ViewBase
         if (newer)
         {
             s.Children.Add(Ui.Row(8, Ui.Tag("Update", "orange"), Ui.Text($"Clear Skies {csRelease!.Version} is available (you have {v}).", "small"),
-                Ui.Button("Update", () => Report(cs.Open(false), "Clear Skies didn't open"), "small primary")));
-            var t = Ui.Text("Update opens Clear Skies, which downloads it, checks it against GitHub's checksum and restarts; your looks and mods are kept.", "faint small");
+                Ui.Button(csUpdating ? "Updating…" : "Update", UpdateClearSkies, "small primary")));
+            ((Control)((Panel)s.Children[^1]).Children[^1]).IsEnabled = !csUpdating;
+            var t = Ui.Text(cs.AppImage
+                ? "Update downloads the new AppImage next to the one you have and checks it against GitHub's checksum. The old one stays where it is."
+                : "Update downloads it, checks it against GitHub's checksum and replaces Clear Skies' files. Your clearskies.ini is kept, and the replaced files are copied to a \"previous\" folder first.", "faint small");
             t.TextWrapping = TextWrapping.Wrap; s.Children.Add(t);
         }
         else
             s.Children.Add(Ui.Text($"Clear Skies {v ?? "(version unknown)"} · {Ui.ShortPath(cs.Folder)}" + (csRelease != null && v != null ? " · up to date" : csCheckError != null ? " · couldn't check for updates" : ""), "faint small"));
         clear.Content = Ui.Panel(s);
+    }
+
+    bool csUpdating;
+
+    /// <summary>The Update button: Slate Companion downloads the release and puts it in place (Clear Skies 0.2.x has no updater).</summary>
+    async void UpdateClearSkies()
+    {
+        if (csUpdating || cs == null || csRelease == null) return;
+        var (from, release) = (cs, csRelease);
+        csUpdating = true;
+        DrawClear();
+        try
+        {
+            var program = await Task.Run(() => Launcher.UpdateClearSkies(from, release));
+            App.Progress.SaveSettings(x => x.ClearSkiesProgram = program);
+            cs = ClearSkies.At(program) ?? cs;
+        }
+        catch (Exception e)
+        {
+            Log.Warn("Clear Skies update: " + e);
+            ErrorWindow.Show("Clear Skies wasn't updated", e is HttpRequestException or TaskCanceledException
+                ? "The download failed (" + e.Message + "). Check your connection and try again, or get it from " + ClearSkies.Page : e.Message);
+        }
+        finally { csUpdating = false; DrawClear(); DrawHero(); }
     }
 
     async void ChooseClearSkies()

@@ -211,6 +211,95 @@ public static class Launcher
     }
 
     /// <summary>
+    /// Updates a Clear Skies to a release, in its own folder, and returns the program to use from now on. Clear Skies
+    /// 0.2.x can't update itself, so the Update button used to do nothing but open the old version (issue #3).
+    /// Windows: the release's .zip is unpacked over the folder; clearskies.ini (the player's settings) and anything
+    /// the zip doesn't have are left alone, and the files it replaces are first copied to "previous-&lt;version&gt;".
+    /// Linux: the new AppImage is put next to the old one, which stays. The download is checked against the size and
+    /// SHA-256 GitHub lists for it before anything is touched. Throws with a message for the player.
+    /// </summary>
+    public static async Task<string> UpdateClearSkies(ClearSkies cs, Release rel)
+    {
+        bool appImage = cs.AppImage;
+        var asset = rel.Assets.FirstOrDefault(a => a.name.StartsWith("ClearSkies", StringComparison.OrdinalIgnoreCase)
+            && a.name.EndsWith(appImage ? ".AppImage" : ".zip", StringComparison.OrdinalIgnoreCase));
+        if (asset.url == null) throw new InvalidOperationException($"Clear Skies {rel.Version} has no {(appImage ? "AppImage" : ".zip")} to download.");
+        if (!appImage)
+        {
+            if (GameRunning()) throw new InvalidOperationException("Close Savage Wind first, then press Update again.");
+            var open = Process.GetProcessesByName(Path.GetFileNameWithoutExtension(cs.Program));
+            bool running = open.Length > 0;
+            foreach (var p in open) p.Dispose();
+            if (running) throw new InvalidOperationException("Close Clear Skies first, then press Update again.");
+        }
+
+        // GitHub's own checksum of the file ("sha256:…"), when it lists one
+        string? digest = null;
+        try
+        {
+            var r = JsonNode.Parse(await http.GetStringAsync($"https://api.github.com/repos/{ClearSkies.Repo}/releases/tags/{rel.Tag}"));
+            digest = r?["assets"]?.AsArray().FirstOrDefault(a => a?["name"]?.GetValue<string>() == asset.name)?["digest"]?.GetValue<string>();
+        }
+        catch (Exception e) when (e is HttpRequestException or TaskCanceledException or System.Text.Json.JsonException) { }
+
+        using var dl = new HttpClient { Timeout = TimeSpan.FromMinutes(5) };
+        dl.DefaultRequestHeaders.UserAgent.ParseAdd("SlateCompanion");
+        var bytes = await dl.GetByteArrayAsync(asset.url);
+        if (bytes.LongLength != asset.size) throw new InvalidDataException("The download was incomplete. Try again.");
+        if (digest != null && digest.StartsWith("sha256:", StringComparison.OrdinalIgnoreCase)
+            && !Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(bytes)).Equals(digest[7..], StringComparison.OrdinalIgnoreCase))
+            throw new InvalidDataException("The download didn't match GitHub's checksum, so nothing was changed. Try again.");
+
+        if (appImage)
+        {
+            var dest = Path.Combine(cs.Folder, Path.GetFileName(asset.name));
+            var part = dest + ".part";
+            await File.WriteAllBytesAsync(part, bytes);
+            if (!OperatingSystem.IsWindows())
+                File.SetUnixFileMode(part, File.GetUnixFileMode(part) | UnixFileMode.UserExecute | UnixFileMode.GroupExecute | UnixFileMode.OtherExecute);
+            File.Move(part, dest, true);
+            return dest;
+        }
+
+        using var zip = new System.IO.Compression.ZipArchive(new MemoryStream(bytes), System.IO.Compression.ZipArchiveMode.Read);
+        var root = Path.GetFullPath(cs.Folder) + Path.DirectorySeparatorChar;
+        var files = new List<(System.IO.Compression.ZipArchiveEntry entry, string dest)>();
+        foreach (var e in zip.Entries)
+        {
+            if (e.FullName.EndsWith('/') || e.FullName.EndsWith('\\')) continue;
+            // the zip holds one "ClearSkies" folder
+            var rel2 = e.FullName.Replace('\\', '/');
+            if (rel2.StartsWith("ClearSkies/", StringComparison.OrdinalIgnoreCase)) rel2 = rel2["ClearSkies/".Length..];
+            var dest = Path.GetFullPath(Path.Combine(cs.Folder, rel2));
+            if (!dest.StartsWith(root, StringComparison.OrdinalIgnoreCase)) throw new InvalidDataException("The download has a file outside its folder, so nothing was changed.");
+            if (Path.GetFileName(dest).Equals("clearskies.ini", StringComparison.OrdinalIgnoreCase) && File.Exists(dest)) continue;  // the player's settings
+            files.Add((e, dest));
+        }
+        if (!files.Any(f => Path.GetFileName(f.dest).Equals(Path.GetFileName(cs.Program), StringComparison.OrdinalIgnoreCase)))
+            throw new InvalidDataException("The download isn't a Clear Skies release, so nothing was changed.");
+        // every file that will be replaced must be free before the first one is: no half-updated folder
+        foreach (var (_, dest) in files.Where(f => File.Exists(f.dest)))
+            try { using var probe = new FileStream(dest, FileMode.Open, FileAccess.ReadWrite, FileShare.None); }
+            catch (Exception e) when (e is IOException or UnauthorizedAccessException)
+            { throw new IOException($"{Path.GetFileName(dest)} is in use or can't be written. Close Savage Wind and Clear Skies, then press Update again."); }
+        var backup = Path.Combine(cs.Folder, $"previous-{cs.Version ?? "version"}");
+        foreach (var (entry, dest) in files)
+        {
+            Directory.CreateDirectory(Path.GetDirectoryName(dest)!);
+            if (File.Exists(dest))
+            {
+                var keep = Path.Combine(backup, Path.GetRelativePath(cs.Folder, dest));
+                Directory.CreateDirectory(Path.GetDirectoryName(keep)!);
+                File.Copy(dest, keep, true);
+            }
+            using var from = entry.Open();
+            using var to = new FileStream(dest, FileMode.Create, FileAccess.Write, FileShare.None);
+            await from.CopyToAsync(to);
+        }
+        return cs.Program;
+    }
+
+    /// <summary>
     /// Compares "0.5.3-alpha.5"-style versions as semantic versions; &gt; 0 when a is newer. A pre-release comes before
     /// its release (0.6.0-alpha.3 &lt; 0.6.0), and pre-release parts compare number by number or by name (alpha &lt; beta).
     /// Comparing only the numbers made 0.6.0-alpha.3 look newer than 0.6.0, so alpha players were never offered 0.6.0.

@@ -25,10 +25,13 @@ public sealed class SearchOverlay : Border
         results.ItemTemplate = new FuncDataTemplate<SearchHit>((h, _) =>
         {
             var g = new Grid { ColumnDefinitions = new ColumnDefinitions("100,*,Auto") };
-            g.Children.Add(Ui.Text(h.Kind.ToUpperInvariant(), "label"));
+            // When the list is replaced while typing, Avalonia clears each old row's content and builds this template
+            // once more with no hit at all: an empty row then, instead of a crash (issue #4).
+            if (h is null) return g;
+            g.Children.Add(Ui.Text((h.Kind ?? "").ToUpperInvariant(), "label"));
             ((TextBlock)g.Children[0]).Foreground = Ui.Brush("Orange");
-            var n = Ui.Text(h.Name); Grid.SetColumn(n, 1); g.Children.Add(n);
-            var s = Ui.Text(h.Sub, "faint"); Grid.SetColumn(s, 2); g.Children.Add(s);
+            var n = Ui.Text(h.Name ?? ""); Grid.SetColumn(n, 1); g.Children.Add(n);
+            var s = Ui.Text(h.Sub ?? "", "faint"); Grid.SetColumn(s, 2); g.Children.Add(s);
             return g;
         }, supportsRecycling: false);
         var panel = new Border
