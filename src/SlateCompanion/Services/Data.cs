@@ -86,53 +86,6 @@ public sealed class GameData
         };
     }
 
-    /// <summary>
-    /// Every problem with the race segments, checked against the race Koroks. Empty list means the data is sound.
-    /// </summary>
-    public static List<string> ValidateRaceData(GameData data)
-    {
-        const string raceKind = "Goal Ring (Race)";
-        const double tolerance = 0.001;
-        var problems = new List<string>();
-
-        var koroks = new Dictionary<string, Korok>();
-        foreach (var k in data.Koroks) if (k.Id is { } id) koroks.TryAdd(id, k);
-        var raceIds = data.Koroks.Where(k => k.Kind == raceKind).Select(k => k.Id).ToHashSet();
-
-        var seen = new HashSet<string>();
-        foreach (var s in data.RaceSegments)
-        {
-            var id = s.Id ?? "";
-            if (string.IsNullOrWhiteSpace(id)) problems.Add("race segment has an empty id");
-            else
-            {
-                if (!seen.Add(id)) problems.Add($"duplicate race segment id '{id}'");
-                if (!raceIds.Contains(id)) problems.Add($"race segment '{id}' is not a {raceKind} Korok");
-            }
-
-            foreach (var (name, value, isX) in new[]
-                     {
-                         ("startX", s.StartX, true), ("startZ", s.StartZ, false),
-                         ("endX", s.EndX, true), ("endZ", s.EndZ, false),
-                     })
-            {
-                if (!double.IsFinite(value)) problems.Add($"race segment '{id}' has non-finite {name}");
-                else if (isX ? value is < -7000 or > 7000 : value is < -6000 or > 6000)
-                    problems.Add($"race segment '{id}' has out-of-range {name} ({value})");
-            }
-
-            if (raceIds.Contains(id) && koroks.TryGetValue(id, out var k)
-                && double.IsFinite(s.EndX) && double.IsFinite(s.EndZ)
-                && (Math.Abs(s.EndX - k.X) > tolerance || Math.Abs(s.EndZ - k.Z) > tolerance))
-                problems.Add($"race segment '{id}' end point ({s.EndX},{s.EndZ}) does not match Korok ({k.X},{k.Z})");
-        }
-
-        foreach (var id in raceIds.Except(seen))
-            problems.Add($"{raceKind} Korok '{id}' has no race segment");
-
-        return problems;
-    }
-
     public static string KindOf(string type) => type == "shrine_dlc" ? "shrine" : type;
 
     public static string PlaceLabel(string type) => type switch
