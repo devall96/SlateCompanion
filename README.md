@@ -113,7 +113,7 @@ Using another port: start Savage Wind with the launch option `SAVAGEWIND_COMPANI
 dotnet run --project src/SlateCompanion
 ```
 
-`build-release.ps1` makes the Windows installer with [Velopack](https://velopack.io); the Linux AppImage is built by `.github/workflows/linux.yml`. `--screenshots <folder>` saves a picture of every screen, and `--build-map <romfs>` builds from game files without the window; `--convert-save <save> <out> <Bootup.pack> switch|wiiu` converts a save, and `--sw-list` lists the copies of Savage Wind it finds.
+`build-release.ps1` makes the Windows installer with [Velopack](https://velopack.io); the Linux AppImage is built by `.github/workflows/linux.yml`. `--screenshots <folder>` saves a picture of every screen, and `--build-map <romfs>` builds from game files without the window; `--convert-save <save> <out> <Bootup.pack> switch|wiiu` converts a save, `--sw-list` lists the copies of Savage Wind it finds, and `--check-race-data` validates the race Korok segments (prints the count and exits `0` when clean, or every problem and exit `1` otherwise).
 
 ## Who did what
 

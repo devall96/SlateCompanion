@@ -96,6 +96,8 @@ public static class Program
             Console.WriteLine(string.Join(Environment.NewLine, report));
             return 0;
         }
+        // --check-race-data: validate the race segments against the race Koroks, without opening a window
+        if (args.Length >= 1 && args[0] == "--check-race-data") return CheckRaceDataCli();
 
         try
         {
@@ -142,6 +144,27 @@ public static class Program
             .With(new Win32PlatformOptions { RenderingMode = gpu ? [Win32RenderingMode.AngleEgl, Win32RenderingMode.Wgl, Win32RenderingMode.Software] : [Win32RenderingMode.Software] })
             .With(new X11PlatformOptions { RenderingMode = gpu ? [X11RenderingMode.Egl, X11RenderingMode.Glx, X11RenderingMode.Software] : [X11RenderingMode.Software] })
             .LogToTrace();
+    }
+
+    static int CheckRaceDataCli()
+    {
+        try
+        {
+            var data = GameData.Load(Path.Combine(AppContext.BaseDirectory, "Data"));
+            var problems = GameData.ValidateRaceData(data);
+            if (problems.Count == 0)
+            {
+                Console.WriteLine($"Race segments: {data.RaceSegments.Length} (OK)");
+                return 0;
+            }
+            foreach (var problem in problems) Console.WriteLine(problem);
+            return 1;
+        }
+        catch (Exception e)
+        {
+            Console.Error.WriteLine(e.Message);
+            return 1;
+        }
     }
 
     static int BuildMapCli(string path)
