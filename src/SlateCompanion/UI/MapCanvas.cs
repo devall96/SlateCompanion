@@ -29,6 +29,9 @@ public sealed class MapItem
     public object? Tag { get; init; }
 }
 
+/// <summary>A race route from its starting block to its goal ring, in world coordinates.</summary>
+public sealed record RaceLine(double X1, double Z1, double X2, double Z2, bool Done);
+
 /// <summary>
 /// The map. Draws the tiles on screen (a lower-zoom tile, scaled, until the sharp one has loaded) and the visible
 /// items, and redraws only when something changes: a pan or zoom, a tile arriving, Link moving.
@@ -41,6 +44,8 @@ public sealed class MapCanvas : Control
     public double CenterZ { get; private set; }
     public double Zoom { get; private set; } = 3;
     public List<MapItem> Items { get; } = [];
+    /// <summary>Race routes, drawn before the items so pins stay on top. Not map items: no counts or hit-testing.</summary>
+    public List<RaceLine> RaceLines { get; } = [];
     public MapItem? Saved { get; set; }
     public (double x, double z, double? yaw)? Live { get; set; }
     public Bitmap? LiveArrow { get; set; }
@@ -71,6 +76,8 @@ public sealed class MapCanvas : Control
     static readonly IBrush LiveFill = new SolidColorBrush(Color.Parse("#4039C6FF")), LiveDot = new SolidColorBrush(Color.Parse("#39C6FF")), RingFill = new SolidColorBrush(Color.Parse("#38FF9A3C"));
     static readonly Pen LivePen = new(new SolidColorBrush(Color.Parse("#7039C6FF")), 2), LiveDotPen = new(Brushes.White, 2.5);
     static readonly Pen GridLine = new(new SolidColorBrush(Color.Parse("#2839C6FF")), 1), GridEdge = new(new SolidColorBrush(Color.Parse("#6039C6FF")), 1.5);
+    // race routes: Korok gold while pending, a faint grey once done
+    static readonly Pen RaceLineGold = new(new SolidColorBrush(Color.Parse("#FFD45E")), 1.2), RaceLineDone = new(new SolidColorBrush(Color.Parse("#7C8A7A"), 0.5), 1.2);
     static readonly Dictionary<double, StreamGeometry> Diamonds = [];
     static readonly Dictionary<IBrush, Pen> RingPens = [];
 
@@ -164,6 +171,10 @@ public sealed class MapCanvas : Control
             for (int gx = -6000; gx <= 6000; gx += 1000) ctx.DrawLine(gx is -6000 or 6000 ? GridEdge : GridLine, ToScreen(gx, -5000), ToScreen(gx, 5000));
             for (int gz = -5000; gz <= 5000; gz += 1000) ctx.DrawLine(gz is -5000 or 5000 ? GridEdge : GridLine, ToScreen(-6000, gz), ToScreen(6000, gz));
         }
+
+        // race routes: over the map and tint, but under the pins
+        foreach (var line in RaceLines)
+            ctx.DrawLine(line.Done ? RaceLineDone : RaceLineGold, ToScreen(line.X1, line.Z1), ToScreen(line.X2, line.Z2));
 
         // items: cheap culling by screen position
         foreach (var it in Items)

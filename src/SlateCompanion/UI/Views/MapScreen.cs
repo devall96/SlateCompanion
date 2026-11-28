@@ -61,6 +61,8 @@ public sealed class MapScreen : ViewBase
     readonly CheckBox viewCone = new() { Content = "Show where the camera looks" };
     readonly CheckBox dayNight = new() { Content = "Day and night on the map" };
     readonly Dictionary<string, List<MapItem>> byLayer = [];
+    // The id is kept here, not on RaceLine, so MapCanvas stays a dumb view. Rebuilt into canvas.RaceLines on each restyle.
+    readonly List<(string id, RaceLine line)> raceLines = [];
     List<Pin> pins = [];
     DispatcherTimer? liveTimer;
     bool useGame, initialView, polling, benchStarted;
@@ -154,6 +156,14 @@ public sealed class MapScreen : ViewBase
                 byLayer["korok"].Add(icon); canvas.Items.Add(icon);
             }
         }
+        canvas.RaceLines.Clear();
+        raceLines.Clear();
+        foreach (var s in App.Data.RaceSegments)
+        {
+            var line = new RaceLine(s.StartX, s.StartZ, s.EndX, s.EndZ, false);
+            raceLines.Add((s.Id, line));
+            canvas.RaceLines.Add(line);
+        }
         DrawPins();
         Restyle();
     }
@@ -191,6 +201,15 @@ public sealed class MapScreen : ViewBase
                 it.Visible = !off.Contains(layer) && !(hide && done);
                 Style(it, done);
             }
+        // Race lines follow the Korok layer's checkbox and the same done state as their Korok pin.
+        bool korokOn = !off.Contains("korok");
+        canvas.RaceLines.Clear();
+        foreach (var (id, line) in raceLines)
+        {
+            bool done = App.Progress.IsDone($"korok:{id}");
+            if (!korokOn || (hide && done)) continue;
+            canvas.RaceLines.Add(line with { Done = done });
+        }
         if (App.Progress.Position is { } p)
             canvas.Saved = new MapItem { X = p[0], Z = p[2], Id = "saved", Shape = MarkShape.Ring, Size = 22, Fill = Ui.Brush("Orange") };
         savedInfo.Text = App.Progress.Position is { } q ? $"Saved at x {q[0]:0}, z {q[2]:0}" : "No save position yet.";

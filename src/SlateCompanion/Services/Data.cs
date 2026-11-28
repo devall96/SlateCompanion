@@ -5,6 +5,7 @@ namespace SlateCompanion;
 
 public sealed record Marker(string Id, string Type, string Name, double X, double Y, double Z, string? Flag, string? Notes);
 public sealed record Korok(string Id, double X, double Y, double Z, string Flag, string? Kind);
+public sealed record RaceSegment(string Id, double StartX, double StartZ, double EndX, double EndZ);
 
 public sealed record StatDef(string Key, string Label, string? Flag, string? Type, string? Unit);
 public sealed record DefeatedDef(string Enemy, string? Actor, string? Flag, string? Type);
@@ -55,6 +56,7 @@ public sealed class GameData
 
     public required Marker[] Markers { get; init; }
     public required Korok[] Koroks { get; init; }
+    public required RaceSegment[] RaceSegments { get; init; }
     public required Flags Flags { get; init; }
     public required CompendiumEntry[] Compendium { get; init; }
     public required ArmorFile Armor { get; init; }
@@ -74,6 +76,7 @@ public sealed class GameData
             Folder = folder,
             Markers = Read<Marker[]>("map/markers.json"),
             Koroks = Read<Korok[]>("map/koroks.json"),
+            RaceSegments = Read<RaceSegment[]>("map/korok-races.json"),
             Flags = Read<Flags>("flags.json"),
             Compendium = Read<CompendiumFile>("compendium.json").Entries.OrderBy(e => e.Id).ToArray(),
             Armor = Read<ArmorFile>("armor.json"),

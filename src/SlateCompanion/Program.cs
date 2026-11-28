@@ -96,7 +96,6 @@ public static class Program
             Console.WriteLine(string.Join(Environment.NewLine, report));
             return 0;
         }
-
         try
         {
             int code = BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);

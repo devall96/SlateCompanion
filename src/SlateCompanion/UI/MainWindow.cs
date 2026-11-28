@@ -212,9 +212,10 @@ public sealed class MainWindow : Window
         }
         // each screen with something picked, so the details (and any game pictures) show
         var bear = App.Data.Compendium.FirstOrDefault(c => c.Name.Contains("bear"))?.Id;
+        // A race Korok (e.g. A05) puts a gold line in map.png; T06 has the longest route, so the line is clear.
         var samples = new Dictionary<string, object?>
         {
-            ["map"] = Program.Demo ? null : "Memory_Demo126_0",["quests"] = ("walkthrough", "vah-medoh"), ["shrines"] = App.Data.Markers.First(m => m.Type == "shrine").Id,
+            ["map"] = Program.Demo ? "T06" : "Memory_Demo126_0",["quests"] = ("walkthrough", "vah-medoh"), ["shrines"] = App.Data.Markers.First(m => m.Type == "shrine").Id,
             ["cooking"] = ("ingredient", "Item_Fruit_A"), ["compendium"] = bear, ["armor"] = App.Data.Armor.Armor.FirstOrDefault(a => a.Name.Contains("Hylian Hood"))?.Id,
         };
         foreach (var id in Nav.Select(n => n.id).Where(id => id != "zeldadungeon").Append("settings"))  // (not a website)
